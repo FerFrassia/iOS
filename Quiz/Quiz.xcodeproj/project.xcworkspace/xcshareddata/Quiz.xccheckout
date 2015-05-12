@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>5518D6A9-170B-4D5A-8E3E-E17DED23A1B1</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>Quiz</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>21BC950A23ABBC95CF12AC794DD3F764BEC2B221</key>
 		<string>https://github.com/FerFrassia/iOS.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Quiz/Quiz.xcodeproj/project.xcworkspace</string>
+	<string>Quiz/Quiz.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>21BC950A23ABBC95CF12AC794DD3F764BEC2B221</key>

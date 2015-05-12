@@ -30,8 +30,8 @@
 - (void)viewDidLoad {
     
     Category1Number = arc4random() %4;
-    Category2Number = arc4random() %4;
-    
+    // Category2Number = arc4random() %4;
+    Category2Number = 2;
     switch (Category1Number) {
         case 0:
             [Category1 setTitle:@"Batman" forState:UIControlStateNormal];
