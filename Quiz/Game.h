@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+int GameOverNumber;
 int CategoryLoaded;
 int QuestionSelected;
 BOOL Answer1Correct;

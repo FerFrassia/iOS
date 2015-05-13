@@ -43,7 +43,7 @@
     Result.image = [UIImage imageNamed:@"wronganswer.jpeg"];
     
     if (LivesNumber == 0) {
-        Result.image = [UIImage imageNamed:@"gameover.png"];
+        Result.image = [UIImage imageNamed:[NSString stringWithFormat:@"gameover%i.png", GameOverNumber]];
         NextCategory.hidden = YES;
         Exit.hidden = NO;
         GameInProgress = NO;
@@ -1028,6 +1028,8 @@
     CategoryLoaded = [[NSUserDefaults standardUserDefaults] integerForKey:@"CategorySaved"];
     QuestionSelected = arc4random() %21;
     // QuestionSelected = 18;
+    GameOverNumber = arc4random() %6;
+    
     switch (CategoryLoaded) {
         case 1:
             CategorySelected.text = [NSString stringWithFormat:@"Batman"];
