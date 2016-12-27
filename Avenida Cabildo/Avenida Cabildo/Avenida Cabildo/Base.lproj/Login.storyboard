@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Avenida_Cabildo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Login Background" translatesAutoresizingMaskIntoConstraints="NO" id="cc6-yL-Hlg">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IVH-Ux-yzH">
+                                <rect key="frame" x="43" y="543" width="291" height="50"/>
+                                <color key="backgroundColor" red="0.86274509803921573" green="0.29019607843137252" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="1ET-gy-ZpE"/>
+                                    <constraint firstAttribute="width" constant="291" id="2aJ-MH-xO9"/>
+                                </constraints>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="     I">
+                                            <attributes>
+                                                <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <font key="NSFont" size="15" name="Helvetica"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content="NGRESA CON">
+                                            <attributes>
+                                                <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <font key="NSFont" size="15" name="Helvetica"/>
+                                                <font key="NSOriginalFont" size="15" name="Helvetica"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content=" ">
+                                            <attributes>
+                                                <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <font key="NSFont" size="15" name="CourierNewPSMT"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content="GOOGLE  ">
+                                            <attributes>
+                                                <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <font key="NSFont" size="15" name="Helvetica-Bold"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="loginActionFB" destination="BYZ-38-t0r" eventType="touchUpInside" id="TnP-PI-IKe"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Login Google Icon" translatesAutoresizingMaskIntoConstraints="NO" id="gfd-yX-0V6">
+                                <rect key="frame" x="64" y="552" width="29" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="8cv-Mz-DKa"/>
+                                    <constraint firstAttribute="width" constant="29" id="Uny-nH-vYX"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bFn-I1-gzM">
+                                <rect key="frame" x="43" y="484" width="291" height="50"/>
+                                <color key="backgroundColor" red="0.24705882352941178" green="0.34509803921568627" blue="0.58039215686274503" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="291" id="Hrj-wV-09h"/>
+                                    <constraint firstAttribute="height" constant="50" id="sZQ-K5-ufa"/>
+                                </constraints>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="          ">
+                                            <attributes>
+                                                <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <font key="NSFont" size="15" name="Helvetica"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content="INGRESA CON">
+                                            <attributes>
+                                                <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <font key="NSFont" size="15" name="Helvetica"/>
+                                                <font key="NSOriginalFont" size="15" name="Helvetica"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content=" ">
+                                            <attributes>
+                                                <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <font key="NSFont" size="15" name="CourierNewPSMT"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content="FACEBOOK  ">
+                                            <attributes>
+                                                <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <font key="NSFont" size="15" name="Helvetica-Bold"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="loginActionFB" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZBT-mU-Q7U"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Login Logo" translatesAutoresizingMaskIntoConstraints="NO" id="iHX-y9-NBJ">
+                                <rect key="frame" x="96" y="190" width="184" height="230"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Encuentra beneficios, promociones y todo lo que estás buscando" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Mu-dV-Bfl">
+                                <rect key="frame" x="69" y="428" width="239" height="40"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Login Facebook Icon" translatesAutoresizingMaskIntoConstraints="NO" id="suU-Lc-BOD">
+                                <rect key="frame" x="64" y="492" width="29" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="29" id="YXl-Aq-UhB"/>
+                                    <constraint firstAttribute="height" constant="33" id="feg-GN-GyF"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="iHX-y9-NBJ" secondAttribute="trailing" constant="95" id="587-Fy-5Co"/>
+                            <constraint firstItem="bFn-I1-gzM" firstAttribute="top" secondItem="4Mu-dV-Bfl" secondAttribute="bottom" constant="16" id="69Q-gr-5cg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="4Mu-dV-Bfl" secondAttribute="trailing" constant="51" id="6P1-Q3-Wq5"/>
+                            <constraint firstItem="4Mu-dV-Bfl" firstAttribute="top" secondItem="iHX-y9-NBJ" secondAttribute="bottom" constant="8" id="L35-UI-Up5"/>
+                            <constraint firstItem="suU-Lc-BOD" firstAttribute="top" secondItem="bFn-I1-gzM" secondAttribute="bottom" constant="-42" id="MwX-MM-2co"/>
+                            <constraint firstItem="iHX-y9-NBJ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="170" id="NcT-9S-itf"/>
+                            <constraint firstItem="4Mu-dV-Bfl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="53" id="Nq9-My-X27"/>
+                            <constraint firstItem="IVH-Ux-yzH" firstAttribute="top" secondItem="bFn-I1-gzM" secondAttribute="bottom" constant="9" id="PTR-6F-8NF"/>
+                            <constraint firstItem="bFn-I1-gzM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="1" id="Qae-79-bu4"/>
+                            <constraint firstItem="suU-Lc-BOD" firstAttribute="leading" secondItem="bFn-I1-gzM" secondAttribute="leading" constant="21" id="Rp3-mR-Ret"/>
+                            <constraint firstItem="cc6-yL-Hlg" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="T0s-u9-U1o"/>
+                            <constraint firstItem="iHX-y9-NBJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="96" id="UxU-JO-QtC"/>
+                            <constraint firstItem="bFn-I1-gzM" firstAttribute="top" secondItem="iHX-y9-NBJ" secondAttribute="bottom" constant="64" id="ejx-6M-riO"/>
+                            <constraint firstAttribute="trailing" secondItem="cc6-yL-Hlg" secondAttribute="trailing" id="g2D-sk-sg8"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bFn-I1-gzM" secondAttribute="bottom" constant="133" id="h2n-te-8gb"/>
+                            <constraint firstItem="IVH-Ux-yzH" firstAttribute="centerX" secondItem="cc6-yL-Hlg" secondAttribute="centerX" constant="1" id="m9p-DZ-pV3"/>
+                            <constraint firstItem="gfd-yX-0V6" firstAttribute="leading" secondItem="IVH-Ux-yzH" secondAttribute="leading" constant="21" id="pXx-V9-sxt"/>
+                            <constraint firstItem="gfd-yX-0V6" firstAttribute="top" secondItem="IVH-Ux-yzH" secondAttribute="bottom" constant="-41" id="trQ-z5-yd1"/>
+                            <constraint firstItem="cc6-yL-Hlg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="vDf-u2-xze"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="cc6-yL-Hlg" secondAttribute="bottom" id="xJ0-wr-wEr"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="loginButtonFB" destination="bFn-I1-gzM" id="yct-JR-6uG"/>
+                        <outlet property="loginButtonGL" destination="IVH-Ux-yzH" id="Rok-I2-eTU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="108.39580209895054"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Login Background" width="125" height="222"/>
+        <image name="Login Facebook Icon" width="9" height="10"/>
+        <image name="Login Google Icon" width="9" height="6"/>
+        <image name="Login Logo" width="62" height="77"/>
+    </resources>
+</document>

@@ -1,0 +1,775 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		265175BF155D4549438E76CB /* Pods_Avenida_CabildoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A881C6F25ACE70CEBA6A524 /* Pods_Avenida_CabildoUITests.framework */; };
+		286B22D635000F27E18D695F /* Pods_Avenida_Cabildo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1A7BB8E7088E0856E3B8CAB /* Pods_Avenida_Cabildo.framework */; };
+		694DA998C7B409DADAC97838 /* Pods_Avenida_CabildoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0CD66207A7AC1A706994EE5 /* Pods_Avenida_CabildoTests.framework */; };
+		C1772C641E0B571C00AD8ACC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1772C631E0B571C00AD8ACC /* AppDelegate.swift */; };
+		C1772C661E0B571C00AD8ACC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1772C651E0B571C00AD8ACC /* ViewController.swift */; };
+		C1772C691E0B571C00AD8ACC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1772C671E0B571C00AD8ACC /* Login.storyboard */; };
+		C1772C6C1E0B571C00AD8ACC /* Avenida_Cabildo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C1772C6A1E0B571C00AD8ACC /* Avenida_Cabildo.xcdatamodeld */; };
+		C1772C6E1E0B571C00AD8ACC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1772C6D1E0B571C00AD8ACC /* Assets.xcassets */; };
+		C1772C711E0B571C00AD8ACC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1772C6F1E0B571C00AD8ACC /* LaunchScreen.storyboard */; };
+		C1772C7C1E0B571C00AD8ACC /* Avenida_CabildoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1772C7B1E0B571C00AD8ACC /* Avenida_CabildoTests.swift */; };
+		C1772C871E0B571C00AD8ACC /* Avenida_CabildoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1772C861E0B571C00AD8ACC /* Avenida_CabildoUITests.swift */; };
+		C1859D641E0B726D00315028 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1859D631E0B726D00315028 /* GoogleService-Info.plist */; };
+		C1859D651E0B726D00315028 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1859D631E0B726D00315028 /* GoogleService-Info.plist */; };
+		C1859D661E0B726D00315028 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1859D631E0B726D00315028 /* GoogleService-Info.plist */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C1772C781E0B571C00AD8ACC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C1772C581E0B571B00AD8ACC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C1772C5F1E0B571B00AD8ACC;
+			remoteInfo = "Avenida Cabildo";
+		};
+		C1772C831E0B571C00AD8ACC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C1772C581E0B571B00AD8ACC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C1772C5F1E0B571B00AD8ACC;
+			remoteInfo = "Avenida Cabildo";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		029A47BB07B409FB145495A4 /* Pods-Avenida CabildoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Avenida CabildoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Avenida CabildoTests/Pods-Avenida CabildoTests.release.xcconfig"; sourceTree = "<group>"; };
+		5A881C6F25ACE70CEBA6A524 /* Pods_Avenida_CabildoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Avenida_CabildoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		79B2D1ECF5EC24FF53BD69C7 /* Pods-Avenida CabildoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Avenida CabildoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Avenida CabildoTests/Pods-Avenida CabildoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8A02FF643B3D01EEABCF835A /* Pods-Avenida CabildoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Avenida CabildoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Avenida CabildoUITests/Pods-Avenida CabildoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		8FBA574B6B913E47F8DB4771 /* Pods-Avenida Cabildo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Avenida Cabildo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Avenida Cabildo/Pods-Avenida Cabildo.release.xcconfig"; sourceTree = "<group>"; };
+		9CF5AF5D91EC27A701F30F99 /* Pods-Avenida Cabildo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Avenida Cabildo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Avenida Cabildo/Pods-Avenida Cabildo.debug.xcconfig"; sourceTree = "<group>"; };
+		AAD0D3F3FB1FAD363D8D1C2B /* Pods-Avenida CabildoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Avenida CabildoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Avenida CabildoUITests/Pods-Avenida CabildoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C130F11B1E0DE19B007C4504 /* Avenida Cabildo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Avenida Cabildo.entitlements"; sourceTree = "<group>"; };
+		C1772C601E0B571C00AD8ACC /* Avenida Cabildo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Avenida Cabildo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1772C631E0B571C00AD8ACC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C1772C651E0B571C00AD8ACC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C1772C681E0B571C00AD8ACC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
+		C1772C6B1E0B571C00AD8ACC /* Avenida_Cabildo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Avenida_Cabildo.xcdatamodel; sourceTree = "<group>"; };
+		C1772C6D1E0B571C00AD8ACC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C1772C701E0B571C00AD8ACC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C1772C721E0B571C00AD8ACC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C1772C771E0B571C00AD8ACC /* Avenida CabildoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Avenida CabildoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1772C7B1E0B571C00AD8ACC /* Avenida_CabildoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avenida_CabildoTests.swift; sourceTree = "<group>"; };
+		C1772C7D1E0B571C00AD8ACC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C1772C821E0B571C00AD8ACC /* Avenida CabildoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Avenida CabildoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1772C861E0B571C00AD8ACC /* Avenida_CabildoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avenida_CabildoUITests.swift; sourceTree = "<group>"; };
+		C1772C881E0B571C00AD8ACC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C1859D631E0B726D00315028 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E1A7BB8E7088E0856E3B8CAB /* Pods_Avenida_Cabildo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Avenida_Cabildo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0CD66207A7AC1A706994EE5 /* Pods_Avenida_CabildoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Avenida_CabildoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C1772C5D1E0B571B00AD8ACC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				286B22D635000F27E18D695F /* Pods_Avenida_Cabildo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C1772C741E0B571C00AD8ACC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				694DA998C7B409DADAC97838 /* Pods_Avenida_CabildoTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C1772C7F1E0B571C00AD8ACC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				265175BF155D4549438E76CB /* Pods_Avenida_CabildoUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		134E95FE58FFAA1CABA08008 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E1A7BB8E7088E0856E3B8CAB /* Pods_Avenida_Cabildo.framework */,
+				F0CD66207A7AC1A706994EE5 /* Pods_Avenida_CabildoTests.framework */,
+				5A881C6F25ACE70CEBA6A524 /* Pods_Avenida_CabildoUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C1772C571E0B571B00AD8ACC = {
+			isa = PBXGroup;
+			children = (
+				C1772C621E0B571C00AD8ACC /* Avenida Cabildo */,
+				C1772C7A1E0B571C00AD8ACC /* Avenida CabildoTests */,
+				C1772C851E0B571C00AD8ACC /* Avenida CabildoUITests */,
+				C1772C611E0B571C00AD8ACC /* Products */,
+				DC114426B2C3C1291A27DC57 /* Pods */,
+				134E95FE58FFAA1CABA08008 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		C1772C611E0B571C00AD8ACC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C1772C601E0B571C00AD8ACC /* Avenida Cabildo.app */,
+				C1772C771E0B571C00AD8ACC /* Avenida CabildoTests.xctest */,
+				C1772C821E0B571C00AD8ACC /* Avenida CabildoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C1772C621E0B571C00AD8ACC /* Avenida Cabildo */ = {
+			isa = PBXGroup;
+			children = (
+				C1EEA0061E11A33D008C1E8D /* Storyboards */,
+				C130F11B1E0DE19B007C4504 /* Avenida Cabildo.entitlements */,
+				C1772C631E0B571C00AD8ACC /* AppDelegate.swift */,
+				C1772C651E0B571C00AD8ACC /* ViewController.swift */,
+				C1772C6D1E0B571C00AD8ACC /* Assets.xcassets */,
+				C1772C6F1E0B571C00AD8ACC /* LaunchScreen.storyboard */,
+				C1772C721E0B571C00AD8ACC /* Info.plist */,
+				C1772C6A1E0B571C00AD8ACC /* Avenida_Cabildo.xcdatamodeld */,
+				C1859D631E0B726D00315028 /* GoogleService-Info.plist */,
+			);
+			path = "Avenida Cabildo";
+			sourceTree = "<group>";
+		};
+		C1772C7A1E0B571C00AD8ACC /* Avenida CabildoTests */ = {
+			isa = PBXGroup;
+			children = (
+				C1772C7B1E0B571C00AD8ACC /* Avenida_CabildoTests.swift */,
+				C1772C7D1E0B571C00AD8ACC /* Info.plist */,
+			);
+			path = "Avenida CabildoTests";
+			sourceTree = "<group>";
+		};
+		C1772C851E0B571C00AD8ACC /* Avenida CabildoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C1772C861E0B571C00AD8ACC /* Avenida_CabildoUITests.swift */,
+				C1772C881E0B571C00AD8ACC /* Info.plist */,
+			);
+			path = "Avenida CabildoUITests";
+			sourceTree = "<group>";
+		};
+		C1EEA0061E11A33D008C1E8D /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				C1772C671E0B571C00AD8ACC /* Login.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		DC114426B2C3C1291A27DC57 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9CF5AF5D91EC27A701F30F99 /* Pods-Avenida Cabildo.debug.xcconfig */,
+				8FBA574B6B913E47F8DB4771 /* Pods-Avenida Cabildo.release.xcconfig */,
+				79B2D1ECF5EC24FF53BD69C7 /* Pods-Avenida CabildoTests.debug.xcconfig */,
+				029A47BB07B409FB145495A4 /* Pods-Avenida CabildoTests.release.xcconfig */,
+				AAD0D3F3FB1FAD363D8D1C2B /* Pods-Avenida CabildoUITests.debug.xcconfig */,
+				8A02FF643B3D01EEABCF835A /* Pods-Avenida CabildoUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C1772C5F1E0B571B00AD8ACC /* Avenida Cabildo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C1772C8B1E0B571C00AD8ACC /* Build configuration list for PBXNativeTarget "Avenida Cabildo" */;
+			buildPhases = (
+				E008FE2B5F786E428F0AA827 /* [CP] Check Pods Manifest.lock */,
+				C1772C5C1E0B571B00AD8ACC /* Sources */,
+				C1772C5D1E0B571B00AD8ACC /* Frameworks */,
+				C1772C5E1E0B571B00AD8ACC /* Resources */,
+				B1B77A10DE85AE443DCF0F8C /* [CP] Embed Pods Frameworks */,
+				4A72805A8CB9C30AB77A6F7C /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Avenida Cabildo";
+			productName = "Avenida Cabildo";
+			productReference = C1772C601E0B571C00AD8ACC /* Avenida Cabildo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C1772C761E0B571C00AD8ACC /* Avenida CabildoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C1772C8E1E0B571C00AD8ACC /* Build configuration list for PBXNativeTarget "Avenida CabildoTests" */;
+			buildPhases = (
+				55F90F2D8C0AA384F7016E9E /* [CP] Check Pods Manifest.lock */,
+				C1772C731E0B571C00AD8ACC /* Sources */,
+				C1772C741E0B571C00AD8ACC /* Frameworks */,
+				C1772C751E0B571C00AD8ACC /* Resources */,
+				AC2936558E7C23FA583766C0 /* [CP] Embed Pods Frameworks */,
+				E3EC7CDA0A5DE7B3234AFB53 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C1772C791E0B571C00AD8ACC /* PBXTargetDependency */,
+			);
+			name = "Avenida CabildoTests";
+			productName = "Avenida CabildoTests";
+			productReference = C1772C771E0B571C00AD8ACC /* Avenida CabildoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C1772C811E0B571C00AD8ACC /* Avenida CabildoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C1772C911E0B571C00AD8ACC /* Build configuration list for PBXNativeTarget "Avenida CabildoUITests" */;
+			buildPhases = (
+				F7F3350AE363D19420B42733 /* [CP] Check Pods Manifest.lock */,
+				C1772C7E1E0B571C00AD8ACC /* Sources */,
+				C1772C7F1E0B571C00AD8ACC /* Frameworks */,
+				C1772C801E0B571C00AD8ACC /* Resources */,
+				81B0382CBF5D6CFF3AAED5FA /* [CP] Copy Pods Resources */,
+				29539A756D3CED7121E6BBFB /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C1772C841E0B571C00AD8ACC /* PBXTargetDependency */,
+			);
+			name = "Avenida CabildoUITests";
+			productName = "Avenida CabildoUITests";
+			productReference = C1772C821E0B571C00AD8ACC /* Avenida CabildoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C1772C581E0B571B00AD8ACC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Fernando N. Frassia";
+				TargetAttributes = {
+					C1772C5F1E0B571B00AD8ACC = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = 426MNF8EA3;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
+					};
+					C1772C761E0B571C00AD8ACC = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = 426MNF8EA3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = C1772C5F1E0B571B00AD8ACC;
+					};
+					C1772C811E0B571C00AD8ACC = {
+						CreatedOnToolsVersion = 8.2;
+						DevelopmentTeam = 426MNF8EA3;
+						ProvisioningStyle = Automatic;
+						TestTargetID = C1772C5F1E0B571B00AD8ACC;
+					};
+				};
+			};
+			buildConfigurationList = C1772C5B1E0B571B00AD8ACC /* Build configuration list for PBXProject "Avenida Cabildo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C1772C571E0B571B00AD8ACC;
+			productRefGroup = C1772C611E0B571C00AD8ACC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C1772C5F1E0B571B00AD8ACC /* Avenida Cabildo */,
+				C1772C761E0B571C00AD8ACC /* Avenida CabildoTests */,
+				C1772C811E0B571C00AD8ACC /* Avenida CabildoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C1772C5E1E0B571B00AD8ACC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C1772C711E0B571C00AD8ACC /* LaunchScreen.storyboard in Resources */,
+				C1859D641E0B726D00315028 /* GoogleService-Info.plist in Resources */,
+				C1772C6E1E0B571C00AD8ACC /* Assets.xcassets in Resources */,
+				C1772C691E0B571C00AD8ACC /* Login.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C1772C751E0B571C00AD8ACC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C1859D651E0B726D00315028 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C1772C801E0B571C00AD8ACC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C1859D661E0B726D00315028 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		29539A756D3CED7121E6BBFB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Avenida CabildoUITests/Pods-Avenida CabildoUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4A72805A8CB9C30AB77A6F7C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Avenida Cabildo/Pods-Avenida Cabildo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		55F90F2D8C0AA384F7016E9E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		81B0382CBF5D6CFF3AAED5FA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Avenida CabildoUITests/Pods-Avenida CabildoUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AC2936558E7C23FA583766C0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Avenida CabildoTests/Pods-Avenida CabildoTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B1B77A10DE85AE443DCF0F8C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Avenida Cabildo/Pods-Avenida Cabildo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E008FE2B5F786E428F0AA827 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E3EC7CDA0A5DE7B3234AFB53 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Avenida CabildoTests/Pods-Avenida CabildoTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F7F3350AE363D19420B42733 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C1772C5C1E0B571B00AD8ACC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C1772C6C1E0B571C00AD8ACC /* Avenida_Cabildo.xcdatamodeld in Sources */,
+				C1772C661E0B571C00AD8ACC /* ViewController.swift in Sources */,
+				C1772C641E0B571C00AD8ACC /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C1772C731E0B571C00AD8ACC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C1772C7C1E0B571C00AD8ACC /* Avenida_CabildoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C1772C7E1E0B571C00AD8ACC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C1772C871E0B571C00AD8ACC /* Avenida_CabildoUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C1772C791E0B571C00AD8ACC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C1772C5F1E0B571B00AD8ACC /* Avenida Cabildo */;
+			targetProxy = C1772C781E0B571C00AD8ACC /* PBXContainerItemProxy */;
+		};
+		C1772C841E0B571C00AD8ACC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C1772C5F1E0B571B00AD8ACC /* Avenida Cabildo */;
+			targetProxy = C1772C831E0B571C00AD8ACC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C1772C671E0B571C00AD8ACC /* Login.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C1772C681E0B571C00AD8ACC /* Base */,
+			);
+			name = Login.storyboard;
+			sourceTree = "<group>";
+		};
+		C1772C6F1E0B571C00AD8ACC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C1772C701E0B571C00AD8ACC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C1772C891E0B571C00AD8ACC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C1772C8A1E0B571C00AD8ACC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C1772C8C1E0B571C00AD8ACC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9CF5AF5D91EC27A701F30F99 /* Pods-Avenida Cabildo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Avenida Cabildo/Avenida Cabildo.entitlements";
+				DEVELOPMENT_TEAM = 426MNF8EA3;
+				INFOPLIST_FILE = "Avenida Cabildo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Avenida-Cabildo.Avenida-Cabildo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		C1772C8D1E0B571C00AD8ACC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8FBA574B6B913E47F8DB4771 /* Pods-Avenida Cabildo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Avenida Cabildo/Avenida Cabildo.entitlements";
+				DEVELOPMENT_TEAM = 426MNF8EA3;
+				INFOPLIST_FILE = "Avenida Cabildo/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Avenida-Cabildo.Avenida-Cabildo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		C1772C8F1E0B571C00AD8ACC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 79B2D1ECF5EC24FF53BD69C7 /* Pods-Avenida CabildoTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 426MNF8EA3;
+				INFOPLIST_FILE = "Avenida CabildoTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Avenida-Cabildo.Avenida-CabildoTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Avenida Cabildo.app/Avenida Cabildo";
+			};
+			name = Debug;
+		};
+		C1772C901E0B571C00AD8ACC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 029A47BB07B409FB145495A4 /* Pods-Avenida CabildoTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 426MNF8EA3;
+				INFOPLIST_FILE = "Avenida CabildoTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Avenida-Cabildo.Avenida-CabildoTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Avenida Cabildo.app/Avenida Cabildo";
+			};
+			name = Release;
+		};
+		C1772C921E0B571C00AD8ACC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AAD0D3F3FB1FAD363D8D1C2B /* Pods-Avenida CabildoUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 426MNF8EA3;
+				INFOPLIST_FILE = "Avenida CabildoUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Avenida-Cabildo.Avenida-CabildoUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = "Avenida Cabildo";
+			};
+			name = Debug;
+		};
+		C1772C931E0B571C00AD8ACC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A02FF643B3D01EEABCF835A /* Pods-Avenida CabildoUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = 426MNF8EA3;
+				INFOPLIST_FILE = "Avenida CabildoUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Avenida-Cabildo.Avenida-CabildoUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = "Avenida Cabildo";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C1772C5B1E0B571B00AD8ACC /* Build configuration list for PBXProject "Avenida Cabildo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C1772C891E0B571C00AD8ACC /* Debug */,
+				C1772C8A1E0B571C00AD8ACC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C1772C8B1E0B571C00AD8ACC /* Build configuration list for PBXNativeTarget "Avenida Cabildo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C1772C8C1E0B571C00AD8ACC /* Debug */,
+				C1772C8D1E0B571C00AD8ACC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C1772C8E1E0B571C00AD8ACC /* Build configuration list for PBXNativeTarget "Avenida CabildoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C1772C8F1E0B571C00AD8ACC /* Debug */,
+				C1772C901E0B571C00AD8ACC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C1772C911E0B571C00AD8ACC /* Build configuration list for PBXNativeTarget "Avenida CabildoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C1772C921E0B571C00AD8ACC /* Debug */,
+				C1772C931E0B571C00AD8ACC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C1772C6A1E0B571C00AD8ACC /* Avenida_Cabildo.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C1772C6B1E0B571C00AD8ACC /* Avenida_Cabildo.xcdatamodel */,
+			);
+			currentVersion = C1772C6B1E0B571C00AD8ACC /* Avenida_Cabildo.xcdatamodel */;
+			path = Avenida_Cabildo.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = C1772C581E0B571B00AD8ACC /* Project object */;
+}

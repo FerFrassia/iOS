@@ -1,0 +1,6 @@
+framework module Pods_Avenida_CabildoTests {
+  umbrella header "Pods-Avenida CabildoTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
