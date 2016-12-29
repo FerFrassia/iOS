@@ -9,17 +9,41 @@
 import UIKit
 import FBSDKLoginKit
 
-class ViewController: UIViewController, FBSDKLoginButtonDelegate {
+class Login: UIViewController, FBSDKLoginButtonDelegate {
     
     @IBOutlet weak var loginButtonFB: UIButton?
     @IBOutlet weak var loginButtonGL: UIButton?
-
+    @IBOutlet weak var loginImgGL: UIImageView?
+    @IBOutlet weak var loginImgGlLeading: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setFBCorners()
         setGLCorners()
+        setLoginImgGLFrame()
+        setLoginGLTitle()
         
+    }
+    
+    func setLoginImgGLFrame() {
+        //iphone 5
+        if UIDevice.current.userInterfaceIdiom == .phone && max(UIScreen.main.bounds.size.width, UIScreen.main.bounds.size.height) == 568.0 {
+            loginImgGlLeading.constant = -38
+        }
+    }
+    
+    func setLoginGLTitle() {
+        //iphone 5
+        if UIDevice.current.userInterfaceIdiom == .phone && max(UIScreen.main.bounds.size.width, UIScreen.main.bounds.size.height) == 568.0 {
+            
+            let ingresaString = "INGRESA CON "
+            let atribute1 = [NSFontAttributeName: UIFont(name: "Chalkduster", size: 15)]
+            let ingresaAtribute = NSAttributedString(string: ingresaString, attributes: atribute1)
+            
+            loginButtonGL!.titleLabel!.text = ingresaString
+            
+        }
     }
     
     func setFBCorners() {

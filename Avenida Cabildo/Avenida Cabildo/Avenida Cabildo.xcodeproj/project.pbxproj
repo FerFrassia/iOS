@@ -11,7 +11,7 @@
 		286B22D635000F27E18D695F /* Pods_Avenida_Cabildo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1A7BB8E7088E0856E3B8CAB /* Pods_Avenida_Cabildo.framework */; };
 		694DA998C7B409DADAC97838 /* Pods_Avenida_CabildoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0CD66207A7AC1A706994EE5 /* Pods_Avenida_CabildoTests.framework */; };
 		C1772C641E0B571C00AD8ACC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1772C631E0B571C00AD8ACC /* AppDelegate.swift */; };
-		C1772C661E0B571C00AD8ACC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1772C651E0B571C00AD8ACC /* ViewController.swift */; };
+		C1772C661E0B571C00AD8ACC /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1772C651E0B571C00AD8ACC /* Login.swift */; };
 		C1772C691E0B571C00AD8ACC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1772C671E0B571C00AD8ACC /* Login.storyboard */; };
 		C1772C6C1E0B571C00AD8ACC /* Avenida_Cabildo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C1772C6A1E0B571C00AD8ACC /* Avenida_Cabildo.xcdatamodeld */; };
 		C1772C6E1E0B571C00AD8ACC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1772C6D1E0B571C00AD8ACC /* Assets.xcassets */; };
@@ -51,7 +51,7 @@
 		C130F11B1E0DE19B007C4504 /* Avenida Cabildo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Avenida Cabildo.entitlements"; sourceTree = "<group>"; };
 		C1772C601E0B571C00AD8ACC /* Avenida Cabildo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Avenida Cabildo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1772C631E0B571C00AD8ACC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C1772C651E0B571C00AD8ACC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C1772C651E0B571C00AD8ACC /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		C1772C681E0B571C00AD8ACC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
 		C1772C6B1E0B571C00AD8ACC /* Avenida_Cabildo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Avenida_Cabildo.xcdatamodel; sourceTree = "<group>"; };
 		C1772C6D1E0B571C00AD8ACC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -132,9 +132,8 @@
 			isa = PBXGroup;
 			children = (
 				C1EEA0061E11A33D008C1E8D /* Storyboards */,
+				C1B4E9BE1E1480FF006660B5 /* Classes */,
 				C130F11B1E0DE19B007C4504 /* Avenida Cabildo.entitlements */,
-				C1772C631E0B571C00AD8ACC /* AppDelegate.swift */,
-				C1772C651E0B571C00AD8ACC /* ViewController.swift */,
 				C1772C6D1E0B571C00AD8ACC /* Assets.xcassets */,
 				C1772C6F1E0B571C00AD8ACC /* LaunchScreen.storyboard */,
 				C1772C721E0B571C00AD8ACC /* Info.plist */,
@@ -160,6 +159,15 @@
 				C1772C881E0B571C00AD8ACC /* Info.plist */,
 			);
 			path = "Avenida CabildoUITests";
+			sourceTree = "<group>";
+		};
+		C1B4E9BE1E1480FF006660B5 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C1772C631E0B571C00AD8ACC /* AppDelegate.swift */,
+				C1772C651E0B571C00AD8ACC /* Login.swift */,
+			);
+			name = Classes;
 			sourceTree = "<group>";
 		};
 		C1EEA0061E11A33D008C1E8D /* Storyboards */ = {
@@ -476,7 +484,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1772C6C1E0B571C00AD8ACC /* Avenida_Cabildo.xcdatamodeld in Sources */,
-				C1772C661E0B571C00AD8ACC /* ViewController.swift in Sources */,
+				C1772C661E0B571C00AD8ACC /* Login.swift in Sources */,
 				C1772C641E0B571C00AD8ACC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -637,6 +645,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Avenida-Cabildo.Avenida-Cabildo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -652,6 +661,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Avenida-Cabildo.Avenida-Cabildo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
