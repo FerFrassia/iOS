@@ -21,6 +21,7 @@
 		C1859D641E0B726D00315028 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1859D631E0B726D00315028 /* GoogleService-Info.plist */; };
 		C1859D651E0B726D00315028 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1859D631E0B726D00315028 /* GoogleService-Info.plist */; };
 		C1859D661E0B726D00315028 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1859D631E0B726D00315028 /* GoogleService-Info.plist */; };
+		C1FDD9791E16C3B300B59C13 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FDD9781E16C3B300B59C13 /* Main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		C1772C861E0B571C00AD8ACC /* Avenida_CabildoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avenida_CabildoUITests.swift; sourceTree = "<group>"; };
 		C1772C881E0B571C00AD8ACC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C1859D631E0B726D00315028 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C1FDD9781E16C3B300B59C13 /* Main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		E1A7BB8E7088E0856E3B8CAB /* Pods_Avenida_Cabildo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Avenida_Cabildo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0CD66207A7AC1A706994EE5 /* Pods_Avenida_CabildoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Avenida_CabildoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -166,6 +168,7 @@
 			children = (
 				C1772C631E0B571C00AD8ACC /* AppDelegate.swift */,
 				C1772C651E0B571C00AD8ACC /* Login.swift */,
+				C1FDD9781E16C3B300B59C13 /* Main.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -485,6 +488,7 @@
 			files = (
 				C1772C6C1E0B571C00AD8ACC /* Avenida_Cabildo.xcdatamodeld in Sources */,
 				C1772C661E0B571C00AD8ACC /* Login.swift in Sources */,
+				C1FDD9791E16C3B300B59C13 /* Main.swift in Sources */,
 				C1772C641E0B571C00AD8ACC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
