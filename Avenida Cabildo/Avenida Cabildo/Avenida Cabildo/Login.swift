@@ -27,23 +27,13 @@ class Login: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDelegate {
 
         setLoginFB()
         setLoginGoogle()
-        
-        
     }
     
     func setLoginFB() {
-        FBLogInSilently()
         setFBCorners()
         setFBWidth()
         setFBTitle()
         setFBImage()
-    }
-    
-    func FBLogInSilently() {
-        if let token = FBSDKAccessToken.current() {
-            showMenuVC()
-        }
-        
     }
     
     func setFBCorners() {
@@ -88,7 +78,6 @@ class Login: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDelegate {
         setLoginGLTitle()
         setLoginGLWidth()
         GIDSignIn.sharedInstance().uiDelegate = self
-        GIDSignIn.sharedInstance().signInSilently()
     }
     
     
@@ -131,15 +120,17 @@ class Login: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDelegate {
     }
     
     @IBAction func loginActionFB() {
-        FBSDKLoginManager().logIn(withReadPermissions: ["email", "email"], from: self, handler:
+        FBSDKLoginManager().logIn(withReadPermissions: ["email", "public_profile"], from: self, handler:
             { (result, err) in
                 if err != nil {
                     print("FB Login Failed: ", err ?? "Error is nil")
+                    
                 } else {
                     if (result?.isCancelled)! {
                        return
                     } else {
                         print("FB Login Success: ", result?.token.tokenString ?? "Result token is nil")
+                        self.fetchProfile()
                         self.showMenuVC()
                     }
                     
@@ -147,7 +138,22 @@ class Login: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDelegate {
         })
     }
     
+    func fetchProfile() {
+        FBSDKGraphRequest(graphPath: "/me", parameters: ["fields" : "email, name, public_profile"])
+            .start(completionHandler:  { (connection, result, error) in
+                guard let result = result as? NSDictionary,
+                    let email = result["email"] as? String,
+                    let user_name = result["name"] as? String,
+                    let user_gender = result["gender"] as? String,
+                    let user_id_fb = result["id"]  as? String else {
+                        return
+                }
+                print("got it")
+            })
+    }
+    
     @IBAction func showMenuVC() {
+        UIApplication.shared.statusBarStyle = .default
         performSegue(withIdentifier: "MainSegue", sender: self)
     }
     

@@ -10,9 +10,21 @@
 		265175BF155D4549438E76CB /* Pods_Avenida_CabildoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A881C6F25ACE70CEBA6A524 /* Pods_Avenida_CabildoUITests.framework */; };
 		286B22D635000F27E18D695F /* Pods_Avenida_Cabildo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1A7BB8E7088E0856E3B8CAB /* Pods_Avenida_Cabildo.framework */; };
 		694DA998C7B409DADAC97838 /* Pods_Avenida_CabildoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0CD66207A7AC1A706994EE5 /* Pods_Avenida_CabildoTests.framework */; };
+		C10DFD381E18790500AED63A /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DFD371E18790500AED63A /* MenuTableViewController.swift */; };
+		C10DFD391E18790500AED63A /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DFD371E18790500AED63A /* MenuTableViewController.swift */; };
+		C10DFD3A1E18790500AED63A /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DFD371E18790500AED63A /* MenuTableViewController.swift */; };
+		C10DFD401E1884DF00AED63A /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DFD3F1E1884DF00AED63A /* MenuTableViewCell.swift */; };
+		C10DFD411E1884DF00AED63A /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DFD3F1E1884DF00AED63A /* MenuTableViewCell.swift */; };
+		C10DFD421E1884DF00AED63A /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DFD3F1E1884DF00AED63A /* MenuTableViewCell.swift */; };
+		C149B8A71E1AFF00009FF600 /* FakeSplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C149B8A61E1AFF00009FF600 /* FakeSplashViewController.swift */; };
+		C149B8A81E1AFF00009FF600 /* FakeSplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C149B8A61E1AFF00009FF600 /* FakeSplashViewController.swift */; };
+		C149B8A91E1AFF00009FF600 /* FakeSplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C149B8A61E1AFF00009FF600 /* FakeSplashViewController.swift */; };
+		C149B8AB1E1B16A6009FF600 /* NavigationMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C149B8AA1E1B16A6009FF600 /* NavigationMainViewController.swift */; };
+		C149B8AC1E1B16A6009FF600 /* NavigationMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C149B8AA1E1B16A6009FF600 /* NavigationMainViewController.swift */; };
+		C149B8AD1E1B16A6009FF600 /* NavigationMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C149B8AA1E1B16A6009FF600 /* NavigationMainViewController.swift */; };
 		C1772C641E0B571C00AD8ACC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1772C631E0B571C00AD8ACC /* AppDelegate.swift */; };
 		C1772C661E0B571C00AD8ACC /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1772C651E0B571C00AD8ACC /* Login.swift */; };
-		C1772C691E0B571C00AD8ACC /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1772C671E0B571C00AD8ACC /* Login.storyboard */; };
+		C1772C691E0B571C00AD8ACC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1772C671E0B571C00AD8ACC /* Main.storyboard */; };
 		C1772C6C1E0B571C00AD8ACC /* Avenida_Cabildo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C1772C6A1E0B571C00AD8ACC /* Avenida_Cabildo.xcdatamodeld */; };
 		C1772C6E1E0B571C00AD8ACC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1772C6D1E0B571C00AD8ACC /* Assets.xcassets */; };
 		C1772C711E0B571C00AD8ACC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1772C6F1E0B571C00AD8ACC /* LaunchScreen.storyboard */; };
@@ -49,11 +61,15 @@
 		8FBA574B6B913E47F8DB4771 /* Pods-Avenida Cabildo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Avenida Cabildo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Avenida Cabildo/Pods-Avenida Cabildo.release.xcconfig"; sourceTree = "<group>"; };
 		9CF5AF5D91EC27A701F30F99 /* Pods-Avenida Cabildo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Avenida Cabildo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Avenida Cabildo/Pods-Avenida Cabildo.debug.xcconfig"; sourceTree = "<group>"; };
 		AAD0D3F3FB1FAD363D8D1C2B /* Pods-Avenida CabildoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Avenida CabildoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Avenida CabildoUITests/Pods-Avenida CabildoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C10DFD371E18790500AED63A /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
+		C10DFD3F1E1884DF00AED63A /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		C130F11B1E0DE19B007C4504 /* Avenida Cabildo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Avenida Cabildo.entitlements"; sourceTree = "<group>"; };
+		C149B8A61E1AFF00009FF600 /* FakeSplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeSplashViewController.swift; sourceTree = "<group>"; };
+		C149B8AA1E1B16A6009FF600 /* NavigationMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationMainViewController.swift; sourceTree = "<group>"; };
 		C1772C601E0B571C00AD8ACC /* Avenida Cabildo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Avenida Cabildo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1772C631E0B571C00AD8ACC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1772C651E0B571C00AD8ACC /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
-		C1772C681E0B571C00AD8ACC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
+		C1772C681E0B571C00AD8ACC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C1772C6B1E0B571C00AD8ACC /* Avenida_Cabildo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Avenida_Cabildo.xcdatamodel; sourceTree = "<group>"; };
 		C1772C6D1E0B571C00AD8ACC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C1772C701E0B571C00AD8ACC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -169,6 +185,10 @@
 				C1772C631E0B571C00AD8ACC /* AppDelegate.swift */,
 				C1772C651E0B571C00AD8ACC /* Login.swift */,
 				C1FDD9781E16C3B300B59C13 /* Main.swift */,
+				C10DFD371E18790500AED63A /* MenuTableViewController.swift */,
+				C10DFD3F1E1884DF00AED63A /* MenuTableViewCell.swift */,
+				C149B8A61E1AFF00009FF600 /* FakeSplashViewController.swift */,
+				C149B8AA1E1B16A6009FF600 /* NavigationMainViewController.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -176,7 +196,7 @@
 		C1EEA0061E11A33D008C1E8D /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				C1772C671E0B571C00AD8ACC /* Login.storyboard */,
+				C1772C671E0B571C00AD8ACC /* Main.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -321,7 +341,7 @@
 				C1772C711E0B571C00AD8ACC /* LaunchScreen.storyboard in Resources */,
 				C1859D641E0B726D00315028 /* GoogleService-Info.plist in Resources */,
 				C1772C6E1E0B571C00AD8ACC /* Assets.xcassets in Resources */,
-				C1772C691E0B571C00AD8ACC /* Login.storyboard in Resources */,
+				C1772C691E0B571C00AD8ACC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,7 +508,11 @@
 			files = (
 				C1772C6C1E0B571C00AD8ACC /* Avenida_Cabildo.xcdatamodeld in Sources */,
 				C1772C661E0B571C00AD8ACC /* Login.swift in Sources */,
+				C10DFD401E1884DF00AED63A /* MenuTableViewCell.swift in Sources */,
+				C10DFD381E18790500AED63A /* MenuTableViewController.swift in Sources */,
 				C1FDD9791E16C3B300B59C13 /* Main.swift in Sources */,
+				C149B8AB1E1B16A6009FF600 /* NavigationMainViewController.swift in Sources */,
+				C149B8A71E1AFF00009FF600 /* FakeSplashViewController.swift in Sources */,
 				C1772C641E0B571C00AD8ACC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -497,7 +521,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C10DFD391E18790500AED63A /* MenuTableViewController.swift in Sources */,
 				C1772C7C1E0B571C00AD8ACC /* Avenida_CabildoTests.swift in Sources */,
+				C149B8AC1E1B16A6009FF600 /* NavigationMainViewController.swift in Sources */,
+				C149B8A81E1AFF00009FF600 /* FakeSplashViewController.swift in Sources */,
+				C10DFD411E1884DF00AED63A /* MenuTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,7 +533,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C10DFD3A1E18790500AED63A /* MenuTableViewController.swift in Sources */,
 				C1772C871E0B571C00AD8ACC /* Avenida_CabildoUITests.swift in Sources */,
+				C149B8AD1E1B16A6009FF600 /* NavigationMainViewController.swift in Sources */,
+				C149B8A91E1AFF00009FF600 /* FakeSplashViewController.swift in Sources */,
+				C10DFD421E1884DF00AED63A /* MenuTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -525,12 +557,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C1772C671E0B571C00AD8ACC /* Login.storyboard */ = {
+		C1772C671E0B571C00AD8ACC /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				C1772C681E0B571C00AD8ACC /* Base */,
 			);
-			name = Login.storyboard;
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		C1772C6F1E0B571C00AD8ACC /* LaunchScreen.storyboard */ = {

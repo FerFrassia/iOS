@@ -24,7 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         
         GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
-        
+        GIDSignIn.sharedInstance().signInSilently()
+                
         return true
     }
     
@@ -45,6 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
         if let err = error {
             print("Failed to log into Google: ", err)
+            self.showLoginVC()
             return
         }
         print("Google log in Success, user: ", user)
@@ -55,6 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
             if let err = error {
                 print("Failed to create a Firebase User with Google Account: ", err)
+                self.showLoginVC()
                 return
             }
             guard let uid = user?.uid else {return}
@@ -64,8 +67,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     }
     
     func showMenuVC() {
-        let storyboard = UIStoryboard(name: "Login", bundle: nil)
+        UIApplication.shared.statusBarStyle = .default
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         window!.rootViewController = storyboard.instantiateViewController(withIdentifier: "Main")
+    }
+    
+    func showLoginVC() {
+        UIApplication.shared.statusBarStyle = .lightContent
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        window!.rootViewController = storyboard.instantiateViewController(withIdentifier: "Login")
     }
     
     func signIn(signIn: GIDSignIn!, didDisconnectWithUser user:GIDGoogleUser!,
