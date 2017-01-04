@@ -12,6 +12,8 @@ target 'Avenida Cabildo' do
   pod 'Firebase/Auth'
   pod 'GoogleSignIn'
   pod 'SWRevealViewController'
+  pod 'SDWebImage'
+  pod 'XLPagerTabStrip'
 
   # Pods for Avenida Cabildo
 
@@ -26,6 +28,8 @@ target 'Avenida Cabildo' do
     pod 'Firebase/Auth'
     pod 'GoogleSignIn'
     pod 'SWRevealViewController'
+    pod 'SDWebImage'
+    pod 'XLPagerTabStrip'
   end
 
   target 'Avenida CabildoUITests' do
@@ -39,6 +43,8 @@ target 'Avenida Cabildo' do
     pod 'Firebase/Auth'
     pod 'GoogleSignIn'
     pod 'SWRevealViewController'
+    pod 'SDWebImage'
+    pod 'XLPagerTabStrip'
   end
 
 

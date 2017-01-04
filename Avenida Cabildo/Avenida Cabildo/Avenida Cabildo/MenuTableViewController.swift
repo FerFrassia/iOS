@@ -14,18 +14,50 @@ import FBSDKLoginKit
 class MenuTableViewController: UITableViewController {
 
     @IBOutlet weak var ArrowMenu: UIImageView!
+    @IBOutlet weak var profilePic: UIImageView!
+    @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var userEmail: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         self.tableView.backgroundView = UIImageView(image: UIImage(named: "Login Background"))
         
         ArrowMenu.image = UIImage(named: "Arrow Menu")?.withRenderingMode(.alwaysTemplate)
+        setProfilePicture()
+        setFBName()
+        setFBEmail()
+    }
+    
+    func setProfilePicture() {
+        getUserPicture()
+        setRoundProfilePicture()
+    }
+    
+    func setRoundProfilePicture() {
+        profilePic.clipsToBounds = true
+        profilePic.layer.cornerRadius = profilePic.frame.size.width/2
+    }
+    
+    func setFBName() {
+        if let FBName = UserDefaults.standard.string(forKey: "fbName") {
+            userName.text = FBName
+        }
+        
+    }
+    
+    func setFBEmail() {
+        if let FBEmail = UserDefaults.standard.string(forKey: "fbEmail") {
+            userEmail.text = FBEmail
+        }
+    }
+    
+    func getUserPicture() {
+        if let userID = UserDefaults.standard.string(forKey: "fbToken") {
+            let fbProfileString = "https://graph.facebook.com/\(userID)/picture?type=square"
+            let url = URL(string: fbProfileString)
+            profilePic.sd_setImage(with: url, placeholderImage: UIImage(named: "Profile Pic Placeholder"))
+        }
     }
 
     override func didReceiveMemoryWarning() {

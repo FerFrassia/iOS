@@ -54,7 +54,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SDWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SWRevealViewController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>XLPagerTabStrip-XLPagerTabStrip.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>XLPagerTabStrip.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -62,17 +77,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>0E40CB1927C755DEC83A0E42E2FBB3D1</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>107A9565F9DF88517DFD3E28C05B2B96</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1AA93E4C7EAC1504103500E23C424BA7</key>
+		<key>347A2C2263A98816EFB3FC9FBC055787</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3B728D2B5A437718186CCD0557F9225A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -82,22 +97,32 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>569368BF08D481BDDE4B89F565B26DEF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5D0E1AF295ED6FF61D983F6BBFA52E74</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5E6D2AF0EA1F7A6AFABF8CC9CCB2DDDE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>681BE6E3D02A43F9BA63777AC435C8FD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9962FDCC5E61430A581DC009B852AC59</key>
+		<key>AF1681ABAF3DEC9954E1FECF908D41A6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>B1C4AAFAF49036C7007633DAA3C806AD</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B8AB6CD9356159106DB75039F0FF16D1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -108,6 +133,11 @@
 			<true/>
 		</dict>
 		<key>BEF7E6E85DB5CDE5D7A18F4F2EB8494B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D98E99382F23662DE7797311229E8F80</key>
 		<dict>
 			<key>primary</key>
 			<true/>

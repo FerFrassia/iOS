@@ -10,6 +10,7 @@ import UIKit
 import FBSDKLoginKit
 import GoogleSignIn
 import Firebase
+import CoreData
 
 class Login: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDelegate {
     
@@ -22,11 +23,37 @@ class Login: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDelegate {
     @IBOutlet weak var FBIconWidth: NSLayoutConstraint!
     @IBOutlet weak var GLIconWidth: NSLayoutConstraint!
     
+    let moc = DataController().managedObjectContext
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setLoginFB()
         setLoginGoogle()
+//        seedUser()
+//        fetch()
+    }
+    
+    func fetch() {
+        let userFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        do {
+            let fetchedUser = try moc.fetch(userFetch) as! [User]
+            print("USERRRRR: ", fetchedUser.first?.name ?? "")
+        } catch {
+            fatalError("Can't fetch user: \(error)")
+        }
+    }
+    
+    func seedUser() {
+        let entity = NSEntityDescription.insertNewObject(forEntityName: "User", into: moc) as! User
+        
+        entity.setValue("Juancito", forKey: "name")
+        
+        do {
+            try moc.save()
+        } catch {
+            fatalError("failed to save context: \(error)")
+        }
     }
     
     func setLoginFB() {
@@ -139,17 +166,27 @@ class Login: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDelegate {
     }
     
     func fetchProfile() {
-        FBSDKGraphRequest(graphPath: "/me", parameters: ["fields" : "email, name, public_profile"])
-            .start(completionHandler:  { (connection, result, error) in
-                guard let result = result as? NSDictionary,
-                    let email = result["email"] as? String,
-                    let user_name = result["name"] as? String,
-                    let user_gender = result["gender"] as? String,
-                    let user_id_fb = result["id"]  as? String else {
-                        return
+        let fbLoginManager : FBSDKLoginManager = FBSDKLoginManager()
+        fbLoginManager.loginBehavior = FBSDKLoginBehavior.web
+        fbLoginManager.logIn(withReadPermissions: ["public_profile", "email"], from: self) { (result, error) -> Void in
+            if error != nil {
+                print(error?.localizedDescription ?? "")
+            } else if (result?.isCancelled)! {
+                print("Cancelled")
+            } else {
+                if let userId = result?.token.userID {
+                    UserDefaults.standard.setValue(userId, forKey: "fbToken")
+                    FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "name, email"]).start(completionHandler: { (connection, result, error) -> Void in
+                        if (error == nil) {
+                            if let res = result as? [String:Any] {
+                                UserDefaults.standard.setValue(res["name"], forKey: "fbName")
+                                UserDefaults.standard.setValue(res["email"], forKey: "fbEmail")
+                            }
+                        }
+                    })
                 }
-                print("got it")
-            })
+            }
+        }
     }
     
     @IBAction func showMenuVC() {

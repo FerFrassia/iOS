@@ -10,10 +10,12 @@ import UIKit
 import Firebase
 import GoogleSignIn
 import SWRevealViewController
+import XLPagerTabStrip
 
-class Main: UIViewController {
+class Main: BarPagerTabStripViewController {
 
     @IBOutlet weak var revealMenuButton: UIBarButtonItem!
+    @IBOutlet weak var buttonBarView: ButtonBarView!
     
     @IBAction func LogOutAction(_ sender: Any) {
         GIDSignIn.sharedInstance().signOut()
@@ -33,12 +35,22 @@ class Main: UIViewController {
         // Do any additional setup after loading the view.
         
         setRevealMenuButton()
+    
     }
     
     func setRevealMenuButton() {
         revealMenuButton.target = self.revealViewController()
         revealMenuButton.action = Selector(("revealToggle:"))
         view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+    }
+    
+    //MARK: XLPager
+    override public func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
+        
+        let child1 = PromocionesViewController()
+        let child2 = TodosViewController()
+        
+        return [child1, child2]
     }
 
     override func didReceiveMemoryWarning() {
