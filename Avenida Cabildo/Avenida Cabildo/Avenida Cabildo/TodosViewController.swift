@@ -10,6 +10,8 @@ import UIKit
 import XLPagerTabStrip
 
 class TodosViewController: UITableViewController, IndicatorInfoProvider {
+    
+    var itemInfo = IndicatorInfo(title: "View")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +21,11 @@ class TodosViewController: UITableViewController, IndicatorInfoProvider {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    // MARK: - IndicatorInfoProvider
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        return itemInfo
     }
 
     override func didReceiveMemoryWarning() {

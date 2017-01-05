@@ -16,6 +16,15 @@
 		C10DFD401E1884DF00AED63A /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DFD3F1E1884DF00AED63A /* MenuTableViewCell.swift */; };
 		C10DFD411E1884DF00AED63A /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DFD3F1E1884DF00AED63A /* MenuTableViewCell.swift */; };
 		C10DFD421E1884DF00AED63A /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DFD3F1E1884DF00AED63A /* MenuTableViewCell.swift */; };
+		C114690C1E1E9057004AB55F /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C114690B1E1E9057004AB55F /* DataProvider.swift */; };
+		C114690D1E1E9057004AB55F /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C114690B1E1E9057004AB55F /* DataProvider.swift */; };
+		C114690E1E1E9057004AB55F /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C114690B1E1E9057004AB55F /* DataProvider.swift */; };
+		C11469111E1E90C5004AB55F /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C11469101E1E90C5004AB55F /* PostCell.xib */; };
+		C11469121E1E90C5004AB55F /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C11469101E1E90C5004AB55F /* PostCell.xib */; };
+		C11469131E1E90C5004AB55F /* PostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C11469101E1E90C5004AB55F /* PostCell.xib */; };
+		C11469151E1E90D5004AB55F /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11469141E1E90D5004AB55F /* PostCell.swift */; };
+		C11469161E1E90D5004AB55F /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11469141E1E90D5004AB55F /* PostCell.swift */; };
+		C11469171E1E90D5004AB55F /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11469141E1E90D5004AB55F /* PostCell.swift */; };
 		C149B8A71E1AFF00009FF600 /* FakeSplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C149B8A61E1AFF00009FF600 /* FakeSplashViewController.swift */; };
 		C149B8A81E1AFF00009FF600 /* FakeSplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C149B8A61E1AFF00009FF600 /* FakeSplashViewController.swift */; };
 		C149B8A91E1AFF00009FF600 /* FakeSplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C149B8A61E1AFF00009FF600 /* FakeSplashViewController.swift */; };
@@ -74,6 +83,9 @@
 		AAD0D3F3FB1FAD363D8D1C2B /* Pods-Avenida CabildoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Avenida CabildoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Avenida CabildoUITests/Pods-Avenida CabildoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C10DFD371E18790500AED63A /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		C10DFD3F1E1884DF00AED63A /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		C114690B1E1E9057004AB55F /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
+		C11469101E1E90C5004AB55F /* PostCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCell.xib; sourceTree = "<group>"; };
+		C11469141E1E90D5004AB55F /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		C130F11B1E0DE19B007C4504 /* Avenida Cabildo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Avenida Cabildo.entitlements"; sourceTree = "<group>"; };
 		C149B8A61E1AFF00009FF600 /* FakeSplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeSplashViewController.swift; sourceTree = "<group>"; };
 		C149B8AA1E1B16A6009FF600 /* NavigationMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationMainViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +153,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C114690F1E1E90AB004AB55F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C11469101E1E90C5004AB55F /* PostCell.xib */,
+				C11469141E1E90D5004AB55F /* PostCell.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		C1772C571E0B571B00AD8ACC = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +187,7 @@
 		C1772C621E0B571C00AD8ACC /* Avenida Cabildo */ = {
 			isa = PBXGroup;
 			children = (
+				C114690F1E1E90AB004AB55F /* Helpers */,
 				C1EEA0061E11A33D008C1E8D /* Storyboards */,
 				C1B4E9BE1E1480FF006660B5 /* Classes */,
 				C130F11B1E0DE19B007C4504 /* Avenida Cabildo.entitlements */,
@@ -212,6 +234,7 @@
 				C14CE7701E1C295000FCDF5D /* DataController.swift */,
 				C1FB0FA91E1D960100750E74 /* PromocionesViewController.swift */,
 				C1FB0FAD1E1D961500750E74 /* TodosViewController.swift */,
+				C114690B1E1E9057004AB55F /* DataProvider.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -366,6 +389,7 @@
 			files = (
 				C1772C711E0B571C00AD8ACC /* LaunchScreen.storyboard in Resources */,
 				C1859D641E0B726D00315028 /* GoogleService-Info.plist in Resources */,
+				C11469111E1E90C5004AB55F /* PostCell.xib in Resources */,
 				C1772C6E1E0B571C00AD8ACC /* Assets.xcassets in Resources */,
 				C1772C691E0B571C00AD8ACC /* Main.storyboard in Resources */,
 			);
@@ -376,6 +400,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1859D651E0B726D00315028 /* GoogleService-Info.plist in Resources */,
+				C11469121E1E90C5004AB55F /* PostCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,6 +409,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1859D661E0B726D00315028 /* GoogleService-Info.plist in Resources */,
+				C11469131E1E90C5004AB55F /* PostCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -534,10 +560,12 @@
 			files = (
 				C1FB0FAE1E1D961500750E74 /* TodosViewController.swift in Sources */,
 				C1772C6C1E0B571C00AD8ACC /* Avenida_Cabildo.xcdatamodeld in Sources */,
+				C11469151E1E90D5004AB55F /* PostCell.swift in Sources */,
 				C1772C661E0B571C00AD8ACC /* Login.swift in Sources */,
 				C10DFD401E1884DF00AED63A /* MenuTableViewCell.swift in Sources */,
 				C1FB0FAA1E1D960100750E74 /* PromocionesViewController.swift in Sources */,
 				C10DFD381E18790500AED63A /* MenuTableViewController.swift in Sources */,
+				C114690C1E1E9057004AB55F /* DataProvider.swift in Sources */,
 				C14CE7711E1C295000FCDF5D /* DataController.swift in Sources */,
 				C1FDD9791E16C3B300B59C13 /* Main.swift in Sources */,
 				C149B8AB1E1B16A6009FF600 /* NavigationMainViewController.swift in Sources */,
@@ -552,11 +580,13 @@
 			files = (
 				C14CE7741E1C33E500FCDF5D /* Avenida_Cabildo.xcdatamodeld in Sources */,
 				C10DFD391E18790500AED63A /* MenuTableViewController.swift in Sources */,
+				C114690D1E1E9057004AB55F /* DataProvider.swift in Sources */,
 				C14CE7721E1C295000FCDF5D /* DataController.swift in Sources */,
 				C1772C7C1E0B571C00AD8ACC /* Avenida_CabildoTests.swift in Sources */,
 				C1FB0FAF1E1D961500750E74 /* TodosViewController.swift in Sources */,
 				C149B8AC1E1B16A6009FF600 /* NavigationMainViewController.swift in Sources */,
 				C149B8A81E1AFF00009FF600 /* FakeSplashViewController.swift in Sources */,
+				C11469161E1E90D5004AB55F /* PostCell.swift in Sources */,
 				C10DFD411E1884DF00AED63A /* MenuTableViewCell.swift in Sources */,
 				C1FB0FAB1E1D960100750E74 /* PromocionesViewController.swift in Sources */,
 			);
@@ -568,11 +598,13 @@
 			files = (
 				C14CE7751E1C33E600FCDF5D /* Avenida_Cabildo.xcdatamodeld in Sources */,
 				C10DFD3A1E18790500AED63A /* MenuTableViewController.swift in Sources */,
+				C114690E1E1E9057004AB55F /* DataProvider.swift in Sources */,
 				C14CE7731E1C295000FCDF5D /* DataController.swift in Sources */,
 				C1772C871E0B571C00AD8ACC /* Avenida_CabildoUITests.swift in Sources */,
 				C1FB0FB01E1D961500750E74 /* TodosViewController.swift in Sources */,
 				C149B8AD1E1B16A6009FF600 /* NavigationMainViewController.swift in Sources */,
 				C149B8A91E1AFF00009FF600 /* FakeSplashViewController.swift in Sources */,
+				C11469171E1E90D5004AB55F /* PostCell.swift in Sources */,
 				C10DFD421E1884DF00AED63A /* MenuTableViewCell.swift in Sources */,
 				C1FB0FAC1E1D960100750E74 /* PromocionesViewController.swift in Sources */,
 			);

@@ -47,8 +47,8 @@ class Main: BarPagerTabStripViewController {
     //MARK: XLPager
     override public func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         
-        let child1 = PromocionesViewController()
-        let child2 = TodosViewController()
+        let child1 = PromocionesViewController(style: .plain, itemInfo: IndicatorInfo(title: " HOME"))
+        let child2 = PromocionesViewController(style: .plain, itemInfo: IndicatorInfo(title: " HOME"))
         
         return [child1, child2]
     }
