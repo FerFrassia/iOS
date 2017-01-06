@@ -17,38 +17,22 @@
             endingLineNumber = "181"
             landmarkName = "fetchProfile()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Avenida_Cabildo.Login.(fetchProfile () -&gt; ()).(closure #1).(closure #1)"
-                  moduleName = "Avenida Cabildo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/fer/Desktop/Avenida%20Cabildo/Avenida%20Cabildo/Avenida%20Cabildo/Login.swift"
-                  timestampString = "505247209.377882"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "181"
-                  endingLineNumber = "181"
-                  offsetFromSymbolStart = "170">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Avenida_Cabildo.Login.(fetchProfile () -&gt; ()).(closure #1).(closure #1)"
-                  moduleName = "Avenida Cabildo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/fer/Desktop/Avenida%20Cabildo/Avenida%20Cabildo/Avenida%20Cabildo/Login.swift"
-                  timestampString = "505247209.380606"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "181"
-                  endingLineNumber = "181"
-                  offsetFromSymbolStart = "529">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Avenida Cabildo/Main.swift"
+            timestampString = "505433443.438305"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "getLocales()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
