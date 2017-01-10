@@ -35,9 +35,9 @@ class Login: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDelegate {
     }
     
     func fetch() {
-        let userFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        let userFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Usuario")
         do {
-            let fetchedUser = try moc.fetch(userFetch) as! [User]
+            let fetchedUser = try moc.fetch(userFetch) as! [Usuario]
             print("USERRRRR: ", fetchedUser.first?.name ?? "")
         } catch {
             fatalError("Can't fetch user: \(error)")
@@ -45,7 +45,7 @@ class Login: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDelegate {
     }
     
     func seedUser() {
-        let entity = NSEntityDescription.insertNewObject(forEntityName: "User", into: moc) as! User
+        let entity = NSEntityDescription.insertNewObject(forEntityName: "Usuario", into: moc) as! Usuario
         
         entity.setValue("Juancito", forKey: "name")
         
@@ -159,9 +159,25 @@ class Login: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDelegate {
                         print("FB Login Success: ", result?.token.tokenString ?? "Result token is nil")
                         self.fetchProfile()
                         self.showMenuVC()
+                        self.signInFirebaseWithFB()
+                        FirebaseAPI.loadFirebaseData()
                     }
                     
                 }
+        })
+    }
+    
+    func signInFirebaseWithFB() {
+        let accessToken = FBSDKAccessToken.current()
+        guard let accessTokenString = accessToken?.tokenString else {return}
+        let credentials = FIRFacebookAuthProvider.credential(withAccessToken: accessTokenString)
+        FIRAuth.auth()?.signIn(with: credentials, completion: { (user, error) in
+            if error != nil {
+                 print("FB Firebase Login Failed: \(error)")
+                return
+            }
+            print("Accessed FB Firebase with user: \(user)")
+            FirebaseAPI.storeCoreUser()
         })
     }
     

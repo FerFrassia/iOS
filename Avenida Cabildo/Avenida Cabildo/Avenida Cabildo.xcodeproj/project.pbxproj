@@ -36,6 +36,7 @@
 		C14CE7731E1C295000FCDF5D /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14CE7701E1C295000FCDF5D /* DataController.swift */; };
 		C14CE7741E1C33E500FCDF5D /* Avenida_Cabildo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C1772C6A1E0B571C00AD8ACC /* Avenida_Cabildo.xcdatamodeld */; };
 		C14CE7751E1C33E600FCDF5D /* Avenida_Cabildo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C1772C6A1E0B571C00AD8ACC /* Avenida_Cabildo.xcdatamodeld */; };
+		C1509DBF1E217C0B00743DB4 /* FirebaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1509DBE1E217C0B00743DB4 /* FirebaseAPI.swift */; };
 		C1772C641E0B571C00AD8ACC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1772C631E0B571C00AD8ACC /* AppDelegate.swift */; };
 		C1772C661E0B571C00AD8ACC /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1772C651E0B571C00AD8ACC /* Login.swift */; };
 		C1772C691E0B571C00AD8ACC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1772C671E0B571C00AD8ACC /* Main.storyboard */; };
@@ -93,6 +94,7 @@
 		C14CE76A1E1C277C00FCDF5D /* Avenida CabildoTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Avenida CabildoTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		C14CE76B1E1C277C00FCDF5D /* Avenida CabildoUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Avenida CabildoUITests-Bridging-Header.h"; sourceTree = "<group>"; };
 		C14CE7701E1C295000FCDF5D /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		C1509DBE1E217C0B00743DB4 /* FirebaseAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseAPI.swift; sourceTree = "<group>"; };
 		C1772C601E0B571C00AD8ACC /* Avenida Cabildo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Avenida Cabildo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1772C631E0B571C00AD8ACC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1772C651E0B571C00AD8ACC /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
@@ -108,6 +110,8 @@
 		C1772C861E0B571C00AD8ACC /* Avenida_CabildoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avenida_CabildoUITests.swift; sourceTree = "<group>"; };
 		C1772C881E0B571C00AD8ACC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C1859D631E0B726D00315028 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C1E9DD031E218F86005EDAC7 /* Avenida_Cabildo 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Avenida_Cabildo 2.xcdatamodel"; sourceTree = "<group>"; };
+		C1E9DD041E21CB01005EDAC7 /* Avenida_Cabildo 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Avenida_Cabildo 3.xcdatamodel"; sourceTree = "<group>"; };
 		C1FB0FA91E1D960100750E74 /* PromocionesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromocionesViewController.swift; sourceTree = "<group>"; };
 		C1FB0FAD1E1D961500750E74 /* TodosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodosViewController.swift; sourceTree = "<group>"; };
 		C1FDD9781E16C3B300B59C13 /* Main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
@@ -235,6 +239,7 @@
 				C1FB0FA91E1D960100750E74 /* PromocionesViewController.swift */,
 				C1FB0FAD1E1D961500750E74 /* TodosViewController.swift */,
 				C114690B1E1E9057004AB55F /* DataProvider.swift */,
+				C1509DBE1E217C0B00743DB4 /* FirebaseAPI.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -571,6 +576,7 @@
 				C149B8AB1E1B16A6009FF600 /* NavigationMainViewController.swift in Sources */,
 				C149B8A71E1AFF00009FF600 /* FakeSplashViewController.swift in Sources */,
 				C1772C641E0B571C00AD8ACC /* AppDelegate.swift in Sources */,
+				C1509DBF1E217C0B00743DB4 /* FirebaseAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -892,9 +898,11 @@
 		C1772C6A1E0B571C00AD8ACC /* Avenida_Cabildo.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				C1E9DD041E21CB01005EDAC7 /* Avenida_Cabildo 3.xcdatamodel */,
+				C1E9DD031E218F86005EDAC7 /* Avenida_Cabildo 2.xcdatamodel */,
 				C1772C6B1E0B571C00AD8ACC /* Avenida_Cabildo.xcdatamodel */,
 			);
-			currentVersion = C1772C6B1E0B571C00AD8ACC /* Avenida_Cabildo.xcdatamodel */;
+			currentVersion = C1E9DD041E21CB01005EDAC7 /* Avenida_Cabildo 3.xcdatamodel */;
 			path = Avenida_Cabildo.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -386,14 +386,15 @@ todo lo que estás buscando</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JhT-Ez-t8e" userLabel="Container View">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JhT-Ez-t8e" userLabel="Container View">
                                 <rect key="frame" x="0.0" y="115" width="414" height="621"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </scrollView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="s6r-1h-agh" customClass="ButtonBarView" customModule="XLPagerTabStrip">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="s6r-1h-agh" customClass="ButtonBarView" customModule="XLPagerTabStrip">
                                 <rect key="frame" x="0.0" y="64" width="414" height="51"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.86274509799999999" green="0.2901960784" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="51" id="vOO-P6-Fvh"/>
+                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Hnq-Hu-nBd">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -413,6 +414,15 @@ todo lo que estás buscando</string>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="s6r-1h-agh" firstAttribute="leading" secondItem="X5G-x4-ODb" secondAttribute="leading" id="0KS-SQ-BYp"/>
+                            <constraint firstItem="s6r-1h-agh" firstAttribute="top" secondItem="AEj-sC-TyS" secondAttribute="bottom" id="15D-dG-7Zs"/>
+                            <constraint firstItem="s6r-1h-agh" firstAttribute="leading" secondItem="JhT-Ez-t8e" secondAttribute="leading" id="1RT-PU-Mj6"/>
+                            <constraint firstItem="JhT-Ez-t8e" firstAttribute="bottom" secondItem="nCk-J1-X7a" secondAttribute="top" id="Hxl-J6-opq"/>
+                            <constraint firstItem="JhT-Ez-t8e" firstAttribute="top" secondItem="s6r-1h-agh" secondAttribute="bottom" id="hKK-z8-Zsf"/>
+                            <constraint firstAttribute="trailing" secondItem="s6r-1h-agh" secondAttribute="trailing" id="q5r-NQ-Awz"/>
+                            <constraint firstItem="s6r-1h-agh" firstAttribute="trailing" secondItem="JhT-Ez-t8e" secondAttribute="trailing" id="vvO-Xs-TwZ"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="JwL-0h-SYs">
                         <barButtonItem key="leftBarButtonItem" image="Open Menu" width="20" id="u91-Oh-HgG">

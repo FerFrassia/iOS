@@ -46,17 +46,12 @@ class PromocionesViewController: UITableViewController, IndicatorInfoProvider {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return DataProvider.sharedInstance.postsData.count
+        return 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! PostCell
-        let data = DataProvider.sharedInstance.postsData.object(at: indexPath.row) as!
-        NSDictionary
-        cell.configureWithData(data)
-        if blackTheme {
-            cell.changeStylToBlack()
-        }
+
         return cell
     }
     

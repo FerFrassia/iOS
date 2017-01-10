@@ -35,19 +35,8 @@ class Main: BarPagerTabStripViewController {
         // Do any additional setup after loading the view.
         
         setRevealMenuButton()
-        getLocales()
     }
-    
-        func getLocales() {
-            FIRDatabase.database().reference().child("locales").observeSingleEvent(of: .value, with: { (snap) in
-                // Get user value
-                if let snapDict = snap.value as? Dictionary<String, AnyObject> {
-                    print("FIREBASE VALUE LOCAL: \(snapDict)")
-                }
-            }) { (error) in
-                print(error.localizedDescription)
-            }
-        }
+
     
     func setRevealMenuButton() {
         revealMenuButton.target = self.revealViewController()
@@ -59,7 +48,7 @@ class Main: BarPagerTabStripViewController {
     override public func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         
         let child1 = PromocionesViewController(style: .plain, itemInfo: IndicatorInfo(title: " HOME"))
-        let child2 = PromocionesViewController(style: .plain, itemInfo: IndicatorInfo(title: " HOME"))
+        let child2 = TodosViewController(style: .plain, itemInfo: IndicatorInfo(title: " HOME"))
         
         return [child1, child2]
     }

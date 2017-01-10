@@ -2,7 +2,7 @@
 //  Local+CoreDataProperties.swift
 //  
 //
-//  Created by Fernando N. Frassia on 1/3/17.
+//  Created by Fernando N. Frassia on 1/7/17.
 //
 //  This file was automatically generated and should not be edited.
 //
@@ -17,15 +17,20 @@ extension Local {
         return NSFetchRequest<Local>(entityName: "Local");
     }
 
-    @NSManaged public var address: String?
-    @NSManaged public var backgroundImage: String?
-    @NSManaged public var detailText: String?
-    @NSManaged public var email: String?
-    @NSManaged public var frontImage: String?
-    @NSManaged public var name: String?
-    @NSManaged public var openTime: String?
-    @NSManaged public var phone: String?
-    @NSManaged public var role: String?
-    @NSManaged public var website: String?
+    @NSManaged public var categoria: String?
+    @NSManaged public var descuentos: [String]
+    @NSManaged public var detalleTexto: String?
+    @NSManaged public var direccion: String?
+    @NSManaged public var facebook: String?
+    @NSManaged public var horarios: String?
+    @NSManaged public var imagenFondo: String?
+    @NSManaged public var imagenLogo: String?
+    @NSManaged public var instagram: String?
+    @NSManaged public var mail: String?
+    @NSManaged public var telefono: String?
+    @NSManaged public var ubicacion: String?
+    @NSManaged public var web: String?
+    @NSManaged public var nombre: String?
+
 
 }
