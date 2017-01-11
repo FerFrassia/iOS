@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="Local2" customModule="Avenida_Cabildo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CfT-1u-F0w">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tts-7W-2H3">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
+                    <color key="backgroundColor" red="0.44768053756476689" green="0.44768053756476689" blue="0.44768053756476689" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0sL-3A-sxq">
+                    <rect key="frame" x="20" y="15" width="80" height="80"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="Jkt-qn-vNp"/>
+                        <constraint firstAttribute="height" constant="80" id="Xfe-KT-R9c"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bensimon" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4cQ-JA-5mj">
+                    <rect key="frame" x="120" y="20" width="110" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="Q2a-Rf-khJ"/>
+                        <constraint firstAttribute="width" constant="110" id="TjE-bl-6XP"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Av. Cabildo 194005" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MYJ-IR-hAI">
+                    <rect key="frame" x="120" y="39" width="110" height="22"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="110" id="RBt-mt-JxF"/>
+                        <constraint firstAttribute="height" constant="22" id="qvB-MI-ZU4"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ln4-lx-MDv">
+                    <rect key="frame" x="120" y="55" width="35" height="29"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="35" id="Bbe-NL-YGc"/>
+                        <constraint firstAttribute="height" constant="28.5" id="UIq-hN-8r6"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                    <color key="textColor" red="0.36078431370000003" green="0.86274509799999999" blue="0.043137254899999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DESCUENTO" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SP0-EA-ZPD">
+                    <rect key="frame" x="155" y="65" width="121" height="12"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="12" id="llM-Ds-njD"/>
+                        <constraint firstAttribute="width" constant="121" id="sx7-Tx-Jg9"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="10"/>
+                    <color key="textColor" red="0.36078431370000003" green="0.86274509799999999" blue="0.043137254899999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tarjeta Clarin" translatesAutoresizingMaskIntoConstraints="NO" id="2mr-hI-6S0">
+                    <rect key="frame" x="120" y="80" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="63L-Vl-Wfu"/>
+                        <constraint firstAttribute="width" constant="20" id="cpq-eC-5gn"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tarjeta Naranja" translatesAutoresizingMaskIntoConstraints="NO" id="If6-0g-34v">
+                    <rect key="frame" x="150" y="80" width="20" height="20"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tarjeta Shopping" translatesAutoresizingMaskIntoConstraints="NO" id="xhb-fo-Jy1">
+                    <rect key="frame" x="180" y="80" width="20" height="20"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tarjeta Club La Nacion" translatesAutoresizingMaskIntoConstraints="NO" id="s1Z-OF-kcW">
+                    <rect key="frame" x="210" y="80" width="20" height="20"/>
+                </imageView>
+                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UwV-H4-05T">
+                    <rect key="frame" x="354" y="80" width="20" height="20"/>
+                    <state key="normal" backgroundImage="Share"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aqo-RY-brL">
+                    <rect key="frame" x="384" y="80" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="20" id="Cfh-B7-TQs"/>
+                        <constraint firstAttribute="height" constant="20" id="PVG-nn-Kus"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="Star No Favorito"/>
+                    <state key="selected" backgroundImage="Star Favorito"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="0sL-3A-sxq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="0En-D8-2LJ"/>
+                <constraint firstItem="Tts-7W-2H3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="1bs-tn-0El"/>
+                <constraint firstItem="If6-0g-34v" firstAttribute="leading" secondItem="2mr-hI-6S0" secondAttribute="trailing" constant="10" id="35m-tW-2JN"/>
+                <constraint firstItem="s1Z-OF-kcW" firstAttribute="leading" secondItem="xhb-fo-Jy1" secondAttribute="trailing" constant="10" id="62p-BF-o62"/>
+                <constraint firstItem="If6-0g-34v" firstAttribute="width" secondItem="2mr-hI-6S0" secondAttribute="width" id="8zq-Wi-ZVf"/>
+                <constraint firstItem="Aqo-RY-brL" firstAttribute="leading" secondItem="UwV-H4-05T" secondAttribute="trailing" constant="10" id="9IG-GB-IOD"/>
+                <constraint firstItem="2mr-hI-6S0" firstAttribute="top" secondItem="MYJ-IR-hAI" secondAttribute="bottom" constant="19" id="AVg-zX-iZM"/>
+                <constraint firstItem="s1Z-OF-kcW" firstAttribute="height" secondItem="2mr-hI-6S0" secondAttribute="height" id="Dtz-hf-T5a"/>
+                <constraint firstItem="Aqo-RY-brL" firstAttribute="height" secondItem="UwV-H4-05T" secondAttribute="height" id="ECx-DI-gdb"/>
+                <constraint firstAttribute="trailing" secondItem="Aqo-RY-brL" secondAttribute="trailing" constant="10" id="I2d-79-Avk"/>
+                <constraint firstItem="s1Z-OF-kcW" firstAttribute="top" secondItem="SP0-EA-ZPD" secondAttribute="bottom" constant="3" id="N8W-YN-Idt"/>
+                <constraint firstItem="xhb-fo-Jy1" firstAttribute="width" secondItem="2mr-hI-6S0" secondAttribute="width" id="OsG-0G-aCQ"/>
+                <constraint firstItem="Tts-7W-2H3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="QGq-Vo-dKN"/>
+                <constraint firstItem="xhb-fo-Jy1" firstAttribute="top" secondItem="SP0-EA-ZPD" secondAttribute="bottom" constant="3" id="SU0-LL-xmp"/>
+                <constraint firstItem="4cQ-JA-5mj" firstAttribute="leading" secondItem="0sL-3A-sxq" secondAttribute="trailing" constant="20" id="T13-58-Mnr"/>
+                <constraint firstItem="CfT-1u-F0w" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="VLu-9b-La2"/>
+                <constraint firstItem="If6-0g-34v" firstAttribute="height" secondItem="2mr-hI-6S0" secondAttribute="height" id="VLw-2l-rID"/>
+                <constraint firstItem="2mr-hI-6S0" firstAttribute="leading" secondItem="0sL-3A-sxq" secondAttribute="trailing" constant="20" id="YEd-I5-31L"/>
+                <constraint firstAttribute="bottom" secondItem="CfT-1u-F0w" secondAttribute="bottom" id="Yni-ga-Ysl"/>
+                <constraint firstAttribute="trailing" secondItem="Tts-7W-2H3" secondAttribute="trailing" id="ZuV-Db-YV1"/>
+                <constraint firstItem="xhb-fo-Jy1" firstAttribute="height" secondItem="2mr-hI-6S0" secondAttribute="height" id="b3I-JH-ZRV"/>
+                <constraint firstItem="0sL-3A-sxq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="bQ1-yf-zA1"/>
+                <constraint firstItem="Aqo-RY-brL" firstAttribute="width" secondItem="UwV-H4-05T" secondAttribute="width" id="dYL-Pb-M6X"/>
+                <constraint firstItem="SP0-EA-ZPD" firstAttribute="top" secondItem="MYJ-IR-hAI" secondAttribute="bottom" constant="4" id="eN3-Q0-ABG"/>
+                <constraint firstAttribute="bottom" secondItem="Tts-7W-2H3" secondAttribute="bottom" id="iGh-Yx-HbL"/>
+                <constraint firstItem="If6-0g-34v" firstAttribute="top" secondItem="SP0-EA-ZPD" secondAttribute="bottom" constant="3" id="k8C-eB-CZc"/>
+                <constraint firstItem="ln4-lx-MDv" firstAttribute="top" secondItem="4cQ-JA-5mj" secondAttribute="bottom" constant="14" id="l9B-Bc-Pzh"/>
+                <constraint firstItem="MYJ-IR-hAI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="39" id="lns-ca-Rzo"/>
+                <constraint firstItem="SP0-EA-ZPD" firstAttribute="leading" secondItem="ln4-lx-MDv" secondAttribute="trailing" id="ne1-q9-sqK"/>
+                <constraint firstAttribute="trailing" secondItem="CfT-1u-F0w" secondAttribute="trailing" id="njR-Ba-o8P"/>
+                <constraint firstItem="s1Z-OF-kcW" firstAttribute="width" secondItem="2mr-hI-6S0" secondAttribute="width" id="ovN-eW-Elv"/>
+                <constraint firstItem="ln4-lx-MDv" firstAttribute="leading" secondItem="0sL-3A-sxq" secondAttribute="trailing" constant="20" id="rCy-Xx-JDM"/>
+                <constraint firstItem="4cQ-JA-5mj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="sHb-n8-tRB"/>
+                <constraint firstItem="xhb-fo-Jy1" firstAttribute="leading" secondItem="If6-0g-34v" secondAttribute="trailing" constant="10" id="sqN-HJ-o8o"/>
+                <constraint firstItem="MYJ-IR-hAI" firstAttribute="leading" secondItem="0sL-3A-sxq" secondAttribute="trailing" constant="20" id="t30-cO-gfR"/>
+                <constraint firstAttribute="bottom" secondItem="Aqo-RY-brL" secondAttribute="bottom" constant="10" id="tge-Xo-HJF"/>
+                <constraint firstAttribute="bottom" secondItem="UwV-H4-05T" secondAttribute="bottom" constant="10" id="uCa-MT-kmc"/>
+                <constraint firstItem="CfT-1u-F0w" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="vlz-DP-voh"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="localAddress" destination="MYJ-IR-hAI" id="dFx-CO-lga"/>
+                <outlet property="localBackgroundImage" destination="CfT-1u-F0w" id="Jyv-8C-gIK"/>
+                <outlet property="localDiscount" destination="ln4-lx-MDv" id="9AU-MJ-Y2e"/>
+                <outlet property="localFavorite" destination="Aqo-RY-brL" id="Usy-sh-Ch3"/>
+                <outlet property="localImage" destination="0sL-3A-sxq" id="RHW-Qx-wwQ"/>
+                <outlet property="localName" destination="4cQ-JA-5mj" id="S0c-dF-dfo"/>
+                <outlet property="localShare" destination="UwV-H4-05T" id="kcO-lc-e6y"/>
+                <outlet property="tarjeta1" destination="2mr-hI-6S0" id="Etz-ae-hIT"/>
+                <outlet property="tarjeta2" destination="If6-0g-34v" id="JZm-eg-pPd"/>
+                <outlet property="tarjeta3" destination="xhb-fo-Jy1" id="h9R-nr-bbK"/>
+                <outlet property="tarjeta4" destination="s1Z-OF-kcW" id="JX0-5W-WXG"/>
+            </connections>
+            <point key="canvasLocation" x="13" y="35"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Share" width="6" height="6"/>
+        <image name="Star Favorito" width="7" height="6"/>
+        <image name="Star No Favorito" width="6" height="6"/>
+        <image name="Tarjeta Clarin" width="8" height="7"/>
+        <image name="Tarjeta Club La Nacion" width="13" height="6"/>
+        <image name="Tarjeta Naranja" width="6" height="7"/>
+        <image name="Tarjeta Shopping" width="9" height="5"/>
+    </resources>
+</document>

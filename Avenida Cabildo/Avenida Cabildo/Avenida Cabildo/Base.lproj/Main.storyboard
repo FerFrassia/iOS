@@ -391,7 +391,7 @@ todo lo que estás buscando</string>
                             </scrollView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="s6r-1h-agh" customClass="ButtonBarView" customModule="XLPagerTabStrip">
                                 <rect key="frame" x="0.0" y="64" width="414" height="51"/>
-                                <color key="backgroundColor" red="0.86274509799999999" green="0.2901960784" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="51" id="vOO-P6-Fvh"/>
                                 </constraints>
@@ -413,7 +413,6 @@ todo lo que estás buscando</string>
                                 </cells>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="s6r-1h-agh" firstAttribute="leading" secondItem="X5G-x4-ODb" secondAttribute="leading" id="0KS-SQ-BYp"/>
                             <constraint firstItem="s6r-1h-agh" firstAttribute="top" secondItem="AEj-sC-TyS" secondAttribute="bottom" id="15D-dG-7Zs"/>

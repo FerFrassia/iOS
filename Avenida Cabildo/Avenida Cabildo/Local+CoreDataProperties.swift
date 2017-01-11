@@ -31,6 +31,7 @@ extension Local {
     @NSManaged public var ubicacion: String?
     @NSManaged public var web: String?
     @NSManaged public var nombre: String?
-
+    @NSManaged public var efectivo: String?
+    @NSManaged public var visibilidad: String?
 
 }

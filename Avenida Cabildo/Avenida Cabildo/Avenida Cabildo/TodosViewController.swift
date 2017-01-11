@@ -12,10 +12,10 @@ import XLPagerTabStrip
 
 class TodosViewController: UITableViewController, IndicatorInfoProvider {
     
-    let cellIdentifier = "postCell"
     var blackTheme = false
     var itemInfo = IndicatorInfo(title: "LALALA")
     var locales = [Local]()
+    var favoritos = [String]()
     
     init(style: UITableViewStyle, itemInfo: IndicatorInfo) {
         self.itemInfo = itemInfo
@@ -29,19 +29,47 @@ class TodosViewController: UITableViewController, IndicatorInfoProvider {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.register(UINib(nibName: "PostCell", bundle: Bundle.main), forCellReuseIdentifier: cellIdentifier)
-//        tableView.estimatedRowHeight = 200.0;
-//        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.register(UINib(nibName: "PostCell", bundle: Bundle.main), forCellReuseIdentifier: "postCell")
+        tableView.register(UINib(nibName: "Local2", bundle: Bundle.main), forCellReuseIdentifier: "Local2")
+        tableView.register(UINib(nibName: "Local3", bundle: Bundle.main), forCellReuseIdentifier: "Local3")
+        
         tableView.allowsSelection = false
-//        if blackTheme {
-//            tableView.backgroundColor = UIColor(red: 15/255.0, green: 16/255.0, blue: 16/255.0, alpha: 1.0)
-//        }
+        
         
         loadLocales()
+        loadFavoritos()
     }
     
     func loadLocales() {
         locales = FirebaseAPI.getCoreLocales()
+        orderLocales()
+    }
+    
+    func orderLocales() {
+        var ordered = [Local]()
+        for local in locales {
+            if local.visibilidad == "avanzado" {
+                ordered.append(local)
+            }
+        }
+        
+        for local in locales {
+            if local.visibilidad == "intermedio" {
+                ordered.append(local)
+            }
+        }
+        
+        for local in locales {
+            if local.visibilidad == "basico" {
+                ordered.append(local)
+            }
+        }
+        
+        locales = ordered
+    }
+    
+    func loadFavoritos() {
+        favoritos = FirebaseAPI.getFavoritesUserDefaults()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,41 +82,123 @@ class TodosViewController: UITableViewController, IndicatorInfoProvider {
         return 1
     }
     
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return locales.count
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        let local = locales[indexPath.row]
+        if local.visibilidad == "basico" {
+            return 100
+        } else if local.visibilidad == "intermedio" {
+            return 110
+        } else {
+            return 200
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! PostCell
         
-        cell.localName.text = locales[indexPath.row].nombre
-        cell.localAddress.text = locales[indexPath.row].direccion
+        let local = locales[indexPath.row]
+        var cell = UITableViewCell()
         
-        let url = URL(string: locales[indexPath.row].imagenLogo!)
-        cell.localImage.sd_setImage(with: url, placeholderImage: UIImage(named: "Profile Pic Placeholder"))
-        
-//        //colors
-//        switch indexPath.row {
-//        case 0:
-//            cell.backgroundColor = UIColor.red
-//        case 1:
-//            cell.backgroundColor = UIColor.blue
-//        case 2:
-//            cell.backgroundColor = UIColor.gray
-//        default:
-//            cell.backgroundColor = UIColor.yellow
-//        }
+        if local.visibilidad == "basico" {
+            cell = configureBasic(tableView: tableView, indexPath: indexPath)
+        } else if local.visibilidad == "intermedio" {
+            cell = configureIntermediate(tableView: tableView, indexPath: indexPath)
+        } else {
+            cell = configureAdvanced(tableView: tableView, indexPath: indexPath)
+        }
         
         return cell
     }
     
+    func configureBasic(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! PostCell
+        let local = locales[indexPath.row]
+        
+        cell.localName.text = local.nombre
+        cell.localAddress.text = local.direccion
+        cell.localDiscount.text = local.efectivo
+        
+        let url = URL(string: local.imagenLogo!)
+        cell.localImage.sd_setImage(with: url, placeholderImage: UIImage(named: "Image Not Available"))
+        
+        
+        if isLocal(local: local.nombre!, locales: favoritos) {
+            cell.localFavorite.isSelected = true
+        }
+        
+        return cell
+    }
+    
+    func configureIntermediate(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Local2", for: indexPath) as! Local2
+        let local = locales[indexPath.row]
+        
+        cell.localName.text = local.nombre
+        cell.localAddress.text = local.direccion
+        cell.localDiscount.text = local.efectivo
+        
+        let urlLogo = URL(string: local.imagenLogo!)
+        cell.localImage.sd_setImage(with: urlLogo, placeholderImage: UIImage(named: "Image Not Available"))
+        
+        let urlFondo = URL(string: local.imagenFondo!)
+        cell.localBackgroundImage.sd_setImage(with: urlFondo, placeholderImage: UIImage(named: "Image Not Available"))
+        
+        if isLocal(local: local.nombre!, locales: favoritos) {
+            cell.localFavorite.isSelected = true
+        }
+        
+        let shareWhite = UIImage(named: "Share")?.withRenderingMode(.alwaysTemplate)
+        cell.localShare.setBackgroundImage(shareWhite, for: .normal)
+        cell.localShare.tintColor = UIColor.white
+        
+        return cell
+    }
+
+    func configureAdvanced(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Local3", for: indexPath) as! Local3
+        let local = locales[indexPath.row]
+        
+        cell.localName.text = local.nombre
+        cell.localAddress.text = local.direccion
+//        cell.localDiscount.text = local.efectivo
+        
+        let urlLogo = URL(string: local.imagenLogo!)
+        cell.localImage.sd_setImage(with: urlLogo, placeholderImage: UIImage(named: "Image Not Available"))
+        
+        let urlFondo = URL(string: local.imagenFondo!)
+        cell.localBackgroundImage.sd_setImage(with: urlFondo, placeholderImage: UIImage(named: "Image Not Available"))
+        
+        if isLocal(local: local.nombre!, locales: favoritos) {
+            cell.localFavorite.isSelected = true
+       }
+        
+        let shareWhite = UIImage(named: "Share")?.withRenderingMode(.alwaysTemplate)
+        cell.localShare.setBackgroundImage(shareWhite, for: .normal)
+        cell.localShare.tintColor = UIColor.white
+        
+        return cell
+    }
+    
+    
     // MARK: - IndicatorInfoProvider
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return itemInfo
+    }
+    
+    func isLocal(local: String, locales: [String]) -> Bool {
+        for currentLocal in locales {
+            if currentLocal == local {
+                return true
+            }
+        }
+        return false
     }
 }
 

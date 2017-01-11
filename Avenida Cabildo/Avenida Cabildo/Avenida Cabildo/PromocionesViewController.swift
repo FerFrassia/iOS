@@ -11,9 +11,10 @@ import XLPagerTabStrip
 
 class PromocionesViewController: UITableViewController, IndicatorInfoProvider {
     
-    let cellIdentifier = "postCell"
     var blackTheme = false
     var itemInfo = IndicatorInfo(title: "LALALA")
+    var locales = [Local]()
+    var favoritos = [String]()
     
     init(style: UITableViewStyle, itemInfo: IndicatorInfo) {
         self.itemInfo = itemInfo
@@ -26,13 +27,45 @@ class PromocionesViewController: UITableViewController, IndicatorInfoProvider {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UINib(nibName: "PostCell", bundle: Bundle.main), forCellReuseIdentifier: cellIdentifier)
-        tableView.estimatedRowHeight = 60.0;
-        tableView.rowHeight = UITableViewAutomaticDimension
+        
+        tableView.register(UINib(nibName: "PromocionCell", bundle: Bundle.main), forCellReuseIdentifier: "PromocionCell")
         tableView.allowsSelection = false
-        if blackTheme {
-            tableView.backgroundColor = UIColor(red: 15/255.0, green: 16/255.0, blue: 16/255.0, alpha: 1.0)
+        
+        
+//        loadLocales()
+//        loadFavoritos()
+    }
+    
+    func loadLocales() {
+        locales = FirebaseAPI.getCoreLocales()
+        orderLocales()
+    }
+    
+    func orderLocales() {
+        var ordered = [Local]()
+        for local in locales {
+            if local.visibilidad == "avanzado" {
+                ordered.append(local)
+            }
         }
+        
+        for local in locales {
+            if local.visibilidad == "intermedio" {
+                ordered.append(local)
+            }
+        }
+        
+        for local in locales {
+            if local.visibilidad == "basico" {
+                ordered.append(local)
+            }
+        }
+        
+        locales = ordered
+    }
+    
+    func loadFavoritos() {
+        favoritos = FirebaseAPI.getFavoritesUserDefaults()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,17 +79,30 @@ class PromocionesViewController: UITableViewController, IndicatorInfoProvider {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.frame.height
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! PostCell
-
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PromocionCell", for: indexPath) as! PromocionCell
         return cell
     }
     
     // MARK: - IndicatorInfoProvider
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return itemInfo
+    }
+    
+    func isLocal(local: String, locales: [String]) -> Bool {
+        for currentLocal in locales {
+            if currentLocal == local {
+                return true
+            }
+        }
+        return false
     }
 }

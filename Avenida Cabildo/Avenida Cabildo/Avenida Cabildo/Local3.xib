@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="Local3" customModule="Avenida_Cabildo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="199"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JU6-gu-myU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="199"/>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TqL-bo-Eto">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="199"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flambee guille" translatesAutoresizingMaskIntoConstraints="NO" id="QGi-xg-vf4">
+                                <rect key="frame" x="324" y="0.0" width="90" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="cTv-tj-YdS"/>
+                                    <constraint firstAttribute="height" constant="90" id="zQI-2E-jdq"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.44768053759999998" green="0.44768053759999998" blue="0.44768053759999998" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="QGi-xg-vf4" secondAttribute="trailing" id="RAX-sr-GaC"/>
+                            <constraint firstItem="QGi-xg-vf4" firstAttribute="top" secondItem="TqL-bo-Eto" secondAttribute="top" id="Z7c-Er-akf"/>
+                        </constraints>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aNf-Bb-Qkm">
+                        <rect key="frame" x="20" y="104" width="80" height="80"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="80" id="F0t-91-z5v"/>
+                            <constraint firstAttribute="width" constant="80" id="SNY-uS-8cN"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bensimon" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uBf-4c-H8A">
+                        <rect key="frame" x="120" y="126" width="110" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="17R-0n-rz8"/>
+                            <constraint firstAttribute="width" constant="110" id="FiE-qt-1zq"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Av. Cabildo 194005" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EWE-N7-u59">
+                        <rect key="frame" x="120" y="144" width="110" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="22" id="DxC-hW-PYh"/>
+                            <constraint firstAttribute="width" constant="110" id="pL0-uQ-Xq4"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tarjeta Clarin" translatesAutoresizingMaskIntoConstraints="NO" id="qgo-hR-MVD">
+                        <rect key="frame" x="120" y="168" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="Lxr-OC-Nsw"/>
+                            <constraint firstAttribute="height" constant="20" id="TxP-HN-QkC"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tarjeta Shopping" translatesAutoresizingMaskIntoConstraints="NO" id="YBn-0a-qDw">
+                        <rect key="frame" x="150" y="168" width="20" height="20"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tarjeta Naranja" translatesAutoresizingMaskIntoConstraints="NO" id="Nar-Y3-67K">
+                        <rect key="frame" x="180" y="168" width="20" height="20"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tarjeta Club La Nacion" translatesAutoresizingMaskIntoConstraints="NO" id="QHd-8I-w2X">
+                        <rect key="frame" x="210" y="168" width="20" height="20"/>
+                    </imageView>
+                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ptn-l9-NcY">
+                        <rect key="frame" x="354" y="170" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="I9k-r0-FIH"/>
+                            <constraint firstAttribute="height" constant="20" id="ck5-C7-inc"/>
+                        </constraints>
+                        <state key="normal" backgroundImage="Share"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qGX-nr-DnC">
+                        <rect key="frame" x="384" y="170" width="20" height="20"/>
+                        <state key="normal" backgroundImage="Star No Favorito"/>
+                        <state key="selected" backgroundImage="Star Favorito"/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="aNf-Bb-Qkm" secondAttribute="bottom" constant="15" id="0je-Nl-hpR"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="QHd-8I-w2X" secondAttribute="bottom" constant="3" id="2iX-jb-gVt"/>
+                    <constraint firstItem="QHd-8I-w2X" firstAttribute="width" secondItem="qgo-hR-MVD" secondAttribute="width" id="5oa-i1-48v"/>
+                    <constraint firstAttribute="trailing" secondItem="JU6-gu-myU" secondAttribute="trailing" id="7P8-Td-IkW"/>
+                    <constraint firstItem="JU6-gu-myU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="AfF-SA-Bjv"/>
+                    <constraint firstItem="Nar-Y3-67K" firstAttribute="height" secondItem="qgo-hR-MVD" secondAttribute="height" id="FoN-lp-n8X"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Nar-Y3-67K" secondAttribute="bottom" constant="3" id="Gnv-DK-Wdp"/>
+                    <constraint firstItem="QHd-8I-w2X" firstAttribute="height" secondItem="qgo-hR-MVD" secondAttribute="height" id="GoO-pH-i4W"/>
+                    <constraint firstItem="qgo-hR-MVD" firstAttribute="leading" secondItem="aNf-Bb-Qkm" secondAttribute="trailing" constant="20" id="HOp-RZ-CaB"/>
+                    <constraint firstItem="YBn-0a-qDw" firstAttribute="leading" secondItem="qgo-hR-MVD" secondAttribute="trailing" constant="10" id="I83-9T-hHx"/>
+                    <constraint firstItem="YBn-0a-qDw" firstAttribute="width" secondItem="qgo-hR-MVD" secondAttribute="width" id="IOK-cX-tgc"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="YBn-0a-qDw" secondAttribute="bottom" constant="3" id="IsW-SP-pRL"/>
+                    <constraint firstItem="QHd-8I-w2X" firstAttribute="leading" secondItem="Nar-Y3-67K" secondAttribute="trailing" constant="10" id="KQ3-Es-oAP"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Ptn-l9-NcY" secondAttribute="bottom" constant="1" id="OF8-Kt-e8B"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="qgo-hR-MVD" secondAttribute="bottom" constant="3" id="Vf4-h8-bkq"/>
+                    <constraint firstItem="qgo-hR-MVD" firstAttribute="leading" secondItem="uBf-4c-H8A" secondAttribute="leading" id="VoR-Ua-T08"/>
+                    <constraint firstAttribute="bottom" secondItem="TqL-bo-Eto" secondAttribute="bottom" id="W0c-VQ-SJW"/>
+                    <constraint firstItem="qGX-nr-DnC" firstAttribute="width" secondItem="Ptn-l9-NcY" secondAttribute="width" id="Yt6-ju-2sf"/>
+                    <constraint firstItem="QHd-8I-w2X" firstAttribute="top" secondItem="EWE-N7-u59" secondAttribute="bottom" constant="2" id="dph-BM-qiL"/>
+                    <constraint firstItem="qGX-nr-DnC" firstAttribute="height" secondItem="Ptn-l9-NcY" secondAttribute="height" id="dwg-e3-YWn"/>
+                    <constraint firstItem="aNf-Bb-Qkm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="exm-sb-GMP"/>
+                    <constraint firstItem="JU6-gu-myU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="fcI-jR-pCK"/>
+                    <constraint firstAttribute="bottom" secondItem="JU6-gu-myU" secondAttribute="bottom" id="k4B-yb-Rno"/>
+                    <constraint firstItem="qGX-nr-DnC" firstAttribute="leading" secondItem="Ptn-l9-NcY" secondAttribute="trailing" constant="10" id="kSx-On-egp"/>
+                    <constraint firstItem="Nar-Y3-67K" firstAttribute="leading" secondItem="YBn-0a-qDw" secondAttribute="trailing" constant="10" id="rOR-sf-SPQ"/>
+                    <constraint firstItem="QHd-8I-w2X" firstAttribute="top" secondItem="uBf-4c-H8A" secondAttribute="bottom" constant="21" id="sAM-qL-dPI"/>
+                    <constraint firstItem="YBn-0a-qDw" firstAttribute="height" secondItem="qgo-hR-MVD" secondAttribute="height" id="tGZ-uc-Gnv"/>
+                    <constraint firstItem="TqL-bo-Eto" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="uWz-0z-fug"/>
+                    <constraint firstAttribute="trailing" secondItem="TqL-bo-Eto" secondAttribute="trailing" id="uva-XN-Fjk"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="qGX-nr-DnC" secondAttribute="bottom" constant="1" id="wX7-Qh-GVD"/>
+                    <constraint firstItem="Nar-Y3-67K" firstAttribute="width" secondItem="qgo-hR-MVD" secondAttribute="width" id="xP6-2j-7lB"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="qGX-nr-DnC" secondAttribute="trailing" constant="2" id="xXj-oD-wZw"/>
+                    <constraint firstItem="EWE-N7-u59" firstAttribute="leading" secondItem="uBf-4c-H8A" secondAttribute="leading" id="yb6-oj-eF7"/>
+                    <constraint firstItem="TqL-bo-Eto" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="zyZ-XB-IS6"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="localAddress" destination="EWE-N7-u59" id="9TH-oA-ejE"/>
+                <outlet property="localBackgroundImage" destination="JU6-gu-myU" id="zQt-OC-3Cd"/>
+                <outlet property="localFavorite" destination="qGX-nr-DnC" id="cuR-2z-DnL"/>
+                <outlet property="localImage" destination="aNf-Bb-Qkm" id="o4U-nm-67M"/>
+                <outlet property="localName" destination="uBf-4c-H8A" id="1xc-c6-WGc"/>
+                <outlet property="localShare" destination="Ptn-l9-NcY" id="On1-dp-pAi"/>
+                <outlet property="tarjeta1" destination="qgo-hR-MVD" id="DG4-MY-SS9"/>
+                <outlet property="tarjeta2" destination="YBn-0a-qDw" id="wUb-u0-a2N"/>
+                <outlet property="tarjeta3" destination="Nar-Y3-67K" id="QuU-x6-LWE"/>
+                <outlet property="tarjeta4" destination="QHd-8I-w2X" id="yy5-EK-JFn"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Share" width="6" height="6"/>
+        <image name="Star Favorito" width="7" height="6"/>
+        <image name="Star No Favorito" width="6" height="6"/>
+        <image name="Tarjeta Clarin" width="8" height="7"/>
+        <image name="Tarjeta Club La Nacion" width="13" height="6"/>
+        <image name="Tarjeta Naranja" width="6" height="7"/>
+        <image name="Tarjeta Shopping" width="9" height="5"/>
+        <image name="flambee guille" width="38" height="40"/>
+    </resources>
+</document>

@@ -156,7 +156,6 @@ class Login: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDelegate {
                     if (result?.isCancelled)! {
                        return
                     } else {
-                        print("FB Login Success: ", result?.token.tokenString ?? "Result token is nil")
                         self.fetchProfile()
                         self.showMenuVC()
                         self.signInFirebaseWithFB()
@@ -178,6 +177,7 @@ class Login: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDelegate {
             }
             print("Accessed FB Firebase with user: \(user)")
             FirebaseAPI.storeCoreUser()
+            
         })
     }
     

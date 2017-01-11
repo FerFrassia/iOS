@@ -21,8 +21,7 @@ class PostCell: UITableViewCell {
     @IBAction func favoritePressed(sender: UIButton) {
         if localFavorite.isSelected {
             //need to unfavorite
-            
-            
+            FirebaseAPI.removeFavoriteFromUserFirebase(localName: (localName.text)!)
             localFavorite.isSelected = false
         } else {
             //need to favorite

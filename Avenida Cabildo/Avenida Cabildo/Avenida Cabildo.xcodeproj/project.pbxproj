@@ -37,6 +37,8 @@
 		C14CE7741E1C33E500FCDF5D /* Avenida_Cabildo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C1772C6A1E0B571C00AD8ACC /* Avenida_Cabildo.xcdatamodeld */; };
 		C14CE7751E1C33E600FCDF5D /* Avenida_Cabildo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C1772C6A1E0B571C00AD8ACC /* Avenida_Cabildo.xcdatamodeld */; };
 		C1509DBF1E217C0B00743DB4 /* FirebaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1509DBE1E217C0B00743DB4 /* FirebaseAPI.swift */; };
+		C153BD061E258ADB00C4BADE /* Local2.xib in Resources */ = {isa = PBXBuildFile; fileRef = C153BD051E258ADB00C4BADE /* Local2.xib */; };
+		C153BD091E259ECC00C4BADE /* Local2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C153BD081E259ECC00C4BADE /* Local2.swift */; };
 		C1772C641E0B571C00AD8ACC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1772C631E0B571C00AD8ACC /* AppDelegate.swift */; };
 		C1772C661E0B571C00AD8ACC /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1772C651E0B571C00AD8ACC /* Login.swift */; };
 		C1772C691E0B571C00AD8ACC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1772C671E0B571C00AD8ACC /* Main.storyboard */; };
@@ -48,6 +50,10 @@
 		C1859D641E0B726D00315028 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1859D631E0B726D00315028 /* GoogleService-Info.plist */; };
 		C1859D651E0B726D00315028 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1859D631E0B726D00315028 /* GoogleService-Info.plist */; };
 		C1859D661E0B726D00315028 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1859D631E0B726D00315028 /* GoogleService-Info.plist */; };
+		C18725EA1E268AFD00D1A509 /* Local3.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18725E81E268AFD00D1A509 /* Local3.swift */; };
+		C18725EB1E268AFD00D1A509 /* Local3.xib in Resources */ = {isa = PBXBuildFile; fileRef = C18725E91E268AFD00D1A509 /* Local3.xib */; };
+		C18725F01E26AFEB00D1A509 /* PromocionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18725EE1E26AFEB00D1A509 /* PromocionCell.swift */; };
+		C18725F11E26AFEB00D1A509 /* PromocionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C18725EF1E26AFEB00D1A509 /* PromocionCell.xib */; };
 		C1FB0FAA1E1D960100750E74 /* PromocionesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FB0FA91E1D960100750E74 /* PromocionesViewController.swift */; };
 		C1FB0FAB1E1D960100750E74 /* PromocionesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FB0FA91E1D960100750E74 /* PromocionesViewController.swift */; };
 		C1FB0FAC1E1D960100750E74 /* PromocionesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FB0FA91E1D960100750E74 /* PromocionesViewController.swift */; };
@@ -95,6 +101,10 @@
 		C14CE76B1E1C277C00FCDF5D /* Avenida CabildoUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Avenida CabildoUITests-Bridging-Header.h"; sourceTree = "<group>"; };
 		C14CE7701E1C295000FCDF5D /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		C1509DBE1E217C0B00743DB4 /* FirebaseAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseAPI.swift; sourceTree = "<group>"; };
+		C153BD051E258ADB00C4BADE /* Local2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Local2.xib; sourceTree = "<group>"; };
+		C153BD071E25907900C4BADE /* Avenida_Cabildo 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Avenida_Cabildo 4.xcdatamodel"; sourceTree = "<group>"; };
+		C153BD081E259ECC00C4BADE /* Local2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Local2.swift; sourceTree = "<group>"; };
+		C153BD0A1E25A02A00C4BADE /* Avenida_Cabildo 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Avenida_Cabildo 5.xcdatamodel"; sourceTree = "<group>"; };
 		C1772C601E0B571C00AD8ACC /* Avenida Cabildo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Avenida Cabildo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1772C631E0B571C00AD8ACC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1772C651E0B571C00AD8ACC /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
@@ -110,6 +120,10 @@
 		C1772C861E0B571C00AD8ACC /* Avenida_CabildoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Avenida_CabildoUITests.swift; sourceTree = "<group>"; };
 		C1772C881E0B571C00AD8ACC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C1859D631E0B726D00315028 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C18725E81E268AFD00D1A509 /* Local3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Local3.swift; sourceTree = "<group>"; };
+		C18725E91E268AFD00D1A509 /* Local3.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Local3.xib; sourceTree = "<group>"; };
+		C18725EE1E26AFEB00D1A509 /* PromocionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromocionCell.swift; sourceTree = "<group>"; };
+		C18725EF1E26AFEB00D1A509 /* PromocionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PromocionCell.xib; sourceTree = "<group>"; };
 		C1E9DD031E218F86005EDAC7 /* Avenida_Cabildo 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Avenida_Cabildo 2.xcdatamodel"; sourceTree = "<group>"; };
 		C1E9DD041E21CB01005EDAC7 /* Avenida_Cabildo 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Avenida_Cabildo 3.xcdatamodel"; sourceTree = "<group>"; };
 		C1FB0FA91E1D960100750E74 /* PromocionesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromocionesViewController.swift; sourceTree = "<group>"; };
@@ -160,8 +174,8 @@
 		C114690F1E1E90AB004AB55F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				C11469101E1E90C5004AB55F /* PostCell.xib */,
-				C11469141E1E90D5004AB55F /* PostCell.swift */,
+				C18725F31E26B00300D1A509 /* Promocion Cell */,
+				C18725F21E26AFF300D1A509 /* Todos Cells */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -220,6 +234,28 @@
 				C1772C881E0B571C00AD8ACC /* Info.plist */,
 			);
 			path = "Avenida CabildoUITests";
+			sourceTree = "<group>";
+		};
+		C18725F21E26AFF300D1A509 /* Todos Cells */ = {
+			isa = PBXGroup;
+			children = (
+				C11469101E1E90C5004AB55F /* PostCell.xib */,
+				C11469141E1E90D5004AB55F /* PostCell.swift */,
+				C153BD051E258ADB00C4BADE /* Local2.xib */,
+				C153BD081E259ECC00C4BADE /* Local2.swift */,
+				C18725E91E268AFD00D1A509 /* Local3.xib */,
+				C18725E81E268AFD00D1A509 /* Local3.swift */,
+			);
+			name = "Todos Cells";
+			sourceTree = "<group>";
+		};
+		C18725F31E26B00300D1A509 /* Promocion Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C18725EF1E26AFEB00D1A509 /* PromocionCell.xib */,
+				C18725EE1E26AFEB00D1A509 /* PromocionCell.swift */,
+			);
+			name = "Promocion Cell";
 			sourceTree = "<group>";
 		};
 		C1B4E9BE1E1480FF006660B5 /* Classes */ = {
@@ -392,10 +428,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C18725F11E26AFEB00D1A509 /* PromocionCell.xib in Resources */,
 				C1772C711E0B571C00AD8ACC /* LaunchScreen.storyboard in Resources */,
 				C1859D641E0B726D00315028 /* GoogleService-Info.plist in Resources */,
+				C18725EB1E268AFD00D1A509 /* Local3.xib in Resources */,
 				C11469111E1E90C5004AB55F /* PostCell.xib in Resources */,
 				C1772C6E1E0B571C00AD8ACC /* Assets.xcassets in Resources */,
+				C153BD061E258ADB00C4BADE /* Local2.xib in Resources */,
 				C1772C691E0B571C00AD8ACC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -568,6 +607,8 @@
 				C11469151E1E90D5004AB55F /* PostCell.swift in Sources */,
 				C1772C661E0B571C00AD8ACC /* Login.swift in Sources */,
 				C10DFD401E1884DF00AED63A /* MenuTableViewCell.swift in Sources */,
+				C18725EA1E268AFD00D1A509 /* Local3.swift in Sources */,
+				C153BD091E259ECC00C4BADE /* Local2.swift in Sources */,
 				C1FB0FAA1E1D960100750E74 /* PromocionesViewController.swift in Sources */,
 				C10DFD381E18790500AED63A /* MenuTableViewController.swift in Sources */,
 				C114690C1E1E9057004AB55F /* DataProvider.swift in Sources */,
@@ -575,6 +616,7 @@
 				C1FDD9791E16C3B300B59C13 /* Main.swift in Sources */,
 				C149B8AB1E1B16A6009FF600 /* NavigationMainViewController.swift in Sources */,
 				C149B8A71E1AFF00009FF600 /* FakeSplashViewController.swift in Sources */,
+				C18725F01E26AFEB00D1A509 /* PromocionCell.swift in Sources */,
 				C1772C641E0B571C00AD8ACC /* AppDelegate.swift in Sources */,
 				C1509DBF1E217C0B00743DB4 /* FirebaseAPI.swift in Sources */,
 			);
@@ -898,11 +940,13 @@
 		C1772C6A1E0B571C00AD8ACC /* Avenida_Cabildo.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				C153BD0A1E25A02A00C4BADE /* Avenida_Cabildo 5.xcdatamodel */,
+				C153BD071E25907900C4BADE /* Avenida_Cabildo 4.xcdatamodel */,
 				C1E9DD041E21CB01005EDAC7 /* Avenida_Cabildo 3.xcdatamodel */,
 				C1E9DD031E218F86005EDAC7 /* Avenida_Cabildo 2.xcdatamodel */,
 				C1772C6B1E0B571C00AD8ACC /* Avenida_Cabildo.xcdatamodel */,
 			);
-			currentVersion = C1E9DD041E21CB01005EDAC7 /* Avenida_Cabildo 3.xcdatamodel */;
+			currentVersion = C153BD0A1E25A02A00C4BADE /* Avenida_Cabildo 5.xcdatamodel */;
 			path = Avenida_Cabildo.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
