@@ -15,9 +15,6 @@ import XLPagerTabStrip
 class Main: ButtonBarPagerTabStripViewController {
 
     @IBOutlet weak var revealMenuButton: UIBarButtonItem!
-
-    let graySpotifyColor = UIColor(red: 21/255.0, green: 21/255.0, blue: 24/255.0, alpha: 1.0)
-    let darkGraySpotifyColor = UIColor(red: 19/255.0, green: 20/255.0, blue: 20/255.0, alpha: 1.0)
     
     @IBAction func LogOutAction(_ sender: Any) {
         GIDSignIn.sharedInstance().signOut()
@@ -32,19 +29,15 @@ class Main: ButtonBarPagerTabStripViewController {
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        
         setRevealMenuButton()
-        
+    
         settings.style.buttonBarBackgroundColor = .white
         settings.style.buttonBarItemBackgroundColor = .white
-        settings.style.selectedBarBackgroundColor = UIColor(red: 33/255.0, green: 174/255.0, blue: 67/255.0, alpha: 1.0)
+        settings.style.selectedBarBackgroundColor = UIColor(red: 35/255.0, green: 107/255.0, blue: 176/255.0, alpha: 1.0)
         settings.style.buttonBarItemFont = UIFont(name: "HelveticaNeue-Light", size:14) ?? UIFont.systemFont(ofSize: 14)
         settings.style.selectedBarHeight = 3.0
         settings.style.buttonBarMinimumLineSpacing = 0
-        settings.style.buttonBarItemTitleColor = .black
+        settings.style.buttonBarItemTitleColor = .white
         settings.style.buttonBarItemsShouldFillAvailiableWidth = true
         
         settings.style.buttonBarLeftContentInset = 20
@@ -52,15 +45,25 @@ class Main: ButtonBarPagerTabStripViewController {
         
         changeCurrentIndexProgressive = { (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
             guard changeCurrentIndex == true else { return }
-            
             oldCell?.label.textColor = .gray
             oldCell?.label.font = UIFont(name: "HelveticaNeue-Light", size: 14) ?? UIFont.systemFont(ofSize: 5)
-            
+
             newCell?.label.textColor = .black
             newCell?.label.font = UIFont(name: "HelveticaNeue", size: 16) ?? UIFont.systemFont(ofSize: 5)
         }
+        super.viewDidLoad()
+        
+        setNavBar()
     }
-
+    
+    func setNavBar() {
+        self.navigationController?.navigationBar.barTintColor = .white
+        self.navigationController?.navigationBar.backgroundColor = .white
+        let logo = UIImage(named: "Simbolo")
+        let imageView = UIImageView(image: logo)
+        imageView.contentMode = .scaleAspectFit
+        self.navigationItem.titleView = imageView
+    }
     
     func setRevealMenuButton() {
         revealMenuButton.target = self.revealViewController()

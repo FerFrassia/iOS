@@ -362,7 +362,7 @@ todo lo que estás buscando</string>
         <scene sceneID="IaO-vT-h1J">
             <objects>
                 <navigationController id="mBI-RA-PXA" customClass="NavigationMainViewController" customModule="Avenida_Cabildo" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="HSB-78-q4q">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HSB-78-q4q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

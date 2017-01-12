@@ -15,6 +15,8 @@ target 'Avenida Cabildo' do
   pod 'SWRevealViewController'
   pod 'SDWebImage'
   pod 'XLPagerTabStrip'
+  pod 'GoogleMaps'
+  pod 'GooglePlaces'
 
   # Pods for Avenida Cabildo
 
@@ -32,6 +34,8 @@ target 'Avenida Cabildo' do
     pod 'SWRevealViewController'
     pod 'SDWebImage'
     pod 'XLPagerTabStrip'
+    pod 'GoogleMaps'
+    pod 'GooglePlaces'
   end
 
   target 'Avenida CabildoUITests' do
@@ -48,6 +52,8 @@ target 'Avenida Cabildo' do
     pod 'SWRevealViewController'
     pod 'SDWebImage'
     pod 'XLPagerTabStrip'
+    pod 'GoogleMaps'
+    pod 'GooglePlaces'
   end
 
 
