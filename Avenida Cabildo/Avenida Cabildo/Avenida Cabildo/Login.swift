@@ -159,7 +159,7 @@ class Login: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDelegate {
                         self.fetchProfile()
                         self.showMenuVC()
                         self.signInFirebaseWithFB()
-                        FirebaseAPI.loadFirebaseData()
+                        FirebaseAPI.loadFirebaseUserData()
                     }
                     
                 }

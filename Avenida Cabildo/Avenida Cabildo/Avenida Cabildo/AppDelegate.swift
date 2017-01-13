@@ -11,6 +11,7 @@ import CoreData
 import Firebase
 import GoogleSignIn
 import FBSDKCoreKit
+import GoogleMaps
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
@@ -21,9 +22,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         FIRApp.configure()
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
+        //Google Sign In
         GIDSignIn.sharedInstance().clientID = FIRApp.defaultApp()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().signInSilently()
+        
+        //Google Maps
+        GMSServices.provideAPIKey("AIzaSyDjID78dt3Y5O02zS3Lr_aaGUdDzuGc47g")
+        
+        //Firebase
+        DispatchQueue.main.async {
+            FirebaseAPI.loadFirebaseCommonData()
+        }
+        
+        
                 
         return true
     }
@@ -62,7 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             guard let uid = user?.uid else {return}
             print("Successfully logged into Firebase with Google Account: ", uid)
             self.showMenuVC()
-            FirebaseAPI.loadFirebaseData()
+            FirebaseAPI.loadFirebaseUserData()
         })
     }
     

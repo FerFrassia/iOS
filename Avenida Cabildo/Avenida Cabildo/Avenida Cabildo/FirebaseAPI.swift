@@ -13,11 +13,39 @@ import Firebase
 
 class FirebaseAPI: NSObject {
     
-    static func loadFirebaseData() {
-        getLocales()
+    static func loadFirebaseCommonData() {
         storeFavoritesUserDefaults()
     }
     
+    static func loadFirebaseUserData() {
+        getLocales()
+        storeEnPromocionUserDefaults()
+    }
+    
+    //MARK: Firebase En Promocion
+    static func storeEnPromocionUserDefaults() {
+        FIRDatabase.database().reference().child("promociones").observeSingleEvent(of: .value, with: { (snap) in
+            if snap.exists() {
+                let enPromocion = snap.value as! [String]
+                
+                UserDefaults.standard.set(enPromocion, forKey: "enPromocion")
+            } else {
+                UserDefaults.standard.set([], forKey: "enPromocion")
+            }
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    static func getEnPromocionUserDefaults() -> [String] {
+        if let fav = UserDefaults.standard.array(forKey: "enPromocion") as? [String] {
+            return fav
+        } else {
+            return [String]()
+        }
+    }
+    
+    //MARK: Firebase Locales
     static func getLocales() {
         FIRDatabase.database().reference().child("locales").observeSingleEvent(of: .value, with: { (snap) in
             if let snapDict = snap.value as? Dictionary<String, AnyObject> {
@@ -203,6 +231,7 @@ class FirebaseAPI: NSObject {
         }
     }
     
+    //MARK: Core Data Locales
     static func getCoreLocales() -> [Local] {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -260,6 +289,11 @@ class FirebaseAPI: NSObject {
     
     static func getCoreUser() -> Usuario {
         return Usuario()
+    }
+    
+    static func getCoreLocal(name: String) -> Local {
+        let locales = getCoreLocales()
+        return getLocalFromList(localName: name, list: locales)
     }
     
     //MARK: User Firebase
@@ -324,6 +358,14 @@ class FirebaseAPI: NSObject {
         }
     }
     
+    //MARK: Selected Local Defaults
+    static func storeSelectedUserDefaults(name: String) {
+        UserDefaults.standard.set(name, forKey: "favoritos")
+    }
+    
+    static func getSelectedUserDefaults() -> String {
+        return UserDefaults.standard.string(forKey: "favoritos")!
+    }
     
     
     

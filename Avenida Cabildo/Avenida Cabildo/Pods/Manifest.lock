@@ -45,29 +45,36 @@ PODS:
     - GoogleSymbolUtilities (~> 1.1)
   - GoogleInterchangeUtilities (1.2.2):
     - GoogleSymbolUtilities (~> 1.1)
+  - GoogleMaps (2.1.1):
+    - GoogleMaps/Maps (= 2.1.1)
+  - GoogleMaps/Base (2.1.1)
+  - GoogleMaps/Maps (2.1.1):
+    - GoogleMaps/Base
+  - GooglePlaces (2.1.1):
+    - GoogleMaps/Base (= 2.1.1)
   - GoogleSignIn (4.0.1):
     - GoogleAppUtilities (~> 1.1)
     - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
     - GTMOAuth2 (~> 1.0)
     - GTMSessionFetcher/Core (~> 1.1)
   - GoogleSymbolUtilities (1.1.2)
-  - GoogleToolboxForMac/DebugUtils (2.1.0):
-    - GoogleToolboxForMac/Defines (= 2.1.0)
-  - GoogleToolboxForMac/Defines (2.1.0)
-  - GoogleToolboxForMac/NSData+zlib (2.1.0):
-    - GoogleToolboxForMac/Defines (= 2.1.0)
-  - GoogleToolboxForMac/NSDictionary+URLArguments (2.1.0):
-    - GoogleToolboxForMac/DebugUtils (= 2.1.0)
-    - GoogleToolboxForMac/Defines (= 2.1.0)
-    - GoogleToolboxForMac/NSString+URLArguments (= 2.1.0)
-  - GoogleToolboxForMac/NSString+URLArguments (2.1.0)
+  - GoogleToolboxForMac/DebugUtils (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+  - GoogleToolboxForMac/Defines (2.1.1)
+  - GoogleToolboxForMac/NSData+zlib (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+  - GoogleToolboxForMac/NSDictionary+URLArguments (2.1.1):
+    - GoogleToolboxForMac/DebugUtils (= 2.1.1)
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+    - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
+  - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
   - GTMOAuth2 (1.1.4):
     - GTMSessionFetcher (~> 1.1)
-  - GTMSessionFetcher (1.1.7):
-    - GTMSessionFetcher/Full (= 1.1.7)
-  - GTMSessionFetcher/Core (1.1.7)
-  - GTMSessionFetcher/Full (1.1.7):
-    - GTMSessionFetcher/Core (= 1.1.7)
+  - GTMSessionFetcher (1.1.8):
+    - GTMSessionFetcher/Full (= 1.1.8)
+  - GTMSessionFetcher/Core (1.1.8)
+  - GTMSessionFetcher/Full (1.1.8):
+    - GTMSessionFetcher/Core (= 1.1.8)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
@@ -82,6 +89,8 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - Google/SignIn
+  - GoogleMaps
+  - GooglePlaces
   - GoogleSignIn
   - SDWebImage
   - SWRevealViewController
@@ -101,15 +110,17 @@ SPEC CHECKSUMS:
   Google: 813c467362eabc11385f5a5cc9ad0cb651a58f4e
   GoogleAppUtilities: a8a552aa74f6597f805e45b5a3962766c3134973
   GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
+  GoogleMaps: a5b5bbe47734e2443bde781a6aa64e69fdb6d785
+  GooglePlaces: 35636d86e5020cba3856eb988c09a5491de0a65a
   GoogleSignIn: a8694c0a8e6d1b0ec77c58014de5bfd4ba2fa766
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
-  GoogleToolboxForMac: 2b2596cbb7186865e98cadf2b1e262d851c2b168
+  GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
-  GTMSessionFetcher: a1f8ed39e4fe21c68957daed472c7afbcdf29166
+  GTMSessionFetcher: 6f8d8b28b7e345549ac471071608170b31cb4977
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SWRevealViewController: 6d3fd97f70112fd7cef9de14df4260eacce4c63a
   XLPagerTabStrip: c46e802a8dcac29edbcea573de8fe920e052455b
 
-PODFILE CHECKSUM: 264f12bdc665932952d0365a796c844dec61cb36
+PODFILE CHECKSUM: 83f8d652d027dde5d979e4bb97e74867698f1644
 
 COCOAPODS: 1.1.1
