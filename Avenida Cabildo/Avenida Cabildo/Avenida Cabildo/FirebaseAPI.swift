@@ -20,6 +20,7 @@ class FirebaseAPI: NSObject {
     static func loadFirebaseUserData() {
         getLocales()
         storeEnPromocionUserDefaults()
+        getCategories()
     }
     
     //MARK: Firebase En Promocion
@@ -367,10 +368,139 @@ class FirebaseAPI: NSObject {
         return UserDefaults.standard.string(forKey: "favoritos")!
     }
     
+    //MARK: Categories
+    static func getCategories() {
+        FIRDatabase.database().reference().child("categorias").observeSingleEvent(of: .value, with: { (snap) in
+            if let snapDict = snap.value as? Dictionary<String, AnyObject> {
+                storeCategoriasCoreData(dic: snapDict)
+            }
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
     
+    static func storeCategoriasCoreData(dic: Dictionary<String, AnyObject>) {
+        for (categoryName, data) in dic {
+            saveOrUpdateCategoria(nombre: categoryName,
+                                  imagen: data["imagen"] as! Dictionary<String, String>,
+                                  locales: data["locales"] as? [String])
+        }
+    }
     
+    static func saveOrUpdateCategoria(nombre: String, imagen: Dictionary<String, String>, locales: [String]?) {
+        if let categorias = getCoreCategorias() {
+            if categoriasListHasCategoria(name: nombre, categorias: categorias) {
+                updateCategoria(categoria: getCategoriaFromList(name: nombre, categorias: categorias),
+                                nombre: nombre,
+                                imagen: imagen,
+                                locales: locales)
+            } else {
+                saveCategoria(nombre: nombre,
+                              imagen: imagen,
+                              locales: locales)
+            }
+        }
+    }
     
-
+    static func saveCategoria(nombre: String, imagen: Dictionary<String, String>, locales: [String]?) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let categoria = NSEntityDescription.insertNewObject(forEntityName: "Categoria", into: context) as! Categoria
+        
+        categoria.setValue(nombre, forKey: "nombre")
+        categoria.setValue(imagen, forKey: "imagen")
+        
+        if let locals = locales {
+            categoria.setValue(locals, forKey: "locales")
+        } else {
+            categoria.setValue([], forKey: "locales")
+        }
+        
+        do {
+            try context.save()
+        } catch {
+            fatalError("failed to save context: \(error)")
+        }
+    }
     
+    static func updateCategoria(categoria: Categoria, nombre: String, imagen: Dictionary<String, String>, locales: [String]?) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        categoria.setValue(nombre, forKey: "nombre")
+        categoria.setValue(imagen, forKey: "imagen")
+        
+        if let locals = locales {
+            categoria.setValue(locals, forKey: "locales")
+        } else {
+            categoria.setValue([], forKey: "locales")
+        }
+        
+        do {
+            try context.save()
+        } catch {
+            fatalError("failed to save context: \(error)")
+        }
+        
+    }
+    
+    static func getCoreCategorias() -> [Categoria]? {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Categoria")
+        do {
+            let result = try context.fetch(request) as? [Categoria]
+            return result
+        } catch {
+            fatalError("Can't fetch user: \(error)")
+        }
+    }
+    
+    static func categoriasListHasCategoria(name: String, categorias: [Categoria]) -> Bool {
+        var found = false
+        for categoria in categorias {
+            if categoria.nombre == name {
+                found = true
+                break
+            }
+        }
+        return found
+    }
+    
+    static func getCategoriaFromList(name: String, categorias: [Categoria]) -> Categoria {
+        var categoriaFound = Categoria()
+        for categoria in categorias {
+            if categoria.nombre == name {
+                categoriaFound = categoria
+                break
+            }
+        }
+        return categoriaFound
+    }
+    
+    static func setCategoriaSelected(name: String, locales: [String]?) {
+        UserDefaults.standard.set(name, forKey: "categoriaNombre")
+        if let loc = locales {
+            UserDefaults.standard.set(loc, forKey: "categoriaLocales")
+        }
+    }
+    
+    static func getCategoriaSelectedNombre() -> String {
+        if let categoria = UserDefaults.standard.string(forKey: "categoriaNombre") {
+            return categoria
+        } else {
+            return "Todos"
+        }
+    }
+    
+    static func getCategoriaSelectedLocales() -> [String] {
+        if let locales = UserDefaults.standard.array(forKey: "categoriaLocales") {
+            return locales as! [String]
+        } else {
+            return [String]()
+        }
+    }
   
 }

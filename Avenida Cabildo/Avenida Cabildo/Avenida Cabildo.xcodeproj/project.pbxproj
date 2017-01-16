@@ -133,6 +133,7 @@
 		C1B5A4CC1E28084D00DD65B5 /* PromocionLocalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromocionLocalView.swift; sourceTree = "<group>"; };
 		C1B5A4CE1E28085D00DD65B5 /* PromocionLocalView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PromocionLocalView.xib; sourceTree = "<group>"; };
 		C1B5A4D01E28353800DD65B5 /* Avenida_Cabildo 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Avenida_Cabildo 6.xcdatamodel"; sourceTree = "<group>"; };
+		C1CB33E61E2D563D00594C35 /* Avenida_Cabildo 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Avenida_Cabildo 7.xcdatamodel"; sourceTree = "<group>"; };
 		C1E9DD031E218F86005EDAC7 /* Avenida_Cabildo 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Avenida_Cabildo 2.xcdatamodel"; sourceTree = "<group>"; };
 		C1E9DD041E21CB01005EDAC7 /* Avenida_Cabildo 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Avenida_Cabildo 3.xcdatamodel"; sourceTree = "<group>"; };
 		C1F0DD561E28E1B500BC369D /* ChangeCategoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeCategoryTableViewController.swift; sourceTree = "<group>"; };
@@ -969,6 +970,7 @@
 		C1772C6A1E0B571C00AD8ACC /* Avenida_Cabildo.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				C1CB33E61E2D563D00594C35 /* Avenida_Cabildo 7.xcdatamodel */,
 				C1B5A4D01E28353800DD65B5 /* Avenida_Cabildo 6.xcdatamodel */,
 				C153BD0A1E25A02A00C4BADE /* Avenida_Cabildo 5.xcdatamodel */,
 				C153BD071E25907900C4BADE /* Avenida_Cabildo 4.xcdatamodel */,
@@ -976,7 +978,7 @@
 				C1E9DD031E218F86005EDAC7 /* Avenida_Cabildo 2.xcdatamodel */,
 				C1772C6B1E0B571C00AD8ACC /* Avenida_Cabildo.xcdatamodel */,
 			);
-			currentVersion = C153BD0A1E25A02A00C4BADE /* Avenida_Cabildo 5.xcdatamodel */;
+			currentVersion = C1CB33E61E2D563D00594C35 /* Avenida_Cabildo 7.xcdatamodel */;
 			path = Avenida_Cabildo.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

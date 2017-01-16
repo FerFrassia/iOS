@@ -10,7 +10,8 @@ import UIKit
 
 class ChangeCategoryTableViewController: UITableViewController {
     
-
+    var categorias = [Categoria]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,8 +20,20 @@ class ChangeCategoryTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        loadCategorias()
+        
     }
-
+    
+    func loadCategorias() {
+        if let cats = FirebaseAPI.getCoreCategorias() {
+            categorias = cats
+        }
+    }
+    
+    @IBAction func backAction(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -35,70 +48,39 @@ class ChangeCategoryTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 17
+        return categorias.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChangeCategoryCell", for: indexPath) as? ChangeCategoryCell
-
-        switch indexPath.row {
-        case 0:
-            cell?.cellImage.image = UIImage(named: "Aire Libre")
-            cell?.cellLabel.text = "Aire libre y recreación"
-        case 1:
-            cell?.cellImage.image = UIImage(named: "Animales")
-            cell?.cellLabel.text = "Animales y mascotas"
-        case 2:
-            cell?.cellImage.image = UIImage(named: "Arte")
-            cell?.cellLabel.text = "Arte y entretenimiento"
-        case 3:
-            cell?.cellImage.image = UIImage(named: "Automotores")
-            cell?.cellLabel.text = "Automotores"
-        case 4:
-            cell?.cellImage.image = UIImage(named: "Belleza")
-            cell?.cellLabel.text = "Belleza"
-        case 5:
-            cell?.cellImage.image = UIImage(named: "Electro")
-            cell?.cellLabel.text = "Electro"
-        case 6:
-            cell?.cellImage.image = UIImage(named: "Gasolineras")
-            cell?.cellLabel.text = "Gasolineras y estaciones de servicio"
-        case 7:
-            cell?.cellImage.image = UIImage(named: "Gastronomía")
-            cell?.cellLabel.text = "Gastronomía"
-        case 8:
-            cell?.cellImage.image = UIImage(named: "Hogar")
-            cell?.cellLabel.text = "Hogar"
-        case 9:
-            cell?.cellImage.image = UIImage(named: "Hotel")
-            cell?.cellLabel.text = "Hotel"
-        case 10:
-            cell?.cellImage.image = UIImage(named: "Infantiles")
-            cell?.cellLabel.text = "Infantiles"
-        case 11:
-            cell?.cellImage.image = UIImage(named: "Juegos")
-            cell?.cellLabel.text = "Juegos y juguetes"
-        case 12:
-            cell?.cellImage.image = UIImage(named: "Medicina")
-            cell?.cellLabel.text = "Medicina y salud"
-        case 13:
-            cell?.cellImage.image = UIImage(named: "Salon")
-            cell?.cellLabel.text = "Salón de fiestas"
-        case 14:
-            cell?.cellImage.image = UIImage(named: "Tiendas")
-            cell?.cellLabel.text = "Tiendas oficiales"
-        case 15:
-            cell?.cellImage.image = UIImage(named: "Transporte")
-            cell?.cellLabel.text = "Transporte público"
-        case 16:
-            
-            cell?.cellLabel.text = "Otras categorías"
-        default:
-            break
+        let categoria = categorias[indexPath.row]
+        
+        var imageKey = ""
+        if DeviceType.IS_IPHONE_6P {
+            imageKey = "3x"
+        } else {
+            imageKey = "2x"
+        }
+        
+        if let iconDic = categoria.imagen as? Dictionary<String, String> {
+            let urlIcon = URL(string: iconDic[imageKey]!)
+            cell?.cellImage.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
+        }
+        
+        if let nombre = categoria.nombre {
+            cell?.cellLabel.text = nombre
         }
 
         return cell!
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let categoria = categorias[indexPath.row]
+        if let nombre = categoria.nombre {
+            FirebaseAPI.setCategoriaSelected(name: nombre, locales: categoria.locales as! [String]?)
+        }
+        self.dismiss(animated: true, completion: nil)
     }
     
 
@@ -146,5 +128,30 @@ class ChangeCategoryTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    enum UIUserInterfaceIdiom : Int
+    {
+        case Unspecified
+        case Phone
+        case Pad
+    }
+    
+    struct ScreenSize
+    {
+        static let SCREEN_WIDTH         = UIScreen.main.bounds.size.width
+        static let SCREEN_HEIGHT        = UIScreen.main.bounds.size.height
+        static let SCREEN_MAX_LENGTH    = max(ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT)
+        static let SCREEN_MIN_LENGTH    = min(ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT)
+    }
+    
+    struct DeviceType
+    {
+        static let IS_IPHONE_4_OR_LESS  = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.SCREEN_MAX_LENGTH < 568.0
+        static let IS_IPHONE_5          = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.SCREEN_MAX_LENGTH == 568.0
+        static let IS_IPHONE_6          = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.SCREEN_MAX_LENGTH == 667.0
+        static let IS_IPHONE_6P         = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.SCREEN_MAX_LENGTH == 736.0
+        static let IS_IPAD              = UIDevice.current.userInterfaceIdiom == .pad && ScreenSize.SCREEN_MAX_LENGTH == 1024.0
+    }
 }
+
+

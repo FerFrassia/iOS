@@ -15,6 +15,7 @@ class PromocionesViewController: UITableViewController, IndicatorInfoProvider {
     var blackTheme = false
     var itemInfo = IndicatorInfo(title: "LALALA")
     var enPromocion = [String]()
+    var promocionSelected = ""
     var favoritos = [String]()
     var scrollIndex = 0
     
@@ -32,14 +33,31 @@ class PromocionesViewController: UITableViewController, IndicatorInfoProvider {
         
         tableView.register(UINib(nibName: "PromocionCell", bundle: Bundle.main), forCellReuseIdentifier: "PromocionCell")
         tableView.allowsSelection = false
-        
-        loadEnPromocion()
-        loadFavoritos()
     }
     
     func loadEnPromocion() {
         enPromocion = FirebaseAPI.getEnPromocionUserDefaults()
-        FirebaseAPI.storeSelectedUserDefaults(name: enPromocion[0])
+        enPromocion = filterLocalesEnPromocion(todos: enPromocion)
+        if enPromocion.count > 0 {
+            FirebaseAPI.storeSelectedUserDefaults(name: enPromocion[0])
+        }
+    }
+    
+    func filterLocalesEnPromocion(todos: [String]) -> [String] {
+        var filtrados = [String]()
+        let categoriaLocales = FirebaseAPI.getCategoriaSelectedLocales()
+        if categoriaLocales.count != 0 {
+            for local in todos {
+                for categoriaLocal in categoriaLocales {
+                    if categoriaLocal == local {
+                        filtrados.append(local)
+                    }
+                }
+            }
+        } else {
+            filtrados = todos
+        }
+        return filtrados
     }
     
     func loadFavoritos() {
@@ -48,7 +66,16 @@ class PromocionesViewController: UITableViewController, IndicatorInfoProvider {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        loadEnPromocion()
+        loadFavoritos()
+        loadPromocionSelected()
+        
         tableView.reloadData()
+        
+    }
+    
+    func loadPromocionSelected() {
+        promocionSelected = FirebaseAPI.getCategoriaSelectedNombre()
     }
     
     // MARK: - UITableViewDataSource
@@ -92,6 +119,7 @@ class PromocionesViewController: UITableViewController, IndicatorInfoProvider {
         //Categoria
         cell.categoriaBlue.layer.cornerRadius = 20
         cell.categoriaWhite.layer.cornerRadius = 20
+        cell.categoriaButton.setTitle(promocionSelected, for: .normal)
         
         let indumentariaBlue = UIImage(named: "Indumentaria")?.withRenderingMode(.alwaysTemplate)
         cell.categoriaImg.image = indumentariaBlue

@@ -22,15 +22,14 @@ class PromocionCell: UITableViewCell {
     
     
     @IBAction func categoryPressed(_ sender: Any) {
-        //TODO
-//        var topVC = UIApplication.shared.keyWindow?.rootViewController
-//        while((topVC!.presentedViewController) != nil) {
-//            topVC = topVC!.presentedViewController
-//        }
-//        
-//        let story = UIStoryboard(name: "Main", bundle: nil)
-//        let vc = story.instantiateViewController(withIdentifier: "ChangeCategory") as! ChangeCategoryTableViewController
-//        topVC?.present(vc, animated: true, completion: nil)
+        var topVC = UIApplication.shared.keyWindow?.rootViewController
+        while((topVC!.presentedViewController) != nil) {
+            topVC = topVC!.presentedViewController
+        }
+        
+        let story = UIStoryboard(name: "Main", bundle: nil)
+        let vc = story.instantiateViewController(withIdentifier: "ChangeCategory") as! ChangeCategoryTableViewController
+        topVC?.present(vc, animated: true, completion: nil)
     }
     
     override func awakeFromNib() {
