@@ -57,6 +57,7 @@
 		C18725F11E26AFEB00D1A509 /* PromocionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C18725EF1E26AFEB00D1A509 /* PromocionCell.xib */; };
 		C1B5A4CD1E28084D00DD65B5 /* PromocionLocalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B5A4CC1E28084D00DD65B5 /* PromocionLocalView.swift */; };
 		C1B5A4CF1E28085D00DD65B5 /* PromocionLocalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1B5A4CE1E28085D00DD65B5 /* PromocionLocalView.xib */; };
+		C1D60D6A1E2EBC070035A762 /* BeneficiosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D60D691E2EBC070035A762 /* BeneficiosCell.swift */; };
 		C1F0DD571E28E1B500BC369D /* ChangeCategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F0DD561E28E1B500BC369D /* ChangeCategoryTableViewController.swift */; };
 		C1F0DD591E28E59700BC369D /* ChangeCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F0DD581E28E59700BC369D /* ChangeCategoryCell.swift */; };
 		C1FB0FAA1E1D960100750E74 /* PromocionesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FB0FA91E1D960100750E74 /* PromocionesViewController.swift */; };
@@ -134,6 +135,7 @@
 		C1B5A4CE1E28085D00DD65B5 /* PromocionLocalView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PromocionLocalView.xib; sourceTree = "<group>"; };
 		C1B5A4D01E28353800DD65B5 /* Avenida_Cabildo 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Avenida_Cabildo 6.xcdatamodel"; sourceTree = "<group>"; };
 		C1CB33E61E2D563D00594C35 /* Avenida_Cabildo 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Avenida_Cabildo 7.xcdatamodel"; sourceTree = "<group>"; };
+		C1D60D691E2EBC070035A762 /* BeneficiosCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeneficiosCell.swift; sourceTree = "<group>"; };
 		C1E9DD031E218F86005EDAC7 /* Avenida_Cabildo 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Avenida_Cabildo 2.xcdatamodel"; sourceTree = "<group>"; };
 		C1E9DD041E21CB01005EDAC7 /* Avenida_Cabildo 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Avenida_Cabildo 3.xcdatamodel"; sourceTree = "<group>"; };
 		C1F0DD561E28E1B500BC369D /* ChangeCategoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeCategoryTableViewController.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 		C1B4E9BE1E1480FF006660B5 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C1D60D641E2EBBB60035A762 /* Local Selected */,
 				C1772C631E0B571C00AD8ACC /* AppDelegate.swift */,
 				C1772C651E0B571C00AD8ACC /* Login.swift */,
 				C1FDD9781E16C3B300B59C13 /* Main.swift */,
@@ -303,6 +306,30 @@
 				C1F0DD561E28E1B500BC369D /* ChangeCategoryTableViewController.swift */,
 			);
 			name = Classes;
+			sourceTree = "<group>";
+		};
+		C1D60D641E2EBBB60035A762 /* Local Selected */ = {
+			isa = PBXGroup;
+			children = (
+				C1D60D661E2EBBC10035A762 /* Detalles */,
+				C1D60D651E2EBBBD0035A762 /* Beneficios */,
+			);
+			name = "Local Selected";
+			sourceTree = "<group>";
+		};
+		C1D60D651E2EBBBD0035A762 /* Beneficios */ = {
+			isa = PBXGroup;
+			children = (
+				C1D60D691E2EBC070035A762 /* BeneficiosCell.swift */,
+			);
+			name = Beneficios;
+			sourceTree = "<group>";
+		};
+		C1D60D661E2EBBC10035A762 /* Detalles */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Detalles;
 			sourceTree = "<group>";
 		};
 		C1EEA0061E11A33D008C1E8D /* Storyboards */ = {
@@ -637,6 +664,7 @@
 				C18725EA1E268AFD00D1A509 /* Local3.swift in Sources */,
 				C153BD091E259ECC00C4BADE /* Local2.swift in Sources */,
 				C1FB0FAA1E1D960100750E74 /* PromocionesViewController.swift in Sources */,
+				C1D60D6A1E2EBC070035A762 /* BeneficiosCell.swift in Sources */,
 				C10DFD381E18790500AED63A /* MenuTableViewController.swift in Sources */,
 				C114690C1E1E9057004AB55F /* DataProvider.swift in Sources */,
 				C14CE7711E1C295000FCDF5D /* DataController.swift in Sources */,

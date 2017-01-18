@@ -11,6 +11,7 @@ import UIKit
 class ChangeCategoryTableViewController: UITableViewController {
     
     var categorias = [Categoria]()
+    var enPromocion = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,13 +22,17 @@ class ChangeCategoryTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         loadCategorias()
-        
+        loadEnPromocion()
     }
     
     func loadCategorias() {
         if let cats = FirebaseAPI.getCoreCategorias() {
             categorias = cats
         }
+    }
+    
+    func loadEnPromocion() {
+        enPromocion = FirebaseAPI.getEnPromocionUserDefaults()
     }
     
     @IBAction func backAction(_ sender: Any) {
@@ -77,10 +82,45 @@ class ChangeCategoryTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let categoria = categorias[indexPath.row]
-        if let nombre = categoria.nombre {
-            FirebaseAPI.setCategoriaSelected(name: nombre, locales: categoria.locales as! [String]?)
+        
+        let locales = categoria.locales as? [String]?
+        if let locs = locales {
+            if (locs?.count)! > 0 {
+                if let nombre = categoria.nombre {
+                    FirebaseAPI.setCategoriaSelected(name: nombre,
+                                                     locales: categoria.locales as! [String]?,
+                                                     image: categoria.imagen as! [String:String])
+                }
+                self.dismiss(animated: true, completion: nil)
+            } else {
+                let alertController = UIAlertController(title: "", message: "No se encontraron locales para esta categoría", preferredStyle: UIAlertControllerStyle.alert)
+                
+                let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
+                {
+                    (result : UIAlertAction) -> Void in
+                    tableView.deselectRow(at: indexPath, animated: true)
+                }
+                alertController.addAction(okAction)
+                self.present(alertController, animated: true, completion: nil)
+            }
         }
-        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func filterLocalesEnPromocion(todos: [String]) -> [String] {
+        var filtrados = [String]()
+        let categoriaLocales = FirebaseAPI.getCategoriaSelectedLocales()
+        if categoriaLocales.count != 0 {
+            for local in todos {
+                for categoriaLocal in categoriaLocales {
+                    if categoriaLocal == local {
+                        filtrados.append(local)
+                    }
+                }
+            }
+        } else {
+            filtrados = todos
+        }
+        return filtrados
     }
     
 

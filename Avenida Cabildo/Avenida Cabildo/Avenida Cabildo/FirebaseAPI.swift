@@ -480,8 +480,9 @@ class FirebaseAPI: NSObject {
         return categoriaFound
     }
     
-    static func setCategoriaSelected(name: String, locales: [String]?) {
+    static func setCategoriaSelected(name: String, locales: [String]?, image: [String:String]) {
         UserDefaults.standard.set(name, forKey: "categoriaNombre")
+        UserDefaults.standard.set(image, forKey: "categoriaImage")
         if let loc = locales {
             UserDefaults.standard.set(loc, forKey: "categoriaLocales")
         }
@@ -500,6 +501,14 @@ class FirebaseAPI: NSObject {
             return locales as! [String]
         } else {
             return [String]()
+        }
+    }
+    
+    static func getCategoriaSelectedImage() -> [String:String] {
+        if let imageDic = UserDefaults.standard.dictionary(forKey: "categoriaImage") {
+            return imageDic as! [String:String]
+        } else {
+            return ["1x": "https://firebasestorage.googleapis.com/v0/b/avenida-cabildo.appspot.com/o/Assets%20iPhone%2FHome.png?alt=media&token=6b74d89f-e73f-41b9-9cd2-f9d88455523c", "2x": "https://firebasestorage.googleapis.com/v0/b/avenida-cabildo.appspot.com/o/Assets%20iPhone%2Fhotel%402x.png.png?alt=media&token=ec7a32c7-b64c-4301-b0d5-eca24da0ba7a", "3x": "https://firebasestorage.googleapis.com/v0/b/avenida-cabildo.appspot.com/o/Assets%20iPhone%2Fhotel%403x.png.png?alt=media&token=777cd7b5-6427-4eca-9cd5-cfe10d4a5eac"]
         }
     }
   
