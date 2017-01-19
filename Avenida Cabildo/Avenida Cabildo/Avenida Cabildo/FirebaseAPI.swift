@@ -11,6 +11,8 @@ import FirebaseDatabase
 import CoreData
 import Firebase
 
+let localesStoredOrUpdatedKey = "localesStoredOrUpdatedKey"
+
 class FirebaseAPI: NSObject {
     
     static func loadFirebaseCommonData() {
@@ -74,10 +76,10 @@ class FirebaseAPI: NSObject {
                               ubicacion: data["ubicacion"] as! String,
                               web: data["web"] as! String,
                               efectivo: data["efectivo"] as! String,
-                              visibilidad: data["visibilidad"] as! String)
+                              visibilidad: data["visibilidad"] as! Int16)
         }
+        NotificationCenter.default.post(name: Notification.Name(rawValue: localesStoredOrUpdatedKey), object: nil)
     }
-    
     
     static func saveOrUpdateLocal(categoria: String,
                            descuentos: [String]?,
@@ -94,7 +96,7 @@ class FirebaseAPI: NSObject {
                            ubicacion: String,
                            web: String,
                            efectivo: String,
-                           visibilidad: String) {
+                           visibilidad: Int16) {
         
 
         let locales = getCoreLocales()
@@ -103,7 +105,6 @@ class FirebaseAPI: NSObject {
         } else {
             saveLocal(categoria: categoria, descuentos: descuentos, detalleTexto: detalleTexto, direccion: direccion, facebook: facebook, horarios: horarios, imagenFondo: imagenFondo, imagenLogo: imagenLogo, instagram: instagram, mail: mail, nombre: nombre, telefono: telefono, ubicacion: ubicacion, web: web, efectivo: efectivo, visibilidad: visibilidad)
         }
-
     }
     
     static func localesListHasLocal(name: String, locales: [Local]) -> Bool {
@@ -144,7 +145,7 @@ class FirebaseAPI: NSObject {
                             ubicacion: String,
                             web: String,
                             efectivo: String,
-                            visibilidad: String) {
+                            visibilidad: Int16) {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -195,7 +196,7 @@ class FirebaseAPI: NSObject {
                     ubicacion: String,
                     web: String,
                     efectivo: String,
-                    visibilidad: String) {
+                    visibilidad: Int16) {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -361,11 +362,11 @@ class FirebaseAPI: NSObject {
     
     //MARK: Selected Local Defaults
     static func storeSelectedUserDefaults(name: String) {
-        UserDefaults.standard.set(name, forKey: "favoritos")
+        UserDefaults.standard.set(name, forKey: "selectedLocal")
     }
     
     static func getSelectedUserDefaults() -> String {
-        return UserDefaults.standard.string(forKey: "favoritos")!
+        return UserDefaults.standard.string(forKey: "selectedLocal")!
     }
     
     //MARK: Categories

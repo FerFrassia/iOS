@@ -137,8 +137,8 @@
         </view>
     </objects>
     <resources>
-        <image name="Share" width="6" height="6"/>
-        <image name="Star Favorito" width="7" height="6"/>
-        <image name="Star No Favorito" width="6" height="6"/>
+        <image name="Share" width="20" height="19"/>
+        <image name="Star Favorito" width="21" height="20"/>
+        <image name="Star No Favorito" width="21" height="20"/>
     </resources>
 </document>

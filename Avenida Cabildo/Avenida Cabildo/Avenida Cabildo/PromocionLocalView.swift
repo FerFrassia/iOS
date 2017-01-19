@@ -11,6 +11,7 @@ import UIKit
 class PromocionLocalView: UIView {
 
     @IBOutlet weak var localBackground: UIImageView!
+    @IBOutlet weak var localDescuento: UIImageView!
     @IBOutlet weak var localName: UILabel!
     @IBOutlet weak var localAddress: UILabel!
     @IBOutlet weak var localShare: UIButton!

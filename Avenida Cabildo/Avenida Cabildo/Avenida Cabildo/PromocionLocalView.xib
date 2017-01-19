@@ -21,7 +21,7 @@
                         <constraint firstAttribute="height" constant="191" id="JQe-io-usT"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flambee guille" translatesAutoresizingMaskIntoConstraints="NO" id="lht-yu-SUT">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lht-yu-SUT">
                     <rect key="frame" x="284" y="0.0" width="90" height="90"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="90" id="sz6-GS-bc3"/>
@@ -139,6 +139,7 @@
                 <outlet property="localAddress" destination="yEr-Yg-gRr" id="oI8-h6-XOB"/>
                 <outlet property="localBackground" destination="cdW-2c-94g" id="GPV-Oj-8MQ"/>
                 <outlet property="localDescription" destination="CZQ-mQ-1Ou" id="yw9-Mv-VPE"/>
+                <outlet property="localDescuento" destination="lht-yu-SUT" id="SE8-Fj-dBg"/>
                 <outlet property="localFavorite" destination="2an-xn-Eoi" id="n0R-gk-p8X"/>
                 <outlet property="localName" destination="0ap-Pb-OGf" id="QAx-xp-dVk"/>
                 <outlet property="localShare" destination="829-N3-s6c" id="DzK-no-60n"/>
@@ -147,13 +148,12 @@
         </view>
     </objects>
     <resources>
-        <image name="Share" width="6" height="6"/>
-        <image name="Star Favorito" width="7" height="6"/>
-        <image name="Star No Favorito" width="6" height="6"/>
+        <image name="Share" width="20" height="19"/>
+        <image name="Star Favorito" width="21" height="20"/>
+        <image name="Star No Favorito" width="21" height="20"/>
         <image name="Tarjeta Clarin" width="8" height="7"/>
         <image name="Tarjeta Club La Nacion" width="13" height="6"/>
         <image name="Tarjeta Naranja" width="6" height="7"/>
         <image name="Tarjeta Shopping" width="9" height="5"/>
-        <image name="flambee guille" width="38" height="40"/>
     </resources>
 </document>

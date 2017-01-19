@@ -12,6 +12,7 @@ class ChangeCategoryTableViewController: UITableViewController {
     
     var categorias = [Categoria]()
     var enPromocion = [String]()
+    @IBOutlet weak var backButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,12 @@ class ChangeCategoryTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         loadCategorias()
         loadEnPromocion()
+        setNavBarBackButton()
+    }
+    
+    func setNavBarBackButton() {
+        backButton.setImage(UIImage(named: "Arrow Menu")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        backButton.tintColor = .black
     }
     
     func loadCategorias() {

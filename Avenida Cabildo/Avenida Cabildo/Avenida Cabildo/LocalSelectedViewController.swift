@@ -25,6 +25,7 @@ class LocalSelectedViewController: UIViewController, UIScrollViewDelegate, UITab
     @IBOutlet weak var beneficiosButton: UIButton!
     @IBOutlet weak var detallesButton: UIButton!
     
+    
     var selectedLocal = Local()
     
     @IBAction func backAction(_ sender: Any) {
@@ -34,8 +35,12 @@ class LocalSelectedViewController: UIViewController, UIScrollViewDelegate, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        // Do any additional setup after loading the view.
+        setNavBarBackButton()
+    }
+    
+    func setNavBarBackButton() {
+        backButton.setImage(UIImage(named: "Arrow Menu")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        backButton.tintColor = .black
     }
     
     func loadSelectedLocal() {
@@ -158,11 +163,5 @@ class LocalSelectedViewController: UIViewController, UIScrollViewDelegate, UITab
         
         return cell
     }
-    
-    
-    
-    
-    
-    
 
 }

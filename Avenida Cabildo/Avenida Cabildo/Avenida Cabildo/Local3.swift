@@ -13,10 +13,10 @@ class Local3: UITableViewCell {
     @IBOutlet weak var localImage: UIImageView!
     @IBOutlet weak var localName: UILabel!
     @IBOutlet weak var localAddress: UILabel!
-    @IBOutlet weak var localDiscount: UILabel!
     @IBOutlet weak var localShare: UIButton!
     @IBOutlet weak var localFavorite: UIButton!
     @IBOutlet weak var localBackgroundImage: UIImageView!
+    @IBOutlet weak var localDescuento: UIImageView!
     
     @IBOutlet weak var tarjeta1: UIImageView!
     @IBOutlet weak var tarjeta2: UIImageView!

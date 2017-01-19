@@ -48,19 +48,19 @@ class TodosViewController: UITableViewController, IndicatorInfoProvider {
     func orderLocales() {
         var ordered = [Local]()
         for local in locales {
-            if local.visibilidad == "avanzado" {
+            if local.visibilidad == 1 {
                 ordered.append(local)
             }
         }
         
         for local in locales {
-            if local.visibilidad == "intermedio" {
+            if local.visibilidad == 2 {
                 ordered.append(local)
             }
         }
         
         for local in locales {
-            if local.visibilidad == "basico" {
+            if local.visibilidad == 3 {
                 ordered.append(local)
             }
         }
@@ -92,9 +92,9 @@ class TodosViewController: UITableViewController, IndicatorInfoProvider {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let local = locales[indexPath.row]
-        if local.visibilidad == "basico" {
+        if local.visibilidad == 3 {
             return 100
-        } else if local.visibilidad == "intermedio" {
+        } else if local.visibilidad == 2 {
             return 110
         } else {
             return 200
@@ -106,9 +106,9 @@ class TodosViewController: UITableViewController, IndicatorInfoProvider {
         let local = locales[indexPath.row]
         var cell = UITableViewCell()
         
-        if local.visibilidad == "basico" {
+        if local.visibilidad == 3 {
             cell = configureBasic(tableView: tableView, indexPath: indexPath)
-        } else if local.visibilidad == "intermedio" {
+        } else if local.visibilidad == 2 {
             cell = configureIntermediate(tableView: tableView, indexPath: indexPath)
         } else {
             cell = configureAdvanced(tableView: tableView, indexPath: indexPath)
@@ -167,13 +167,33 @@ class TodosViewController: UITableViewController, IndicatorInfoProvider {
         
         cell.localName.text = local.nombre
         cell.localAddress.text = local.direccion
-//        cell.localDiscount.text = local.efectivo
         
         let urlLogo = URL(string: local.imagenLogo!)
         cell.localImage.sd_setImage(with: urlLogo, placeholderImage: UIImage(named: "Image Not Available"))
         
         let urlFondo = URL(string: local.imagenFondo!)
         cell.localBackgroundImage.sd_setImage(with: urlFondo, placeholderImage: UIImage(named: "Image Not Available"))
+        
+        if let efectivo = local.efectivo {
+            var imageName = ""
+            switch efectivo {
+            case "10%":
+                imageName = "10Descuento"
+            case "20%":
+                imageName = "20Descuento"
+            case "30%":
+                imageName = "30Descuento"
+            case "40%":
+                imageName = "40Descuento"
+            case "50%":
+                imageName = "50Descuento"
+            default:
+                imageName = "10Descuento"
+            }
+            cell.localDescuento.image = UIImage(named: imageName)
+        } else {
+            cell.localDescuento.isHidden = true
+        }
         
         if isLocal(local: local.nombre!, locales: favoritos) {
             cell.localFavorite.isSelected = true

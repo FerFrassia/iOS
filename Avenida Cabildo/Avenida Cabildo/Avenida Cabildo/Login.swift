@@ -22,6 +22,7 @@ class Login: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDelegate {
     @IBOutlet weak var FBWidth: NSLayoutConstraint!
     @IBOutlet weak var FBIconWidth: NSLayoutConstraint!
     @IBOutlet weak var GLIconWidth: NSLayoutConstraint!
+    @IBOutlet weak var FBImage: UIImageView!
     
     let moc = DataController().managedObjectContext
     
@@ -90,6 +91,8 @@ class Login: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDelegate {
         if UIDevice.current.userInterfaceIdiom == .phone && max(UIScreen.main.bounds.size.width, UIScreen.main.bounds.size.height) == 568.0 {
             FBIconWidth.constant = 25
         }
+        FBImage.image = UIImage(named: "Login Facebook Icon")?.withRenderingMode(.alwaysTemplate)
+        FBImage.tintColor = .white
     }
     
     func setFBWidth() {
@@ -104,7 +107,13 @@ class Login: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDelegate {
         setLoginImgGLFrame()
         setLoginGLTitle()
         setLoginGLWidth()
+        setGLImage()
         GIDSignIn.sharedInstance().uiDelegate = self
+    }
+    
+    func setGLImage() {
+        loginImgGL?.image = UIImage(named: "Login Google Icon")?.withRenderingMode(.alwaysTemplate)
+        loginImgGL?.tintColor = .white
     }
     
     

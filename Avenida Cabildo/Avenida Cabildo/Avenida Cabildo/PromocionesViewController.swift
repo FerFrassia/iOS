@@ -20,20 +20,8 @@ class PromocionesViewController: UITableViewController, IndicatorInfoProvider {
     var favoritos = [String]()
     var scrollIndex = 0
     
-    init(style: UITableViewStyle, itemInfo: IndicatorInfo) {
-        self.itemInfo = itemInfo
-        super.init(style: style)
-    }
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        tableView.register(UINib(nibName: "PromocionCell", bundle: Bundle.main), forCellReuseIdentifier: "PromocionCell")
-        tableView.allowsSelection = false
     }
     
     func loadEnPromocion() {
@@ -98,6 +86,7 @@ class PromocionesViewController: UITableViewController, IndicatorInfoProvider {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "PromocionCell", for: indexPath) as! PromocionCell
+        
         if enPromocion.count != 0 {
             let currentLocal = FirebaseAPI.getCoreLocal(name: enPromocion[scrollIndex])
             let locationArray = currentLocal.ubicacion?.components(separatedBy: ", ")
