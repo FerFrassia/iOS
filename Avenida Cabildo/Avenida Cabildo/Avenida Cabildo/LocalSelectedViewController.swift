@@ -142,9 +142,20 @@ class LocalSelectedViewController: UIViewController, UIScrollViewDelegate, UITab
         
         FIRDatabase.database().reference().child("descuentos").child(descuentos[indexPath.row]).observeSingleEvent(of: .value, with: { (snap) in
             if let snapDict = snap.value as? Dictionary<String, AnyObject> {
-                if let tarjetaString = snapDict["imagen"] {
-                    let urlIcon = URL(string: tarjetaString as! String)
-                    cell.beneficiosImage.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
+                if let tarjetaDic = snapDict["imagen"] as? [String:String] {
+                    
+                    var imageKey = ""
+                    if DeviceType.IS_IPHONE_6P {
+                        imageKey = "3x"
+                    } else {
+                        imageKey = "2x"
+                    }
+                    
+                    if let tarjetaString = tarjetaDic[imageKey] {
+                        let urlIcon = URL(string: tarjetaString)
+                        cell.beneficiosImage.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
+                    }
+                    
                 }
                 
             }

@@ -23,9 +23,10 @@ class FirebaseAPI: NSObject {
         getLocales()
         storeEnPromocionUserDefaults()
         getCategories()
+        getDescuentos()
     }
     
-    //MARK: Firebase En Promocion
+    //MARK: - Firebase En Promocion
     static func storeEnPromocionUserDefaults() {
         FIRDatabase.database().reference().child("promociones").observeSingleEvent(of: .value, with: { (snap) in
             if snap.exists() {
@@ -48,7 +49,7 @@ class FirebaseAPI: NSObject {
         }
     }
     
-    //MARK: Firebase Locales
+    //MARK: - Firebase Locales
     static func getLocales() {
         FIRDatabase.database().reference().child("locales").observeSingleEvent(of: .value, with: { (snap) in
             if let snapDict = snap.value as? Dictionary<String, AnyObject> {
@@ -233,7 +234,7 @@ class FirebaseAPI: NSObject {
         }
     }
     
-    //MARK: Core Data Locales
+    //MARK: - Core Data Locales
     static func getCoreLocales() -> [Local] {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -266,7 +267,7 @@ class FirebaseAPI: NSObject {
         }
     }
     
-    //MARK: User Core Data
+    //MARK: - User Core Data
     static func storeCoreUser() {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -298,7 +299,7 @@ class FirebaseAPI: NSObject {
         return getLocalFromList(localName: name, list: locales)
     }
     
-    //MARK: User Firebase
+    //MARK: - User Firebase
     static func addFavoriteToUserFirebase(localName: String) {
         let user = FIRAuth.auth()?.currentUser
         let firebaseID = user?.uid
@@ -360,7 +361,7 @@ class FirebaseAPI: NSObject {
         }
     }
     
-    //MARK: Selected Local Defaults
+    //MARK: - Selected Local Defaults
     static func storeSelectedUserDefaults(name: String) {
         UserDefaults.standard.set(name, forKey: "selectedLocal")
     }
@@ -369,7 +370,7 @@ class FirebaseAPI: NSObject {
         return UserDefaults.standard.string(forKey: "selectedLocal")!
     }
     
-    //MARK: Categories
+    //MARK: - Categories
     static func getCategories() {
         FIRDatabase.database().reference().child("categorias").observeSingleEvent(of: .value, with: { (snap) in
             if let snapDict = snap.value as? Dictionary<String, AnyObject> {
@@ -509,8 +510,120 @@ class FirebaseAPI: NSObject {
         if let imageDic = UserDefaults.standard.dictionary(forKey: "categoriaImage") {
             return imageDic as! [String:String]
         } else {
-            return ["1x": "https://firebasestorage.googleapis.com/v0/b/avenida-cabildo.appspot.com/o/Assets%20iPhone%2FHome.png?alt=media&token=6b74d89f-e73f-41b9-9cd2-f9d88455523c", "2x": "https://firebasestorage.googleapis.com/v0/b/avenida-cabildo.appspot.com/o/Assets%20iPhone%2Fhotel%402x.png.png?alt=media&token=ec7a32c7-b64c-4301-b0d5-eca24da0ba7a", "3x": "https://firebasestorage.googleapis.com/v0/b/avenida-cabildo.appspot.com/o/Assets%20iPhone%2Fhotel%403x.png.png?alt=media&token=777cd7b5-6427-4eca-9cd5-cfe10d4a5eac"]
+            return ["1x": "https://firebasestorage.googleapis.com/v0/b/avenida-cabildo.appspot.com/o/Assets%20iPhone%2FHome.png?alt=media&token=6b74d89f-e73f-41b9-9cd2-f9d88455523c", "2x": "https://firebasestorage.googleapis.com/v0/b/avenida-cabildo.appspot.com/o/Assets%20iPhone%2Fhotel%402x.png.png?alt=media&token=ec7a32c7-b64c-4301-b0d5-eca24da0ba7a", "3x": "https://firebasestorage.googleapis.com/v0/b/avenida-cabildo.appspot.com/o/Assets%20iPhone%2Fhotel%403x.png.png?alt=media&token=777cd7b5-6427-4eca-9cd5-cfe10d4a5eac", "pdf": "https://firebasestorage.googleapis.com/v0/b/avenida-cabildo.appspot.com/o/Assets%20iPhone%2Ftiendas.pdf?alt=media&token=6d8b9876-4f1f-4ca5-bd89-11d961606cc5"]
         }
     }
-  
+    
+    //MARK: - Descuentos
+    static func getDescuentos() {
+        FIRDatabase.database().reference().child("descuentos").observeSingleEvent(of: .value, with: { (snap) in
+            if let snapDict = snap.value as? Dictionary<String, AnyObject> {
+                storeDescuentosCoreData(dic: snapDict)
+            }
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    static func storeDescuentosCoreData(dic: Dictionary<String, AnyObject>) {
+        for (descuentoName, data) in dic {
+            saveOrUpdateDescuento(nombre: descuentoName,
+                                  imagen: data["imagen"] as! Dictionary<String, String>,
+                                  locales: data["locales"] as? [String])
+        }
+    }
+    
+    static func saveOrUpdateDescuento(nombre: String, imagen: Dictionary<String, String>, locales: [String]?) {
+        if let descuentos = getCoreDescuentos() {
+            if descuentosListHasDescuento(name: nombre, descuentos: descuentos) {
+                updateDescuento(descuento: getDescuentoFromList(name: nombre, descuentos: descuentos),
+                                nombre: nombre,
+                                imagen: imagen,
+                                locales: locales)
+            } else {
+                saveDescuento(nombre: nombre,
+                              imagen: imagen,
+                              locales: locales)
+            }
+        }
+    }
+    
+    static func updateDescuento(descuento: Descuento, nombre: String, imagen: Dictionary<String, String>, locales: [String]?) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        descuento.setValue(nombre, forKey: "nombre")
+        descuento.setValue(imagen, forKey: "imagen")
+        
+        if let locals = locales {
+            descuento.setValue(locals, forKey: "locales")
+        } else {
+            descuento.setValue([], forKey: "locales")
+        }
+        
+        do {
+            try context.save()
+        } catch {
+            fatalError("failed to save context: \(error)")
+        }
+        
+    }
+    
+    static func saveDescuento(nombre: String, imagen: Dictionary<String, String>, locales: [String]?) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let descuento = NSEntityDescription.insertNewObject(forEntityName: "Descuento", into: context) as! Descuento
+        
+        descuento.setValue(nombre, forKey: "nombre")
+        descuento.setValue(imagen, forKey: "imagen")
+        
+        if let locals = locales {
+            descuento.setValue(locals, forKey: "locales")
+        } else {
+            descuento.setValue([], forKey: "locales")
+        }
+        
+        do {
+            try context.save()
+        } catch {
+            fatalError("failed to save context: \(error)")
+        }
+    }
+    
+    static func getCoreDescuentos() -> [Descuento]? {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Descuento")
+        do {
+            let result = try context.fetch(request) as? [Descuento]
+            return result
+        } catch {
+            fatalError("Can't fetch user: \(error)")
+        }
+    }
+    
+    static func descuentosListHasDescuento(name: String, descuentos: [Descuento]) -> Bool {
+        var found = false
+        for descuento in descuentos {
+            if descuento.nombre == name {
+                found = true
+                break
+            }
+        }
+        return found
+    }
+    
+    static func getDescuentoFromList(name: String, descuentos: [Descuento]) -> Descuento {
+        var descuentoFound = Descuento()
+        for descuento in descuentos {
+            if descuento.nombre == name {
+                descuentoFound = descuento
+                break
+            }
+        }
+        return descuentoFound
+    }
+    
 }

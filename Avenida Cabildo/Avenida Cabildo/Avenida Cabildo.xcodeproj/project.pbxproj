@@ -25,6 +25,7 @@
 		C11469151E1E90D5004AB55F /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11469141E1E90D5004AB55F /* PostCell.swift */; };
 		C11469161E1E90D5004AB55F /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11469141E1E90D5004AB55F /* PostCell.swift */; };
 		C11469171E1E90D5004AB55F /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11469141E1E90D5004AB55F /* PostCell.swift */; };
+		C11F87921E368CE600D2AD77 /* FiltroCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11F87911E368CE600D2AD77 /* FiltroCell.swift */; };
 		C124A04E1E28A4C600C2FAC0 /* LocalSelectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C124A04D1E28A4C600C2FAC0 /* LocalSelectedViewController.swift */; };
 		C13A399E1E35573400B285FA /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13A399D1E35573400B285FA /* FilterViewController.swift */; };
 		C149B8A71E1AFF00009FF600 /* FakeSplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C149B8A61E1AFF00009FF600 /* FakeSplashViewController.swift */; };
@@ -101,6 +102,8 @@
 		C114690B1E1E9057004AB55F /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		C11469101E1E90C5004AB55F /* PostCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostCell.xib; sourceTree = "<group>"; };
 		C11469141E1E90D5004AB55F /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		C11F87911E368CE600D2AD77 /* FiltroCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltroCell.swift; sourceTree = "<group>"; };
+		C11F87931E369AC600D2AD77 /* Avenida_Cabildo 9.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Avenida_Cabildo 9.xcdatamodel"; sourceTree = "<group>"; };
 		C124A04D1E28A4C600C2FAC0 /* LocalSelectedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalSelectedViewController.swift; sourceTree = "<group>"; };
 		C130F11B1E0DE19B007C4504 /* Avenida Cabildo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Avenida Cabildo.entitlements"; sourceTree = "<group>"; };
 		C13A399D1E35573400B285FA /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
@@ -200,6 +203,15 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		C11F87901E368CAA00D2AD77 /* Filtros */ = {
+			isa = PBXGroup;
+			children = (
+				C13A399D1E35573400B285FA /* FilterViewController.swift */,
+				C11F87911E368CE600D2AD77 /* FiltroCell.swift */,
+			);
+			name = Filtros;
+			sourceTree = "<group>";
+		};
 		C1772C571E0B571B00AD8ACC = {
 			isa = PBXGroup;
 			children = (
@@ -292,6 +304,7 @@
 		C1B4E9BE1E1480FF006660B5 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C11F87901E368CAA00D2AD77 /* Filtros */,
 				C1D60D641E2EBBB60035A762 /* Local Selected */,
 				C1772C631E0B571C00AD8ACC /* AppDelegate.swift */,
 				C1772C651E0B571C00AD8ACC /* Login.swift */,
@@ -310,7 +323,6 @@
 				C1509DBE1E217C0B00743DB4 /* FirebaseAPI.swift */,
 				C124A04D1E28A4C600C2FAC0 /* LocalSelectedViewController.swift */,
 				C1F0DD561E28E1B500BC369D /* ChangeCategoryTableViewController.swift */,
-				C13A399D1E35573400B285FA /* FilterViewController.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -686,6 +698,7 @@
 				C14CE7711E1C295000FCDF5D /* DataController.swift in Sources */,
 				C1FDD9791E16C3B300B59C13 /* Main.swift in Sources */,
 				C1F0DD571E28E1B500BC369D /* ChangeCategoryTableViewController.swift in Sources */,
+				C11F87921E368CE600D2AD77 /* FiltroCell.swift in Sources */,
 				C124A04E1E28A4C600C2FAC0 /* LocalSelectedViewController.swift in Sources */,
 				C1F0DD591E28E59700BC369D /* ChangeCategoryCell.swift in Sources */,
 				C13A399E1E35573400B285FA /* FilterViewController.swift in Sources */,
@@ -1015,6 +1028,7 @@
 		C1772C6A1E0B571C00AD8ACC /* Avenida_Cabildo.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				C11F87931E369AC600D2AD77 /* Avenida_Cabildo 9.xcdatamodel */,
 				C17168431E2FFD46008BA191 /* Avenida_Cabildo 8.xcdatamodel */,
 				C1CB33E61E2D563D00594C35 /* Avenida_Cabildo 7.xcdatamodel */,
 				C1B5A4D01E28353800DD65B5 /* Avenida_Cabildo 6.xcdatamodel */,
@@ -1024,7 +1038,7 @@
 				C1E9DD031E218F86005EDAC7 /* Avenida_Cabildo 2.xcdatamodel */,
 				C1772C6B1E0B571C00AD8ACC /* Avenida_Cabildo.xcdatamodel */,
 			);
-			currentVersion = C17168431E2FFD46008BA191 /* Avenida_Cabildo 8.xcdatamodel */;
+			currentVersion = C11F87931E369AC600D2AD77 /* Avenida_Cabildo 9.xcdatamodel */;
 			path = Avenida_Cabildo.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
