@@ -479,6 +479,14 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
         setTodosSelected()
     }
     
+    //MARK: - Nav
+    @IBAction func filterAction(_ sender: Any) {
+        let story = UIStoryboard(name: "Main", bundle: nil)
+        let vc = story.instantiateViewController(withIdentifier: "FilterViewController") as! FilterViewController
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    
     //MARK: - iPhone Size
     enum UIUserInterfaceIdiom : Int
     {

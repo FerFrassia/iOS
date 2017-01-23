@@ -26,6 +26,7 @@
 		C11469161E1E90D5004AB55F /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11469141E1E90D5004AB55F /* PostCell.swift */; };
 		C11469171E1E90D5004AB55F /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11469141E1E90D5004AB55F /* PostCell.swift */; };
 		C124A04E1E28A4C600C2FAC0 /* LocalSelectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C124A04D1E28A4C600C2FAC0 /* LocalSelectedViewController.swift */; };
+		C13A399E1E35573400B285FA /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13A399D1E35573400B285FA /* FilterViewController.swift */; };
 		C149B8A71E1AFF00009FF600 /* FakeSplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C149B8A61E1AFF00009FF600 /* FakeSplashViewController.swift */; };
 		C149B8A81E1AFF00009FF600 /* FakeSplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C149B8A61E1AFF00009FF600 /* FakeSplashViewController.swift */; };
 		C149B8A91E1AFF00009FF600 /* FakeSplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C149B8A61E1AFF00009FF600 /* FakeSplashViewController.swift */; };
@@ -57,6 +58,7 @@
 		C18725F11E26AFEB00D1A509 /* PromocionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C18725EF1E26AFEB00D1A509 /* PromocionCell.xib */; };
 		C1B5A4CD1E28084D00DD65B5 /* PromocionLocalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B5A4CC1E28084D00DD65B5 /* PromocionLocalView.swift */; };
 		C1B5A4CF1E28085D00DD65B5 /* PromocionLocalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1B5A4CE1E28085D00DD65B5 /* PromocionLocalView.xib */; };
+		C1BB1E7C1E329E3700058DD8 /* DetalleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BB1E7B1E329E3700058DD8 /* DetalleCell.swift */; };
 		C1D60D6A1E2EBC070035A762 /* BeneficiosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D60D691E2EBC070035A762 /* BeneficiosCell.swift */; };
 		C1F0DD571E28E1B500BC369D /* ChangeCategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F0DD561E28E1B500BC369D /* ChangeCategoryTableViewController.swift */; };
 		C1F0DD591E28E59700BC369D /* ChangeCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F0DD581E28E59700BC369D /* ChangeCategoryCell.swift */; };
@@ -101,6 +103,7 @@
 		C11469141E1E90D5004AB55F /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		C124A04D1E28A4C600C2FAC0 /* LocalSelectedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalSelectedViewController.swift; sourceTree = "<group>"; };
 		C130F11B1E0DE19B007C4504 /* Avenida Cabildo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Avenida Cabildo.entitlements"; sourceTree = "<group>"; };
+		C13A399D1E35573400B285FA /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		C149B8A61E1AFF00009FF600 /* FakeSplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FakeSplashViewController.swift; sourceTree = "<group>"; };
 		C149B8AA1E1B16A6009FF600 /* NavigationMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationMainViewController.swift; sourceTree = "<group>"; };
 		C14CE7691E1C277C00FCDF5D /* Avenida Cabildo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Avenida Cabildo-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -135,6 +138,7 @@
 		C1B5A4CC1E28084D00DD65B5 /* PromocionLocalView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromocionLocalView.swift; sourceTree = "<group>"; };
 		C1B5A4CE1E28085D00DD65B5 /* PromocionLocalView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PromocionLocalView.xib; sourceTree = "<group>"; };
 		C1B5A4D01E28353800DD65B5 /* Avenida_Cabildo 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Avenida_Cabildo 6.xcdatamodel"; sourceTree = "<group>"; };
+		C1BB1E7B1E329E3700058DD8 /* DetalleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetalleCell.swift; sourceTree = "<group>"; };
 		C1CB33E61E2D563D00594C35 /* Avenida_Cabildo 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Avenida_Cabildo 7.xcdatamodel"; sourceTree = "<group>"; };
 		C1D60D691E2EBC070035A762 /* BeneficiosCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeneficiosCell.swift; sourceTree = "<group>"; };
 		C1E9DD031E218F86005EDAC7 /* Avenida_Cabildo 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Avenida_Cabildo 2.xcdatamodel"; sourceTree = "<group>"; };
@@ -189,6 +193,7 @@
 		C114690F1E1E90AB004AB55F /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				C1BB1E7D1E329E3C00058DD8 /* Detalle */,
 				C18725F31E26B00300D1A509 /* Promocion Cell */,
 				C18725F21E26AFF300D1A509 /* Todos Cells */,
 			);
@@ -305,8 +310,17 @@
 				C1509DBE1E217C0B00743DB4 /* FirebaseAPI.swift */,
 				C124A04D1E28A4C600C2FAC0 /* LocalSelectedViewController.swift */,
 				C1F0DD561E28E1B500BC369D /* ChangeCategoryTableViewController.swift */,
+				C13A399D1E35573400B285FA /* FilterViewController.swift */,
 			);
 			name = Classes;
+			sourceTree = "<group>";
+		};
+		C1BB1E7D1E329E3C00058DD8 /* Detalle */ = {
+			isa = PBXGroup;
+			children = (
+				C1BB1E7B1E329E3700058DD8 /* DetalleCell.swift */,
+			);
+			name = Detalle;
 			sourceTree = "<group>";
 		};
 		C1D60D641E2EBBB60035A762 /* Local Selected */ = {
@@ -663,6 +677,7 @@
 				C10DFD401E1884DF00AED63A /* MenuTableViewCell.swift in Sources */,
 				C1B5A4CD1E28084D00DD65B5 /* PromocionLocalView.swift in Sources */,
 				C18725EA1E268AFD00D1A509 /* Local3.swift in Sources */,
+				C1BB1E7C1E329E3700058DD8 /* DetalleCell.swift in Sources */,
 				C153BD091E259ECC00C4BADE /* Local2.swift in Sources */,
 				C1FB0FAA1E1D960100750E74 /* PromocionesViewController.swift in Sources */,
 				C1D60D6A1E2EBC070035A762 /* BeneficiosCell.swift in Sources */,
@@ -673,6 +688,7 @@
 				C1F0DD571E28E1B500BC369D /* ChangeCategoryTableViewController.swift in Sources */,
 				C124A04E1E28A4C600C2FAC0 /* LocalSelectedViewController.swift in Sources */,
 				C1F0DD591E28E59700BC369D /* ChangeCategoryCell.swift in Sources */,
+				C13A399E1E35573400B285FA /* FilterViewController.swift in Sources */,
 				C149B8AB1E1B16A6009FF600 /* NavigationMainViewController.swift in Sources */,
 				C149B8A71E1AFF00009FF600 /* FakeSplashViewController.swift in Sources */,
 				C18725F01E26AFEB00D1A509 /* PromocionCell.swift in Sources */,
