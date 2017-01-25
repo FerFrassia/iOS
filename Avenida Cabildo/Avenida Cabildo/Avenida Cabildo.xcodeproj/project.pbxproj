@@ -114,6 +114,7 @@
 		C14CE76B1E1C277C00FCDF5D /* Avenida CabildoUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Avenida CabildoUITests-Bridging-Header.h"; sourceTree = "<group>"; };
 		C14CE7701E1C295000FCDF5D /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		C1509DBE1E217C0B00743DB4 /* FirebaseAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseAPI.swift; sourceTree = "<group>"; };
+		C1510A5E1E390C67004895A5 /* Avenida_Cabildo 10.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Avenida_Cabildo 10.xcdatamodel"; sourceTree = "<group>"; };
 		C153BD051E258ADB00C4BADE /* Local2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Local2.xib; sourceTree = "<group>"; };
 		C153BD071E25907900C4BADE /* Avenida_Cabildo 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Avenida_Cabildo 4.xcdatamodel"; sourceTree = "<group>"; };
 		C153BD081E259ECC00C4BADE /* Local2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Local2.swift; sourceTree = "<group>"; };
@@ -1028,6 +1029,7 @@
 		C1772C6A1E0B571C00AD8ACC /* Avenida_Cabildo.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				C1510A5E1E390C67004895A5 /* Avenida_Cabildo 10.xcdatamodel */,
 				C11F87931E369AC600D2AD77 /* Avenida_Cabildo 9.xcdatamodel */,
 				C17168431E2FFD46008BA191 /* Avenida_Cabildo 8.xcdatamodel */,
 				C1CB33E61E2D563D00594C35 /* Avenida_Cabildo 7.xcdatamodel */,
@@ -1038,7 +1040,7 @@
 				C1E9DD031E218F86005EDAC7 /* Avenida_Cabildo 2.xcdatamodel */,
 				C1772C6B1E0B571C00AD8ACC /* Avenida_Cabildo.xcdatamodel */,
 			);
-			currentVersion = C11F87931E369AC600D2AD77 /* Avenida_Cabildo 9.xcdatamodel */;
+			currentVersion = C1510A5E1E390C67004895A5 /* Avenida_Cabildo 10.xcdatamodel */;
 			path = Avenida_Cabildo.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

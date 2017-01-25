@@ -40,6 +40,7 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
         todosTableView.register(UINib(nibName: "Local3", bundle: Bundle.main), forCellReuseIdentifier: "Local3")
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.loadLocales), name: NSNotification.Name(rawValue: localesStoredOrUpdatedKey), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.loadLocales), name: NSNotification.Name(rawValue: filtersUpdatedKey), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -211,8 +212,85 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
     
     func loadLocales() {
         locales = FirebaseAPI.getCoreLocales()
+        filterLocales()
         orderLocales()
+//        checkLocalesEmpty()
         todosTableView.reloadData()
+    }
+    
+    func filterLocales() {
+        if FirebaseAPI.isFiltersActive() {
+            let porCategoria = localesMatchingCategoria()
+            let porDescuento = localesMatchingDescuentos()
+            let porNombre = localesMatchingName()
+            let porAbiertoAhora = localesMatchingAbiertoAhora()
+            let filtered = Array(Set(porCategoria + porDescuento + porNombre + porAbiertoAhora))
+            locales = filtered
+        }
+    }
+    
+    func localesMatchingCategoria() -> [Local] {
+        var filtered = [Local]()
+        if FirebaseAPI.isFiltersActive() {
+            for local in locales {
+                if FirebaseAPI.isFilterInFilters(filterName: local.categoria!) {
+                    filtered.append(local)
+                }
+            }
+        }
+        return filtered
+    }
+    
+    func localesMatchingDescuentos() -> [Local] {
+        var filtered = [Local]()
+        if FirebaseAPI.isFiltersActive() {
+            for local in locales {
+                if let descuentos = local.descuentos as? [String] {
+                    if FirebaseAPI.isFiltersInFilters(filtersToCheck: descuentos) {
+                        filtered.append(local)
+                    }
+                }
+            }
+        }
+        return filtered
+    }
+    
+    func localesMatchingName() -> [Local] {
+        var filtered = [Local]()
+        for local in locales {
+            if let nombre = local.nombre {
+                if FirebaseAPI.isNameInFiltersByName(name: nombre.lowercased()) {
+                    filtered.append(local)
+                }
+            }
+        }
+        return filtered
+    }
+    
+    func localesMatchingAbiertoAhora() -> [Local] {
+        var filtered = [Local]()
+        if FirebaseAPI.isFilterAbiertoAhoraActive() {
+            for local in locales {
+                if FirebaseAPI.isLocalOpenNow(local: local) {
+                    filtered.append(local)
+                }
+            }
+        }
+        return filtered
+    }
+    
+    func checkLocalesEmpty() {
+        if locales.count == 0 {
+            let alertController = UIAlertController(title: "", message: "No se encontraron locales para estos filtros", preferredStyle: UIAlertControllerStyle.alert)
+            
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
+            {
+                (result : UIAlertAction) -> Void in
+                
+            }
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
     
     func orderLocales() {

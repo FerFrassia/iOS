@@ -17,6 +17,8 @@ class FilterViewController: UIViewController, UIScrollViewDelegate, UITableViewD
     @IBOutlet weak var beneficiosButton: UIButton!
     @IBOutlet weak var categoriasTableView: UITableView!
     @IBOutlet weak var beneficiosTableView: UITableView!
+    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var abiertoAhoraSwitch: UISwitch!
     
     @IBOutlet weak var indicatorLeading: NSLayoutConstraint!
     
@@ -29,10 +31,27 @@ class FilterViewController: UIViewController, UIScrollViewDelegate, UITableViewD
         loadCategorias()
         loadDescuentos()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        setAbiertoSwitch()
+    }
+    
+    func setAbiertoSwitch() {
+        abiertoAhoraSwitch.setOn(FirebaseAPI.isFilterAbiertoAhoraActive(), animated: false)
+    }
 
     func loadCategorias() {
         if let cat = FirebaseAPI.getCoreCategorias() {
             categorias = cat
+            removeTodos()
+        }
+    }
+    
+    func removeTodos() {
+        for categoria in categorias {
+            if categoria.nombre == "Todos" {
+                categorias.remove(at: categorias.index(of: categoria)!)
+            }
         }
     }
     
@@ -43,7 +62,32 @@ class FilterViewController: UIViewController, UIScrollViewDelegate, UITableViewD
     }
     
     @IBAction func limpiarAction(_ sender: Any) {
+        FirebaseAPI.deleteFilters()
+        FirebaseAPI.unsetFilterByAbiertoAhora()
+        NotificationCenter.default.post(name: Notification.Name(rawValue: filtersUpdatedKey), object: nil)
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func aplicarAction(_ sender: Any) {
+        checkSearchTextField()
+        NotificationCenter.default.post(name: Notification.Name(rawValue: filtersUpdatedKey), object: nil)
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func abiertoAhoraAction(_ sender: Any) {
+        if abiertoAhoraSwitch.isOn {
+            FirebaseAPI.setFilterByAbiertoAhora()
+        } else {
+            FirebaseAPI.unsetFilterByAbiertoAhora()
+        }
+    }
+    
+    func checkSearchTextField() {
+        if let text = searchTextField.text {
+            if text != "" {
+                FirebaseAPI.setFilterByNameDefaults(localName: text.lowercased())
+            }
+        }
     }
     
     //MARK: - UIScrollViewDelegate
@@ -130,51 +174,116 @@ class FilterViewController: UIViewController, UIScrollViewDelegate, UITableViewD
         }
         
         if tableView == categoriasTableView {
-            let categoria = categorias[indexPath.row]
-        
-            cell.filtroLabel.text = categoria.nombre
             
-            if let iconDic = categoria.imagen as? Dictionary<String, String> {
-                let urlIcon = URL(string: iconDic[imageKey]!)
-                cell.filtroImg.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
-            }
+            let categoria = categorias[indexPath.row]
+            setCategoriaCellData(cell: cell, categoria: categoria, imageKey: imageKey)
+            setCategoriaCellDrawing(cell: cell, filterName: categoria.nombre!)
             
         } else {
+            
             let descuento = descuentos[indexPath.row]
-            
-            cell.filtroLabel.text = descuento.nombre
-            
-            if let iconDic = descuento.imagen as? Dictionary<String, String> {
-                let urlIcon = URL(string: iconDic[imageKey]!)
-                cell.filtroImg.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
-            }
+            setDescuentoCellData(cell: cell, descuento: descuento, imageKey: imageKey)
+            setDescuentoCellDrawing(cell: cell, filterName: descuento.nombre!)
         }
         
         return cell
     }
+    
+    func setCategoriaCellData(cell: FiltroCell, categoria: Categoria, imageKey: String) {
+        cell.filtroLabel.text = categoria.nombre
+        
+        if let iconDic = categoria.imagen as? Dictionary<String, String> {
+            let urlIcon = URL(string: iconDic[imageKey]!)
+            cell.filtroImg.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
+        }
+    }
+    
+    func setDescuentoCellData(cell: FiltroCell, descuento: Descuento, imageKey: String) {
+        cell.filtroLabel.text = descuento.nombre
+        
+        if let iconDic = descuento.imagen as? Dictionary<String, String> {
+            let urlIcon = URL(string: iconDic[imageKey]!)
+            cell.filtroImg.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
+        }
+    }
+    
+    func setCategoriaCellDrawing(cell: FiltroCell, filterName: String) {
+        if FirebaseAPI.isFilterInFilters(filterName: filterName) {
+            categoriaCellDrawSelected(cell: cell)
+        } else {
+            categoriaCellDrawUnselected(cell: cell)
+        }
+    }
+    
+    func setDescuentoCellDrawing(cell: FiltroCell, filterName: String) {
+        if FirebaseAPI.isFilterInFilters(filterName: filterName) {
+            descuentoCellDrawSelected(cell: cell)
+        } else {
+            descuentoCellDrawUnselected(cell: cell)
+        }
+    }
+    
+    func categoriaCellDrawSelected(cell: FiltroCell) {
+        let blueColor = UIColor(red: 35/255, green: 107/255, blue: 167/255, alpha: 1.0)
+        cell.filtroLabel.textColor = blueColor
+        cell.filtroLabel.font = UIFont(name: "HelveticaNeue-Medium", size: 17)
+        cell.filtroTick.isHidden = false
+        cell.filtroImg.image = cell.filtroImg.image?.withRenderingMode(.alwaysTemplate)
+        cell.filtroImg.tintColor = blueColor
+    }
+    
+    func categoriaCellDrawUnselected(cell: FiltroCell) {
+        cell.filtroLabel.textColor = .black
+        cell.filtroLabel.font = UIFont(name: "HelveticaNeue-Regular", size: 17)
+        cell.filtroTick.isHidden = true
+        cell.filtroImg.tintColor = .black
+    }
+    
+    func descuentoCellDrawSelected(cell: FiltroCell) {
+        let blueColor = UIColor(red: 35/255, green: 107/255, blue: 167/255, alpha: 1.0)
+        cell.filtroLabel.textColor = blueColor
+        cell.filtroLabel.font = UIFont(name: "HelveticaNeue-Medium", size: 17)
+        cell.filtroTick.isHidden = false
+    }
+    
+    func descuentoCellDrawUnselected(cell: FiltroCell) {
+        cell.filtroLabel.textColor = .black
+        cell.filtroLabel.font = UIFont(name: "HelveticaNeue-Regular", size: 17)
+        cell.filtroTick.isHidden = true
+    }
+    
     
     //MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! FiltroCell
         
         if cell.filtroTick.isHidden {
-            let blueColor = UIColor(red: 35/255, green: 107/255, blue: 167/255, alpha: 1.0)
-            cell.filtroLabel.textColor = blueColor
-            cell.filtroLabel.font = UIFont(name: "HelveticaNeue-Medium", size: 17)
             
+            var filterName = ""
             if tableView == categoriasTableView {
-                cell.filtroImg.image = cell.filtroImg.image?.withRenderingMode(.alwaysTemplate)
-                cell.filtroImg.tintColor = blueColor
+                let categoria = categorias[indexPath.row]
+                filterName = categoria.nombre!
+            } else {
+                let descuento = descuentos[indexPath.row]
+                filterName = descuento.nombre!
             }
             
-            cell.filtroTick.isHidden = false
+            FirebaseAPI.addFilterUniquelyToDefaults(filterName: filterName)
+            tableView.reloadRows(at: [indexPath], with: .none)
+            
         } else {
-            cell.filtroLabel.textColor = .black
-            cell.filtroLabel.font = UIFont(name: "HelveticaNeue-Regular", size: 17)
+            
+            var filterName = ""
             if tableView == categoriasTableView {
-                cell.filtroImg.tintColor = .black
+                let categoria = categorias[indexPath.row]
+                filterName = categoria.nombre!
+            } else {
+                let descuento = descuentos[indexPath.row]
+                filterName = descuento.nombre!
             }
-            cell.filtroTick.isHidden = true
+            
+            FirebaseAPI.removeFilterIfExistsFromDefaults(filterName: filterName)
+            tableView.reloadRows(at: [indexPath], with: .none)
         }
     }
     

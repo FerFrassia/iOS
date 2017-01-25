@@ -30,6 +30,16 @@ class ChangeCategoryTableViewController: UIViewController, UITableViewDataSource
     func loadCategorias() {
         if let cats = FirebaseAPI.getCoreCategorias() {
             categorias = cats
+            putTodosAtBeginning()
+        }
+    }
+    
+    func putTodosAtBeginning() {
+        for categoria in categorias {
+            if categoria.nombre == "Todos" {
+                categorias.remove(at: categorias.index(of: categoria)!)
+                categorias.insert(categoria, at: 0)
+            }
         }
     }
     

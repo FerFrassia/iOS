@@ -12,6 +12,7 @@ import CoreData
 import Firebase
 
 let localesStoredOrUpdatedKey = "localesStoredOrUpdatedKey"
+let filtersUpdatedKey = "filtersUpdatedKey"
 
 class FirebaseAPI: NSObject {
     
@@ -77,7 +78,8 @@ class FirebaseAPI: NSObject {
                               ubicacion: data["ubicacion"] as! String,
                               web: data["web"] as! String,
                               efectivo: data["efectivo"] as! String,
-                              visibilidad: data["visibilidad"] as! Int16)
+                              visibilidad: data["visibilidad"] as! Int16,
+                              horariosParaFiltro: data["horarios para filtro"] as! [String:AnyObject])
         }
         NotificationCenter.default.post(name: Notification.Name(rawValue: localesStoredOrUpdatedKey), object: nil)
     }
@@ -97,14 +99,15 @@ class FirebaseAPI: NSObject {
                            ubicacion: String,
                            web: String,
                            efectivo: String,
-                           visibilidad: Int16) {
+                           visibilidad: Int16,
+                           horariosParaFiltro: [String:AnyObject]) {
         
 
         let locales = getCoreLocales()
         if localesListHasLocal(name: nombre, locales: locales) {
-            updateLocal(local: getLocalFromList(localName: nombre, list: locales), categoria: categoria, descuentos: descuentos, detalleTexto: detalleTexto, direccion: direccion, facebook: facebook, horarios: horarios, imagenFondo: imagenFondo, imagenLogo: imagenLogo, instagram: instagram, mail: mail, nombre: nombre, telefono: telefono, ubicacion: ubicacion, web: web, efectivo: efectivo, visibilidad: visibilidad)
+            updateLocal(local: getLocalFromList(localName: nombre, list: locales), categoria: categoria, descuentos: descuentos, detalleTexto: detalleTexto, direccion: direccion, facebook: facebook, horarios: horarios, imagenFondo: imagenFondo, imagenLogo: imagenLogo, instagram: instagram, mail: mail, nombre: nombre, telefono: telefono, ubicacion: ubicacion, web: web, efectivo: efectivo, visibilidad: visibilidad, horariosParaFiltro: horariosParaFiltro)
         } else {
-            saveLocal(categoria: categoria, descuentos: descuentos, detalleTexto: detalleTexto, direccion: direccion, facebook: facebook, horarios: horarios, imagenFondo: imagenFondo, imagenLogo: imagenLogo, instagram: instagram, mail: mail, nombre: nombre, telefono: telefono, ubicacion: ubicacion, web: web, efectivo: efectivo, visibilidad: visibilidad)
+            saveLocal(categoria: categoria, descuentos: descuentos, detalleTexto: detalleTexto, direccion: direccion, facebook: facebook, horarios: horarios, imagenFondo: imagenFondo, imagenLogo: imagenLogo, instagram: instagram, mail: mail, nombre: nombre, telefono: telefono, ubicacion: ubicacion, web: web, efectivo: efectivo, visibilidad: visibilidad, horariosParaFiltro: horariosParaFiltro)
         }
     }
     
@@ -146,7 +149,8 @@ class FirebaseAPI: NSObject {
                             ubicacion: String,
                             web: String,
                             efectivo: String,
-                            visibilidad: Int16) {
+                            visibilidad: Int16,
+                            horariosParaFiltro: [String:AnyObject]) {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -173,6 +177,7 @@ class FirebaseAPI: NSObject {
         local.setValue(web, forKey: "web")
         local.setValue(efectivo, forKey: "efectivo")
         local.setValue(visibilidad, forKey: "visibilidad")
+        local.setValue(horariosParaFiltro, forKey: "horariosParaFiltro")
         
         do {
             try context.save()
@@ -197,7 +202,8 @@ class FirebaseAPI: NSObject {
                     ubicacion: String,
                     web: String,
                     efectivo: String,
-                    visibilidad: Int16) {
+                    visibilidad: Int16,
+                    horariosParaFiltro: [String:AnyObject]) {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -226,6 +232,7 @@ class FirebaseAPI: NSObject {
         local.setValue(web, forKey: "web")
         local.setValue(efectivo, forKey: "efectivo")
         local.setValue(visibilidad, forKey: "visibilidad")
+        local.setValue(horariosParaFiltro, forKey: "horariosParaFiltro")
         
         do {
             try context.save()
@@ -625,5 +632,157 @@ class FirebaseAPI: NSObject {
         }
         return descuentoFound
     }
+    
+    //MARK: - Filters by categoria and descuento
+    static func addFilterUniquelyToDefaults(filterName: String) {
+        var stored = self.getFiltersFromDefaults()
+        if !isFilterInFilters(filterName: filterName) {
+            stored.append(filterName)
+            UserDefaults.standard.set(stored, forKey: "filtrosTodos")
+        }
+    }
+    
+    static func removeFilterIfExistsFromDefaults(filterName: String) {
+        var stored = self.getFiltersFromDefaults()
+        for filter in stored {
+            if filter == filterName {
+                stored.remove(at: stored.index(of: filter)!)
+                break
+            }
+        }
+        UserDefaults.standard.set(stored, forKey: "filtrosTodos")
+    }
+    
+    static func deleteFilters() {
+        UserDefaults.standard.set([String](), forKey: "filtrosTodos")
+        UserDefaults.standard.set("", forKey: "filterLocalName")
+    }
+    
+    static func getFiltersFromDefaults() -> [String] {
+        if let filtros = UserDefaults.standard.array(forKey: "filtrosTodos") as? [String] {
+            return filtros
+        } else {
+            return [String]()
+        }
+    }
+    
+    static func isFilterInFilters(filterName: String) -> Bool {
+        let stored = self.getFiltersFromDefaults()
+        for filter in stored {
+            if filter == filterName {
+                return true
+            }
+        }
+        return false
+    }
+    
+    static func isFiltersInFilters(filtersToCheck: [String]) -> Bool {
+        let stored = self.getFiltersFromDefaults()
+        for filter in stored {
+            for filterToCheck in filtersToCheck {
+                if filter == filterToCheck {
+                    return true
+                }
+            }
+        }
+        return false
+    }
+    
+    static func isFiltersActive() -> Bool {
+        let stored = self.getFiltersFromDefaults()
+        let storedName = self.getFilterByNameDefaults()
+        let abiertoAhora = self.isFilterAbiertoAhoraActive()
+        return stored.count != 0 || storedName != "" || abiertoAhora
+    }
+    
+    //MARK: - Filter by name
+    static func setFilterByNameDefaults(localName: String) {
+        UserDefaults.standard.set(localName, forKey: "filterLocalName")
+    }
+    
+    static func getFilterByNameDefaults() -> String {
+        if let name = UserDefaults.standard.string(forKey: "filterLocalName") {
+            return name
+        } else {
+            return ""
+        }
+    }
+    
+    static func isNameInFiltersByName(name: String) -> Bool {
+        let saved = getFilterByNameDefaults()
+        return name == saved
+    }
+    
+    //MARK: - Filter by Abierto ahora
+    static func setFilterByAbiertoAhora() {
+        UserDefaults.standard.set(true, forKey: "filterAbiertoAhora")
+    }
+    
+    static func unsetFilterByAbiertoAhora() {
+        UserDefaults.standard.set(false, forKey: "filterAbiertoAhora")
+    }
+    
+    static func isFilterAbiertoAhoraActive() -> Bool {
+        return UserDefaults.standard.bool(forKey: "filterAbiertoAhora")
+    }
+    
+    static func isLocalOpenNow(local: Local) -> Bool {
+        let dia = getDayOfWeek()
+        let hora = getHour()
+        
+        if let horariosDic = local.horariosParaFiltro as? [String:AnyObject] {
+            if let diaDic = horariosDic[dia] as? [String:Int64] {
+                let abre = diaDic["abre"]!
+                let cierra = diaDic["cierra"]!
+                if abre < hora && hora < cierra {
+                    return true
+                } else {
+                    return false
+                }
+            }
+        }
+        return true
+    }
+    
+    //MARK: - Helpers
+    static func getDayOfWeek() -> String {
+        let date = Date()
+        let calendar = Calendar.current
+        let weekDay = calendar.component(.weekday, from: date)
+        switch weekDay {
+        case 1:
+            return "domingo"
+        case 2:
+            return "lunes"
+        case 3:
+            return "martes"
+        case 4:
+            return "miercoles"
+        case 5:
+            return "jueves"
+        case 6:
+            return "viernes"
+        case 7:
+            return "sabado"
+        default:
+            return "lunes"
+        }
+    }
+    
+    static func getHour() -> Int64 {
+        let date = Date()
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: date)
+        return Int64(hour)
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 }

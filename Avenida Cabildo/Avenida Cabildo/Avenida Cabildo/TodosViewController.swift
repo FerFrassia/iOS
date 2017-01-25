@@ -35,14 +35,46 @@ class TodosViewController: UITableViewController, IndicatorInfoProvider {
         
         tableView.allowsSelection = false
         
+        NotificationCenter.default.addObserver(self, selector: #selector(filtersChanged), name: NSNotification.Name(rawValue: "filtersUpdatedKey"), object: nil)
         
         loadLocales()
         loadFavoritos()
     }
     
+    func filtersChanged() {
+        loadLocales()
+        tableView.reloadData()
+    }
+    
     func loadLocales() {
         locales = FirebaseAPI.getCoreLocales()
         orderLocales()
+        filterLocales()
+        checkLocalesEmpty()
+    }
+    
+    func filterLocales() {
+        var filtered = [Local]()
+        for local in locales {
+            if FirebaseAPI.isFilterInFilters(filterName: local.categoria!) {
+                filtered.append(local)
+            }
+        }
+        locales = filtered
+    }
+    
+    func checkLocalesEmpty() {
+        if locales.count == 0 {
+            let alertController = UIAlertController(title: "", message: "No se encontraron locales para estos filtros", preferredStyle: UIAlertControllerStyle.alert)
+            
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
+            {
+                (result : UIAlertAction) -> Void in
+                
+            }
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
     
     func orderLocales() {
