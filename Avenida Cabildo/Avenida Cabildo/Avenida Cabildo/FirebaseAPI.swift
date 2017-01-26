@@ -13,6 +13,7 @@ import Firebase
 
 let localesStoredOrUpdatedKey = "localesStoredOrUpdatedKey"
 let filtersUpdatedKey = "filtersUpdatedKey"
+let promocionUpdatedKey = "promocionUpdatedKey"
 
 class FirebaseAPI: NSObject {
     
@@ -79,7 +80,8 @@ class FirebaseAPI: NSObject {
                               web: data["web"] as! String,
                               efectivo: data["efectivo"] as! String,
                               visibilidad: data["visibilidad"] as! Int16,
-                              horariosParaFiltro: data["horarios para filtro"] as! [String:AnyObject])
+                              horariosParaFiltro: data["horarios para filtro"] as! [String:AnyObject],
+                              enPromocion: data["en promocion"] as! Int16)
         }
         NotificationCenter.default.post(name: Notification.Name(rawValue: localesStoredOrUpdatedKey), object: nil)
     }
@@ -100,14 +102,15 @@ class FirebaseAPI: NSObject {
                            web: String,
                            efectivo: String,
                            visibilidad: Int16,
-                           horariosParaFiltro: [String:AnyObject]) {
+                           horariosParaFiltro: [String:AnyObject],
+                           enPromocion: Int16) {
         
 
         let locales = getCoreLocales()
         if localesListHasLocal(name: nombre, locales: locales) {
-            updateLocal(local: getLocalFromList(localName: nombre, list: locales), categoria: categoria, descuentos: descuentos, detalleTexto: detalleTexto, direccion: direccion, facebook: facebook, horarios: horarios, imagenFondo: imagenFondo, imagenLogo: imagenLogo, instagram: instagram, mail: mail, nombre: nombre, telefono: telefono, ubicacion: ubicacion, web: web, efectivo: efectivo, visibilidad: visibilidad, horariosParaFiltro: horariosParaFiltro)
+            updateLocal(local: getLocalFromList(localName: nombre, list: locales), categoria: categoria, descuentos: descuentos, detalleTexto: detalleTexto, direccion: direccion, facebook: facebook, horarios: horarios, imagenFondo: imagenFondo, imagenLogo: imagenLogo, instagram: instagram, mail: mail, nombre: nombre, telefono: telefono, ubicacion: ubicacion, web: web, efectivo: efectivo, visibilidad: visibilidad, horariosParaFiltro: horariosParaFiltro, enPromocion: enPromocion)
         } else {
-            saveLocal(categoria: categoria, descuentos: descuentos, detalleTexto: detalleTexto, direccion: direccion, facebook: facebook, horarios: horarios, imagenFondo: imagenFondo, imagenLogo: imagenLogo, instagram: instagram, mail: mail, nombre: nombre, telefono: telefono, ubicacion: ubicacion, web: web, efectivo: efectivo, visibilidad: visibilidad, horariosParaFiltro: horariosParaFiltro)
+            saveLocal(categoria: categoria, descuentos: descuentos, detalleTexto: detalleTexto, direccion: direccion, facebook: facebook, horarios: horarios, imagenFondo: imagenFondo, imagenLogo: imagenLogo, instagram: instagram, mail: mail, nombre: nombre, telefono: telefono, ubicacion: ubicacion, web: web, efectivo: efectivo, visibilidad: visibilidad, horariosParaFiltro: horariosParaFiltro, enPromocion: enPromocion)
         }
     }
     
@@ -150,7 +153,8 @@ class FirebaseAPI: NSObject {
                             web: String,
                             efectivo: String,
                             visibilidad: Int16,
-                            horariosParaFiltro: [String:AnyObject]) {
+                            horariosParaFiltro: [String:AnyObject],
+                            enPromocion: Int16) {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -178,6 +182,7 @@ class FirebaseAPI: NSObject {
         local.setValue(efectivo, forKey: "efectivo")
         local.setValue(visibilidad, forKey: "visibilidad")
         local.setValue(horariosParaFiltro, forKey: "horariosParaFiltro")
+        local.setValue(enPromocion, forKey: "enPromocion")
         
         do {
             try context.save()
@@ -203,7 +208,8 @@ class FirebaseAPI: NSObject {
                     web: String,
                     efectivo: String,
                     visibilidad: Int16,
-                    horariosParaFiltro: [String:AnyObject]) {
+                    horariosParaFiltro: [String:AnyObject],
+                    enPromocion: Int16) {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -233,6 +239,7 @@ class FirebaseAPI: NSObject {
         local.setValue(efectivo, forKey: "efectivo")
         local.setValue(visibilidad, forKey: "visibilidad")
         local.setValue(horariosParaFiltro, forKey: "horariosParaFiltro")
+        local.setValue(enPromocion, forKey: "enPromocion")
         
         do {
             try context.save()
@@ -252,25 +259,6 @@ class FirebaseAPI: NSObject {
             return result
         } catch {
             fatalError("Can't fetch user: \(error)")
-        }
-    }
-    
-    static func favorite(local: Local) {
-        
-    }
-    
-    static func unfavorite(local: Local) {
-        
-    }
-    
-    static func getFavorites() {
-        
-        FIRDatabase.database().reference().child("usuarios").child("").observeSingleEvent(of: .value, with: { (snap) in
-            if let snapDict = snap.value as? Dictionary<String, AnyObject> {
-                loadLocales(dic: snapDict)
-            }
-        }) { (error) in
-            print(error.localizedDescription)
         }
     }
     
@@ -306,21 +294,31 @@ class FirebaseAPI: NSObject {
         return getLocalFromList(localName: name, list: locales)
     }
     
-    //MARK: - User Firebase
+    //MARK: - Favoritos
+    static func addFavorite(name: String) {
+        addFavoriteToUserDefaults(name: name)
+        addFavoriteToUserFirebase(localName: name)
+    }
+    
+    static func removeFavorite(name: String) {
+        removeFavoriteFromUserDefaults(name: name)
+        removeFavoriteFromUserFirebase(localName: name)
+    }
+    
     static func addFavoriteToUserFirebase(localName: String) {
         let user = FIRAuth.auth()?.currentUser
         let firebaseID = user?.uid
         FIRDatabase.database().reference().child("usuarios").observeSingleEvent(of: .value, with: { (snap) in
-            if snap.hasChild(firebaseID!) {
-                //add favorite local to existing array
-                let userFavSnap = snap.childSnapshot(forPath: firebaseID!)
-                var userFavArray = userFavSnap.value as! [String]
-                userFavArray.append(localName)
-                FIRDatabase.database().reference().child("usuarios").child(firebaseID!).setValue(userFavArray)
-            } else {
-                //create user and add an array with the local
-                let favoritesArray = ["0": localName]
-                FIRDatabase.database().reference().child("usuarios").setValue([firebaseID!: favoritesArray])
+            if var usuariosDic = snap.value as? [String: [String]?] {
+                if var favoritesForUser = usuariosDic[firebaseID!] {
+                    favoritesForUser!.append(localName)
+                    usuariosDic[firebaseID!] = favoritesForUser
+                } else {
+                    let favoritesArray = [localName]
+                    usuariosDic[firebaseID!] = favoritesArray
+                }
+                FIRDatabase.database().reference().child("usuarios").setValue(usuariosDic)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: promocionUpdatedKey), object: nil)
             }
         }) { (error) in
             print(error.localizedDescription)
@@ -331,11 +329,12 @@ class FirebaseAPI: NSObject {
         let user = FIRAuth.auth()?.currentUser
         let firebaseID = user?.uid
         FIRDatabase.database().reference().child("usuarios").child(firebaseID!).observeSingleEvent(of: .value, with: { (snap) in
-            if var userFavArray = snap.value as? [String] {
-                if let localIndex = userFavArray.index(of: localName) {
-                    userFavArray.remove(at: localIndex)
+            if var favoritesForUser = snap.value as? [String] {
+                if let index = favoritesForUser.index(of: localName) {
+                    favoritesForUser.remove(at: index)
                 }
-                FIRDatabase.database().reference().child("usuarios").child(firebaseID!).setValue(userFavArray)
+                FIRDatabase.database().reference().child("usuarios").child(firebaseID!).setValue(favoritesForUser)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: promocionUpdatedKey), object: nil)
             }
             
         }) { (error) in
@@ -360,11 +359,64 @@ class FirebaseAPI: NSObject {
         }
     }
     
+    static func addFavoriteToUserDefaults(name: String) {
+        if var fav = UserDefaults.standard.array(forKey: "favoritos") as? [String] {
+            fav.append(name)
+            UserDefaults.standard.set(fav, forKey: "favoritos")
+        } else {
+            UserDefaults.standard.set([name], forKey: "favoritos")
+        }
+    }
+    
+    static func removeFavoriteFromUserDefaults(name: String) {
+        if var fav = UserDefaults.standard.array(forKey: "favoritos") as? [String] {
+            if let index = fav.index(of: name) {
+                fav.remove(at: index)
+                UserDefaults.standard.set(fav, forKey: "favoritos")
+            }
+        }
+    }
+    
     static func getFavoritesUserDefaults() -> [String] {
         if let fav = UserDefaults.standard.array(forKey: "favoritos") as? [String] {
             return fav
         } else {
             return [String]()
+        }
+    }
+    
+    static func getFavorites() {
+        
+        FIRDatabase.database().reference().child("usuarios").child("").observeSingleEvent(of: .value, with: { (snap) in
+            if let snapDict = snap.value as? Dictionary<String, AnyObject> {
+                loadLocales(dic: snapDict)
+            }
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
+    
+    static func getCoreFavorites() -> [Local] {
+        let locales = self.getCoreLocales()
+        let favoritos = self.getFavoritesUserDefaults()
+        
+        var localesFiltrados = [Local]()
+        for local in locales {
+            for favorito in favoritos {
+                if local.nombre == favorito {
+                    localesFiltrados.append(local)
+                }
+            }
+        }
+        return localesFiltrados
+    }
+    
+    static func isLocalFavorited(nombre: String) -> Bool {
+        let favoritos = self.getFavoritesUserDefaults()
+        if favoritos.index(of: nombre) != nil {
+            return true
+        } else {
+            return false
         }
     }
     
@@ -374,7 +426,22 @@ class FirebaseAPI: NSObject {
     }
     
     static func getSelectedUserDefaults() -> String {
-        return UserDefaults.standard.string(forKey: "selectedLocal")!
+        if let local = UserDefaults.standard.string(forKey: "selectedLocal") {
+            return local
+        } else {
+            return ""
+        }
+    }
+    
+    static func getSelectedUserDefaultsLocal() -> Local {
+        let selectedName = getSelectedUserDefaults()
+        let locales = getCoreLocales()
+        for local in locales {
+            if local.nombre == selectedName {
+                return local
+            }
+        }
+        return Local()
     }
     
     //MARK: - Categories
@@ -695,6 +762,20 @@ class FirebaseAPI: NSObject {
         return stored.count != 0 || storedName != "" || abiertoAhora
     }
     
+    static func isFiltersByCategoryOrDescuentoActive() -> Bool {
+        let stored = self.getFiltersFromDefaults()
+        return stored.count != 0
+    }
+    
+    static func isFilterByNameActive() -> Bool {
+        let storedName = self.getFilterByNameDefaults()
+        return storedName != ""
+    }
+    
+    static func isFilterAbiertoAhoraActive() -> Bool {
+        return UserDefaults.standard.bool(forKey: "filterAbiertoAhora")
+    }
+    
     //MARK: - Filter by name
     static func setFilterByNameDefaults(localName: String) {
         UserDefaults.standard.set(localName, forKey: "filterLocalName")
@@ -720,10 +801,6 @@ class FirebaseAPI: NSObject {
     
     static func unsetFilterByAbiertoAhora() {
         UserDefaults.standard.set(false, forKey: "filterAbiertoAhora")
-    }
-    
-    static func isFilterAbiertoAhoraActive() -> Bool {
-        return UserDefaults.standard.bool(forKey: "filterAbiertoAhora")
     }
     
     static func isLocalOpenNow(local: Local) -> Bool {

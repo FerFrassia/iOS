@@ -10,6 +10,7 @@
 		265175BF155D4549438E76CB /* Pods_Avenida_CabildoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A881C6F25ACE70CEBA6A524 /* Pods_Avenida_CabildoUITests.framework */; };
 		286B22D635000F27E18D695F /* Pods_Avenida_Cabildo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1A7BB8E7088E0856E3B8CAB /* Pods_Avenida_Cabildo.framework */; };
 		694DA998C7B409DADAC97838 /* Pods_Avenida_CabildoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0CD66207A7AC1A706994EE5 /* Pods_Avenida_CabildoTests.framework */; };
+		C105ADFD1E3A5101006CED03 /* FavoritosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C105ADFC1E3A5101006CED03 /* FavoritosViewController.swift */; };
 		C10DFD381E18790500AED63A /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DFD371E18790500AED63A /* MenuTableViewController.swift */; };
 		C10DFD391E18790500AED63A /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DFD371E18790500AED63A /* MenuTableViewController.swift */; };
 		C10DFD3A1E18790500AED63A /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10DFD371E18790500AED63A /* MenuTableViewController.swift */; };
@@ -97,6 +98,7 @@
 		8FBA574B6B913E47F8DB4771 /* Pods-Avenida Cabildo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Avenida Cabildo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Avenida Cabildo/Pods-Avenida Cabildo.release.xcconfig"; sourceTree = "<group>"; };
 		9CF5AF5D91EC27A701F30F99 /* Pods-Avenida Cabildo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Avenida Cabildo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Avenida Cabildo/Pods-Avenida Cabildo.debug.xcconfig"; sourceTree = "<group>"; };
 		AAD0D3F3FB1FAD363D8D1C2B /* Pods-Avenida CabildoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Avenida CabildoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Avenida CabildoUITests/Pods-Avenida CabildoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C105ADFC1E3A5101006CED03 /* FavoritosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritosViewController.swift; sourceTree = "<group>"; };
 		C10DFD371E18790500AED63A /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		C10DFD3F1E1884DF00AED63A /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		C114690B1E1E9057004AB55F /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 		C1B5A4CE1E28085D00DD65B5 /* PromocionLocalView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PromocionLocalView.xib; sourceTree = "<group>"; };
 		C1B5A4D01E28353800DD65B5 /* Avenida_Cabildo 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Avenida_Cabildo 6.xcdatamodel"; sourceTree = "<group>"; };
 		C1BB1E7B1E329E3700058DD8 /* DetalleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetalleCell.swift; sourceTree = "<group>"; };
+		C1C2F8841E3A9945004FD731 /* Avenida_Cabildo 11.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Avenida_Cabildo 11.xcdatamodel"; sourceTree = "<group>"; };
 		C1CB33E61E2D563D00594C35 /* Avenida_Cabildo 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Avenida_Cabildo 7.xcdatamodel"; sourceTree = "<group>"; };
 		C1D60D691E2EBC070035A762 /* BeneficiosCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeneficiosCell.swift; sourceTree = "<group>"; };
 		C1E9DD031E218F86005EDAC7 /* Avenida_Cabildo 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Avenida_Cabildo 2.xcdatamodel"; sourceTree = "<group>"; };
@@ -192,6 +195,14 @@
 				5A881C6F25ACE70CEBA6A524 /* Pods_Avenida_CabildoUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C105ADFB1E3A50E5006CED03 /* Favoritos */ = {
+			isa = PBXGroup;
+			children = (
+				C105ADFC1E3A5101006CED03 /* FavoritosViewController.swift */,
+			);
+			name = Favoritos;
 			sourceTree = "<group>";
 		};
 		C114690F1E1E90AB004AB55F /* Cells */ = {
@@ -305,6 +316,7 @@
 		C1B4E9BE1E1480FF006660B5 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C105ADFB1E3A50E5006CED03 /* Favoritos */,
 				C11F87901E368CAA00D2AD77 /* Filtros */,
 				C1D60D641E2EBBB60035A762 /* Local Selected */,
 				C1772C631E0B571C00AD8ACC /* AppDelegate.swift */,
@@ -689,6 +701,7 @@
 				C1772C661E0B571C00AD8ACC /* Login.swift in Sources */,
 				C10DFD401E1884DF00AED63A /* MenuTableViewCell.swift in Sources */,
 				C1B5A4CD1E28084D00DD65B5 /* PromocionLocalView.swift in Sources */,
+				C105ADFD1E3A5101006CED03 /* FavoritosViewController.swift in Sources */,
 				C18725EA1E268AFD00D1A509 /* Local3.swift in Sources */,
 				C1BB1E7C1E329E3700058DD8 /* DetalleCell.swift in Sources */,
 				C153BD091E259ECC00C4BADE /* Local2.swift in Sources */,
@@ -1029,6 +1042,7 @@
 		C1772C6A1E0B571C00AD8ACC /* Avenida_Cabildo.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				C1C2F8841E3A9945004FD731 /* Avenida_Cabildo 11.xcdatamodel */,
 				C1510A5E1E390C67004895A5 /* Avenida_Cabildo 10.xcdatamodel */,
 				C11F87931E369AC600D2AD77 /* Avenida_Cabildo 9.xcdatamodel */,
 				C17168431E2FFD46008BA191 /* Avenida_Cabildo 8.xcdatamodel */,
@@ -1040,7 +1054,7 @@
 				C1E9DD031E218F86005EDAC7 /* Avenida_Cabildo 2.xcdatamodel */,
 				C1772C6B1E0B571C00AD8ACC /* Avenida_Cabildo.xcdatamodel */,
 			);
-			currentVersion = C1510A5E1E390C67004895A5 /* Avenida_Cabildo 10.xcdatamodel */;
+			currentVersion = C1C2F8841E3A9945004FD731 /* Avenida_Cabildo 11.xcdatamodel */;
 			path = Avenida_Cabildo.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

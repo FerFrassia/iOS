@@ -68,12 +68,12 @@ class LocalSelectedViewController: UIViewController, UIScrollViewDelegate, UITab
         localDiscount.text = "\(selectedLocal.efectivo!) DESCUENTO"
         
         loadDetalle()
+        setLocalFavorite()
         super.viewWillAppear(true)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func setLocalFavorite() {
+        localFavorite.isSelected = FirebaseAPI.isLocalFavorited(nombre: selectedLocal.nombre!)
     }
     
     //MARK: -UIScrollViewDelegate
@@ -255,6 +255,17 @@ class LocalSelectedViewController: UIViewController, UIScrollViewDelegate, UITab
     }
     
     @IBAction func facebookAction(_ sender: Any) {
+    }
+    
+    @IBAction func favoriteAction(_ sender: Any) {
+        if let name = selectedLocal.nombre {
+            if localFavorite.isSelected {
+                FirebaseAPI.removeFavorite(name: name)
+            } else {
+                FirebaseAPI.addFavorite(name: name)
+            }
+            localFavorite.isSelected = !localFavorite.isSelected
+        }
     }
     
     func configureCellDetalle(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {

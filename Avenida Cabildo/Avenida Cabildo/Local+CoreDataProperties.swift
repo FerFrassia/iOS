@@ -34,5 +34,6 @@ extension Local {
     @NSManaged public var visibilidad: Int16
     @NSManaged public var web: String?
     @NSManaged public var horariosParaFiltro: NSObject?
+    @NSManaged public var enPromocion: Int16
 
 }

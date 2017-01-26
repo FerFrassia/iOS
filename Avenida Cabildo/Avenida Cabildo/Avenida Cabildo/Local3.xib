@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -94,6 +94,9 @@
                         <rect key="frame" x="384" y="170" width="20" height="20"/>
                         <state key="normal" backgroundImage="Star No Favorito"/>
                         <state key="selected" backgroundImage="Star Favorito"/>
+                        <connections>
+                            <action selector="favoritePressedWithSender:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="vt7-Xt-Rzi"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>

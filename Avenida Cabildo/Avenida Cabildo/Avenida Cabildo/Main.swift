@@ -41,12 +41,31 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.loadLocales), name: NSNotification.Name(rawValue: localesStoredOrUpdatedKey), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.loadLocales), name: NSNotification.Name(rawValue: filtersUpdatedKey), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.redrawPromocionFavorite), name: NSNotification.Name(rawValue: promocionUpdatedKey), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        loadEnPromocion()
         loadFavoritos()
+        redrawSelectedLocal()
+        loadEnPromocion()
         loadPromocionSelected()
+    }
+    
+    func redrawSelectedLocal() {
+        let selectedName = FirebaseAPI.getSelectedUserDefaults()
+        var index = -1
+        for var i in 0..<locales.count {
+            let local = locales[i]
+            if local.nombre == selectedName {
+                index = i
+                break
+            }
+        }
+        
+        if index != -1 {
+            todosTableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .none)
+        }
+        
     }
     
     func setNavBar() {
@@ -104,6 +123,11 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
     func loadPromocionSelected() {
         promocionSelectedName = FirebaseAPI.getCategoriaSelectedNombre()
         promocionSelectedImage = FirebaseAPI.getCategoriaSelectedImage()
+    }
+    
+    func redrawPromocionFavorite() {
+        loadFavoritos()
+        promocionesTableView.reloadData()
     }
     
     func cellPromocion(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
@@ -182,9 +206,7 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
                 localView.localName.text = local.nombre
                 localView.localAddress.text = local.direccion
                 
-                if isLocal(local: local.nombre!, locales: favoritos) {
-                    localView.localFavorite.isSelected = true
-                }
+                localView.localFavorite.isSelected = isLocal(local: local.nombre!, locales: favoritos)
                 
                 localView.localVerMas.layer.cornerRadius = 15
                 
@@ -214,18 +236,22 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
         locales = FirebaseAPI.getCoreLocales()
         filterLocales()
         orderLocales()
-//        checkLocalesEmpty()
         todosTableView.reloadData()
     }
     
     func filterLocales() {
         if FirebaseAPI.isFiltersActive() {
-            let porCategoria = localesMatchingCategoria()
-            let porDescuento = localesMatchingDescuentos()
-            let porNombre = localesMatchingName()
-            let porAbiertoAhora = localesMatchingAbiertoAhora()
-            let filtered = Array(Set(porCategoria + porDescuento + porNombre + porAbiertoAhora))
-            locales = filtered
+            var filtered = [Local]()
+            if FirebaseAPI.isFiltersByCategoryOrDescuentoActive() || FirebaseAPI.isFilterByNameActive() {
+                let porCategoria = localesMatchingCategoria()
+                let porDescuento = localesMatchingDescuentos()
+                let porNombre = localesMatchingName()
+                filtered = Array(Set(porCategoria + porDescuento + porNombre))
+            } else {
+                filtered = FirebaseAPI.getCoreLocales()
+            }
+            let filteredPorAbiertoAhora = localesMatchingAbiertoAhora(localesToFilter: filtered)
+            locales = filteredPorAbiertoAhora
         }
     }
     
@@ -267,16 +293,18 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
         return filtered
     }
     
-    func localesMatchingAbiertoAhora() -> [Local] {
-        var filtered = [Local]()
+    func localesMatchingAbiertoAhora(localesToFilter: [Local]) -> [Local] {
         if FirebaseAPI.isFilterAbiertoAhoraActive() {
-            for local in locales {
+            var filtered = [Local]()
+            for local in localesToFilter {
                 if FirebaseAPI.isLocalOpenNow(local: local) {
                     filtered.append(local)
                 }
             }
+            return filtered
+        } else {
+            return localesToFilter
         }
-        return filtered
     }
     
     func checkLocalesEmpty() {
@@ -343,10 +371,7 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
         let url = URL(string: local.imagenLogo!)
         cell.localImage.sd_setImage(with: url, placeholderImage: UIImage(named: "Image Not Available"))
         
-        
-        if isLocal(local: local.nombre!, locales: favoritos) {
-            cell.localFavorite.isSelected = true
-        }
+        cell.localFavorite.isSelected = isLocal(local: local.nombre!, locales: favoritos)
         
         return cell
     }
@@ -365,9 +390,7 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
         let urlFondo = URL(string: local.imagenFondo!)
         cell.localBackgroundImage.sd_setImage(with: urlFondo, placeholderImage: UIImage(named: "Image Not Available"))
         
-        if isLocal(local: local.nombre!, locales: favoritos) {
-            cell.localFavorite.isSelected = true
-        }
+        cell.localFavorite.isSelected = isLocal(local: local.nombre!, locales: favoritos)
         
         let shareWhite = UIImage(named: "Share")?.withRenderingMode(.alwaysTemplate)
         cell.localShare.setBackgroundImage(shareWhite, for: .normal)
@@ -408,9 +431,7 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
             cell.localDescuento.image = UIImage(named: imageName)
         }
         
-        if isLocal(local: local.nombre!, locales: favoritos) {
-            cell.localFavorite.isSelected = true
-        }
+        cell.localFavorite.isSelected = isLocal(local: local.nombre!, locales: favoritos)
         
         let shareWhite = UIImage(named: "Share")?.withRenderingMode(.alwaysTemplate)
         cell.localShare.setBackgroundImage(shareWhite, for: .normal)
@@ -421,11 +442,7 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
     
     // MARK: - UITableViewDataSource
     func numberOfSections(in tableView: UITableView) -> Int {
-        if tableView == promocionesTableView {
-            return 1
-        } else {
-            return 1
-        }
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

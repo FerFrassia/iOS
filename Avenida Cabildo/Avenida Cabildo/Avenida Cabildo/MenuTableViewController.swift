@@ -13,7 +13,6 @@ import FBSDKLoginKit
 
 class MenuTableViewController: UITableViewController {
 
-    @IBOutlet weak var ArrowMenu: UIImageView!
     @IBOutlet weak var profilePic: UIImageView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userEmail: UILabel!
@@ -23,7 +22,6 @@ class MenuTableViewController: UITableViewController {
 
         self.tableView.backgroundView = UIImageView(image: UIImage(named: "Login Background"))
         
-        ArrowMenu.image = UIImage(named: "Arrow Menu")?.withRenderingMode(.alwaysTemplate)
         setProfilePicture()
         setFBName()
         setFBEmail()
@@ -54,7 +52,7 @@ class MenuTableViewController: UITableViewController {
     
     func getUserPicture() {
         if let userID = UserDefaults.standard.string(forKey: "fbToken") {
-            let fbProfileString = "https://graph.facebook.com/\(userID)/picture?type=square"
+            let fbProfileString = "https://graph.facebook.com/\(userID)/picture?type=large"
             let url = URL(string: fbProfileString)
             profilePic.sd_setImage(with: url, placeholderImage: UIImage(named: "Profile Pic Placeholder"))
         }
@@ -104,16 +102,22 @@ class MenuTableViewController: UITableViewController {
             cell.cellImage.image = UIImage(named: "Cerrar Menu")
         }
         
-
+        cell.selectionStyle = .none
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            
+            openFavorites()
         } else {
             logOutAll()
         }
+    }
+    
+    func openFavorites() {
+        let story = UIStoryboard(name: "Main", bundle: nil)
+        let vc = story.instantiateViewController(withIdentifier: "FavoritosViewController") as! FavoritosViewController
+        self.present(vc, animated: true, completion: nil)
     }
     
     func logOutAll() {

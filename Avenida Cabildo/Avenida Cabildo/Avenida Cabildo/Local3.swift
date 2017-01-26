@@ -26,11 +26,11 @@ class Local3: UITableViewCell {
     @IBAction func favoritePressed(sender: UIButton) {
         if localFavorite.isSelected {
             //need to unfavorite
-            FirebaseAPI.removeFavoriteFromUserFirebase(localName: (localName.text)!)
+            FirebaseAPI.removeFavorite(name: (localName.text)!)
             localFavorite.isSelected = false
         } else {
             //need to favorite
-            FirebaseAPI.addFavoriteToUserFirebase(localName: (localName.text)!)
+            FirebaseAPI.addFavorite(name: (localName.text)!)
             localFavorite.isSelected = true
         }
     }

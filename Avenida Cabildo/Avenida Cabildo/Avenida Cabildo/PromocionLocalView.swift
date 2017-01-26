@@ -22,12 +22,12 @@ class PromocionLocalView: UIView {
     @IBAction func favoritePressed(sender: UIButton) {
         if localFavorite.isSelected {
             //need to unfavorite
-            FirebaseAPI.removeFavoriteFromUserFirebase(localName: (localName.text)!)
             localFavorite.isSelected = false
+            FirebaseAPI.removeFavorite(name: (localName.text)!)
         } else {
             //need to favorite
-            FirebaseAPI.addFavoriteToUserFirebase(localName: (localName.text)!)
             localFavorite.isSelected = true
+            FirebaseAPI.addFavorite(name: (localName.text)!)
         }
     }
     
