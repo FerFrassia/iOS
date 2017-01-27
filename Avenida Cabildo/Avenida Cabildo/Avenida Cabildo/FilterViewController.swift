@@ -21,6 +21,7 @@ class FilterViewController: UIViewController, UIScrollViewDelegate, UITableViewD
     @IBOutlet weak var abiertoAhoraSwitch: UISwitch!
     
     @IBOutlet weak var indicatorLeading: NSLayoutConstraint!
+    @IBOutlet weak var indicatorTrailing: NSLayoutConstraint!
     
     var categorias = [Categoria]()
     var descuentos = [Descuento]()
@@ -117,15 +118,25 @@ class FilterViewController: UIViewController, UIScrollViewDelegate, UITableViewD
     }
     
     func setCategoriasSelected() {
+        setCategoriasSelectedFont()
+        indicatorLeading.isActive = true
+        indicatorTrailing.isActive = false
+    }
+    
+    func setCategoriasSelectedFont() {
         categoriasButton.titleLabel!.font = UIFont(name: "HelveticaNeue-Medium", size: 17)
         beneficiosButton.titleLabel!.font = UIFont(name: "HelveticaNeue-Light", size: 15)
-        indicatorLeading.constant = 0
     }
     
     func setBeneficiosSelected() {
+        setBeneficiosSelectedFont()
+        indicatorLeading.isActive = false
+        indicatorTrailing.isActive = true
+    }
+    
+    func setBeneficiosSelectedFont() {
         beneficiosButton.titleLabel!.font = UIFont(name: "HelveticaNeue-Medium", size: 17)
         categoriasButton.titleLabel!.font = UIFont(name: "HelveticaNeue-Light", size: 15)
-        indicatorLeading.constant = self.view.frame.width/2
     }
     
     @IBAction func categoriasAction(_ sender: Any) {
@@ -135,9 +146,8 @@ class FilterViewController: UIViewController, UIScrollViewDelegate, UITableViewD
             horizontalScroll.setContentOffset(CGPoint(x: x, y: 0), animated: true)
         }
         horizontalScroll.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-        setCategoriasSelected()
+        setCategoriasSelectedFont()
     }
-    
     
     @IBAction func beneficiosAction(_ sender: Any) {
         var x = CGFloat(0)
@@ -146,7 +156,7 @@ class FilterViewController: UIViewController, UIScrollViewDelegate, UITableViewD
             horizontalScroll.setContentOffset(CGPoint(x: x, y: 0), animated: true)
         }
         horizontalScroll.setContentOffset(CGPoint(x: self.view.frame.width, y: 0), animated: true)
-        setBeneficiosSelected()
+        setBeneficiosSelectedFont()
     }
     
     //MARK: - UITableViewDataSource

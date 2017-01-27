@@ -827,6 +827,7 @@ todo lo que estás buscando</string>
                                     </view>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="ULL-yI-44d" secondAttribute="trailing" id="7Zi-RD-R3r"/>
                                     <constraint firstItem="7hy-ky-leu" firstAttribute="width" secondItem="5GM-rK-Rhs" secondAttribute="width" multiplier="0.5" id="HDI-Ov-yu3"/>
                                     <constraint firstAttribute="bottom" secondItem="7hy-ky-leu" secondAttribute="bottom" id="HKN-vB-dNZ"/>
                                     <constraint firstAttribute="bottom" secondItem="uZu-ML-xHO" secondAttribute="bottom" id="IfT-M6-d8F"/>
@@ -840,6 +841,11 @@ todo lo que estás buscando</string>
                                     <constraint firstItem="uZu-ML-xHO" firstAttribute="width" secondItem="7hy-ky-leu" secondAttribute="width" id="oxD-dp-hcR"/>
                                     <constraint firstAttribute="trailing" secondItem="uZu-ML-xHO" secondAttribute="trailing" id="yr9-lf-E8i"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="7Zi-RD-R3r"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -866,6 +872,7 @@ todo lo que estás buscando</string>
                         <outlet property="categoriasTableView" destination="dR7-uP-UlB" id="9WV-H6-PBu"/>
                         <outlet property="horizontalScroll" destination="6Za-Zg-bkX" id="5zh-Dh-QKm"/>
                         <outlet property="indicatorLeading" destination="LG7-UA-pvV" id="Zst-kP-edT"/>
+                        <outlet property="indicatorTrailing" destination="7Zi-RD-R3r" id="TTG-eJ-9r9"/>
                         <outlet property="scrollIndicator" destination="ULL-yI-44d" id="f9A-6a-nSV"/>
                         <outlet property="searchTextField" destination="RR5-5A-TxW" id="3Eu-wu-uUH"/>
                     </connections>
@@ -963,6 +970,9 @@ todo lo que estás buscando</string>
                                                         <rect key="frame" x="324" y="16" width="25" height="25"/>
                                                         <state key="normal" backgroundImage="Share"/>
                                                         <state key="selected" backgroundImage="Star Favorito"/>
+                                                        <connections>
+                                                            <action selector="sharePressedWithSender:" destination="Lz1-0L-FN7" eventType="touchUpInside" id="Hz8-Oq-8oR"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H8b-nk-40F">
                                                         <rect key="frame" x="369" y="16" width="25" height="25"/>

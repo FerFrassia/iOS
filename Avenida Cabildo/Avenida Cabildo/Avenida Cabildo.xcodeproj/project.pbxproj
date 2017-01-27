@@ -64,6 +64,8 @@
 		C1D60D6A1E2EBC070035A762 /* BeneficiosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D60D691E2EBC070035A762 /* BeneficiosCell.swift */; };
 		C1F0DD571E28E1B500BC369D /* ChangeCategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F0DD561E28E1B500BC369D /* ChangeCategoryTableViewController.swift */; };
 		C1F0DD591E28E59700BC369D /* ChangeCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F0DD581E28E59700BC369D /* ChangeCategoryCell.swift */; };
+		C1F702FD1E3BE362009D3857 /* ShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1F702FC1E3BE362009D3857 /* ShareView.xib */; };
+		C1F702FF1E3BE371009D3857 /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F702FE1E3BE371009D3857 /* ShareView.swift */; };
 		C1FB0FAA1E1D960100750E74 /* PromocionesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FB0FA91E1D960100750E74 /* PromocionesViewController.swift */; };
 		C1FB0FAB1E1D960100750E74 /* PromocionesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FB0FA91E1D960100750E74 /* PromocionesViewController.swift */; };
 		C1FB0FAC1E1D960100750E74 /* PromocionesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FB0FA91E1D960100750E74 /* PromocionesViewController.swift */; };
@@ -152,6 +154,8 @@
 		C1E9DD041E21CB01005EDAC7 /* Avenida_Cabildo 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Avenida_Cabildo 3.xcdatamodel"; sourceTree = "<group>"; };
 		C1F0DD561E28E1B500BC369D /* ChangeCategoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeCategoryTableViewController.swift; sourceTree = "<group>"; };
 		C1F0DD581E28E59700BC369D /* ChangeCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeCategoryCell.swift; sourceTree = "<group>"; };
+		C1F702FC1E3BE362009D3857 /* ShareView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareView.xib; sourceTree = "<group>"; };
+		C1F702FE1E3BE371009D3857 /* ShareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
 		C1FB0FA91E1D960100750E74 /* PromocionesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromocionesViewController.swift; sourceTree = "<group>"; };
 		C1FB0FAD1E1D961500750E74 /* TodosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodosViewController.swift; sourceTree = "<group>"; };
 		C1FDD9781E16C3B300B59C13 /* Main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
@@ -249,6 +253,7 @@
 		C1772C621E0B571C00AD8ACC /* Avenida Cabildo */ = {
 			isa = PBXGroup;
 			children = (
+				C1F702FB1E3BE309009D3857 /* Share */,
 				C114690F1E1E90AB004AB55F /* Cells */,
 				C1EEA0061E11A33D008C1E8D /* Storyboards */,
 				C1B4E9BE1E1480FF006660B5 /* Classes */,
@@ -378,6 +383,15 @@
 				C1772C671E0B571C00AD8ACC /* Main.storyboard */,
 			);
 			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		C1F702FB1E3BE309009D3857 /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				C1F702FC1E3BE362009D3857 /* ShareView.xib */,
+				C1F702FE1E3BE371009D3857 /* ShareView.swift */,
+			);
+			name = Share;
 			sourceTree = "<group>";
 		};
 		DC114426B2C3C1291A27DC57 /* Pods */ = {
@@ -528,6 +542,7 @@
 				C11469111E1E90C5004AB55F /* PostCell.xib in Resources */,
 				C1772C6E1E0B571C00AD8ACC /* Assets.xcassets in Resources */,
 				C153BD061E258ADB00C4BADE /* Local2.xib in Resources */,
+				C1F702FD1E3BE362009D3857 /* ShareView.xib in Resources */,
 				C1772C691E0B571C00AD8ACC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -719,6 +734,7 @@
 				C149B8AB1E1B16A6009FF600 /* NavigationMainViewController.swift in Sources */,
 				C149B8A71E1AFF00009FF600 /* FakeSplashViewController.swift in Sources */,
 				C18725F01E26AFEB00D1A509 /* PromocionCell.swift in Sources */,
+				C1F702FF1E3BE371009D3857 /* ShareView.swift in Sources */,
 				C1772C641E0B571C00AD8ACC /* AppDelegate.swift in Sources */,
 				C1509DBF1E217C0B00743DB4 /* FirebaseAPI.swift in Sources */,
 			);

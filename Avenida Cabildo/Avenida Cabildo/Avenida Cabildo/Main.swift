@@ -13,7 +13,7 @@ import SWRevealViewController
 import GoogleMaps
 import CoreData
 
-class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
+class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var promocionesTableView: UITableView!
     @IBOutlet weak var todosTableView: UITableView!
@@ -42,6 +42,7 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
         NotificationCenter.default.addObserver(self, selector: #selector(self.loadLocales), name: NSNotification.Name(rawValue: localesStoredOrUpdatedKey), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.loadLocales), name: NSNotification.Name(rawValue: filtersUpdatedKey), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.redrawPromocionFavorite), name: NSNotification.Name(rawValue: promocionUpdatedKey), object: nil)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -580,7 +581,6 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
         let vc = story.instantiateViewController(withIdentifier: "FilterViewController") as! FilterViewController
         self.present(vc, animated: true, completion: nil)
     }
-    
     
     //MARK: - iPhone Size
     enum UIUserInterfaceIdiom : Int

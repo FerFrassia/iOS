@@ -88,6 +88,9 @@
                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UwV-H4-05T">
                     <rect key="frame" x="354" y="80" width="20" height="20"/>
                     <state key="normal" backgroundImage="Share"/>
+                    <connections>
+                        <action selector="sharePressedWithSender:" destination="iN0-l3-epB" eventType="touchUpInside" id="kP1-Bg-aIO"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aqo-RY-brL">
                     <rect key="frame" x="384" y="80" width="20" height="20"/>
