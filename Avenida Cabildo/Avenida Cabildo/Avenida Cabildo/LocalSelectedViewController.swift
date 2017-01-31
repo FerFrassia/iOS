@@ -10,8 +10,9 @@ import UIKit
 import FirebaseDatabase
 import Firebase
 import GoogleMaps
+import MessageUI
 
-class LocalSelectedViewController: UIViewController, UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate {
+class LocalSelectedViewController: UIViewController, UIScrollViewDelegate, UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate {
 
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var localBackground: UIImageView!
@@ -200,6 +201,75 @@ class LocalSelectedViewController: UIViewController, UIScrollViewDelegate, UITab
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView == detalleTableView {
+            switch indexPath.row {
+            case 0:
+                let locationArray = selectedLocal.ubicacion?.components(separatedBy: ", ")
+                if let latitud = locationArray?[0] {
+                    if let longitud = locationArray?[1] {
+                        if (UIApplication.shared.canOpenURL(NSURL(string:"comgooglemaps://")! as URL)) {
+                            if let url = URL(string: "comgooglemaps://?saddr=&daddr=\(latitud),\(longitud)&directionsmode=driving") {
+                                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                            }
+                        } else {
+                            displayAlert(message: "Google Maps no pudo abrirse")
+                        }
+                    }
+                }
+                
+            case 1:
+                break
+            case 2:
+                if let number = selectedLocal.telefono {
+                    if let url = URL(string: "tel://\(number)") {
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    }
+                }
+                
+            case 3:
+                sendMail()
+            case 4:
+                if let web = selectedLocal.web {
+                    if let url = URL(string: web) {
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    }
+                }
+            default:
+                break
+            }
+        }
+    }
+    
+    func sendMail() {
+        if MFMailComposeViewController.canSendMail() {
+            if let mail = selectedLocal.mail {
+                let composeVC = MFMailComposeViewController()
+                composeVC.mailComposeDelegate = self
+                composeVC.setToRecipients([mail])
+                composeVC.setSubject("Consulta")
+                composeVC.setMessageBody("", isHTML: false)
+                self.present(composeVC, animated: true, completion: nil)
+            } else {
+                displayAlert(message: "El local no posee mail")
+            }
+        } else {
+            displayAlert(message: "El mail no pudo enviarse")
+        }
+    }
+    
+    func displayAlert(message: String) {
+        let alertController = UIAlertController(title: "", message: message, preferredStyle: UIAlertControllerStyle.alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
+        {
+            (result : UIAlertAction) -> Void in
+            
+        }
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
     //MARK: -Detalle
     @IBOutlet weak var detalleText: UITextView!
     @IBOutlet weak var detalleMap: GMSMapView!
@@ -208,6 +278,7 @@ class LocalSelectedViewController: UIViewController, UIScrollViewDelegate, UITab
     @IBOutlet weak var scrollHeight: NSLayoutConstraint!
     @IBOutlet weak var detalleMapTop: NSLayoutConstraint!
     @IBOutlet weak var detalleTableViewTop: NSLayoutConstraint!
+    @IBOutlet weak var horizontalContentHeight: NSLayoutConstraint!
     
     
     func loadDetalle() {
@@ -229,7 +300,13 @@ class LocalSelectedViewController: UIViewController, UIScrollViewDelegate, UITab
         } else {
             someConstant = -20
         }
+        
         scrollHeight.constant = scrollHorizontal.frame.origin.y + detalleTableView.frame.origin.y + detalleTableView.frame.size.height - CGFloat(someConstant)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        scrollHeight.constant = scrollHorizontal.frame.origin.y + detalleTableView.frame.origin.y + detalleTableView.frame.size.height
+        horizontalContentHeight.constant = detalleTableView.frame.origin.y + detalleTableView.frame.size.height
     }
     
     func loadDetalleMap() {
@@ -252,20 +329,66 @@ class LocalSelectedViewController: UIViewController, UIScrollViewDelegate, UITab
     }
     
     @IBAction func instagramAction(_ sender: Any) {
+        let local = FirebaseAPI.getCoreLocal(name: (localName.text)!)
+        if let instagram = local.instagram {
+            if let url = URL(string: instagram) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        } else {
+            let alertController = UIAlertController(title: "", message: "Este local no posee instagram", preferredStyle: UIAlertControllerStyle.alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+                (result : UIAlertAction) -> Void in
+            }
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
     
     @IBAction func facebookAction(_ sender: Any) {
+        let local = FirebaseAPI.getCoreLocal(name: (localName.text)!)
+        if let fb = local.facebook {
+            if let url = URL(string: fb) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        } else {
+            let alertController = UIAlertController(title: "", message: "Este local no posee facebook", preferredStyle: UIAlertControllerStyle.alert)
+            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+                (result : UIAlertAction) -> Void in
+            }
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
     
     @IBAction func favoriteAction(_ sender: Any) {
-        if let name = selectedLocal.nombre {
-            if localFavorite.isSelected {
-                FirebaseAPI.removeFavorite(name: name)
-            } else {
-                FirebaseAPI.addFavorite(name: name)
+        if FirebaseAPI.isUserLoggedInFirebase() {
+            if let name = selectedLocal.nombre {
+                if localFavorite.isSelected {
+                    FirebaseAPI.removeFavorite(name: name)
+                } else {
+                    FirebaseAPI.addFavorite(name: name)
+                }
+                localFavorite.isSelected = !localFavorite.isSelected
             }
-            localFavorite.isSelected = !localFavorite.isSelected
+        } else {
+            alertLoginFav()
         }
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    func alertLoginFav() {
+        var topVC = UIApplication.shared.keyWindow?.rootViewController
+        while((topVC!.presentedViewController) != nil) {
+            topVC = topVC!.presentedViewController
+        }
+        
+        let alert = UIAlertController(title: "", message: "Para utilizar Favoritos debe loguearse", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default) { action in
+        })
+        topVC?.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func sharePressed(sender: UIButton) {
@@ -310,6 +433,8 @@ class LocalSelectedViewController: UIViewController, UIScrollViewDelegate, UITab
         
         cell.detalleImage.image = cellImage
         cell.detalleLabel.text = cellText
+        
+        cell.selectionStyle = .none
         
         return cell
     }

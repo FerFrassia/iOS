@@ -20,15 +20,31 @@ class PromocionLocalView: UIView {
     @IBOutlet weak var localVerMas: UIButton!
     
     @IBAction func favoritePressed(sender: UIButton) {
-        if localFavorite.isSelected {
-            //need to unfavorite
-            localFavorite.isSelected = false
-            FirebaseAPI.removeFavorite(name: (localName.text)!)
+        if FirebaseAPI.isUserLoggedInFirebase() {
+            if localFavorite.isSelected {
+                //need to unfavorite
+                localFavorite.isSelected = false
+                FirebaseAPI.removeFavorite(name: (localName.text)!)
+            } else {
+                //need to favorite
+                localFavorite.isSelected = true
+                FirebaseAPI.addFavorite(name: (localName.text)!)
+            }
         } else {
-            //need to favorite
-            localFavorite.isSelected = true
-            FirebaseAPI.addFavorite(name: (localName.text)!)
+            alertLoginFav()
         }
+    }
+    
+    func alertLoginFav() {
+        var topVC = UIApplication.shared.keyWindow?.rootViewController
+        while((topVC!.presentedViewController) != nil) {
+            topVC = topVC!.presentedViewController
+        }
+        
+        let alert = UIAlertController(title: "", message: "Para utilizar Favoritos debe loguearse", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default) { action in
+        })
+        topVC?.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func sharePressed(sender: UIButton) {

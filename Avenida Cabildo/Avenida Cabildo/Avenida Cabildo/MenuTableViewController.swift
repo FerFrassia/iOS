@@ -40,13 +40,16 @@ class MenuTableViewController: UITableViewController {
     func setFBName() {
         if let FBName = UserDefaults.standard.string(forKey: "fbName") {
             userName.text = FBName
+        } else if let googleName = UserDefaults.standard.string(forKey: "GoogleName") {
+            userName.text = googleName
         }
-        
     }
     
     func setFBEmail() {
         if let FBEmail = UserDefaults.standard.string(forKey: "fbEmail") {
             userEmail.text = FBEmail
+        } else if let googleEmail = UserDefaults.standard.string(forKey: "GoogleEmail") {
+            userEmail.text = googleEmail
         }
     }
     
@@ -54,6 +57,9 @@ class MenuTableViewController: UITableViewController {
         if let userID = UserDefaults.standard.string(forKey: "fbToken") {
             let fbProfileString = "https://graph.facebook.com/\(userID)/picture?type=large"
             let url = URL(string: fbProfileString)
+            profilePic.sd_setImage(with: url, placeholderImage: UIImage(named: "Profile Pic Placeholder"))
+        } else if let googleImg = UserDefaults.standard.string(forKey: "GoogleImg") {
+            let url = URL(string: googleImg)
             profilePic.sd_setImage(with: url, placeholderImage: UIImage(named: "Profile Pic Placeholder"))
         }
     }
@@ -115,9 +121,25 @@ class MenuTableViewController: UITableViewController {
     }
     
     func openFavorites() {
-        let story = UIStoryboard(name: "Main", bundle: nil)
-        let vc = story.instantiateViewController(withIdentifier: "FavoritosViewController") as! FavoritosViewController
-        self.present(vc, animated: true, completion: nil)
+        if FirebaseAPI.isUserLoggedInFirebase() {
+            let story = UIStoryboard(name: "Main", bundle: nil)
+            let vc = story.instantiateViewController(withIdentifier: "FavoritosViewController") as! FavoritosViewController
+            self.present(vc, animated: true, completion: nil)
+        } else {
+            alertLoginFav()
+        }
+    }
+    
+    func alertLoginFav() {
+        var topVC = UIApplication.shared.keyWindow?.rootViewController
+        while((topVC!.presentedViewController) != nil) {
+            topVC = topVC!.presentedViewController
+        }
+        
+        let alert = UIAlertController(title: "", message: "Para utilizar Favoritos debe loguearse", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default) { action in
+        })
+        topVC?.present(alert, animated: true, completion: nil)
     }
     
     func logOutAll() {

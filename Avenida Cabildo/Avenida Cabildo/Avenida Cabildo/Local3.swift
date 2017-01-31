@@ -24,15 +24,31 @@ class Local3: UITableViewCell {
     @IBOutlet weak var tarjeta4: UIImageView!
     
     @IBAction func favoritePressed(sender: UIButton) {
-        if localFavorite.isSelected {
-            //need to unfavorite
-            FirebaseAPI.removeFavorite(name: (localName.text)!)
-            localFavorite.isSelected = false
+        if FirebaseAPI.isUserLoggedInFirebase() {
+            if localFavorite.isSelected {
+                //need to unfavorite
+                FirebaseAPI.removeFavorite(name: (localName.text)!)
+                localFavorite.isSelected = false
+            } else {
+                //need to favorite
+                FirebaseAPI.addFavorite(name: (localName.text)!)
+                localFavorite.isSelected = true
+            }
         } else {
-            //need to favorite
-            FirebaseAPI.addFavorite(name: (localName.text)!)
-            localFavorite.isSelected = true
+            alertLoginFav()
         }
+    }
+    
+    func alertLoginFav() {
+        var topVC = UIApplication.shared.keyWindow?.rootViewController
+        while((topVC!.presentedViewController) != nil) {
+            topVC = topVC!.presentedViewController
+        }
+        
+        let alert = UIAlertController(title: "", message: "Para utilizar Favoritos debe loguearse", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default) { action in
+        })
+        topVC?.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func sharePressed(sender: UIButton) {

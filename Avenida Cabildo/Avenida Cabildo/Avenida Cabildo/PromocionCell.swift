@@ -19,6 +19,11 @@ class PromocionCell: UITableViewCell {
     @IBOutlet weak var categoriaWhite: UIView!
     @IBOutlet weak var categoriaImg: UIImageView!
     @IBOutlet weak var categoriaButton: UIButton!
+    @IBOutlet weak var categoriaLabel: UILabel!
+    
+    @IBOutlet weak var categoriaBlueLeading: NSLayoutConstraint!
+    @IBOutlet weak var categoriaBlueTrailing: NSLayoutConstraint!
+    
     
     
     @IBAction func categoryPressed(_ sender: Any) {

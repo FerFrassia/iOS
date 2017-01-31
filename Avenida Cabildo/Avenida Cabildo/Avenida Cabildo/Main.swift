@@ -13,7 +13,7 @@ import SWRevealViewController
 import GoogleMaps
 import CoreData
 
-class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, UIGestureRecognizerDelegate {
+class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, SWRevealViewControllerDelegate {
     
     @IBOutlet weak var promocionesTableView: UITableView!
     @IBOutlet weak var todosTableView: UITableView!
@@ -50,6 +50,7 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
         redrawSelectedLocal()
         loadEnPromocion()
         loadPromocionSelected()
+        loadLocales()
     }
     
     func redrawSelectedLocal() {
@@ -79,9 +80,19 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
     }
     
     func setRevealMenuButton() {
+        revealViewController().delegate = self
         revealMenuButton.target = self.revealViewController()
         revealMenuButton.action = Selector(("revealToggle:"))
-        view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        let panGesture = self.revealViewController().panGestureRecognizer()
+        mainScroll.addGestureRecognizer(panGesture!)
+    }
+    
+    func revealControllerPanGestureShouldBegin(_ revealController: SWRevealViewController!) -> Bool {
+        if mainScroll.contentOffset.x == 0 {
+            return true
+        } else {
+            return false
+        }
     }
     
     //MARK: - Promocion TableView
@@ -157,7 +168,7 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
         //Categoria
         cell.categoriaBlue.layer.cornerRadius = 20
         cell.categoriaWhite.layer.cornerRadius = 20
-        cell.categoriaButton.setTitle(promocionSelectedName, for: .normal)
+        cell.categoriaLabel.text = promocionSelectedName
         
         var imageKey = ""
         if DeviceType.IS_IPHONE_6P {
@@ -167,10 +178,13 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
         }
         
         let urlIcon = URL(string: promocionSelectedImage[imageKey]!)
-        cell.categoriaImg.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
-        cell.categoriaImg.image = cell.categoriaImg.image?.withRenderingMode(.alwaysTemplate)
-        
-        cell.categoriaImg.tintColor = UIColor(red: 72/255, green: 135/255, blue: 190/255, alpha: 1.0)
+        DispatchQueue(label: "com.queue.Concurrent", attributes: .concurrent).async {
+            if let data = try? Data(contentsOf: urlIcon!) {
+                DispatchQueue.main.async {
+                    cell.categoriaImg.image = UIImage(data: data)?.withRenderingMode(.alwaysTemplate)
+                }
+            }
+        }
         
         //Scroll View
         if enPromocion.count == 0 {
@@ -223,10 +237,15 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
                 
                 cell.promocionHorizontalScroll.delegate = self
                 cell.promocionHorizontalScroll.contentOffset = CGPoint(x: cell.promocionHorizontalScroll.frame.width * CGFloat(scrollIndex), y: 0)
-                
-                
             }
         }
+        
+        //Fix constraints category
+        if DeviceType.IS_IPHONE_5 {
+            cell.categoriaBlueLeading.constant = 50
+            cell.categoriaBlueTrailing.constant = 50
+        }
+        
         return cell
     }
     
@@ -237,6 +256,7 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
         locales = FirebaseAPI.getCoreLocales()
         filterLocales()
         orderLocales()
+        promocionesTableView.reloadData()
         todosTableView.reloadData()
     }
     
@@ -448,10 +468,28 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == promocionesTableView {
-            return 1
+            if locales.count != 0 {
+                return 1
+            } else {
+                return 0
+            }
         } else {
+            if locales.count == 0 {
+                displayAlertNoLocales()
+            }
             return locales.count
         }
+    }
+    
+    func displayAlertNoLocales() {
+        let alertController = UIAlertController(title: "", message: "No se encontraron locales para esta búsqueda", preferredStyle: UIAlertControllerStyle.alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
+        {
+            (result : UIAlertAction) -> Void in
+        }
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -547,6 +585,11 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
         swipeIndicatorTrailing.isActive = false
     }
     
+    func setPromocionesSelectedFont() {
+        promocionesButton.titleLabel!.font = UIFont(name: "HelveticaNeue-Medium", size: 17)
+        todosButton.titleLabel!.font = UIFont(name: "HelveticaNeue-Light", size: 15)
+    }
+    
     func setTodosSelected() {
         todosButton.titleLabel!.font = UIFont(name: "HelveticaNeue-Medium", size: 17)
         promocionesButton.titleLabel!.font = UIFont(name: "HelveticaNeue-Light", size: 15)
@@ -554,6 +597,10 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
         swipeIndicatorTrailing.isActive = true
     }
     
+    func setTodosSelectedFont() {
+        todosButton.titleLabel!.font = UIFont(name: "HelveticaNeue-Medium", size: 17)
+        promocionesButton.titleLabel!.font = UIFont(name: "HelveticaNeue-Light", size: 15)
+    }
     
     @IBAction func promocionesAction(_ sender: Any) {
         var x = self.view.frame.width
@@ -562,7 +609,7 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
             mainScroll.setContentOffset(CGPoint(x: x, y: 0), animated: true)
         }
         mainScroll.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-        setPromocionesSelected()
+        setPromocionesSelectedFont()
     }
     
     @IBAction func todosAction(_ sender: Any) {
@@ -572,7 +619,7 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
             mainScroll.setContentOffset(CGPoint(x: x, y: 0), animated: true)
         }
         mainScroll.setContentOffset(CGPoint(x: self.view.frame.width, y: 0), animated: true)
-        setTodosSelected()
+        setTodosSelectedFont()
     }
     
     //MARK: - Nav

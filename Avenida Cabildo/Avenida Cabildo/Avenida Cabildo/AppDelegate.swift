@@ -30,11 +30,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         //Google Maps
         GMSServices.provideAPIKey("AIzaSyDjID78dt3Y5O02zS3Lr_aaGUdDzuGc47g")
         
-        //Firebase
-        DispatchQueue.main.async {
+        DispatchQueue(label: "com.queue.Concurrent", attributes: .concurrent).async {
             FirebaseAPI.loadFirebaseCommonData()
+            FirebaseAPI.loadFirebaseUserData()
         }
-        
         
                 
         return true
@@ -61,6 +60,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             return
         }
         print("Google log in Success, user: ", user)
+        UserDefaults.standard.setValue(user.profile.name, forKey: "GoogleName")
+        UserDefaults.standard.setValue(user.profile.email, forKey: "GoogleEmail")
+        
+        if user.profile.hasImage {
+            let imgUrl = user.profile.imageURL(withDimension: 100)
+            let imgString = imgUrl?.absoluteString
+            UserDefaults.standard.setValue(imgString, forKey: "GoogleImg")
+        }
         
         guard let authentication = user.authentication else { return }
         let credential = FIRGoogleAuthProvider.credential(withIDToken: authentication.idToken,

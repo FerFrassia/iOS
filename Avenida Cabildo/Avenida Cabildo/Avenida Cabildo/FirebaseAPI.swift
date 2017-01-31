@@ -22,10 +22,19 @@ class FirebaseAPI: NSObject {
     }
     
     static func loadFirebaseUserData() {
-        getLocales()
         storeEnPromocionUserDefaults()
         getCategories()
         getDescuentos()
+        getLocales()
+    }
+    
+    //MARK: - User Logged
+    static func isUserLoggedInFirebase() -> Bool {
+        if FIRAuth.auth()?.currentUser != nil {
+            return true
+        } else {
+            return false
+        }
     }
     
     //MARK: - Firebase En Promocion
@@ -56,6 +65,7 @@ class FirebaseAPI: NSObject {
         FIRDatabase.database().reference().child("locales").observeSingleEvent(of: .value, with: { (snap) in
             if let snapDict = snap.value as? Dictionary<String, AnyObject> {
                 loadLocales(dic: snapDict)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: localesStoredOrUpdatedKey), object: nil)
             }
         }) { (error) in
             print(error.localizedDescription)
@@ -83,7 +93,6 @@ class FirebaseAPI: NSObject {
                               horariosParaFiltro: data["horarios para filtro"] as! [String:AnyObject],
                               enPromocion: data["en promocion"] as! Int16)
         }
-        NotificationCenter.default.post(name: Notification.Name(rawValue: localesStoredOrUpdatedKey), object: nil)
     }
     
     static func saveOrUpdateLocal(categoria: String,
@@ -518,7 +527,6 @@ class FirebaseAPI: NSObject {
         } catch {
             fatalError("failed to save context: \(error)")
         }
-        
     }
     
     static func getCoreCategorias() -> [Categoria]? {
@@ -584,7 +592,7 @@ class FirebaseAPI: NSObject {
         if let imageDic = UserDefaults.standard.dictionary(forKey: "categoriaImage") {
             return imageDic as! [String:String]
         } else {
-            return ["1x": "https://firebasestorage.googleapis.com/v0/b/avenida-cabildo.appspot.com/o/Assets%20iPhone%2FHome.png?alt=media&token=6b74d89f-e73f-41b9-9cd2-f9d88455523c", "2x": "https://firebasestorage.googleapis.com/v0/b/avenida-cabildo.appspot.com/o/Assets%20iPhone%2Fhotel%402x.png.png?alt=media&token=ec7a32c7-b64c-4301-b0d5-eca24da0ba7a", "3x": "https://firebasestorage.googleapis.com/v0/b/avenida-cabildo.appspot.com/o/Assets%20iPhone%2Fhotel%403x.png.png?alt=media&token=777cd7b5-6427-4eca-9cd5-cfe10d4a5eac", "pdf": "https://firebasestorage.googleapis.com/v0/b/avenida-cabildo.appspot.com/o/Assets%20iPhone%2Ftiendas.pdf?alt=media&token=6d8b9876-4f1f-4ca5-bd89-11d961606cc5"]
+            return ["1x": "https://firebasestorage.googleapis.com/v0/b/avenida-cabildo.appspot.com/o/Assets%20iPhone%2Ftodos.png?alt=media&token=4701a20f-6419-4de5-9249-7b1d6d3ed058", "2x": "https://firebasestorage.googleapis.com/v0/b/avenida-cabildo.appspot.com/o/Assets%20iPhone%2Ftodos%402x.png?alt=media&token=516db85d-1ab7-4115-b7ee-1ae8fde88c4e", "3x": "https://firebasestorage.googleapis.com/v0/b/avenida-cabildo.appspot.com/o/Assets%20iPhone%2Ftodos%403x.png?alt=media&token=0bb09a58-d503-4cc9-a447-6970c4a0229d"]
         }
     }
     
@@ -852,9 +860,6 @@ class FirebaseAPI: NSObject {
         let hour = calendar.component(.hour, from: date)
         return Int64(hour)
     }
-    
-    
-    
     
     
     

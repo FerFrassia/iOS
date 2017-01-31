@@ -37,7 +37,7 @@ class ShareView: UIView {
             let url = URL(string: s)!
             let facebookComposer = SLComposeViewController.init(forServiceType: SLServiceTypeFacebook)
             facebookComposer?.add(url)
-            topVC?.present(facebookComposer!, animated: true, completion: nil)
+            topVC?.present(facebookComposer!, animated: true, completion: {self.hideShareView()})
         } else {
             let alert = UIAlertController(title: "", message: "Este local no posee Facebook", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default) { action in
@@ -56,7 +56,7 @@ class ShareView: UIView {
             let url = URL(string: s)!
             let facebookComposer = SLComposeViewController.init(forServiceType: SLServiceTypeFacebook)
             facebookComposer?.add(url)
-            topVC?.present(facebookComposer!, animated: true, completion: nil)
+            topVC?.present(facebookComposer!, animated: true, completion: {self.hideShareView()})
         } else {
             let alert = UIAlertController(title: "", message: "Este local no posee Instagram", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default) { action in
@@ -76,7 +76,7 @@ class ShareView: UIView {
             let alert = UIAlertController(title: "", message: "Enlace copiado", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default) { action in
             })
-            topVC?.present(alert, animated: true, completion: nil)
+            topVC?.present(alert, animated: true, completion: {self.hideShareView()})
         } else {
             let alert = UIAlertController(title: "", message: "Este local no posee enlace web", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default) { action in

@@ -160,7 +160,6 @@ class Login: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDelegate {
             { (result, err) in
                 if err != nil {
                     print("FB Login Failed: ", err ?? "Error is nil")
-                    
                 } else {
                     if (result?.isCancelled)! {
                        return
@@ -168,9 +167,7 @@ class Login: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDelegate {
                         self.fetchProfile()
                         self.showMenuVC()
                         self.signInFirebaseWithFB()
-                        FirebaseAPI.loadFirebaseUserData()
                     }
-                    
                 }
         })
     }

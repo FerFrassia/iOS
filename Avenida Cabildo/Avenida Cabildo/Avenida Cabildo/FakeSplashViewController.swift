@@ -20,7 +20,6 @@ class FakeSplashViewController: UIViewController {
     func checkFBLoggedIn() {
         if (FBSDKAccessToken.current()) != nil {
             showMenuVC()
-            FirebaseAPI.loadFirebaseUserData()
         }
     }
     
