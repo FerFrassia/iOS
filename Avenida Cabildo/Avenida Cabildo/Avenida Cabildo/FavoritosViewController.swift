@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class FavoritosViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -151,6 +152,50 @@ class FavoritosViewController: UIViewController, UITableViewDataSource, UITableV
         cell.localShare.setBackgroundImage(shareWhite, for: .normal)
         cell.localShare.tintColor = UIColor.white
         
+        //tarjetas Img
+        if let descuentosNames = local.descuentos as? [String] {
+            for descuentoName in descuentosNames {
+                FIRDatabase.database().reference().child("descuentos").child(descuentoName).observeSingleEvent(of: .value, with: { (snap) in
+                    if let snapDict = snap.value as? Dictionary<String, AnyObject> {
+                        if let tarjetaDic = snapDict["imagen"] as? [String:String] {
+                            
+                            var imageKey = ""
+                            if DeviceType.IS_IPHONE_6P {
+                                imageKey = "3x"
+                            } else {
+                                imageKey = "2x"
+                            }
+                            
+                            if let tarjetaString = tarjetaDic[imageKey] {
+                                let urlIcon = URL(string: tarjetaString)
+                                if cell.tarjeta1.isHidden {
+                                    cell.tarjeta1.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
+                                    cell.tarjeta1.isHidden = false
+                                    cell.tarjeta2.isHidden = true
+                                    cell.tarjeta3.isHidden = true
+                                    cell.tarjeta4.isHidden = true
+                                } else if cell.tarjeta2.isHidden {
+                                    cell.tarjeta2.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
+                                    cell.tarjeta2.isHidden = false
+                                    cell.tarjeta3.isHidden = true
+                                    cell.tarjeta4.isHidden = true
+                                } else if cell.tarjeta3.isHidden {
+                                    cell.tarjeta3.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
+                                    cell.tarjeta3.isHidden = false
+                                    cell.tarjeta4.isHidden = true
+                                } else if cell.tarjeta4.isHidden {
+                                    cell.tarjeta4.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
+                                    cell.tarjeta4.isHidden = false
+                                }
+                            }
+                        }
+                    }
+                }) { (error) in
+                    print(error.localizedDescription)
+                }
+            }
+        }
+        
         return cell
     }
     
@@ -193,6 +238,50 @@ class FavoritosViewController: UIViewController, UITableViewDataSource, UITableV
         let shareWhite = UIImage(named: "Share")?.withRenderingMode(.alwaysTemplate)
         cell.localShare.setBackgroundImage(shareWhite, for: .normal)
         cell.localShare.tintColor = UIColor.white
+        
+        //tarjetas Img
+        if let descuentosNames = local.descuentos as? [String] {
+            for descuentoName in descuentosNames {
+                FIRDatabase.database().reference().child("descuentos").child(descuentoName).observeSingleEvent(of: .value, with: { (snap) in
+                    if let snapDict = snap.value as? Dictionary<String, AnyObject> {
+                        if let tarjetaDic = snapDict["imagen"] as? [String:String] {
+                            
+                            var imageKey = ""
+                            if DeviceType.IS_IPHONE_6P {
+                                imageKey = "3x"
+                            } else {
+                                imageKey = "2x"
+                            }
+                            
+                            if let tarjetaString = tarjetaDic[imageKey] {
+                                let urlIcon = URL(string: tarjetaString)
+                                if cell.tarjeta1.isHidden {
+                                    cell.tarjeta1.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
+                                    cell.tarjeta1.isHidden = false
+                                    cell.tarjeta2.isHidden = true
+                                    cell.tarjeta3.isHidden = true
+                                    cell.tarjeta4.isHidden = true
+                                } else if cell.tarjeta2.isHidden {
+                                    cell.tarjeta2.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
+                                    cell.tarjeta2.isHidden = false
+                                    cell.tarjeta3.isHidden = true
+                                    cell.tarjeta4.isHidden = true
+                                } else if cell.tarjeta3.isHidden {
+                                    cell.tarjeta3.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
+                                    cell.tarjeta3.isHidden = false
+                                    cell.tarjeta4.isHidden = true
+                                } else if cell.tarjeta4.isHidden {
+                                    cell.tarjeta4.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
+                                    cell.tarjeta4.isHidden = false
+                                }
+                            }
+                        }
+                    }
+                }) { (error) in
+                    print(error.localizedDescription)
+                }
+            }
+        }
         
         return cell
     }

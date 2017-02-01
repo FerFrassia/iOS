@@ -23,6 +23,7 @@ class Local3: UITableViewCell {
     @IBOutlet weak var tarjeta3: UIImageView!
     @IBOutlet weak var tarjeta4: UIImageView!
     
+    
     @IBAction func favoritePressed(sender: UIButton) {
         if FirebaseAPI.isUserLoggedInFirebase() {
             if localFavorite.isSelected {
@@ -53,19 +54,14 @@ class Local3: UITableViewCell {
     
     @IBAction func sharePressed(sender: UIButton) {
         let local = FirebaseAPI.getCoreLocal(name: (localName.text)!)
-        let shareView = Bundle.main.loadNibNamed("ShareView", owner: nil, options: nil)?[0] as! ShareView
-        shareView.selectedLocal = local
-        shareView.layer.cornerRadius = 15
-        shareView.blackContainer.layer.cornerRadius = 15
-        shareView.whiteContainer.layer.cornerRadius = 15
-        
-        let x = CGFloat(40)
-        let width = CGFloat(UIScreen.main.bounds.width - 80)
-        let y = CGFloat(UIScreen.main.bounds.height/2 - 125)
-        let height = CGFloat(250)
-        shareView.frame = CGRect(x: x, y: y, width: width, height: height)
-        
-        UIApplication.shared.keyWindow?.addSubview(shareView)
+        if let web = local.web {
+            var topVC = UIApplication.shared.keyWindow?.rootViewController
+            while((topVC!.presentedViewController) != nil) {
+                topVC = topVC!.presentedViewController
+            }
+            let activityViewController = UIActivityViewController(activityItems: [web], applicationActivities: nil)
+            topVC?.present(activityViewController, animated: true, completion: nil)
+        }
     }
     
     

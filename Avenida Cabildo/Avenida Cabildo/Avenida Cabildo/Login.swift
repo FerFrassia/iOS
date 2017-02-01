@@ -31,30 +31,6 @@ class Login: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDelegate {
 
         setLoginFB()
         setLoginGoogle()
-//        seedUser()
-//        fetch()
-    }
-    
-    func fetch() {
-        let userFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Usuario")
-        do {
-            let fetchedUser = try moc.fetch(userFetch) as! [Usuario]
-            print("USERRRRR: ", fetchedUser.first?.name ?? "")
-        } catch {
-            fatalError("Can't fetch user: \(error)")
-        }
-    }
-    
-    func seedUser() {
-        let entity = NSEntityDescription.insertNewObject(forEntityName: "Usuario", into: moc) as! Usuario
-        
-        entity.setValue("Juancito", forKey: "name")
-        
-        do {
-            try moc.save()
-        } catch {
-            fatalError("failed to save context: \(error)")
-        }
     }
     
     func setLoginFB() {
@@ -164,9 +140,19 @@ class Login: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDelegate {
                     if (result?.isCancelled)! {
                        return
                     } else {
-                        self.fetchProfile()
-                        self.showMenuVC()
+                        if let userId = result?.token.userID {
+                            UserDefaults.standard.setValue(userId, forKey: "fbToken")
+                            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "name, email"]).start(completionHandler: { (connection, result, error) -> Void in
+                                if (error == nil) {
+                                    if let res = result as? [String:Any] {
+                                        UserDefaults.standard.setValue(res["name"], forKey: "fbName")
+                                        UserDefaults.standard.setValue(res["email"], forKey: "fbEmail")
+                                    }
+                                }
+                            })
+                        }
                         self.signInFirebaseWithFB()
+                        self.showMenuVC()
                     }
                 }
         })
@@ -183,10 +169,11 @@ class Login: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDelegate {
             }
             print("Accessed FB Firebase with user: \(user)")
             FirebaseAPI.storeCoreUser()
-            
+            FirebaseAPI.loadFirebaseCommonData()
         })
     }
     
+    //not being called for now
     func fetchProfile() {
         let fbLoginManager : FBSDKLoginManager = FBSDKLoginManager()
         fbLoginManager.loginBehavior = FBSDKLoginBehavior.web

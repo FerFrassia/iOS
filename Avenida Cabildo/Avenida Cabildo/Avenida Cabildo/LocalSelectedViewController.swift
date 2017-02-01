@@ -177,8 +177,11 @@ class LocalSelectedViewController: UIViewController, UIScrollViewDelegate, UITab
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == beneficiosTableView {
-            let descuentos = selectedLocal.descuentos as! [String]
-            return descuentos.count
+            if let descuentos = selectedLocal.descuentos as? [String] {
+                return descuentos.count
+            } else {
+                return 0
+            }
         } else {
             return 5
         }
@@ -393,19 +396,10 @@ class LocalSelectedViewController: UIViewController, UIScrollViewDelegate, UITab
     
     @IBAction func sharePressed(sender: UIButton) {
         let local = FirebaseAPI.getCoreLocal(name: (localName.text)!)
-        let shareView = Bundle.main.loadNibNamed("ShareView", owner: nil, options: nil)?[0] as! ShareView
-        shareView.selectedLocal = local
-        shareView.layer.cornerRadius = 15
-        shareView.blackContainer.layer.cornerRadius = 15
-        shareView.whiteContainer.layer.cornerRadius = 15
-        
-        let x = CGFloat(40)
-        let width = CGFloat(UIScreen.main.bounds.width - 80)
-        let y = CGFloat(UIScreen.main.bounds.height/2 - 125)
-        let height = CGFloat(250)
-        shareView.frame = CGRect(x: x, y: y, width: width, height: height)
-        
-        UIApplication.shared.keyWindow?.addSubview(shareView)
+        if let web = local.web {
+            let activityViewController = UIActivityViewController(activityItems: [web], applicationActivities: nil)
+            self.present(activityViewController, animated: true, completion: nil)
+        }
     }
     
     func configureCellDetalle(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
@@ -440,23 +434,20 @@ class LocalSelectedViewController: UIViewController, UIScrollViewDelegate, UITab
     }
     
     //MARK: - iPhone Size
-    enum UIUserInterfaceIdiom : Int
-    {
+    enum UIUserInterfaceIdiom : Int {
         case Unspecified
         case Phone
         case Pad
     }
     
-    struct ScreenSize
-    {
+    struct ScreenSize {
         static let SCREEN_WIDTH         = UIScreen.main.bounds.size.width
         static let SCREEN_HEIGHT        = UIScreen.main.bounds.size.height
         static let SCREEN_MAX_LENGTH    = max(ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT)
         static let SCREEN_MIN_LENGTH    = min(ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT)
     }
     
-    struct DeviceType
-    {
+    struct DeviceType {
         static let IS_IPHONE_4_OR_LESS  = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.SCREEN_MAX_LENGTH < 568.0
         static let IS_IPHONE_5          = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.SCREEN_MAX_LENGTH == 568.0
         static let IS_IPHONE_6          = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.SCREEN_MAX_LENGTH == 667.0

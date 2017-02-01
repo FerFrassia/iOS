@@ -69,20 +69,20 @@
                     <color key="textColor" red="0.36078431370000003" green="0.86274509799999999" blue="0.043137254899999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tarjeta Clarin" translatesAutoresizingMaskIntoConstraints="NO" id="2mr-hI-6S0">
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tarjeta Clarin" translatesAutoresizingMaskIntoConstraints="NO" id="2mr-hI-6S0">
                     <rect key="frame" x="120" y="80" width="20" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="63L-Vl-Wfu"/>
                         <constraint firstAttribute="width" constant="20" id="cpq-eC-5gn"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tarjeta Naranja" translatesAutoresizingMaskIntoConstraints="NO" id="If6-0g-34v">
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tarjeta Naranja" translatesAutoresizingMaskIntoConstraints="NO" id="If6-0g-34v">
                     <rect key="frame" x="150" y="80" width="20" height="20"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tarjeta Shopping" translatesAutoresizingMaskIntoConstraints="NO" id="xhb-fo-Jy1">
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tarjeta Shopping" translatesAutoresizingMaskIntoConstraints="NO" id="xhb-fo-Jy1">
                     <rect key="frame" x="180" y="80" width="20" height="20"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tarjeta Club La Nacion" translatesAutoresizingMaskIntoConstraints="NO" id="s1Z-OF-kcW">
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tarjeta Club La Nacion" translatesAutoresizingMaskIntoConstraints="NO" id="s1Z-OF-kcW">
                     <rect key="frame" x="210" y="80" width="20" height="20"/>
                 </imageView>
                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UwV-H4-05T">
@@ -167,9 +167,9 @@
         <image name="Share" width="20" height="19"/>
         <image name="Star Favorito" width="21" height="20"/>
         <image name="Star No Favorito" width="21" height="20"/>
-        <image name="Tarjeta Clarin" width="8" height="7"/>
-        <image name="Tarjeta Club La Nacion" width="13" height="6"/>
-        <image name="Tarjeta Naranja" width="6" height="7"/>
-        <image name="Tarjeta Shopping" width="9" height="5"/>
+        <image name="Tarjeta Clarin" width="20" height="20"/>
+        <image name="Tarjeta Club La Nacion" width="24" height="10"/>
+        <image name="Tarjeta Naranja" width="21" height="13"/>
+        <image name="Tarjeta Shopping" width="25" height="20"/>
     </resources>
 </document>

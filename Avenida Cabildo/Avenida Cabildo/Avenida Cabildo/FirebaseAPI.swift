@@ -17,6 +17,10 @@ let promocionUpdatedKey = "promocionUpdatedKey"
 
 class FirebaseAPI: NSObject {
     
+    static func signOutFirebase() {
+        try! FIRAuth.auth()?.signOut()
+    }
+    
     static func loadFirebaseCommonData() {
         storeFavoritesUserDefaults()
     }
@@ -353,18 +357,23 @@ class FirebaseAPI: NSObject {
     
     static func storeFavoritesUserDefaults() {
         let user = FIRAuth.auth()?.currentUser
-        guard let firebaseID = user?.uid else {return}
-        FIRDatabase.database().reference().child("usuarios").observeSingleEvent(of: .value, with: { (snap) in
-            if snap.hasChild(firebaseID) {
-                let userFavSnap = snap.childSnapshot(forPath: firebaseID)
-                let userFavArray = userFavSnap.value as! [String]
-                
-                UserDefaults.standard.set(userFavArray, forKey: "favoritos")
-            } else {
-                UserDefaults.standard.set([], forKey: "favoritos")
+        if user != nil {
+            guard let firebaseID = user?.uid else {return}
+            FIRDatabase.database().reference().child("usuarios").observeSingleEvent(of: .value, with: { (snap) in
+                if snap.hasChild(firebaseID) {
+                    let userFavSnap = snap.childSnapshot(forPath: firebaseID)
+                    let userFavArray = userFavSnap.value as! [String]
+                    
+                    UserDefaults.standard.set(userFavArray, forKey: "favoritos")
+                } else {
+                    UserDefaults.standard.set([], forKey: "favoritos")
+                }
+                NotificationCenter.default.post(name: Notification.Name(rawValue: promocionUpdatedKey), object: nil)
+            }) { (error) in
+                print(error.localizedDescription)
             }
-        }) { (error) in
-            print(error.localizedDescription)
+        } else {
+            UserDefaults.standard.set([], forKey: "favoritos")
         }
     }
     
@@ -799,7 +808,11 @@ class FirebaseAPI: NSObject {
     
     static func isNameInFiltersByName(name: String) -> Bool {
         let saved = getFilterByNameDefaults()
-        return name == saved
+        if saved != "" {
+            return name.hasPrefix(saved)
+        } else {
+            return false
+        }
     }
     
     //MARK: - Filter by Abierto ahora

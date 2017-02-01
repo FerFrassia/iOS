@@ -21,7 +21,9 @@ class MenuTableViewController: UITableViewController {
         super.viewDidLoad()
 
         self.tableView.backgroundView = UIImageView(image: UIImage(named: "Login Background"))
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         setProfilePicture()
         setFBName()
         setFBEmail()
@@ -145,16 +147,24 @@ class MenuTableViewController: UITableViewController {
     func logOutAll() {
         logOutGoogle()
         logOutFB()
+        setEmptyFavorites()
+        FirebaseAPI.signOutFirebase()
         showLoginViewController()
     }
     
     func logOutGoogle() {
         GIDSignIn.sharedInstance().signOut()
         try! FIRAuth.auth()!.signOut()
+        UserDefaults.standard.removeObject(forKey: "GoogleName")
+        UserDefaults.standard.removeObject(forKey: "GoogleEmail")
+        UserDefaults.standard.removeObject(forKey: "GoogleImg")
     }
     
     func logOutFB() {
         FBSDKLoginManager().logOut()
+        UserDefaults.standard.removeObject(forKey: "fbName")
+        UserDefaults.standard.removeObject(forKey: "fbEmail")
+        UserDefaults.standard.removeObject(forKey: "fbToken")
     }
     
     func showLoginViewController() {
@@ -164,6 +174,11 @@ class MenuTableViewController: UITableViewController {
         self.present(controller, animated: false, completion: nil)
     }
     
+    func setEmptyFavorites() {
+        UserDefaults.standard.set([], forKey: "favoritos")
+    }
+    
+
 
     /*
     // Override to support conditional editing of the table view.

@@ -23,6 +23,8 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
     @IBOutlet weak var scrollIndicator: UIView!
     @IBOutlet weak var mainScroll: UIScrollView!
     
+    var filterGaveEmptyList = false
+    
     func showLoginViewController() {
         let storyboard = UIStoryboard(name: "Login", bundle: nil)
         let controller = storyboard.instantiateInitialViewController()
@@ -40,9 +42,8 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
         todosTableView.register(UINib(nibName: "Local3", bundle: Bundle.main), forCellReuseIdentifier: "Local3")
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.loadLocales), name: NSNotification.Name(rawValue: localesStoredOrUpdatedKey), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.loadLocales), name: NSNotification.Name(rawValue: filtersUpdatedKey), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.redrawPromocionFavorite), name: NSNotification.Name(rawValue: promocionUpdatedKey), object: nil)
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.loadLocalesByNotificationFilter), name: NSNotification.Name(rawValue: filtersUpdatedKey), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.redrawPromocionAndTodosFavorite), name: NSNotification.Name(rawValue: promocionUpdatedKey), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,6 +52,12 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
         loadEnPromocion()
         loadPromocionSelected()
         loadLocales()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if filterGaveEmptyList {
+            displayAlertNoLocales()
+        }
     }
     
     func redrawSelectedLocal() {
@@ -88,7 +95,8 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
     }
     
     func revealControllerPanGestureShouldBegin(_ revealController: SWRevealViewController!) -> Bool {
-        if mainScroll.contentOffset.x == 0 {
+        if mainScroll.contentOffset.x == 0 ||
+            (mainScroll.contentOffset.x == self.view.frame.width && self.revealViewController().frontViewPosition == FrontViewPosition.right) {
             return true
         } else {
             return false
@@ -137,9 +145,10 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
         promocionSelectedImage = FirebaseAPI.getCategoriaSelectedImage()
     }
     
-    func redrawPromocionFavorite() {
+    func redrawPromocionAndTodosFavorite() {
         loadFavoritos()
         promocionesTableView.reloadData()
+        todosTableView.reloadData()
     }
     
     func cellPromocion(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
@@ -225,6 +234,50 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
                 
                 localView.localVerMas.layer.cornerRadius = 15
                 
+                //tarjetas Img
+                if let descuentosNames = local.descuentos as? [String] {
+                    for descuentoName in descuentosNames {
+                        FIRDatabase.database().reference().child("descuentos").child(descuentoName).observeSingleEvent(of: .value, with: { (snap) in
+                            if let snapDict = snap.value as? Dictionary<String, AnyObject> {
+                                if let tarjetaDic = snapDict["imagen"] as? [String:String] {
+                                    
+                                    var imageKey = ""
+                                    if DeviceType.IS_IPHONE_6P {
+                                        imageKey = "3x"
+                                    } else {
+                                        imageKey = "2x"
+                                    }
+                                    
+                                    if let tarjetaString = tarjetaDic[imageKey] {
+                                        let urlIcon = URL(string: tarjetaString)
+                                        if localView.tarjeta1.isHidden {
+                                            localView.tarjeta1.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
+                                            localView.tarjeta1.isHidden = false
+                                            localView.tarjeta2.isHidden = true
+                                            localView.tarjeta3.isHidden = true
+                                            localView.tarjeta4.isHidden = true
+                                        } else if localView.tarjeta2.isHidden {
+                                            localView.tarjeta2.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
+                                            localView.tarjeta2.isHidden = false
+                                            localView.tarjeta3.isHidden = true
+                                            localView.tarjeta4.isHidden = true
+                                        } else if localView.tarjeta3.isHidden {
+                                            localView.tarjeta3.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
+                                            localView.tarjeta3.isHidden = false
+                                            localView.tarjeta4.isHidden = true
+                                        } else if localView.tarjeta4.isHidden {
+                                            localView.tarjeta4.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
+                                            localView.tarjeta4.isHidden = false
+                                        }
+                                    }
+                                }
+                            }
+                        }) { (error) in
+                            print(error.localizedDescription)
+                        }
+                    }
+                }
+                
                 
                 let xPosition = self.view.frame.width * CGFloat(i)
                 localView.frame = CGRect(x: xPosition + 20,
@@ -253,9 +306,22 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
     var locales = [Local]()
     
     func loadLocales() {
-        locales = FirebaseAPI.getCoreLocales()
-        filterLocales()
-        orderLocales()
+        loadAndFilterLocales()
+        if checkLocalesEmpty() {
+            loadFullLocales()
+        }
+        promocionesTableView.reloadData()
+        todosTableView.reloadData()
+    }
+    
+    func loadLocalesByNotificationFilter() {
+        loadAndFilterLocales()
+        if checkLocalesEmpty() {
+            loadFullLocales()
+            filterGaveEmptyList = true
+        } else {
+            filterGaveEmptyList = false
+        }
         promocionesTableView.reloadData()
         todosTableView.reloadData()
     }
@@ -328,17 +394,26 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
         }
     }
     
-    func checkLocalesEmpty() {
-        if locales.count == 0 {
-            let alertController = UIAlertController(title: "", message: "No se encontraron locales para estos filtros", preferredStyle: UIAlertControllerStyle.alert)
-            
-            let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default)
-            {
-                (result : UIAlertAction) -> Void in
-                
-            }
-            alertController.addAction(okAction)
-            self.present(alertController, animated: true, completion: nil)
+    func checkLocalesEmpty() -> Bool {
+        return locales.count == 0
+    }
+    
+    func loadFullLocales() {
+        locales = FirebaseAPI.getCoreLocales()
+        orderLocales()
+    }
+    
+    func loadAndFilterLocales() {
+        locales = FirebaseAPI.getCoreLocales()
+        orderLocales()
+        filterLocales()
+    }
+    
+    func checkLocalesEmptyByNotifications() {
+        if checkLocalesEmpty() && FirebaseAPI.isFiltersActive() {
+            displayAlertNoLocales()
+            locales = FirebaseAPI.getCoreLocales()
+            orderLocales()
         }
     }
     
@@ -394,6 +469,7 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
         
         cell.localFavorite.isSelected = isLocal(local: local.nombre!, locales: favoritos)
         
+        
         return cell
     }
     
@@ -416,6 +492,50 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
         let shareWhite = UIImage(named: "Share")?.withRenderingMode(.alwaysTemplate)
         cell.localShare.setBackgroundImage(shareWhite, for: .normal)
         cell.localShare.tintColor = UIColor.white
+        
+        //tarjetas Img
+        if let descuentosNames = local.descuentos as? [String] {
+            for descuentoName in descuentosNames {
+                FIRDatabase.database().reference().child("descuentos").child(descuentoName).observeSingleEvent(of: .value, with: { (snap) in
+                    if let snapDict = snap.value as? Dictionary<String, AnyObject> {
+                        if let tarjetaDic = snapDict["imagen"] as? [String:String] {
+                            
+                            var imageKey = ""
+                            if DeviceType.IS_IPHONE_6P {
+                                imageKey = "3x"
+                            } else {
+                                imageKey = "2x"
+                            }
+                            
+                            if let tarjetaString = tarjetaDic[imageKey] {
+                                let urlIcon = URL(string: tarjetaString)
+                                if cell.tarjeta1.isHidden {
+                                    cell.tarjeta1.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
+                                    cell.tarjeta1.isHidden = false
+                                    cell.tarjeta2.isHidden = true
+                                    cell.tarjeta3.isHidden = true
+                                    cell.tarjeta4.isHidden = true
+                                } else if cell.tarjeta2.isHidden {
+                                    cell.tarjeta2.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
+                                    cell.tarjeta2.isHidden = false
+                                    cell.tarjeta3.isHidden = true
+                                    cell.tarjeta4.isHidden = true
+                                } else if cell.tarjeta3.isHidden {
+                                    cell.tarjeta3.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
+                                    cell.tarjeta3.isHidden = false
+                                    cell.tarjeta4.isHidden = true
+                                } else if cell.tarjeta4.isHidden {
+                                    cell.tarjeta4.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
+                                    cell.tarjeta4.isHidden = false
+                                }
+                            }
+                        }
+                    }
+                }) { (error) in
+                    print(error.localizedDescription)
+                }
+            }
+        }
         
         return cell
     }
@@ -458,6 +578,50 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
         cell.localShare.setBackgroundImage(shareWhite, for: .normal)
         cell.localShare.tintColor = UIColor.white
         
+        //tarjetas Img
+        if let descuentosNames = local.descuentos as? [String] {
+            for descuentoName in descuentosNames {
+                FIRDatabase.database().reference().child("descuentos").child(descuentoName).observeSingleEvent(of: .value, with: { (snap) in
+                    if let snapDict = snap.value as? Dictionary<String, AnyObject> {
+                        if let tarjetaDic = snapDict["imagen"] as? [String:String] {
+                            
+                            var imageKey = ""
+                            if DeviceType.IS_IPHONE_6P {
+                                imageKey = "3x"
+                            } else {
+                                imageKey = "2x"
+                            }
+                            
+                            if let tarjetaString = tarjetaDic[imageKey] {
+                                let urlIcon = URL(string: tarjetaString)
+                                if cell.tarjeta1.isHidden {
+                                    cell.tarjeta1.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
+                                    cell.tarjeta1.isHidden = false
+                                    cell.tarjeta2.isHidden = true
+                                    cell.tarjeta3.isHidden = true
+                                    cell.tarjeta4.isHidden = true
+                                } else if cell.tarjeta2.isHidden {
+                                    cell.tarjeta2.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
+                                    cell.tarjeta2.isHidden = false
+                                    cell.tarjeta3.isHidden = true
+                                    cell.tarjeta4.isHidden = true
+                                } else if cell.tarjeta3.isHidden {
+                                    cell.tarjeta3.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
+                                    cell.tarjeta3.isHidden = false
+                                    cell.tarjeta4.isHidden = true
+                                } else if cell.tarjeta4.isHidden {
+                                    cell.tarjeta4.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
+                                    cell.tarjeta4.isHidden = false
+                                }
+                            }
+                        }
+                    }
+                }) { (error) in
+                    print(error.localizedDescription)
+                }
+            }
+        }
+        
         return cell
     }
     
@@ -474,9 +638,6 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
                 return 0
             }
         } else {
-            if locales.count == 0 {
-                displayAlertNoLocales()
-            }
             return locales.count
         }
     }

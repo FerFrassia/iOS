@@ -80,8 +80,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             }
             guard let uid = user?.uid else {return}
             print("Successfully logged into Firebase with Google Account: ", uid)
-            self.showMenuVC()
             FirebaseAPI.loadFirebaseUserData()
+            FirebaseAPI.loadFirebaseCommonData()
+            self.showMenuVC()
         })
     }
     

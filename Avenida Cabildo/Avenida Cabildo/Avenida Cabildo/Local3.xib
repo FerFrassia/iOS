@@ -66,20 +66,20 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tarjeta Clarin" translatesAutoresizingMaskIntoConstraints="NO" id="qgo-hR-MVD">
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tarjeta Clarin" translatesAutoresizingMaskIntoConstraints="NO" id="qgo-hR-MVD">
                         <rect key="frame" x="120" y="168" width="20" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="20" id="Lxr-OC-Nsw"/>
                             <constraint firstAttribute="height" constant="20" id="TxP-HN-QkC"/>
                         </constraints>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tarjeta Shopping" translatesAutoresizingMaskIntoConstraints="NO" id="YBn-0a-qDw">
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tarjeta Shopping" translatesAutoresizingMaskIntoConstraints="NO" id="YBn-0a-qDw">
                         <rect key="frame" x="150" y="168" width="20" height="20"/>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tarjeta Naranja" translatesAutoresizingMaskIntoConstraints="NO" id="Nar-Y3-67K">
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tarjeta Naranja" translatesAutoresizingMaskIntoConstraints="NO" id="Nar-Y3-67K">
                         <rect key="frame" x="180" y="168" width="20" height="20"/>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tarjeta Club La Nacion" translatesAutoresizingMaskIntoConstraints="NO" id="QHd-8I-w2X">
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tarjeta Club La Nacion" translatesAutoresizingMaskIntoConstraints="NO" id="QHd-8I-w2X">
                         <rect key="frame" x="210" y="168" width="20" height="20"/>
                     </imageView>
                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ptn-l9-NcY">
@@ -104,36 +104,40 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="aNf-Bb-Qkm" secondAttribute="bottom" constant="15" id="0je-Nl-hpR"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="QHd-8I-w2X" secondAttribute="bottom" constant="3" id="2iX-jb-gVt"/>
-                    <constraint firstItem="QHd-8I-w2X" firstAttribute="width" secondItem="qgo-hR-MVD" secondAttribute="width" id="5oa-i1-48v"/>
                     <constraint firstAttribute="trailing" secondItem="JU6-gu-myU" secondAttribute="trailing" id="7P8-Td-IkW"/>
                     <constraint firstItem="JU6-gu-myU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="AfF-SA-Bjv"/>
-                    <constraint firstItem="Nar-Y3-67K" firstAttribute="height" secondItem="qgo-hR-MVD" secondAttribute="height" id="FoN-lp-n8X"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="Nar-Y3-67K" secondAttribute="bottom" constant="3" id="Gnv-DK-Wdp"/>
-                    <constraint firstItem="QHd-8I-w2X" firstAttribute="height" secondItem="qgo-hR-MVD" secondAttribute="height" id="GoO-pH-i4W"/>
+                    <constraint firstItem="Nar-Y3-67K" firstAttribute="width" secondItem="qgo-hR-MVD" secondAttribute="width" id="COm-25-I44"/>
+                    <constraint firstItem="Nar-Y3-67K" firstAttribute="bottom" secondItem="qgo-hR-MVD" secondAttribute="bottom" id="GED-eK-Dqy"/>
                     <constraint firstItem="qgo-hR-MVD" firstAttribute="leading" secondItem="aNf-Bb-Qkm" secondAttribute="trailing" constant="20" id="HOp-RZ-CaB"/>
                     <constraint firstItem="YBn-0a-qDw" firstAttribute="leading" secondItem="qgo-hR-MVD" secondAttribute="trailing" constant="10" id="I83-9T-hHx"/>
                     <constraint firstItem="YBn-0a-qDw" firstAttribute="width" secondItem="qgo-hR-MVD" secondAttribute="width" id="IOK-cX-tgc"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="YBn-0a-qDw" secondAttribute="bottom" constant="3" id="IsW-SP-pRL"/>
                     <constraint firstItem="QHd-8I-w2X" firstAttribute="leading" secondItem="Nar-Y3-67K" secondAttribute="trailing" constant="10" id="KQ3-Es-oAP"/>
+                    <constraint firstItem="YBn-0a-qDw" firstAttribute="width" secondItem="qgo-hR-MVD" secondAttribute="width" id="KkR-w9-0Lx"/>
+                    <constraint firstItem="YBn-0a-qDw" firstAttribute="top" secondItem="EWE-N7-u59" secondAttribute="bottom" constant="2" id="Ma6-Kj-U7E"/>
                     <constraint firstAttribute="bottomMargin" secondItem="Ptn-l9-NcY" secondAttribute="bottom" constant="1" id="OF8-Kt-e8B"/>
+                    <constraint firstItem="QHd-8I-w2X" firstAttribute="bottom" secondItem="qgo-hR-MVD" secondAttribute="bottom" id="PeT-KI-ufG"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Nar-Y3-67K" secondAttribute="bottom" constant="3" id="UCm-g5-6gQ"/>
                     <constraint firstAttribute="bottomMargin" secondItem="qgo-hR-MVD" secondAttribute="bottom" constant="3" id="Vf4-h8-bkq"/>
                     <constraint firstItem="qgo-hR-MVD" firstAttribute="leading" secondItem="uBf-4c-H8A" secondAttribute="leading" id="VoR-Ua-T08"/>
                     <constraint firstAttribute="bottom" secondItem="TqL-bo-Eto" secondAttribute="bottom" id="W0c-VQ-SJW"/>
+                    <constraint firstItem="QHd-8I-w2X" firstAttribute="width" secondItem="qgo-hR-MVD" secondAttribute="width" id="XDU-uH-vD4"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="YBn-0a-qDw" secondAttribute="bottom" constant="3" id="XjU-KS-n7T"/>
                     <constraint firstItem="qGX-nr-DnC" firstAttribute="width" secondItem="Ptn-l9-NcY" secondAttribute="width" id="Yt6-ju-2sf"/>
-                    <constraint firstItem="QHd-8I-w2X" firstAttribute="top" secondItem="EWE-N7-u59" secondAttribute="bottom" constant="2" id="dph-BM-qiL"/>
                     <constraint firstItem="qGX-nr-DnC" firstAttribute="height" secondItem="Ptn-l9-NcY" secondAttribute="height" id="dwg-e3-YWn"/>
+                    <constraint firstItem="YBn-0a-qDw" firstAttribute="bottom" secondItem="qgo-hR-MVD" secondAttribute="bottom" id="e9k-Ag-IWw"/>
                     <constraint firstItem="aNf-Bb-Qkm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="exm-sb-GMP"/>
                     <constraint firstItem="JU6-gu-myU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="fcI-jR-pCK"/>
+                    <constraint firstItem="QHd-8I-w2X" firstAttribute="top" secondItem="uBf-4c-H8A" secondAttribute="bottom" constant="21" id="fel-KS-8ht"/>
+                    <constraint firstItem="QHd-8I-w2X" firstAttribute="top" secondItem="EWE-N7-u59" secondAttribute="bottom" constant="2" id="g9b-CR-hKb"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="QHd-8I-w2X" secondAttribute="bottom" constant="3" id="iCD-Hn-FKY"/>
+                    <constraint firstItem="Nar-Y3-67K" firstAttribute="height" secondItem="qgo-hR-MVD" secondAttribute="height" id="j63-CC-oHm"/>
                     <constraint firstAttribute="bottom" secondItem="JU6-gu-myU" secondAttribute="bottom" id="k4B-yb-Rno"/>
                     <constraint firstItem="qGX-nr-DnC" firstAttribute="leading" secondItem="Ptn-l9-NcY" secondAttribute="trailing" constant="10" id="kSx-On-egp"/>
+                    <constraint firstItem="QHd-8I-w2X" firstAttribute="height" secondItem="qgo-hR-MVD" secondAttribute="height" id="nMV-pN-h2u"/>
                     <constraint firstItem="Nar-Y3-67K" firstAttribute="leading" secondItem="YBn-0a-qDw" secondAttribute="trailing" constant="10" id="rOR-sf-SPQ"/>
-                    <constraint firstItem="QHd-8I-w2X" firstAttribute="top" secondItem="uBf-4c-H8A" secondAttribute="bottom" constant="21" id="sAM-qL-dPI"/>
-                    <constraint firstItem="YBn-0a-qDw" firstAttribute="height" secondItem="qgo-hR-MVD" secondAttribute="height" id="tGZ-uc-Gnv"/>
                     <constraint firstItem="TqL-bo-Eto" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="uWz-0z-fug"/>
                     <constraint firstAttribute="trailing" secondItem="TqL-bo-Eto" secondAttribute="trailing" id="uva-XN-Fjk"/>
                     <constraint firstAttribute="bottomMargin" secondItem="qGX-nr-DnC" secondAttribute="bottom" constant="1" id="wX7-Qh-GVD"/>
-                    <constraint firstItem="Nar-Y3-67K" firstAttribute="width" secondItem="qgo-hR-MVD" secondAttribute="width" id="xP6-2j-7lB"/>
                     <constraint firstAttribute="trailingMargin" secondItem="qGX-nr-DnC" secondAttribute="trailing" constant="2" id="xXj-oD-wZw"/>
                     <constraint firstItem="EWE-N7-u59" firstAttribute="leading" secondItem="uBf-4c-H8A" secondAttribute="leading" id="yb6-oj-eF7"/>
                     <constraint firstItem="TqL-bo-Eto" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="zyZ-XB-IS6"/>
@@ -158,9 +162,9 @@
         <image name="Share" width="20" height="19"/>
         <image name="Star Favorito" width="21" height="20"/>
         <image name="Star No Favorito" width="21" height="20"/>
-        <image name="Tarjeta Clarin" width="8" height="7"/>
-        <image name="Tarjeta Club La Nacion" width="13" height="6"/>
-        <image name="Tarjeta Naranja" width="6" height="7"/>
-        <image name="Tarjeta Shopping" width="9" height="5"/>
+        <image name="Tarjeta Clarin" width="20" height="20"/>
+        <image name="Tarjeta Club La Nacion" width="24" height="10"/>
+        <image name="Tarjeta Naranja" width="21" height="13"/>
+        <image name="Tarjeta Shopping" width="25" height="20"/>
     </resources>
 </document>

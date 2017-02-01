@@ -39,20 +39,20 @@
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tarjeta Clarin" translatesAutoresizingMaskIntoConstraints="NO" id="gGF-aS-jyJ">
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gGF-aS-jyJ">
                     <rect key="frame" x="20" y="278" width="25" height="25"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="25" id="TZu-I1-sHU"/>
                         <constraint firstAttribute="width" constant="25" id="Ti6-0f-KYV"/>
                     </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tarjeta Shopping" translatesAutoresizingMaskIntoConstraints="NO" id="VrY-Sb-DBl">
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VrY-Sb-DBl">
                     <rect key="frame" x="55" y="278" width="25" height="25"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tarjeta Naranja" translatesAutoresizingMaskIntoConstraints="NO" id="z94-wp-CTE">
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="z94-wp-CTE">
                     <rect key="frame" x="90" y="278" width="25" height="25"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Tarjeta Club La Nacion" translatesAutoresizingMaskIntoConstraints="NO" id="rkK-YR-vk8">
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rkK-YR-vk8">
                     <rect key="frame" x="125" y="278" width="25" height="25"/>
                 </imageView>
                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="829-N3-s6c">
@@ -147,6 +147,10 @@
                 <outlet property="localName" destination="0ap-Pb-OGf" id="QAx-xp-dVk"/>
                 <outlet property="localShare" destination="829-N3-s6c" id="DzK-no-60n"/>
                 <outlet property="localVerMas" destination="Tp1-89-Nbi" id="wS2-BP-WlG"/>
+                <outlet property="tarjeta1" destination="gGF-aS-jyJ" id="7bu-Ss-QA7"/>
+                <outlet property="tarjeta2" destination="VrY-Sb-DBl" id="SE3-G0-SVq"/>
+                <outlet property="tarjeta3" destination="z94-wp-CTE" id="e2U-u0-Hpy"/>
+                <outlet property="tarjeta4" destination="rkK-YR-vk8" id="LeM-q5-4OR"/>
             </connections>
         </view>
     </objects>
@@ -154,9 +158,5 @@
         <image name="Share" width="20" height="19"/>
         <image name="Star Favorito" width="21" height="20"/>
         <image name="Star No Favorito" width="21" height="20"/>
-        <image name="Tarjeta Clarin" width="8" height="7"/>
-        <image name="Tarjeta Club La Nacion" width="13" height="6"/>
-        <image name="Tarjeta Naranja" width="6" height="7"/>
-        <image name="Tarjeta Shopping" width="9" height="5"/>
     </resources>
 </document>

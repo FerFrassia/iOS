@@ -35,6 +35,7 @@ class FilterViewController: UIViewController, UIScrollViewDelegate, UITableViewD
     
     override func viewWillAppear(_ animated: Bool) {
         setAbiertoSwitch()
+        loadSearchTextFieldText()
     }
     
     func setAbiertoSwitch() {
@@ -89,6 +90,10 @@ class FilterViewController: UIViewController, UIScrollViewDelegate, UITableViewD
                 FirebaseAPI.setFilterByNameDefaults(localName: text.lowercased())
             }
         }
+    }
+    
+    func loadSearchTextFieldText() {
+        searchTextField.text = FirebaseAPI.getFilterByNameDefaults()
     }
     
     //MARK: - UIScrollViewDelegate
