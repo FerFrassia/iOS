@@ -40,6 +40,8 @@
 		C14CE7731E1C295000FCDF5D /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14CE7701E1C295000FCDF5D /* DataController.swift */; };
 		C14CE7741E1C33E500FCDF5D /* Avenida_Cabildo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C1772C6A1E0B571C00AD8ACC /* Avenida_Cabildo.xcdatamodeld */; };
 		C14CE7751E1C33E600FCDF5D /* Avenida_Cabildo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C1772C6A1E0B571C00AD8ACC /* Avenida_Cabildo.xcdatamodeld */; };
+		C14D97B01E46804500979204 /* PromocionLocalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14D97AE1E46804500979204 /* PromocionLocalCell.swift */; };
+		C14D97B11E46804500979204 /* PromocionLocalCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C14D97AF1E46804500979204 /* PromocionLocalCell.xib */; };
 		C1509DBF1E217C0B00743DB4 /* FirebaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1509DBE1E217C0B00743DB4 /* FirebaseAPI.swift */; };
 		C153BD061E258ADB00C4BADE /* Local2.xib in Resources */ = {isa = PBXBuildFile; fileRef = C153BD051E258ADB00C4BADE /* Local2.xib */; };
 		C153BD091E259ECC00C4BADE /* Local2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C153BD081E259ECC00C4BADE /* Local2.swift */; };
@@ -117,6 +119,8 @@
 		C14CE76A1E1C277C00FCDF5D /* Avenida CabildoTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Avenida CabildoTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		C14CE76B1E1C277C00FCDF5D /* Avenida CabildoUITests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Avenida CabildoUITests-Bridging-Header.h"; sourceTree = "<group>"; };
 		C14CE7701E1C295000FCDF5D /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		C14D97AE1E46804500979204 /* PromocionLocalCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromocionLocalCell.swift; sourceTree = "<group>"; };
+		C14D97AF1E46804500979204 /* PromocionLocalCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PromocionLocalCell.xib; sourceTree = "<group>"; };
 		C1509DBE1E217C0B00743DB4 /* FirebaseAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseAPI.swift; sourceTree = "<group>"; };
 		C1510A5E1E390C67004895A5 /* Avenida_Cabildo 10.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Avenida_Cabildo 10.xcdatamodel"; sourceTree = "<group>"; };
 		C153BD051E258ADB00C4BADE /* Local2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Local2.xib; sourceTree = "<group>"; };
@@ -314,6 +318,8 @@
 			children = (
 				C1B5A4CC1E28084D00DD65B5 /* PromocionLocalView.swift */,
 				C1B5A4CE1E28085D00DD65B5 /* PromocionLocalView.xib */,
+				C14D97AE1E46804500979204 /* PromocionLocalCell.swift */,
+				C14D97AF1E46804500979204 /* PromocionLocalCell.xib */,
 			);
 			name = Local;
 			sourceTree = "<group>";
@@ -538,6 +544,7 @@
 				C1772C711E0B571C00AD8ACC /* LaunchScreen.storyboard in Resources */,
 				C1859D641E0B726D00315028 /* GoogleService-Info.plist in Resources */,
 				C18725EB1E268AFD00D1A509 /* Local3.xib in Resources */,
+				C14D97B11E46804500979204 /* PromocionLocalCell.xib in Resources */,
 				C1B5A4CF1E28085D00DD65B5 /* PromocionLocalView.xib in Resources */,
 				C11469111E1E90C5004AB55F /* PostCell.xib in Resources */,
 				C1772C6E1E0B571C00AD8ACC /* Assets.xcassets in Resources */,
@@ -734,6 +741,7 @@
 				C149B8AB1E1B16A6009FF600 /* NavigationMainViewController.swift in Sources */,
 				C149B8A71E1AFF00009FF600 /* FakeSplashViewController.swift in Sources */,
 				C18725F01E26AFEB00D1A509 /* PromocionCell.swift in Sources */,
+				C14D97B01E46804500979204 /* PromocionLocalCell.swift in Sources */,
 				C1F702FF1E3BE371009D3857 /* ShareView.swift in Sources */,
 				C1772C641E0B571C00AD8ACC /* AppDelegate.swift in Sources */,
 				C1509DBF1E217C0B00743DB4 /* FirebaseAPI.swift in Sources */,

@@ -13,9 +13,8 @@ import SWRevealViewController
 import GoogleMaps
 import CoreData
 
-class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, SWRevealViewControllerDelegate {
+class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, SWRevealViewControllerDelegate, UICollectionViewDataSource {
     
-    @IBOutlet weak var promocionesTableView: UITableView!
     @IBOutlet weak var todosTableView: UITableView!
     @IBOutlet weak var revealMenuButton: UIBarButtonItem!
     @IBOutlet weak var promocionesButton: UIButton!
@@ -36,7 +35,8 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
 
         super.viewDidLoad()
         setNavBar()
-        promocionesTableView.register(UINib(nibName: "PromocionCell", bundle: Bundle.main), forCellReuseIdentifier: "PromocionCell")
+//        promocionesTableView.register(UINib(nibName: "PromocionCell", bundle: Bundle.main), forCellReuseIdentifier: "PromocionCell")
+        promocionCollection.register(UINib(nibName: "PromocionLocalCell", bundle: Bundle.main), forCellWithReuseIdentifier: "PromocionLocalCell")
         todosTableView.register(UINib(nibName: "PostCell", bundle: Bundle.main), forCellReuseIdentifier: "postCell")
         todosTableView.register(UINib(nibName: "Local2", bundle: Bundle.main), forCellReuseIdentifier: "Local2")
         todosTableView.register(UINib(nibName: "Local3", bundle: Bundle.main), forCellReuseIdentifier: "Local3")
@@ -44,6 +44,8 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
         NotificationCenter.default.addObserver(self, selector: #selector(self.loadLocales), name: NSNotification.Name(rawValue: localesStoredOrUpdatedKey), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.loadLocalesByNotificationFilter), name: NSNotification.Name(rawValue: filtersUpdatedKey), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.redrawPromocionAndTodosFavorite), name: NSNotification.Name(rawValue: promocionUpdatedKey), object: nil)
+        
+        setPromocionView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -147,7 +149,7 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
     
     func redrawPromocionAndTodosFavorite() {
         loadFavoritos()
-        promocionesTableView.reloadData()
+        promocionCollection.reloadData()
         todosTableView.reloadData()
     }
     
@@ -291,7 +293,7 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
         if checkLocalesEmpty() {
             loadFullLocales()
         }
-        promocionesTableView.reloadData()
+        promocionCollection.reloadData()
         todosTableView.reloadData()
     }
     
@@ -303,7 +305,7 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
         } else {
             filterGaveEmptyList = false
         }
-        promocionesTableView.reloadData()
+        promocionCollection.reloadData()
         todosTableView.reloadData()
     }
     
@@ -612,15 +614,15 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == promocionesTableView {
-            if locales.count != 0 {
-                return 1
-            } else {
-                return 0
-            }
-        } else {
+//        if tableView == promocionesTableView {
+//            if locales.count != 0 {
+//                return 1
+//            } else {
+//                return 0
+//            }
+//        } else {
             return locales.count
-        }
+//        }
     }
     
     func displayAlertNoLocales() {
@@ -635,9 +637,9 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if tableView == promocionesTableView {
-            return promocionesTableView.frame.height
-        } else {
+//        if tableView == promocionesTableView {
+//            return promocionesTableView.frame.height
+//        } else {
             let local = locales[indexPath.row]
             if local.visibilidad == 3 {
                 return 100
@@ -646,15 +648,15 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
             } else {
                 return 200
             }
-        }
+//        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if tableView == promocionesTableView {
-            return cellPromocion(tableView: tableView, indexPath: indexPath)
-        } else {
+//        if tableView == promocionesTableView {
+//            return cellPromocion(tableView: tableView, indexPath: indexPath)
+//        } else {
             return cellTodos(tableView: tableView, indexPath: indexPath)
-        }
+//        }
     }
     
     func isLocal(local: String, locales: [String]) -> Bool {
@@ -715,7 +717,7 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
             if (previousPage != page) {
                 scrollIndex = page
                 FirebaseAPI.storeSelectedUserDefaults(name: enPromocion[page])
-                promocionesTableView.reloadData()
+                promocionCollection.reloadData()
             }
         }
     }
@@ -769,6 +771,130 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
         let story = UIStoryboard(name: "Main", bundle: nil)
         let vc = story.instantiateViewController(withIdentifier: "FilterViewController") as! FilterViewController
         self.present(vc, animated: true, completion: nil)
+    }
+    
+    //MARK: - Promocion View
+    @IBOutlet weak var promocionScrollView: UIScrollView!
+    @IBOutlet weak var promocionMapView: GMSMapView!
+    @IBOutlet weak var promocionCollection: UICollectionView!
+    @IBOutlet weak var categoriaBlue: UIView!
+    @IBOutlet weak var categoriaWhite: UIView!
+    @IBOutlet weak var categoriaImg: UIImageView!
+    @IBOutlet weak var categoriaButton: UIButton!
+    @IBOutlet weak var categoriaLabel: UILabel!
+    
+    @IBOutlet weak var categoriaBlueLeading: NSLayoutConstraint!
+    @IBOutlet weak var categoriaBlueTrailing: NSLayoutConstraint!
+    
+    @IBAction func categoryPressed(_ sender: Any) {
+        let story = UIStoryboard(name: "Main", bundle: nil)
+        let vc = story.instantiateViewController(withIdentifier: "ChangeCategory") as! ChangeCategoryTableViewController
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    func setPromocionView() {
+        loadPromocionSelected()
+        setCategoria()
+    }
+    
+    func setCategoria() {
+        categoriaBlue.layer.cornerRadius = 20
+        categoriaWhite.layer.cornerRadius = 20
+        categoriaLabel.text = promocionSelectedName
+        
+        var imageKey = ""
+        if DeviceType.IS_IPHONE_6P {
+            imageKey = "3x"
+        } else {
+            imageKey = "2x"
+        }
+        
+        let urlIcon = URL(string: promocionSelectedImage[imageKey]!)
+        DispatchQueue(label: "com.queue.Concurrent", attributes: .concurrent).async {
+            if let data = try? Data(contentsOf: urlIcon!) {
+                DispatchQueue.main.async {
+                    self.categoriaImg.image = UIImage(data: data)?.withRenderingMode(.alwaysTemplate)
+                }
+            }
+        }
+        
+        //Fix constraints category
+        if DeviceType.IS_IPHONE_5 {
+            categoriaBlueLeading.constant = 50
+            categoriaBlueTrailing.constant = 50
+        }
+    }
+    
+    //MARK: - Promociones Collection DataSource
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return enPromocion.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PromocionLocalCell", for: indexPath) as! PromocionLocalCell
+        
+        let local = FirebaseAPI.getCoreLocal(name: enPromocion[indexPath.row])
+        
+        let urlFondo = URL(string: local.imagenFondo!)
+        cell.localBackground.sd_setImage(with: urlFondo, placeholderImage: UIImage(named: "Image Not Available"))
+        
+        if let efectivo = local.efectivo {
+            var imageName = ""
+            switch efectivo {
+            case "10%":
+                imageName = "10Descuento"
+            case "20%":
+                imageName = "20Descuento"
+            case "30%":
+                imageName = "30Descuento"
+            case "40%":
+                imageName = "40Descuento"
+            case "50%":
+                imageName = "50Descuento"
+            default:
+                imageName = "10Descuento"
+            }
+            cell.localDescuento.image = UIImage(named: imageName)
+        }
+        
+        cell.localName.text = local.nombre
+        cell.localAddress.text = local.direccion
+        
+        cell.localFavorite.isSelected = isLocal(local: local.nombre!, locales: favoritos)
+        
+        cell.localVerMas.layer.cornerRadius = 15
+        
+        //tarjetas Img
+        if let descuentosNames = local.descuentos as? [String] {
+            for descuentoName in descuentosNames {
+                var imgName = ""
+                imgName = descuentoName
+                if descuentoName == "2x1 con La Nación" {
+                    imgName = "2x1 con La Nacion"
+                }
+                if let img = UIImage(named: imgName) {
+                    if cell.tarjeta1.tag == 0 {
+                        cell.tarjeta1.image = img
+                        cell.tarjeta1.tag = 1
+                    } else if cell.tarjeta2.tag == 0 {
+                        cell.tarjeta2.image = img
+                        cell.tarjeta2.tag = 1
+                    } else if cell.tarjeta3.tag == 0 {
+                        cell.tarjeta3.image = img
+                        cell.tarjeta3.tag = 1
+                    } else if cell.tarjeta4.tag == 0 {
+                        cell.tarjeta4.image = img
+                        cell.tarjeta4.tag = 1
+                    }
+                }
+            }
+        }
+        
+        return cell
     }
     
     //MARK: - iPhone Size
