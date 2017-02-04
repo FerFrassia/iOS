@@ -543,6 +543,9 @@ class FirebaseAPI: NSObject {
         let context = appDelegate.persistentContainer.viewContext
         
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Categoria")
+        let sortDescriptor = NSSortDescriptor(key: "nombre", ascending: true)
+        let sortDescriptors = [sortDescriptor]
+        request.sortDescriptors = sortDescriptors
         do {
             let result = try context.fetch(request) as? [Categoria]
             return result

@@ -237,47 +237,28 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
                 //tarjetas Img
                 if let descuentosNames = local.descuentos as? [String] {
                     for descuentoName in descuentosNames {
-                        FIRDatabase.database().reference().child("descuentos").child(descuentoName).observeSingleEvent(of: .value, with: { (snap) in
-                            if let snapDict = snap.value as? Dictionary<String, AnyObject> {
-                                if let tarjetaDic = snapDict["imagen"] as? [String:String] {
-                                    
-                                    var imageKey = ""
-                                    if DeviceType.IS_IPHONE_6P {
-                                        imageKey = "3x"
-                                    } else {
-                                        imageKey = "2x"
-                                    }
-                                    
-                                    if let tarjetaString = tarjetaDic[imageKey] {
-                                        let urlIcon = URL(string: tarjetaString)
-                                        if localView.tarjeta1.isHidden {
-                                            localView.tarjeta1.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
-                                            localView.tarjeta1.isHidden = false
-                                            localView.tarjeta2.isHidden = true
-                                            localView.tarjeta3.isHidden = true
-                                            localView.tarjeta4.isHidden = true
-                                        } else if localView.tarjeta2.isHidden {
-                                            localView.tarjeta2.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
-                                            localView.tarjeta2.isHidden = false
-                                            localView.tarjeta3.isHidden = true
-                                            localView.tarjeta4.isHidden = true
-                                        } else if localView.tarjeta3.isHidden {
-                                            localView.tarjeta3.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
-                                            localView.tarjeta3.isHidden = false
-                                            localView.tarjeta4.isHidden = true
-                                        } else if localView.tarjeta4.isHidden {
-                                            localView.tarjeta4.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
-                                            localView.tarjeta4.isHidden = false
-                                        }
-                                    }
-                                }
+                        var imgName = ""
+                        imgName = descuentoName
+                        if descuentoName == "2x1 con La Nación" {
+                            imgName = "2x1 con La Nacion"
+                        }
+                        if let img = UIImage(named: imgName) {
+                            if localView.tarjeta1.tag == 0 {
+                                localView.tarjeta1.image = img
+                                localView.tarjeta1.tag = 1
+                            } else if localView.tarjeta2.tag == 0 {
+                                localView.tarjeta2.image = img
+                                localView.tarjeta2.tag = 1
+                            } else if localView.tarjeta3.tag == 0 {
+                                localView.tarjeta3.image = img
+                                localView.tarjeta3.tag = 1
+                            } else if localView.tarjeta4.tag == 0 {
+                                localView.tarjeta4.image = img
+                                localView.tarjeta4.tag = 1
                             }
-                        }) { (error) in
-                            print(error.localizedDescription)
                         }
                     }
                 }
-                
                 
                 let xPosition = self.view.frame.width * CGFloat(i)
                 localView.frame = CGRect(x: xPosition + 20,
