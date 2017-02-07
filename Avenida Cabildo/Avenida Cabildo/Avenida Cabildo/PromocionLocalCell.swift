@@ -28,5 +28,56 @@ class PromocionLocalCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    @IBAction func favoritePressed(sender: UIButton) {
+        if FirebaseAPI.isUserLoggedInFirebase() {
+            if localFavorite.isSelected {
+                //need to unfavorite
+                localFavorite.isSelected = false
+                FirebaseAPI.removeFavorite(name: (localName.text)!)
+            } else {
+                //need to favorite
+                localFavorite.isSelected = true
+                FirebaseAPI.addFavorite(name: (localName.text)!)
+            }
+        } else {
+            alertLoginFav()
+        }
+    }
+    
+    func alertLoginFav() {
+        var topVC = UIApplication.shared.keyWindow?.rootViewController
+        while((topVC!.presentedViewController) != nil) {
+            topVC = topVC!.presentedViewController
+        }
+        
+        let alert = UIAlertController(title: "", message: "Para utilizar Favoritos debe loguearse", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default) { action in
+        })
+        topVC?.present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func sharePressed(sender: UIButton) {
+        let local = FirebaseAPI.getCoreLocal(name: (localName.text)!)
+        if let web = local.web {
+            var topVC = UIApplication.shared.keyWindow?.rootViewController
+            while((topVC!.presentedViewController) != nil) {
+                topVC = topVC!.presentedViewController
+            }
+            let activityViewController = UIActivityViewController(activityItems: [web], applicationActivities: nil)
+            topVC?.present(activityViewController, animated: true, completion: nil)
+        }
+    }
+    
+    @IBAction func verMasPressed(sender: UIButton) {
+        var topVC = UIApplication.shared.keyWindow?.rootViewController
+        while((topVC!.presentedViewController) != nil) {
+            topVC = topVC!.presentedViewController
+        }
+        
+        let story = UIStoryboard(name: "Main", bundle: nil)
+        let vc = story.instantiateViewController(withIdentifier: "LocalSelectedViewController") as! LocalSelectedViewController
+        topVC?.present(vc, animated: true, completion: nil)
+    }
 
 }

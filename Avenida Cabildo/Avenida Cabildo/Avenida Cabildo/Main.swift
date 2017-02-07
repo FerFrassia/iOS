@@ -13,7 +13,7 @@ import SWRevealViewController
 import GoogleMaps
 import CoreData
 
-class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, SWRevealViewControllerDelegate, UICollectionViewDataSource {
+class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, SWRevealViewControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var todosTableView: UITableView!
     @IBOutlet weak var revealMenuButton: UIBarButtonItem!
@@ -23,6 +23,7 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
     @IBOutlet weak var mainScroll: UIScrollView!
     
     var filterGaveEmptyList = false
+    var emptyListAlertAlreadyShowed = false
     
     func showLoginViewController() {
         let storyboard = UIStoryboard(name: "Login", bundle: nil)
@@ -35,7 +36,6 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
 
         super.viewDidLoad()
         setNavBar()
-//        promocionesTableView.register(UINib(nibName: "PromocionCell", bundle: Bundle.main), forCellReuseIdentifier: "PromocionCell")
         promocionCollection.register(UINib(nibName: "PromocionLocalCell", bundle: Bundle.main), forCellWithReuseIdentifier: "PromocionLocalCell")
         todosTableView.register(UINib(nibName: "PostCell", bundle: Bundle.main), forCellReuseIdentifier: "postCell")
         todosTableView.register(UINib(nibName: "Local2", bundle: Bundle.main), forCellReuseIdentifier: "Local2")
@@ -52,8 +52,13 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
         loadFavoritos()
         redrawSelectedLocal()
         loadEnPromocion()
+        setPromocionMap()
         loadPromocionSelected()
         loadLocales()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        filterGaveEmptyList = false
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -614,15 +619,7 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if tableView == promocionesTableView {
-//            if locales.count != 0 {
-//                return 1
-//            } else {
-//                return 0
-//            }
-//        } else {
-            return locales.count
-//        }
+        return locales.count
     }
     
     func displayAlertNoLocales() {
@@ -634,29 +631,22 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
         }
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
+    
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        if tableView == promocionesTableView {
-//            return promocionesTableView.frame.height
-//        } else {
-            let local = locales[indexPath.row]
-            if local.visibilidad == 3 {
-                return 100
-            } else if local.visibilidad == 2 {
-                return 110
-            } else {
-                return 200
-            }
-//        }
+        let local = locales[indexPath.row]
+        if local.visibilidad == 3 {
+            return 100
+        } else if local.visibilidad == 2 {
+            return 110
+        } else {
+            return 200
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        if tableView == promocionesTableView {
-//            return cellPromocion(tableView: tableView, indexPath: indexPath)
-//        } else {
-            return cellTodos(tableView: tableView, indexPath: indexPath)
-//        }
+        return cellTodos(tableView: tableView, indexPath: indexPath)
     }
     
     func isLocal(local: String, locales: [String]) -> Bool {
@@ -717,7 +707,7 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
             if (previousPage != page) {
                 scrollIndex = page
                 FirebaseAPI.storeSelectedUserDefaults(name: enPromocion[page])
-                promocionCollection.reloadData()
+                setPromocionMap()
             }
         }
     }
@@ -824,6 +814,26 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
             categoriaBlueTrailing.constant = 50
         }
     }
+    
+    func setPromocionMap() {
+        promocionMapView.clear()
+        
+        let currentLocal = FirebaseAPI.getCoreLocal(name: enPromocion[scrollIndex])
+        let locationArray = currentLocal.ubicacion?.components(separatedBy: ", ")
+        let latitud = locationArray?[0]
+        let longitud = locationArray?[1]
+        
+        let camera = GMSCameraPosition.camera(withLatitude: Double(latitud!)! - 0.004, longitude: Double(longitud!)!, zoom: 16.0)
+        promocionMapView.camera = camera
+        
+        let marker = GMSMarker()
+        marker.position = CLLocationCoordinate2D(latitude: Double(latitud!)!, longitude: Double(longitud!)!)
+        marker.title = currentLocal.nombre
+        marker.snippet = ""
+        marker.icon = UIImage(named: "Simbolo")
+        marker.map = promocionMapView
+    }
+    
     
     //MARK: - Promociones Collection DataSource
     func numberOfSections(in collectionView: UICollectionView) -> Int {
