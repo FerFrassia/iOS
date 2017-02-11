@@ -14,6 +14,8 @@ import Firebase
 let localesStoredOrUpdatedKey = "localesStoredOrUpdatedKey"
 let filtersUpdatedKey = "filtersUpdatedKey"
 let promocionUpdatedKey = "promocionUpdatedKey"
+let openMenuKey = "openMenuKey"
+let openLoginKey = "openLoginKey"
 
 class FirebaseAPI: NSObject {
     
@@ -51,6 +53,7 @@ class FirebaseAPI: NSObject {
             } else {
                 UserDefaults.standard.set([], forKey: "enPromocion")
             }
+            NotificationCenter.default.post(name: Notification.Name(rawValue: promocionUpdatedKey), object: nil)
         }) { (error) in
             print(error.localizedDescription)
         }

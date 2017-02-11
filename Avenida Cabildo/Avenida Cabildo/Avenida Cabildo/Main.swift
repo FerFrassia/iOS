@@ -123,6 +123,7 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
         enPromocion = filterLocalesEnPromocion(todos: enPromocion)
         if enPromocion.count > 0 {
             FirebaseAPI.storeSelectedUserDefaults(name: enPromocion[0])
+            setPromocionMap()
         }
     }
     
@@ -817,6 +818,10 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
     
     func setPromocionMap() {
         promocionMapView.clear()
+        
+        if enPromocion.count == 0 {
+            return
+        }
         
         let currentLocal = FirebaseAPI.getCoreLocal(name: enPromocion[scrollIndex])
         let locationArray = currentLocal.ubicacion?.components(separatedBy: ", ")

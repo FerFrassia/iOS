@@ -87,19 +87,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     }
     
     func showMenuVC() {
-        UIApplication.shared.statusBarStyle = .default
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let fakeVC = storyboard.instantiateViewController(withIdentifier: "Fake") as? FakeSplashViewController
-        fakeVC?.openMenu = true
-        window!.rootViewController = fakeVC
+//        UIApplication.shared.statusBarStyle = .default
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let fakeVC = storyboard.instantiateViewController(withIdentifier: "Fake") as? FakeSplashViewController
+//        fakeVC?.openMenu = true
+//        window!.rootViewController = fakeVC
+        NotificationCenter.default.post(name: Notification.Name(rawValue: openMenuKey), object: nil)
     }
     
     func showLoginVC() {
-        UIApplication.shared.statusBarStyle = .default
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let fakeVC = storyboard.instantiateViewController(withIdentifier: "Fake") as? FakeSplashViewController
-        fakeVC?.openLogin = true
-        window!.rootViewController = fakeVC
+//        UIApplication.shared.statusBarStyle = .default
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let fakeVC = storyboard.instantiateViewController(withIdentifier: "Fake") as? FakeSplashViewController
+//        fakeVC?.openLogin = true
+//        window!.rootViewController = fakeVC
+        NotificationCenter.default.post(name: Notification.Name(rawValue: openLoginKey), object: nil)
     }
     
     func signIn(signIn: GIDSignIn!, didDisconnectWithUser user:GIDGoogleUser!,
@@ -119,7 +121,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        GIDSignIn.sharedInstance().signInSilently()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -127,9 +128,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        UIApplication.shared.statusBarStyle = .lightContent
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        window!.rootViewController = storyboard.instantiateViewController(withIdentifier: "Fake")
         self.saveContext()
     }
 

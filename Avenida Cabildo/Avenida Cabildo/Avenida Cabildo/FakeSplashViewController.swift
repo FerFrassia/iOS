@@ -8,19 +8,15 @@
 
 import UIKit
 import FirebaseAuth
+import GoogleSignIn
 
 class FakeSplashViewController: UIViewController {
     
-    var openLogin = false
-    var openMenu = false
-    
     override func viewWillAppear(_ animated: Bool) {
-        if openLogin {
-            showLoginVC()
-        }
-        
-        if openMenu {
+        if FirebaseAPI.isUserLoggedInFirebase() {
             showMenuVC()
+        } else {
+            showLoginVC()
         }
     }
     
