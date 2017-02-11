@@ -89,13 +89,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     func showMenuVC() {
         UIApplication.shared.statusBarStyle = .default
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        window!.rootViewController = storyboard.instantiateViewController(withIdentifier: "Main")
+        let fakeVC = storyboard.instantiateViewController(withIdentifier: "Fake") as? FakeSplashViewController
+        fakeVC?.openMenu = true
+        window!.rootViewController = fakeVC
     }
     
     func showLoginVC() {
-        UIApplication.shared.statusBarStyle = .lightContent
+        UIApplication.shared.statusBarStyle = .default
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        window!.rootViewController = storyboard.instantiateViewController(withIdentifier: "Login")
+        let fakeVC = storyboard.instantiateViewController(withIdentifier: "Fake") as? FakeSplashViewController
+        fakeVC?.openLogin = true
+        window!.rootViewController = fakeVC
     }
     
     func signIn(signIn: GIDSignIn!, didDisconnectWithUser user:GIDGoogleUser!,
@@ -115,7 +119,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        GIDSignIn.sharedInstance().signInSilently()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -123,8 +127,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        // Saves changes in the application's managed object context before the application terminates.
+        UIApplication.shared.statusBarStyle = .lightContent
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        window!.rootViewController = storyboard.instantiateViewController(withIdentifier: "Fake")
         self.saveContext()
     }
 

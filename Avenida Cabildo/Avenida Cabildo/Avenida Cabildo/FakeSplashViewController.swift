@@ -7,40 +7,36 @@
 //
 
 import UIKit
-import FBSDKLoginKit
+import FirebaseAuth
 
 class FakeSplashViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        checkFBLoggedIn()
-    }
-
-    func checkFBLoggedIn() {
-        if (FBSDKAccessToken.current()) != nil {
+    
+    var openLogin = false
+    var openMenu = false
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if openLogin {
+            showLoginVC()
+        }
+        
+        if openMenu {
             showMenuVC()
         }
     }
     
     func showMenuVC() {
-        performSegue(withIdentifier: "MainSegue", sender: self)
+        UIApplication.shared.statusBarStyle = .default
+        DispatchQueue(label: "com.queue.Concurrent", attributes: .concurrent).async {
+            self.performSegue(withIdentifier: "MainSegue", sender: nil)
+        }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func showLoginVC() {
+        UIApplication.shared.statusBarStyle = .lightContent
+        DispatchQueue(label: "com.queue.Concurrent", attributes: .concurrent).async {
+            self.performSegue(withIdentifier: "LoginSegue", sender: nil)
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

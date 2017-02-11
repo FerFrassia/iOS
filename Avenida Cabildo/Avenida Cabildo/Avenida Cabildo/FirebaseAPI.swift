@@ -121,7 +121,7 @@ class FirebaseAPI: NSObject {
 
         let locales = getCoreLocales()
         if localesListHasLocal(name: nombre, locales: locales) {
-            updateLocal(local: getLocalFromList(localName: nombre, list: locales), categoria: categoria, descuentos: descuentos, detalleTexto: detalleTexto, direccion: direccion, facebook: facebook, horarios: horarios, imagenFondo: imagenFondo, imagenLogo: imagenLogo, instagram: instagram, mail: mail, nombre: nombre, telefono: telefono, ubicacion: ubicacion, web: web, efectivo: efectivo, visibilidad: visibilidad, horariosParaFiltro: horariosParaFiltro, enPromocion: enPromocion)
+            updateLocal(local: getLocalFromList(localName: nombre, list: locales)!, categoria: categoria, descuentos: descuentos, detalleTexto: detalleTexto, direccion: direccion, facebook: facebook, horarios: horarios, imagenFondo: imagenFondo, imagenLogo: imagenLogo, instagram: instagram, mail: mail, nombre: nombre, telefono: telefono, ubicacion: ubicacion, web: web, efectivo: efectivo, visibilidad: visibilidad, horariosParaFiltro: horariosParaFiltro, enPromocion: enPromocion)
         } else {
             saveLocal(categoria: categoria, descuentos: descuentos, detalleTexto: detalleTexto, direccion: direccion, facebook: facebook, horarios: horarios, imagenFondo: imagenFondo, imagenLogo: imagenLogo, instagram: instagram, mail: mail, nombre: nombre, telefono: telefono, ubicacion: ubicacion, web: web, efectivo: efectivo, visibilidad: visibilidad, horariosParaFiltro: horariosParaFiltro, enPromocion: enPromocion)
         }
@@ -138,15 +138,13 @@ class FirebaseAPI: NSObject {
         return found
     }
     
-    static func getLocalFromList(localName: String, list: [Local]) -> Local {
-        var localFound = Local()
+    static func getLocalFromList(localName: String, list: [Local]) -> Local? {
         for local in list {
             if local.nombre == localName {
-                localFound = local
-                break
+                return local
             }
         }
-        return localFound
+        return nil
     }
     
     static func updateLocal(local: Local,
@@ -304,7 +302,7 @@ class FirebaseAPI: NSObject {
     
     static func getCoreLocal(name: String) -> Local {
         let locales = getCoreLocales()
-        return getLocalFromList(localName: name, list: locales)
+        return getLocalFromList(localName: name, list: locales)!
     }
     
     //MARK: - Favoritos
@@ -484,7 +482,7 @@ class FirebaseAPI: NSObject {
     static func saveOrUpdateCategoria(nombre: String, imagen: Dictionary<String, String>, locales: [String]?) {
         if let categorias = getCoreCategorias() {
             if categoriasListHasCategoria(name: nombre, categorias: categorias) {
-                updateCategoria(categoria: getCategoriaFromList(name: nombre, categorias: categorias),
+                updateCategoria(categoria: getCategoriaFromList(name: nombre, categorias: categorias)!,
                                 nombre: nombre,
                                 imagen: imagen,
                                 locales: locales)
@@ -565,15 +563,13 @@ class FirebaseAPI: NSObject {
         return found
     }
     
-    static func getCategoriaFromList(name: String, categorias: [Categoria]) -> Categoria {
-        var categoriaFound = Categoria()
+    static func getCategoriaFromList(name: String, categorias: [Categoria]) -> Categoria? {
         for categoria in categorias {
             if categoria.nombre == name {
-                categoriaFound = categoria
-                break
+                return categoria
             }
         }
-        return categoriaFound
+        return nil
     }
     
     static func setCategoriaSelected(name: String, locales: [String]?, image: [String:String]) {
@@ -630,7 +626,7 @@ class FirebaseAPI: NSObject {
     static func saveOrUpdateDescuento(nombre: String, imagen: Dictionary<String, String>, locales: [String]?) {
         if let descuentos = getCoreDescuentos() {
             if descuentosListHasDescuento(name: nombre, descuentos: descuentos) {
-                updateDescuento(descuento: getDescuentoFromList(name: nombre, descuentos: descuentos),
+                updateDescuento(descuento: getDescuentoFromList(name: nombre, descuentos: descuentos)!,
                                 nombre: nombre,
                                 imagen: imagen,
                                 locales: locales)
@@ -709,15 +705,13 @@ class FirebaseAPI: NSObject {
         return found
     }
     
-    static func getDescuentoFromList(name: String, descuentos: [Descuento]) -> Descuento {
-        var descuentoFound = Descuento()
+    static func getDescuentoFromList(name: String, descuentos: [Descuento]) -> Descuento? {
         for descuento in descuentos {
             if descuento.nombre == name {
-                descuentoFound = descuento
-                break
+                return descuento
             }
         }
-        return descuentoFound
+        return nil
     }
     
     //MARK: - Filters by categoria and descuento
