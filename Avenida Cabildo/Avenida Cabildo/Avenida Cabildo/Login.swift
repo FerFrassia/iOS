@@ -28,11 +28,13 @@ class Login: UIViewController, FBSDKLoginButtonDelegate, GIDSignInUIDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.showMenuVC), name: NSNotification.Name(rawValue: openMenuKey), object: nil)
+        
         setLoginFB()
         setLoginGoogle()
     }
-    
+
     func setLoginFB() {
         setFBCorners()
         setFBWidth()

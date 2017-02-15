@@ -47,7 +47,9 @@ class LocalSelectedViewController: UIViewController, UIScrollViewDelegate, UITab
     
     func loadSelectedLocal() {
         let selectedName = FirebaseAPI.getSelectedUserDefaults()
-        selectedLocal = FirebaseAPI.getCoreLocal(name: selectedName)
+        if let selectedCoreLocal = FirebaseAPI.getCoreLocal(name: selectedName) {
+            selectedLocal = selectedCoreLocal
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -333,7 +335,7 @@ class LocalSelectedViewController: UIViewController, UIScrollViewDelegate, UITab
     
     @IBAction func instagramAction(_ sender: Any) {
         let local = FirebaseAPI.getCoreLocal(name: (localName.text)!)
-        if let instagram = local.instagram {
+        if let instagram = local?.instagram {
             if let url = URL(string: instagram) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
@@ -349,7 +351,7 @@ class LocalSelectedViewController: UIViewController, UIScrollViewDelegate, UITab
     
     @IBAction func facebookAction(_ sender: Any) {
         let local = FirebaseAPI.getCoreLocal(name: (localName.text)!)
-        if let fb = local.facebook {
+        if let fb = local?.facebook {
             if let url = URL(string: fb) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
@@ -396,7 +398,7 @@ class LocalSelectedViewController: UIViewController, UIScrollViewDelegate, UITab
     
     @IBAction func sharePressed(sender: UIButton) {
         let local = FirebaseAPI.getCoreLocal(name: (localName.text)!)
-        if let web = local.web {
+        if let web = local?.web {
             let activityViewController = UIActivityViewController(activityItems: [web], applicationActivities: nil)
             self.present(activityViewController, animated: true, completion: nil)
         }

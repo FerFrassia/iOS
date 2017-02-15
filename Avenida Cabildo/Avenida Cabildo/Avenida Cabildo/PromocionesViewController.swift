@@ -89,7 +89,7 @@ class PromocionesViewController: UITableViewController, IndicatorInfoProvider {
         
         if enPromocion.count != 0 {
             let currentLocal = FirebaseAPI.getCoreLocal(name: enPromocion[scrollIndex])
-            let locationArray = currentLocal.ubicacion?.components(separatedBy: ", ")
+            let locationArray = currentLocal?.ubicacion?.components(separatedBy: ", ")
             let latitud = locationArray?[0]
             let longitud = locationArray?[1]
             
@@ -135,13 +135,15 @@ class PromocionesViewController: UITableViewController, IndicatorInfoProvider {
                 let local = FirebaseAPI.getCoreLocal(name: enPromocion[i])
                 let localView = Bundle.main.loadNibNamed("PromocionLocalView", owner: nil, options: nil)?[0] as! PromocionLocalView
                 
-                let urlFondo = URL(string: local.imagenFondo!)
-                localView.localBackground.sd_setImage(with: urlFondo, placeholderImage: UIImage(named: "Image Not Available"))
+                if local != nil {
+                    let urlFondo = URL(string: (local?.imagenFondo!)!)
+                    localView.localBackground.sd_setImage(with: urlFondo, placeholderImage: UIImage(named: "Image Not Available"))
+                }
                 
-                localView.localName.text = local.nombre
-                localView.localAddress.text = local.direccion
+                localView.localName.text = local?.nombre
+                localView.localAddress.text = local?.direccion
                 
-                if isLocal(local: local.nombre!, locales: favoritos) {
+                if isLocal(local: local?.nombre, locales: favoritos) {
                     localView.localFavorite.isSelected = true
                 }
                 
@@ -167,9 +169,13 @@ class PromocionesViewController: UITableViewController, IndicatorInfoProvider {
         return cell
     }
     
-    func isLocal(local: String, locales: [String]) -> Bool {
+    func isLocal(local: String?, locales: [String]) -> Bool {
+        if local == nil {
+            return false
+        }
+        
         for currentLocal in locales {
-            if currentLocal == local {
+            if currentLocal == local! {
                 return true
             }
         }

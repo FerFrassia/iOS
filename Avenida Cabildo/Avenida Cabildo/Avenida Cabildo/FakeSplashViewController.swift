@@ -22,17 +22,16 @@ class FakeSplashViewController: UIViewController {
     
     func showMenuVC() {
         UIApplication.shared.statusBarStyle = .default
-        DispatchQueue(label: "com.queue.Concurrent", attributes: .concurrent).async {
+        DispatchQueue.main.async {
             self.performSegue(withIdentifier: "MainSegue", sender: nil)
         }
     }
     
     func showLoginVC() {
         UIApplication.shared.statusBarStyle = .lightContent
-        DispatchQueue(label: "com.queue.Concurrent", attributes: .concurrent).async {
+        DispatchQueue.main.async {
             self.performSegue(withIdentifier: "LoginSegue", sender: nil)
         }
     }
-    
 
 }

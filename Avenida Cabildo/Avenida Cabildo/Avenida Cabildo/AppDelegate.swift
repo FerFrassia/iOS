@@ -34,7 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             FirebaseAPI.loadFirebaseCommonData()
             FirebaseAPI.loadFirebaseUserData()
         }
-        
                 
         return true
     }

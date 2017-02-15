@@ -164,7 +164,7 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
         
         if enPromocion.count != 0 {
             let currentLocal = FirebaseAPI.getCoreLocal(name: enPromocion[scrollIndex])
-            let locationArray = currentLocal.ubicacion?.components(separatedBy: ", ")
+            let locationArray = currentLocal?.ubicacion?.components(separatedBy: ", ")
             let latitud = locationArray?[0]
             let longitud = locationArray?[1]
             
@@ -213,10 +213,12 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
                 let local = FirebaseAPI.getCoreLocal(name: enPromocion[i])
                 let localView = Bundle.main.loadNibNamed("PromocionLocalView", owner: nil, options: nil)?[0] as! PromocionLocalView
                 
-                let urlFondo = URL(string: local.imagenFondo!)
-                localView.localBackground.sd_setImage(with: urlFondo, placeholderImage: UIImage(named: "Image Not Available"))
+                if (local != nil) {
+                    let urlFondo = URL(string: (local?.imagenFondo!)!)
+                    localView.localBackground.sd_setImage(with: urlFondo, placeholderImage: UIImage(named: "Image Not Available"))
+                }
                 
-                if let efectivo = local.efectivo {
+                if let efectivo = local?.efectivo {
                     var imageName = ""
                     switch efectivo {
                     case "10%":
@@ -235,15 +237,17 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
                     localView.localDescuento.image = UIImage(named: imageName)
                 }
                 
-                localView.localName.text = local.nombre
-                localView.localAddress.text = local.direccion
+                localView.localName.text = local?.nombre
+                localView.localAddress.text = local?.direccion
                 
-                localView.localFavorite.isSelected = isLocal(local: local.nombre!, locales: favoritos)
+                if local != nil {
+                    localView.localFavorite.isSelected = isLocal(local: (local?.nombre!)!, locales: favoritos)
+                }
                 
                 localView.localVerMas.layer.cornerRadius = 15
                 
                 //tarjetas Img
-                if let descuentosNames = local.descuentos as? [String] {
+                if let descuentosNames = local?.descuentos as? [String] {
                     for descuentoName in descuentosNames {
                         var imgName = ""
                         imgName = descuentoName
@@ -824,19 +828,20 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
         }
         
         let currentLocal = FirebaseAPI.getCoreLocal(name: enPromocion[scrollIndex])
-        let locationArray = currentLocal.ubicacion?.components(separatedBy: ", ")
-        let latitud = locationArray?[0]
-        let longitud = locationArray?[1]
-        
-        let camera = GMSCameraPosition.camera(withLatitude: Double(latitud!)! - 0.004, longitude: Double(longitud!)!, zoom: 16.0)
-        promocionMapView.camera = camera
-        
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: Double(latitud!)!, longitude: Double(longitud!)!)
-        marker.title = currentLocal.nombre
-        marker.snippet = ""
-        marker.icon = UIImage(named: "Simbolo")
-        marker.map = promocionMapView
+        if let locationArray = currentLocal?.ubicacion?.components(separatedBy: ", ") {
+            let latitud = locationArray[0]
+            let longitud = locationArray[1]
+            
+            let camera = GMSCameraPosition.camera(withLatitude: Double(latitud)! - 0.004, longitude: Double(longitud)!, zoom: 16.0)
+            promocionMapView.camera = camera
+            
+            let marker = GMSMarker()
+            marker.position = CLLocationCoordinate2D(latitude: Double(latitud)!, longitude: Double(longitud)!)
+            marker.title = currentLocal?.nombre
+            marker.snippet = ""
+            marker.icon = UIImage(named: "Simbolo")
+            marker.map = promocionMapView
+        }
     }
     
     
@@ -854,10 +859,12 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
         
         let local = FirebaseAPI.getCoreLocal(name: enPromocion[indexPath.row])
         
-        let urlFondo = URL(string: local.imagenFondo!)
-        cell.localBackground.sd_setImage(with: urlFondo, placeholderImage: UIImage(named: "Image Not Available"))
+        if local !=  nil {
+            let urlFondo = URL(string: (local?.imagenFondo!)!)
+            cell.localBackground.sd_setImage(with: urlFondo, placeholderImage: UIImage(named: "Image Not Available"))
+        }
         
-        if let efectivo = local.efectivo {
+        if let efectivo = local?.efectivo {
             var imageName = ""
             switch efectivo {
             case "10%":
@@ -876,15 +883,17 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
             cell.localDescuento.image = UIImage(named: imageName)
         }
         
-        cell.localName.text = local.nombre
-        cell.localAddress.text = local.direccion
+        cell.localName.text = local?.nombre
+        cell.localAddress.text = local?.direccion
         
-        cell.localFavorite.isSelected = isLocal(local: local.nombre!, locales: favoritos)
-        
+        if local != nil {
+            cell.localFavorite.isSelected = isLocal(local: (local?.nombre!)!, locales: favoritos)
+        }
+    
         cell.localVerMas.layer.cornerRadius = 15
         
         //tarjetas Img
-        if let descuentosNames = local.descuentos as? [String] {
+        if let descuentosNames = local?.descuentos as? [String] {
             for descuentoName in descuentosNames {
                 var imgName = ""
                 imgName = descuentoName

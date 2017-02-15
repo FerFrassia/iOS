@@ -303,9 +303,9 @@ class FirebaseAPI: NSObject {
         return Usuario()
     }
     
-    static func getCoreLocal(name: String) -> Local {
+    static func getCoreLocal(name: String) -> Local? {
         let locales = getCoreLocales()
-        return getLocalFromList(localName: name, list: locales)!
+        return getLocalFromList(localName: name, list: locales)
     }
     
     //MARK: - Favoritos

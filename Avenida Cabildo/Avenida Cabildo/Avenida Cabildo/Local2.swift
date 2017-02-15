@@ -53,7 +53,7 @@ class Local2: UITableViewCell {
     
     @IBAction func sharePressed(sender: UIButton) {
         let local = FirebaseAPI.getCoreLocal(name: (localName.text)!)
-        if let web = local.web {
+        if let web = local?.web {
             var topVC = UIApplication.shared.keyWindow?.rootViewController
             while((topVC!.presentedViewController) != nil) {
                 topVC = topVC!.presentedViewController
