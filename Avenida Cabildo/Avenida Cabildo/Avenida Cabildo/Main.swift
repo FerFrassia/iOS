@@ -13,7 +13,7 @@ import SWRevealViewController
 import GoogleMaps
 import CoreData
 
-class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, SWRevealViewControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate {
+class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, SWRevealViewControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var todosTableView: UITableView!
     @IBOutlet weak var revealMenuButton: UIBarButtonItem!
@@ -70,7 +70,7 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
     func redrawSelectedLocal() {
         let selectedName = FirebaseAPI.getSelectedUserDefaults()
         var index = -1
-        for var i in 0..<locales.count {
+        for i in 0..<locales.count {
             let local = locales[i]
             if local.nombre == selectedName {
                 index = i
@@ -488,45 +488,48 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
         
         //tarjetas Img
         if let descuentosNames = local.descuentos as? [String] {
-            for descuentoName in descuentosNames {
-                FIRDatabase.database().reference().child("descuentos").child(descuentoName).observeSingleEvent(of: .value, with: { (snap) in
-                    if let snapDict = snap.value as? Dictionary<String, AnyObject> {
-                        if let tarjetaDic = snapDict["imagen"] as? [String:String] {
-                            
-                            var imageKey = ""
-                            if DeviceType.IS_IPHONE_6P {
-                                imageKey = "3x"
-                            } else {
-                                imageKey = "2x"
-                            }
-                            
-                            if let tarjetaString = tarjetaDic[imageKey] {
-                                let urlIcon = URL(string: tarjetaString)
-                                if cell.tarjeta1.isHidden {
-                                    cell.tarjeta1.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
-                                    cell.tarjeta1.isHidden = false
-                                    cell.tarjeta2.isHidden = true
-                                    cell.tarjeta3.isHidden = true
-                                    cell.tarjeta4.isHidden = true
-                                } else if cell.tarjeta2.isHidden {
-                                    cell.tarjeta2.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
-                                    cell.tarjeta2.isHidden = false
-                                    cell.tarjeta3.isHidden = true
-                                    cell.tarjeta4.isHidden = true
-                                } else if cell.tarjeta3.isHidden {
-                                    cell.tarjeta3.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
-                                    cell.tarjeta3.isHidden = false
-                                    cell.tarjeta4.isHidden = true
-                                } else if cell.tarjeta4.isHidden {
-                                    cell.tarjeta4.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
-                                    cell.tarjeta4.isHidden = false
+            FIRDatabase.database().reference().child("descuentos").observeSingleEvent(of: .value, with: { (snap) in
+                for descuentoName in descuentosNames {
+                    if FirebaseAPI.permitedFirebaseString(toCheck: descuentoName) && snap.hasChild(descuentoName) {
+                        let snapDescuentoDict = snap.childSnapshot(forPath: descuentoName)
+                        if let snapDict = snapDescuentoDict.value as? Dictionary<String, AnyObject> {
+                            if let tarjetaDic = snapDict["imagen"] as? [String:String] {
+                                
+                                var imageKey = ""
+                                if DeviceType.IS_IPHONE_6P {
+                                    imageKey = "3x"
+                                } else {
+                                    imageKey = "2x"
+                                }
+                                
+                                if let tarjetaString = tarjetaDic[imageKey] {
+                                    let urlIcon = URL(string: tarjetaString)
+                                    if cell.tarjeta1.isHidden {
+                                        cell.tarjeta1.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
+                                        cell.tarjeta1.isHidden = false
+                                        cell.tarjeta2.isHidden = true
+                                        cell.tarjeta3.isHidden = true
+                                        cell.tarjeta4.isHidden = true
+                                    } else if cell.tarjeta2.isHidden {
+                                        cell.tarjeta2.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
+                                        cell.tarjeta2.isHidden = false
+                                        cell.tarjeta3.isHidden = true
+                                        cell.tarjeta4.isHidden = true
+                                    } else if cell.tarjeta3.isHidden {
+                                        cell.tarjeta3.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
+                                        cell.tarjeta3.isHidden = false
+                                        cell.tarjeta4.isHidden = true
+                                    } else if cell.tarjeta4.isHidden {
+                                        cell.tarjeta4.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
+                                        cell.tarjeta4.isHidden = false
+                                    }
                                 }
                             }
                         }
                     }
-                }) { (error) in
-                    print(error.localizedDescription)
                 }
+            }) { (error) in
+                print(error.localizedDescription)
             }
         }
         
@@ -573,45 +576,48 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
         
         //tarjetas Img
         if let descuentosNames = local.descuentos as? [String] {
-            for descuentoName in descuentosNames {
-                FIRDatabase.database().reference().child("descuentos").child(descuentoName).observeSingleEvent(of: .value, with: { (snap) in
-                    if let snapDict = snap.value as? Dictionary<String, AnyObject> {
-                        if let tarjetaDic = snapDict["imagen"] as? [String:String] {
-                            
-                            var imageKey = ""
-                            if DeviceType.IS_IPHONE_6P {
-                                imageKey = "3x"
-                            } else {
-                                imageKey = "2x"
-                            }
-                            
-                            if let tarjetaString = tarjetaDic[imageKey] {
-                                let urlIcon = URL(string: tarjetaString)
-                                if cell.tarjeta1.isHidden {
-                                    cell.tarjeta1.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
-                                    cell.tarjeta1.isHidden = false
-                                    cell.tarjeta2.isHidden = true
-                                    cell.tarjeta3.isHidden = true
-                                    cell.tarjeta4.isHidden = true
-                                } else if cell.tarjeta2.isHidden {
-                                    cell.tarjeta2.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
-                                    cell.tarjeta2.isHidden = false
-                                    cell.tarjeta3.isHidden = true
-                                    cell.tarjeta4.isHidden = true
-                                } else if cell.tarjeta3.isHidden {
-                                    cell.tarjeta3.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
-                                    cell.tarjeta3.isHidden = false
-                                    cell.tarjeta4.isHidden = true
-                                } else if cell.tarjeta4.isHidden {
-                                    cell.tarjeta4.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
-                                    cell.tarjeta4.isHidden = false
+            FIRDatabase.database().reference().child("descuentos").observeSingleEvent(of: .value, with: { (snap) in
+                for descuentoName in descuentosNames {
+                    if FirebaseAPI.permitedFirebaseString(toCheck: descuentoName) && snap.hasChild(descuentoName) {
+                        let snapDescuentoDict = snap.childSnapshot(forPath: descuentoName)
+                        if let descuentoDict = snapDescuentoDict.value as? Dictionary<String, AnyObject> {
+                            if let tarjetaDic = descuentoDict["imagen"] as? [String:String] {
+                                
+                                var imageKey = ""
+                                if DeviceType.IS_IPHONE_6P {
+                                    imageKey = "3x"
+                                } else {
+                                    imageKey = "2x"
+                                }
+                                
+                                if let tarjetaString = tarjetaDic[imageKey] {
+                                    let urlIcon = URL(string: tarjetaString)
+                                    if cell.tarjeta1.isHidden {
+                                        cell.tarjeta1.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
+                                        cell.tarjeta1.isHidden = false
+                                        cell.tarjeta2.isHidden = true
+                                        cell.tarjeta3.isHidden = true
+                                        cell.tarjeta4.isHidden = true
+                                    } else if cell.tarjeta2.isHidden {
+                                        cell.tarjeta2.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
+                                        cell.tarjeta2.isHidden = false
+                                        cell.tarjeta3.isHidden = true
+                                        cell.tarjeta4.isHidden = true
+                                    } else if cell.tarjeta3.isHidden {
+                                        cell.tarjeta3.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
+                                        cell.tarjeta3.isHidden = false
+                                        cell.tarjeta4.isHidden = true
+                                    } else if cell.tarjeta4.isHidden {
+                                        cell.tarjeta4.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
+                                        cell.tarjeta4.isHidden = false
+                                    }
                                 }
                             }
                         }
                     }
-                }) { (error) in
-                    print(error.localizedDescription)
                 }
+            }) { (error) in
+                print(error.localizedDescription)
             }
         }
         
@@ -663,6 +669,7 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
         return false
     }
     
+    
     //MARK: - UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == todosTableView {
@@ -673,6 +680,7 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
             self.present(vc, animated: true, completion: nil)
         }
     }
+    
     
     //MARK: - Promo Scroll Horizontal
     @IBOutlet weak var swipeIndicatorLeading: NSLayoutConstraint!
@@ -918,8 +926,23 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
             }
         }
         
+        cell.localDescription.text = local?.detalleTexto
+        
         return cell
     }
+    
+    
+    //MARK: - Promociones Collection Delegate
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if DeviceType.IS_IPHONE_6P {
+            return CGSize(width: ScreenSize.SCREEN_WIDTH, height: 530)
+        } else if DeviceType.IS_IPHONE_6 {
+            return CGSize(width: ScreenSize.SCREEN_WIDTH, height: 520)
+        } else {
+            return CGSize(width: ScreenSize.SCREEN_WIDTH, height: 510)
+        }
+    }
+
     
     //MARK: - iPhone Size
     enum UIUserInterfaceIdiom : Int

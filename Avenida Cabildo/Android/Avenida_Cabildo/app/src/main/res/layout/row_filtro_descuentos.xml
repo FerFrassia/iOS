@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp">
+
+
+    <ImageView android:id="@+id/iv_check"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/ic_check_black_24dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:tint="@color/colorAccent"
+        android:layout_centerVertical="true"/>
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:id="@+id/tv_nombre"
+        android:textSize="20sp"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:textColor="@color/colorAccent"
+        android:layout_toLeftOf="@+id/iv_check"
+        android:layout_toRightOf="@+id/iv_icono"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"/>
+
+    <ImageView android:id="@+id/iv_icono"
+        android:layout_width="48dp"
+        android:layout_height="42dp"
+        android:src="@drawable/ic_filtro"
+        android:tint="@color/colorAccent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"/>
+
+
+</RelativeLayout>

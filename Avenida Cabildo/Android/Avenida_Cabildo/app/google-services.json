@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "854269150359",
+    "firebase_url": "https://avenida-cabildo.firebaseio.com",
+    "project_id": "avenida-cabildo",
+    "storage_bucket": "avenida-cabildo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:854269150359:android:2b4b3aed65d05dfc",
+        "android_client_info": {
+          "package_name": "com.avenida_cabildo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "854269150359-pul2v2t9r8jetscddtr1nl8qeegi9bvk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQnVi0HKlgvyHfjizd3nzd6TyH70RYY5c"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

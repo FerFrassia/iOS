@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start"
+    android:background="#fff">
+
+    <include
+        layout="@layout/app_bar_activity_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+    <RelativeLayout
+        android:id="@+id/nav_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:layout_gravity="start">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/menu_background"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="?attr/actionBarSize"
+                    android:layout_height="?attr/actionBarSize"
+                    android:src="@drawable/ic_arrow_back_black_24dp"
+                    android:tint="@android:color/white"
+                    android:padding="16dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:singleLine="true"
+                    android:ellipsize="end"
+                    android:textColor="@android:color/white"
+                    android:text="Informacion de la cuenta"
+                    android:gravity="center_vertical"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:padding="8dp"
+                android:orientation="horizontal">
+
+
+                <com.github.siyamed.shapeimageview.CircularImageView
+                    android:id="@+id/iv_foto_usuario"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/ic_launcher"
+                    android:layout_gravity="center"
+                    app:siBorderColor="#0000" />
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="8dp"
+                    android:layout_gravity="center_vertical">
+
+
+                    <TextView android:id="@+id/tv_nombre_usuario"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:singleLine="true"
+                        android:ellipsize="end"
+                        android:textColor="@android:color/white"
+                        android:text="Alan Saracho"
+                        android:textSize="16sp"
+                        />
+
+
+                    <TextView android:id="@+id/tv_mail_usuario"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:singleLine="true"
+                        android:ellipsize="end"
+                        android:textColor="@android:color/white"
+                        android:text="saracho.alan@gmail.com"
+                        android:textSize="14sp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView android:id="@+id/tv_nav_favoritos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#2a425a"
+                android:textColor="@android:color/white"
+                android:text="   Favoritos"
+                android:paddingLeft="28dp"
+                android:paddingRight="8dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:drawableLeft="@drawable/ic_star"
+                android:gravity="center_vertical"
+                android:textSize="14sp"
+                android:layout_marginTop="8dp"
+                android:onClick="verFavoritos"
+                android:clickable="true"/>
+
+
+            <LinearLayout android:id="@+id/ll_cerrar_sesion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="28dp"
+                android:paddingRight="8dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:clickable="true"
+                android:background="#2a425a"
+                android:onClick="cerrarSesion">
+
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/ic_cerrar"
+                    android:padding="2dp"/>
+
+
+
+                <TextView android:id="@+id/tv_nav_log_out"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:textColor="@android:color/white"
+                    android:text="   Cerrar sesion"
+
+                    android:gravity="center_vertical"
+                    android:textSize="14sp"
+                    />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout android:id="@+id/ll_iniciar_sesion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="28dp"
+                android:paddingRight="8dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:clickable="true"
+                android:background="#2a425a"
+                android:onClick="iniciarSesion">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_account_circle_black_24dp"
+                    android:tint="@android:color/white"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColor="@android:color/white"
+                    android:text="   Iniciar Sesion"
+                    android:gravity="center_vertical"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+
+
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <!--android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_activity_main"
+        app:menu="@menu/a_main_drawer" /-->
+
+</android.support.v4.widget.DrawerLayout>

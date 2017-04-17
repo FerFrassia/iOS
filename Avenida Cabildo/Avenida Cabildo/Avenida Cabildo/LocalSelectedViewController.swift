@@ -142,25 +142,26 @@ class LocalSelectedViewController: UIViewController, UIScrollViewDelegate, UITab
         let cell = tableView.dequeueReusableCell(withIdentifier: "BeneficiosCell", for: indexPath) as! BeneficiosCell
         
         let descuentos = selectedLocal.descuentos as! [String]
-        
-        FIRDatabase.database().reference().child("descuentos").child(descuentos[indexPath.row]).observeSingleEvent(of: .value, with: { (snap) in
-            if let snapDict = snap.value as? Dictionary<String, AnyObject> {
-                if let tarjetaDic = snapDict["imagen"] as? [String:String] {
-                    
-                    var imageKey = ""
-                    if DeviceType.IS_IPHONE_6P {
-                        imageKey = "3x"
-                    } else {
-                        imageKey = "2x"
+        FIRDatabase.database().reference().child("descuentos").observeSingleEvent(of: .value, with: { (snap) in
+            if FirebaseAPI.permitedFirebaseString(toCheck: descuentos[indexPath.row]) && snap.hasChild(descuentos[indexPath.row]) {
+                let descuentoSnap = snap.childSnapshot(forPath: descuentos[indexPath.row])
+                if let snapDict = descuentoSnap.value as? Dictionary<String, AnyObject> {
+                    if let tarjetaDic = snapDict["imagen"] as? [String:String] {
+                        
+                        var imageKey = ""
+                        if DeviceType.IS_IPHONE_6P {
+                            imageKey = "3x"
+                        } else {
+                            imageKey = "2x"
+                        }
+                        
+                        if let tarjetaString = tarjetaDic[imageKey] {
+                            let urlIcon = URL(string: tarjetaString)
+                            cell.beneficiosImage.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
+                        }
+                        
                     }
-                    
-                    if let tarjetaString = tarjetaDic[imageKey] {
-                        let urlIcon = URL(string: tarjetaString)
-                        cell.beneficiosImage.sd_setImage(with: urlIcon, placeholderImage: UIImage(named: "Image Not Available"))
-                    }
-                    
                 }
-                
             }
         }) { (error) in
             print(error.localizedDescription)

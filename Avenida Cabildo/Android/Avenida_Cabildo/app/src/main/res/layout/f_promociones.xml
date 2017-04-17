@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:orientation="vertical"
+
+        android:padding="0dp">
+
+
+        <com.google.android.gms.maps.MapView
+            android:id="@+id/mapView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            class="com.google.android.gms.maps.SupportMapFragment" />
+
+
+        <View android:visibility="invisible"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+
+    <View android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#8fff"
+        android:clickable="true"/>
+
+
+    <TextView android:id="@+id/tv_sin_items"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textColor="@color/colorAccentDark"
+        android:text="La busqueda no genero ningun resultado"
+        android:gravity="center"
+        android:visibility="gone"/>
+
+    <android.support.v4.view.ViewPager android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v4.view.ViewPager>
+
+    <RelativeLayout
+        android:layout_width="280dp"
+        android:layout_height="42dp"
+        android:orientation="horizontal"
+        android:paddingLeft="6dp"
+        android:paddingRight="6dp"
+        android:background="@drawable/selector_categoria"
+        android:layout_marginTop="24dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
+
+
+        <ImageView android:id="@+id/iv_dropdown"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:adjustViewBounds="false"
+            android:src="@drawable/ic_dropdown"
+            android:layout_alignParentRight="true"
+            android:padding="10dp"
+            android:layout_centerVertical="true"/>
+
+
+        <Spinner
+            android:id="@+id/sp_categorias"
+            android:text="Indumentaria"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center"
+            android:textColor="@color/colorAccent"
+            android:spinnerMode="dialog"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/iv_dropdown"
+            android:background="#0fff"/>
+
+
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

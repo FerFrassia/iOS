@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="16dp">
+
+
+    <LinearLayout android:id="@+id/ll_facebook"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:layout_marginTop="8dp"
+        android:clickable="true"
+        android:onClick="cerrarSesion"
+        android:background="?attr/selectableItemBackground">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_facebook"
+            android:padding="2dp"
+            android:tint="@color/colorAccentDark"/>
+
+
+        <TextView android:id="@+id/tv_nav_log_out"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="   Facebook"
+            android:gravity="center_vertical"
+            android:textSize="16sp"
+            android:textColor="@color/colorAccentDark"/>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout android:id="@+id/ll_instagram"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:clickable="true"
+        android:onClick="cerrarSesion"
+        android:background="?attr/selectableItemBackground">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_instagram"
+            android:padding="2dp"
+            android:tint="@color/colorAccentDark"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="   Instagram"
+            android:gravity="center_vertical"
+            android:textSize="16sp"
+            android:textColor="@color/colorAccentDark"/>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout android:id="@+id/ll_copiar_enlace"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:clickable="true"
+        android:onClick="cerrarSesion"
+        android:background="?attr/selectableItemBackground">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_copiar_enlace"
+            android:padding="2dp"
+            android:tint="@color/colorAccentDark"/>
+
+
+        <TextView android:id="@+id/tv_web"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="   Copiar enlace para compartir"
+            android:gravity="center_vertical"
+            android:textSize="16sp"
+            android:textColor="@color/colorAccentDark"/>
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

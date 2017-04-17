@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Avenida Cabildo</string>
+    <string name="title_activity_activity_main">Avenida Cabildo</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="boton_login_facebook">   INGRESA CON <b>FACEBOOK</b></string>
+    <string name="boton_login_google">   INGRESA CON <b>GOOGLE</b></string>
+
+
+    <string name="facebook_app_id">1711095079204674</string>
+    <string name="title_activity_maps">Map</string>
+
+
+</resources>

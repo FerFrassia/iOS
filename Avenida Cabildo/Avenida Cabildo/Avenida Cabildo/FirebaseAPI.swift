@@ -361,7 +361,7 @@ class FirebaseAPI: NSObject {
         if user != nil {
             guard let firebaseID = user?.uid else {return}
             FIRDatabase.database().reference().child("usuarios").observeSingleEvent(of: .value, with: { (snap) in
-                if snap.hasChild(firebaseID) {
+                if FirebaseAPI.permitedFirebaseString(toCheck: firebaseID) && snap.hasChild(firebaseID) {
                     let userFavSnap = snap.childSnapshot(forPath: firebaseID)
                     let userFavArray = userFavSnap.value as! [String]
                     
@@ -875,7 +875,16 @@ class FirebaseAPI: NSObject {
     }
     
     
-    
+    static func permitedFirebaseString(toCheck: String) -> Bool {
+        var ilegalSet = CharacterSet()
+        ilegalSet.insert(charactersIn: "")
+        ilegalSet.insert(charactersIn: ".")
+        ilegalSet.insert(charactersIn: "$")
+        ilegalSet.insert(charactersIn: "[")
+        ilegalSet.insert(charactersIn: "]")
+        let returnValue = toCheck.rangeOfCharacter(from: ilegalSet) == nil && toCheck != ""
+        return returnValue
+    }
     
     
     

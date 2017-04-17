@@ -37,8 +37,15 @@ class TodosViewController: UITableViewController, IndicatorInfoProvider {
         
         NotificationCenter.default.addObserver(self, selector: #selector(filtersChanged), name: NSNotification.Name(rawValue: "filtersUpdatedKey"), object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(localesChanged), name: NSNotification.Name(localesStoredOrUpdatedKey), object: nil)
+        
         loadLocales()
         loadFavoritos()
+    }
+    
+    func localesChanged() {
+        loadLocales()
+        tableView.reloadData()
     }
     
     func filtersChanged() {
