@@ -44,6 +44,7 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
         NotificationCenter.default.addObserver(self, selector: #selector(self.loadLocales), name: NSNotification.Name(rawValue: localesStoredOrUpdatedKey), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.loadLocalesByNotificationFilter), name: NSNotification.Name(rawValue: filtersUpdatedKey), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.redrawPromocionAndTodosFavorite), name: NSNotification.Name(rawValue: promocionUpdatedKey), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.redrawPromocionAndTodosFavorite), name: NSNotification.Name(rawValue: localesStoredOrUpdatedKey), object: nil)
         
         setPromocionView()
     }
@@ -154,9 +155,12 @@ class Main: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScro
     }
     
     func redrawPromocionAndTodosFavorite() {
-        loadFavoritos()
-        promocionCollection.reloadData()
-        todosTableView.reloadData()
+        if FirebaseAPI.getCoreLocales().count > 0 && FirebaseAPI.getEnPromocionUserDefaults().count > 0 {
+            loadFavoritos()
+            loadEnPromocion()
+            promocionCollection.reloadData()
+            todosTableView.reloadData()
+        }
     }
     
     func cellPromocion(tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
