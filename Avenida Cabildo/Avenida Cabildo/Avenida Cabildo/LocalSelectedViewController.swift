@@ -400,8 +400,11 @@ class LocalSelectedViewController: UIViewController, UIScrollViewDelegate, UITab
     @IBAction func sharePressed(sender: UIButton) {
         let local = FirebaseAPI.getCoreLocal(name: (localName.text)!)
         if let web = local?.web {
-            let activityViewController = UIActivityViewController(activityItems: [web], applicationActivities: nil)
-            self.present(activityViewController, animated: true, completion: nil)
+            if let name = local?.nombre {
+                let stringToShare = FirebaseAPI.shareLocal(name: name, web: web)
+                let activityViewController = UIActivityViewController(activityItems: [stringToShare], applicationActivities: nil)
+                self.present(activityViewController, animated: true, completion: nil)
+            }
         }
     }
     

@@ -132,7 +132,7 @@ public class ActivityLocalDetalle extends AppCompatActivity {
         */
 
         if(mLocal.getWeb() != null)
-            Utils.compartirLink(this, mLocal.getWeb(), mLocal.getImagen_logo());
+            Utils.compartirLink(this, mLocal.getWeb(), mLocal.getNombre(), mLocal.getImagen_logo());
 
     }
 

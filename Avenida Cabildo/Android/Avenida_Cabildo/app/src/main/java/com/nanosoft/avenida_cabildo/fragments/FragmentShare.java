@@ -68,18 +68,18 @@ public class FragmentShare extends DialogFragment implements View.OnClickListene
         switch (view.getId()){
             case R.id.ll_facebook:
                 if(local.getFacebook() != null)
-                    Utils.compartirLink(getActivity(), local.getFacebook(), local.getImagen_logo());
+                    Utils.compartirLinkRedes(getActivity(), local.getFacebook(), local.getImagen_logo());
                 break;
 
             case R.id.ll_instagram:
                 if(local.getInstagram() != null)
-                    Utils.compartirLink(getActivity(), local.getInstagram(), local.getImagen_logo());
+                    Utils.compartirLinkRedes(getActivity(), local.getInstagram(), local.getImagen_logo());
                 break;
 
             case R.id.ll_copiar_enlace:
 
                 if(local.getWeb() != null)
-                    Utils.compartirLink(getActivity(), local.getWeb(), local.getImagen_logo());
+                    Utils.compartirLink(getActivity(), local.getWeb(), local.getNombre(), local.getImagen_logo());
 
                 break;
         }

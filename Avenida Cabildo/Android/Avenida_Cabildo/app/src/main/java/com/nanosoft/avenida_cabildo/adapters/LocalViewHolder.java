@@ -120,7 +120,7 @@ public class LocalViewHolder extends EfficientViewHolder<Local> implements View.
                     fragment.show(manager, "");
                     */
 
-                    Utils.compartirLink(getContext(), getAdapter().get(position).getWeb(), getAdapter().get(position).getImagen_logo());
+                    Utils.compartirLink(getContext(), getAdapter().get(position).getWeb(), getAdapter().get(position).getNombre(), getAdapter().get(position).getImagen_logo());
 
                     break;
 

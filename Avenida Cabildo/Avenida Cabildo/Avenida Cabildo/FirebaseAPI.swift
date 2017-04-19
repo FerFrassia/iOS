@@ -16,6 +16,7 @@ let filtersUpdatedKey = "filtersUpdatedKey"
 let promocionUpdatedKey = "promocionUpdatedKey"
 let openMenuKey = "openMenuKey"
 let openLoginKey = "openLoginKey"
+let avCabildoUrl = "http://avenidacabildo.com.ar"
 
 class FirebaseAPI: NSObject {
     
@@ -886,6 +887,9 @@ class FirebaseAPI: NSObject {
         return returnValue
     }
     
+    static func shareLocal(name: String, web: String) -> String {
+        return "Mira el local \(name). \(web) Lo encontré en la app Avenida Cabildo. Descárgala acá: http://avenidacabildo.com.ar"
+    }
     
     
     

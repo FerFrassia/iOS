@@ -302,7 +302,18 @@ public class Utils {
 
 	}
 
-	public static void compartirLink(Context context, String link, String imagen){
+	public static void compartirLink(Context context, String link, String name,  String imagen){
+		Intent imageIntent = new Intent(Intent.ACTION_SEND);
+		Uri imageUri = Uri.parse(imagen);
+		imageIntent.setType("text/*");
+		//imageIntent.putExtra(Intent.EXTRA_STREAM, String.valueOf(imageUri));
+		//imageIntent.putExtra(Intent.EXTRA_TITLE, link);
+		String toShare = "Mira el local " + name + ". " + link + " Lo encontré en la app Avenida Cabildo. Descárgala acá: http//avenidacabildo.com.ar";
+		imageIntent.putExtra(Intent.EXTRA_TEXT, toShare);
+		context.startActivity(imageIntent);
+	}
+
+	public static void compartirLinkRedes(Context context, String link,  String imagen){
 		Intent imageIntent = new Intent(Intent.ACTION_SEND);
 		Uri imageUri = Uri.parse(imagen);
 		imageIntent.setType("text/*");
