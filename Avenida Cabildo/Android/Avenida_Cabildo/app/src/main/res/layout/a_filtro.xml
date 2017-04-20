@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#fff"
-    tools:context="com.nanosoft.avenida_cabildo.ActivityFiltro">
+    tools:context="com.FerFrassia.avenida_cabildo.ActivityFiltro">
 
 
     <android.support.design.widget.TabLayout
@@ -51,7 +51,7 @@
                 android:src="@drawable/ic_search"
                 android:layout_gravity="center"/>
 
-            <com.nanosoft.avenida_cabildo.views.DelayAutoCompleteTextView
+            <com.FerFrassia.avenida_cabildo.views.DelayAutoCompleteTextView
                 android:id="@+id/et_buscar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
