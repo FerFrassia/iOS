@@ -64,6 +64,8 @@ class HomeViewController: UIViewController {
         self.revealViewController().pushFrontViewController(planVC, animated: true)
     }
     
+    //MARK: - IBAction
+    
     
     
     

@@ -24,6 +24,9 @@
 		C10095391E9753B9001748E4 /* EstimulacionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10095381E9753B9001748E4 /* EstimulacionViewController.swift */; };
 		C100953C1E9754B9001748E4 /* ABCNutricionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C100953B1E9754B9001748E4 /* ABCNutricionViewController.swift */; };
 		C100953F1E9755C7001748E4 /* LactanciaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C100953E1E9755C7001748E4 /* LactanciaViewController.swift */; };
+		C109FDBB1EAA95B10067E86C /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C109FDBA1EAA95B10067E86C /* Login.storyboard */; };
+		C109FDBE1EAA95E60067E86C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C109FDBD1EAA95E60067E86C /* LoginViewController.swift */; };
+		C109FDC01EAA961D0067E86C /* video-background_1200x720.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C109FDBF1EAA961D0067E86C /* video-background_1200x720.mp4 */; };
 		C18F22E71E887D24006E42DB /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18F22E61E887D24006E42DB /* MenuTableViewController.swift */; };
 		C18F22EA1E88834C006E42DB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C18F22E91E88834C006E42DB /* HomeViewController.swift */; };
 		C199D9121E8877B0002255BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C199D9111E8877B0002255BA /* AppDelegate.swift */; };
@@ -33,6 +36,8 @@
 		C199D91C1E8877B0002255BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C199D91B1E8877B0002255BA /* Assets.xcassets */; };
 		C199D91F1E8877B0002255BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C199D91D1E8877B0002255BA /* LaunchScreen.storyboard */; };
 		C1CA15301E9EAA1A0084A432 /* Cera-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C1CA152F1E9EAA1A0084A432 /* Cera-Bold.ttf */; };
+		C1D1CEA51EADDA3900EA14C8 /* EmailViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D1CEA41EADDA3900EA14C8 /* EmailViewcontroller.swift */; };
+		C1D1CEA71EADE58200EA14C8 /* ForgotPassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D1CEA61EADE58200EA14C8 /* ForgotPassViewController.swift */; };
 		E01549BD6411FB5FF88B6DBB /* Pods_Quiero_Mas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C29DCC2F7295666DB7BEDF3 /* Pods_Quiero_Mas.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +62,9 @@
 		C10095381E9753B9001748E4 /* EstimulacionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EstimulacionViewController.swift; sourceTree = "<group>"; };
 		C100953B1E9754B9001748E4 /* ABCNutricionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ABCNutricionViewController.swift; sourceTree = "<group>"; };
 		C100953E1E9755C7001748E4 /* LactanciaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LactanciaViewController.swift; sourceTree = "<group>"; };
+		C109FDBA1EAA95B10067E86C /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		C109FDBD1EAA95E60067E86C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		C109FDBF1EAA961D0067E86C /* video-background_1200x720.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "video-background_1200x720.mp4"; sourceTree = "<group>"; };
 		C18F22E61E887D24006E42DB /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		C18F22E91E88834C006E42DB /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C199D90E1E8877B0002255BA /* Quiero Mas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Quiero Mas.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,6 +76,8 @@
 		C199D91E1E8877B0002255BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C199D9201E8877B0002255BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C1CA152F1E9EAA1A0084A432 /* Cera-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cera-Bold.ttf"; sourceTree = "<group>"; };
+		C1D1CEA41EADDA3900EA14C8 /* EmailViewcontroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailViewcontroller.swift; sourceTree = "<group>"; };
+		C1D1CEA61EADE58200EA14C8 /* ForgotPassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPassViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,9 +160,30 @@
 			name = Lactancia;
 			sourceTree = "<group>";
 		};
+		C109FDB91EAA95A20067E86C /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				C199D91D1E8877B0002255BA /* LaunchScreen.storyboard */,
+				C109FDBA1EAA95B10067E86C /* Login.storyboard */,
+				C199D9151E8877B0002255BA /* Main.storyboard */,
+			);
+			name = Storyboards;
+			sourceTree = "<group>";
+		};
+		C109FDBC1EAA95D20067E86C /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				C109FDBD1EAA95E60067E86C /* LoginViewController.swift */,
+				C1D1CEA41EADDA3900EA14C8 /* EmailViewcontroller.swift */,
+				C1D1CEA61EADE58200EA14C8 /* ForgotPassViewController.swift */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
 		C18F22E41E887D02006E42DB /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C109FDBC1EAA95D20067E86C /* Login */,
 				C100953D1E9755BB001748E4 /* Lactancia */,
 				C100953A1E9754A6001748E4 /* ABCNutricion */,
 				C10095371E9753AA001748E4 /* Estimulación */,
@@ -184,6 +215,7 @@
 		C199D9051E8877B0002255BA = {
 			isa = PBXGroup;
 			children = (
+				C109FDBF1EAA961D0067E86C /* video-background_1200x720.mp4 */,
 				C199D9101E8877B0002255BA /* Quiero Mas */,
 				C199D90F1E8877B0002255BA /* Products */,
 				3046229FC149833886AD19DF /* Pods */,
@@ -202,13 +234,12 @@
 		C199D9101E8877B0002255BA /* Quiero Mas */ = {
 			isa = PBXGroup;
 			children = (
+				C109FDB91EAA95A20067E86C /* Storyboards */,
 				C10095311E973C0C001748E4 /* Fonts */,
 				C18F22E41E887D02006E42DB /* Classes */,
 				C199D9111E8877B0002255BA /* AppDelegate.swift */,
 				C199D9131E8877B0002255BA /* ViewController.swift */,
-				C199D9151E8877B0002255BA /* Main.storyboard */,
 				C199D91B1E8877B0002255BA /* Assets.xcassets */,
-				C199D91D1E8877B0002255BA /* LaunchScreen.storyboard */,
 				C199D9201E8877B0002255BA /* Info.plist */,
 				C199D9181E8877B0002255BA /* Quiero_Mas.xcdatamodeld */,
 			);
@@ -278,6 +309,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C109FDBB1EAA95B10067E86C /* Login.storyboard in Resources */,
 				C10095261E973BFD001748E4 /* Cera-BoldItalic.ttf in Resources */,
 				C199D91F1E8877B0002255BA /* LaunchScreen.storyboard in Resources */,
 				C199D91C1E8877B0002255BA /* Assets.xcassets in Resources */,
@@ -293,6 +325,7 @@
 				C10095271E973BFD001748E4 /* Cera-Light.ttf in Resources */,
 				C1CA15301E9EAA1A0084A432 /* Cera-Bold.ttf in Resources */,
 				C100952B1E973BFD001748E4 /* Cera-Regular.ttf in Resources */,
+				C109FDC01EAA961D0067E86C /* video-background_1200x720.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,7 +344,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		61B92B39D97BE6EE8B244A77 /* [CP] Embed Pods Frameworks */ = {
@@ -351,7 +384,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C109FDBE1EAA95E60067E86C /* LoginViewController.swift in Sources */,
 				C100953C1E9754B9001748E4 /* ABCNutricionViewController.swift in Sources */,
+				C1D1CEA71EADE58200EA14C8 /* ForgotPassViewController.swift in Sources */,
 				C18F22EA1E88834C006E42DB /* HomeViewController.swift in Sources */,
 				C10095391E9753B9001748E4 /* EstimulacionViewController.swift in Sources */,
 				C18F22E71E887D24006E42DB /* MenuTableViewController.swift in Sources */,
@@ -362,6 +397,7 @@
 				C100951A1E9730D3001748E4 /* MenuNavigationController.swift in Sources */,
 				C199D9121E8877B0002255BA /* AppDelegate.swift in Sources */,
 				C100953F1E9755C7001748E4 /* LactanciaViewController.swift in Sources */,
+				C1D1CEA51EADDA3900EA14C8 /* EmailViewcontroller.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
