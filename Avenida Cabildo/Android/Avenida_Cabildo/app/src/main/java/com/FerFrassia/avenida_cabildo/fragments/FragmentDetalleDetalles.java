@@ -142,7 +142,7 @@ public class FragmentDetalleDetalles extends Fragment implements View.OnClickLis
                 break;
 
             case R.id.ll_email:
-
+                Utils.enviarMail(getActivity(), local.getMail());
                 break;
 
             case R.id.ll_horario:

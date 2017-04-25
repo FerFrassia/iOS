@@ -263,9 +263,18 @@ public class Utils {
 	}
 
 	public static void abrirLink(Activity activity, String link) {
+        String toOpen = "";
+        if (link.length() >= 7) {
+            if (!(link.substring(0,7).equals("http://"))) {
+                toOpen = "http://" + link;
+            } else {
+                toOpen = link;
+            }
+        }
+
 
 		try{
-			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(toOpen));
 			activity.startActivity(intent);
 		}catch (Error e){
 
@@ -296,8 +305,28 @@ public class Utils {
 		if (ActivityCompat.checkSelfPermission(c, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
 			c.startActivity(intent);
 		}
-
 	}
+
+	public static void enviarMail(Context c, String url) {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+
+        String subject = "Consulta";
+        String message = "";
+
+        intent.setData(Uri.parse("mailto:"));
+
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{url});
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        intent.putExtra(Intent.EXTRA_TEXT, message);
+
+        intent.setType("text/plain");
+
+        try {
+            c.startActivity(Intent.createChooser(intent, "Enviar mail con:"));
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(c, "No hay apps de envío de mails instaladas.", Toast.LENGTH_SHORT).show();
+        }
+    }
 
 	public static void compartirLink(Context context, String link, String name,  String imagen){
 		Intent imageIntent = new Intent(Intent.ACTION_SEND);

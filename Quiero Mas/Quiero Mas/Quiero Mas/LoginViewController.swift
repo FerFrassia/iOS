@@ -18,13 +18,14 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginView: UIView!
     @IBOutlet weak var emailView: UIView!
     @IBOutlet weak var forgotView: UIView!
+    @IBOutlet weak var dasanTopConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let theUrl = NSURL(fileURLWithPath: Bundle.main.path(forResource: "video-background_1200x720", ofType: "mp4")!)
         
-        let theURL = NSURL(fileURLWithPath: "/Users/fer/Documents/Workspace/iOS/Quiero Mas/Quiero Mas/video-background_1200x720.mp4")
-        
-        avPlayer = AVPlayer(url: theURL as URL)
+        avPlayer = AVPlayer(url: theUrl as URL)
         
         avPlayerLayer = AVPlayerLayer(player: avPlayer)
         avPlayerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
@@ -38,6 +39,22 @@ class LoginViewController: UIViewController {
         selector: #selector(playerItemDidReachEnd(notification:)),
         name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
         object: avPlayer.currentItem)
+        
+        adjustDasanConstraint()
+    }
+    
+    func adjustDasanConstraint() {
+        if DeviceType.IS_IPHONE_6P {
+            dasanTopConstraint.constant = 300
+        }
+        
+        if DeviceType.IS_IPHONE_6 {
+            dasanTopConstraint.constant = 230
+        }
+        
+        if DeviceType.IS_IPHONE_5 {
+            dasanTopConstraint.constant = 140
+        }
     }
 
     func playerItemDidReachEnd(notification: Notification) {
@@ -84,6 +101,30 @@ class LoginViewController: UIViewController {
     
     @IBAction func forgotPasswordAction(_ sender: Any) {
         showForgotView()
+    }
+    
+    enum UIUserInterfaceIdiom : Int
+    {
+        case Unspecified
+        case Phone
+        case Pad
+    }
+    
+    struct ScreenSize
+    {
+        static let SCREEN_WIDTH         = UIScreen.main.bounds.size.width
+        static let SCREEN_HEIGHT        = UIScreen.main.bounds.size.height
+        static let SCREEN_MAX_LENGTH    = max(ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT)
+        static let SCREEN_MIN_LENGTH    = min(ScreenSize.SCREEN_WIDTH, ScreenSize.SCREEN_HEIGHT)
+    }
+    
+    struct DeviceType
+    {
+        static let IS_IPHONE_4_OR_LESS  = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.SCREEN_MAX_LENGTH < 568.0
+        static let IS_IPHONE_5          = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.SCREEN_MAX_LENGTH == 568.0
+        static let IS_IPHONE_6          = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.SCREEN_MAX_LENGTH == 667.0
+        static let IS_IPHONE_6P         = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.SCREEN_MAX_LENGTH == 736.0
+        static let IS_IPAD              = UIDevice.current.userInterfaceIdiom == .pad && ScreenSize.SCREEN_MAX_LENGTH == 1024.0
     }
     
     

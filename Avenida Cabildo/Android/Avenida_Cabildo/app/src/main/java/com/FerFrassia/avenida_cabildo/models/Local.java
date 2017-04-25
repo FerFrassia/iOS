@@ -215,13 +215,19 @@ public class Local implements Serializable {
     }
 
     private boolean descuentoFiltrado(){
-        if(descuentoss != null && ActivityMain.descuentos != null)
-            for(int i = 0; i < descuentoss.size(); i++){
-                for(int j = 0; i < ActivityMain.descuentos.size(); i++){
-                    if(ActivityMain.descuentos.get(j).getNombre().equals(descuentoss.get(i).getNombre()) &&  ActivityMain.descuentos.get(j).isFavorito())
-                        return true;
+        if(descuentoss != null && ActivityMain.descuentos != null) {
+            if (descuentoss.size() == 0) {
+                return true;
+            } else {
+                for (int i = 0; i < descuentoss.size(); i++) {
+                    for (int j = 0; j < ActivityMain.descuentos.size(); j++) {
+                        if (ActivityMain.descuentos.get(j).getNombre().equals(descuentoss.get(i).getNombre()) && ActivityMain.descuentos.get(j).isFavorito())
+                            return true;
+                    }
                 }
+                return false;
             }
+        }
         return false;
     }
 
