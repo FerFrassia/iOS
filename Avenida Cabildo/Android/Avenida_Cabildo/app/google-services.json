@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:854269150359:android:2b4b3aed65d05dfc",
         "android_client_info": {
-          "package_name": "com.avenida_cabildo"
+          "package_name": "com.nanosoft.avenida_cabildo"
         }
       },
       "oauth_client": [
@@ -31,6 +31,57 @@
         "appinvite_service": {
           "status": 1,
           "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:854269150359:android:37fa7fb07e313d4e",
+        "android_client_info": {
+          "package_name": "com.FerFrassia.avenida_cabildo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "854269150359-a0u4dc41uv8ci1oo0nt6j1udcnqheqgr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.FerFrassia.avenida_cabildo",
+            "certificate_hash": "b9997f973748dbcaa62000c1669ebfd9afc73797"
+          }
+        },
+        {
+          "client_id": "854269150359-pul2v2t9r8jetscddtr1nl8qeegi9bvk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQnVi0HKlgvyHfjizd3nzd6TyH70RYY5c"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "854269150359-pdmfop9jmsu97p1avoth3nihchp701lq.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "Avenida-Cabildo.Avenida-Cabildo"
+              }
+            },
+            {
+              "client_id": "854269150359-pul2v2t9r8jetscddtr1nl8qeegi9bvk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

@@ -263,18 +263,8 @@ public class Utils {
 	}
 
 	public static void abrirLink(Activity activity, String link) {
-        String toOpen = "";
-        if (link.length() >= 7) {
-            if (!(link.substring(0,7).equals("http://"))) {
-                toOpen = "http://" + link;
-            } else {
-                toOpen = link;
-            }
-        }
-
-
 		try{
-			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(toOpen));
+			Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
 			activity.startActivity(intent);
 		}catch (Error e){
 
