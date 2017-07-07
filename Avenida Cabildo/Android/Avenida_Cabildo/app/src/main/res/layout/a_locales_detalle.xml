@@ -50,7 +50,7 @@
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|snap">
 
-                <com.FerFrassia.avenida_cabildo.views.ImageViewVisibilidad1
+                <com.avenida_cabildo.avenida_cabildo.views.ImageViewVisibilidad1
                     android:id="@+id/iv_background"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

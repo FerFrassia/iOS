@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.FerFrassia.avenida_cabildo.ActivitySplash">
+    tools:context="com.avenida_cabildo.avenida_cabildo.ActivitySplash">
 
     <ImageView
         android:layout_width="match_parent"

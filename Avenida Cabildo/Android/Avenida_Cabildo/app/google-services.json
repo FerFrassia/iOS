@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:854269150359:android:2b4b3aed65d05dfc",
         "android_client_info": {
-          "package_name": "com.nanosoft.avenida_cabildo"
+          "package_name": "com.avenida_cabildo.avenida_cabildo"
         }
       },
       "oauth_client": [
@@ -41,7 +41,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:854269150359:android:37fa7fb07e313d4e",
         "android_client_info": {
-          "package_name": "com.FerFrassia.avenida_cabildo"
+          "package_name": "com.avenida_cabildo.avenida_cabildo"
         }
       },
       "oauth_client": [
@@ -49,7 +49,7 @@
           "client_id": "854269150359-a0u4dc41uv8ci1oo0nt6j1udcnqheqgr.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.FerFrassia.avenida_cabildo",
+            "package_name": "com.avenida_cabildo.avenida_cabildo",
             "certificate_hash": "b9997f973748dbcaa62000c1669ebfd9afc73797"
           }
         },

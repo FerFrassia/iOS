@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.FerFrassia.avenida_cabildo">
+    package="com.avenida_cabildo.avenida_cabildo">
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -13,14 +13,14 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
-        android:name=".AvenidaCabildoApp"
+        android:name="com.avenida_cabildo.avenida_cabildo.AvenidaCabildoApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ActivitySplash"
+            android:name="com.avenida_cabildo.avenida_cabildo.ActivitySplash"
             android:label="@string/title_activity_activity_main"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -30,20 +30,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ActivityLogin"
+            android:name="com.avenida_cabildo.avenida_cabildo.ActivityLogin"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ActivityMain"
+            android:name="com.avenida_cabildo.avenida_cabildo.ActivityMain"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ActivityFiltro"
+            android:name="com.avenida_cabildo.avenida_cabildo.ActivityFiltro"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ActivityFavoritos"
+            android:name="com.avenida_cabildo.avenida_cabildo.ActivityFavoritos"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ActivityLocalDetalle"
+            android:name="com.avenida_cabildo.avenida_cabildo.ActivityLocalDetalle"
             android:label=""
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />

@@ -14,7 +14,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.FerFrassia.avenida_cabildo.views.CustomImageView
+        <com.avenida_cabildo.avenida_cabildo.views.CustomImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="invisible"/>
@@ -36,7 +36,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <com.FerFrassia.avenida_cabildo.views.CustomImageView
+                    <com.avenida_cabildo.avenida_cabildo.views.CustomImageView
                         android:id="@+id/iv_fondo"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
