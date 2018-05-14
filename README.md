@@ -2,7 +2,8 @@
 
 Maintainting
 -----------------------
-- Avenida Cabildo
+- notTinder
+- loadingAnimation
 
 Deprecated
 -----------------------
@@ -15,3 +16,4 @@ Deprecated
 - ReglaDeTres 
 - SplitView Demo
 - ToDoList
+- Avenida Cabildo
