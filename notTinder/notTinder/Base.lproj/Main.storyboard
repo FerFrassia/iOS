@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="notTinder" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A9X-Jr-Ud6">
+                                <rect key="frame" x="20" y="100" width="335" height="487"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="girl" translatesAutoresizingMaskIntoConstraints="NO" id="g3L-Ol-8g5">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="487"/>
+                                        <gestureRecognizers/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thumbsUp" translatesAutoresizingMaskIntoConstraints="NO" id="iCe-Gp-cVJ">
+                                        <rect key="frame" x="127.5" y="203.5" width="80" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="Fid-Ba-4Ov"/>
+                                            <constraint firstAttribute="width" secondItem="iCe-Gp-cVJ" secondAttribute="height" multiplier="1:1" id="xS3-ZT-M5G"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="g3L-Ol-8g5" firstAttribute="leading" secondItem="A9X-Jr-Ud6" secondAttribute="leading" id="0OX-aM-6pY"/>
+                                    <constraint firstItem="g3L-Ol-8g5" firstAttribute="top" secondItem="A9X-Jr-Ud6" secondAttribute="top" id="FlB-4K-odq"/>
+                                    <constraint firstAttribute="bottom" secondItem="g3L-Ol-8g5" secondAttribute="bottom" id="NuM-3R-c88"/>
+                                    <constraint firstAttribute="trailing" secondItem="g3L-Ol-8g5" secondAttribute="trailing" id="Q2m-RR-K77"/>
+                                    <constraint firstItem="iCe-Gp-cVJ" firstAttribute="centerY" secondItem="A9X-Jr-Ud6" secondAttribute="centerY" id="vu6-yi-sF6"/>
+                                    <constraint firstItem="iCe-Gp-cVJ" firstAttribute="centerX" secondItem="A9X-Jr-Ud6" secondAttribute="centerX" id="zJi-Y7-zfZ"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="TpJ-dh-wkv" appends="YES" id="aHC-Aa-zZ2"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="A9X-Jr-Ud6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="80" id="QxG-47-WbE"/>
+                            <constraint firstItem="A9X-Jr-Ud6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="VRB-Lf-yDv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="A9X-Jr-Ud6" secondAttribute="trailing" constant="20" id="VhZ-7Z-IGE"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="A9X-Jr-Ud6" secondAttribute="bottom" constant="80" id="jbO-Bj-D30"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="picImg" destination="g3L-Ol-8g5" id="TZb-en-St6"/>
+                        <outlet property="picView" destination="A9X-Jr-Ud6" id="k7X-4P-F9L"/>
+                        <outlet property="thumbsView" destination="iCe-Gp-cVJ" id="Wap-f4-JeV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="TpJ-dh-wkv">
+                    <connections>
+                        <action selector="panPic:" destination="BYZ-38-t0r" id="AmM-z9-k1K"/>
+                    </connections>
+                </panGestureRecognizer>
+            </objects>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="girl" width="317" height="402"/>
+        <image name="thumbsUp" width="457" height="457"/>
+    </resources>
+</document>
