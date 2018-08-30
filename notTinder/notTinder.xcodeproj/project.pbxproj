@@ -7,12 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C12AED742137D6B5002AD8CF /* Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12AED732137D6B5002AD8CF /* Candidate.swift */; };
 		C1407FCD20A90A2300671FCB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1407FCC20A90A2300671FCB /* AppDelegate.swift */; };
-		C1407FCF20A90A2300671FCB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1407FCE20A90A2300671FCB /* ViewController.swift */; };
+		C1407FCF20A90A2300671FCB /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1407FCE20A90A2300671FCB /* PlayViewController.swift */; };
 		C1407FD220A90A2300671FCB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1407FD020A90A2300671FCB /* Main.storyboard */; };
 		C1407FD420A90A2500671FCB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1407FD320A90A2500671FCB /* Assets.xcassets */; };
 		C1407FD720A90A2500671FCB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1407FD520A90A2500671FCB /* LaunchScreen.storyboard */; };
 		C1407FE220A90A2500671FCB /* notTinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1407FE120A90A2500671FCB /* notTinderTests.swift */; };
+		C171CBDE2137C450000A0039 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C171CBDD2137C450000A0039 /* ChatViewController.swift */; };
+		C171CBE22137CE46000A0039 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C171CBE12137CE46000A0039 /* Queue.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,9 +29,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C12AED732137D6B5002AD8CF /* Candidate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Candidate.swift; sourceTree = "<group>"; };
 		C1407FC920A90A2300671FCB /* notTinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = notTinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1407FCC20A90A2300671FCB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C1407FCE20A90A2300671FCB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C1407FCE20A90A2300671FCB /* PlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
 		C1407FD120A90A2300671FCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C1407FD320A90A2500671FCB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C1407FD620A90A2500671FCB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -36,6 +40,8 @@
 		C1407FDD20A90A2500671FCB /* notTinderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = notTinderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1407FE120A90A2500671FCB /* notTinderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notTinderTests.swift; sourceTree = "<group>"; };
 		C1407FE320A90A2500671FCB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C171CBDD2137C450000A0039 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		C171CBE12137CE46000A0039 /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,11 +84,14 @@
 			isa = PBXGroup;
 			children = (
 				C1407FCC20A90A2300671FCB /* AppDelegate.swift */,
-				C1407FCE20A90A2300671FCB /* ViewController.swift */,
+				C1407FCE20A90A2300671FCB /* PlayViewController.swift */,
 				C1407FD020A90A2300671FCB /* Main.storyboard */,
 				C1407FD320A90A2500671FCB /* Assets.xcassets */,
 				C1407FD520A90A2500671FCB /* LaunchScreen.storyboard */,
 				C1407FD820A90A2500671FCB /* Info.plist */,
+				C171CBDD2137C450000A0039 /* ChatViewController.swift */,
+				C171CBE12137CE46000A0039 /* Queue.swift */,
+				C12AED732137D6B5002AD8CF /* Candidate.swift */,
 			);
 			path = notTinder;
 			sourceTree = "<group>";
@@ -197,8 +206,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1407FCF20A90A2300671FCB /* ViewController.swift in Sources */,
+				C171CBDE2137C450000A0039 /* ChatViewController.swift in Sources */,
+				C1407FCF20A90A2300671FCB /* PlayViewController.swift in Sources */,
 				C1407FCD20A90A2300671FCB /* AppDelegate.swift in Sources */,
+				C12AED742137D6B5002AD8CF /* Candidate.swift in Sources */,
+				C171CBE22137CE46000A0039 /* Queue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
