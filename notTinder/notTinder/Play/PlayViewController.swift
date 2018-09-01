@@ -65,7 +65,7 @@ class PlayViewController: UIViewController {
     func loadInitialCandidates() {
         for i in 0...6 {
             var c = Candidate(likesYou: false, img: UIImage(named: "girl\(i)"))
-            if (i == 2) {
+            if (i == 0) {
                 c.likesYou = true
             }
             candidateQueue.enqueue(c)

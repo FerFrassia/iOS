@@ -6,7 +6,13 @@
 //  Copyright © 2018 Fernando N. Frassia. All rights reserved.
 //
 import UIKit
+
 struct Candidate {
     var likesYou: Bool
     var img: UIImage?
+}
+
+struct chatMessage {
+    var message: String
+    var recieved: Bool
 }
