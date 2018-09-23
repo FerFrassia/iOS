@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="CustomBarButtonView" id="iN0-l3-epB" customClass="CustomBarButtonView" customModule="customNavBarButton" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="150" height="40"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zrU-mJ-pPa">
+                    <rect key="frame" x="0.0" y="5" width="38" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="38" id="31s-Kc-N58"/>
+                    </constraints>
+                    <state key="normal" image="Notification Icon"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="self.imageView.contentMode">
+                            <integer key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n5t-jk-mEO">
+                    <rect key="frame" x="78" y="0.0" width="72" height="40"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jdI-i6-Tng">
+                            <rect key="frame" x="0.0" y="0.0" width="72" height="40"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Filter Icon" translatesAutoresizingMaskIntoConstraints="NO" id="Vbs-X5-uyB">
+                            <rect key="frame" x="17.5" y="0.0" width="20" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="20" id="kQ3-i0-z17"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FILTER" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rm3-i6-Mqf">
+                            <rect key="frame" x="40.5" y="0.0" width="31.5" height="40"/>
+                            <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="9"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="jdI-i6-Tng" firstAttribute="leading" secondItem="n5t-jk-mEO" secondAttribute="leading" id="OyM-0l-Ne1"/>
+                        <constraint firstAttribute="trailing" secondItem="jdI-i6-Tng" secondAttribute="trailing" id="QeM-9p-QMI"/>
+                        <constraint firstAttribute="trailing" secondItem="rm3-i6-Mqf" secondAttribute="trailing" id="QjL-qg-5SH"/>
+                        <constraint firstItem="rm3-i6-Mqf" firstAttribute="top" secondItem="n5t-jk-mEO" secondAttribute="top" id="iAb-N6-7ts"/>
+                        <constraint firstItem="jdI-i6-Tng" firstAttribute="top" secondItem="n5t-jk-mEO" secondAttribute="top" id="nVf-4D-H1W"/>
+                        <constraint firstAttribute="bottom" secondItem="rm3-i6-Mqf" secondAttribute="bottom" id="pvy-FK-14s"/>
+                        <constraint firstAttribute="bottom" secondItem="Vbs-X5-uyB" secondAttribute="bottom" id="uJa-jG-ZMq"/>
+                        <constraint firstAttribute="bottom" secondItem="jdI-i6-Tng" secondAttribute="bottom" id="wuH-43-nNJ"/>
+                        <constraint firstItem="Vbs-X5-uyB" firstAttribute="top" secondItem="n5t-jk-mEO" secondAttribute="top" id="xTE-Jv-C34"/>
+                        <constraint firstItem="rm3-i6-Mqf" firstAttribute="leading" secondItem="Vbs-X5-uyB" secondAttribute="trailing" constant="3" id="zba-Sg-1NZ"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="zrU-mJ-pPa" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="5" id="7Vs-ZU-ibK"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="zrU-mJ-pPa" secondAttribute="bottom" constant="5" id="V8W-Ti-45M"/>
+                <constraint firstItem="n5t-jk-mEO" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="We0-7K-fUv"/>
+                <constraint firstItem="n5t-jk-mEO" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="aku-0S-A8H"/>
+                <constraint firstItem="zrU-mJ-pPa" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="hCv-K0-XK5"/>
+                <constraint firstItem="n5t-jk-mEO" firstAttribute="leading" secondItem="zrU-mJ-pPa" secondAttribute="trailing" constant="40" id="jAp-71-zYC"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="n5t-jk-mEO" secondAttribute="trailing" id="wAb-GT-U7u"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="filterBtn" destination="jdI-i6-Tng" id="LxZ-w4-XXa"/>
+                <outlet property="notificationBtn" destination="zrU-mJ-pPa" id="9y1-Lx-B2U"/>
+            </connections>
+            <point key="canvasLocation" x="56" y="140.32983508245877"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Filter Icon" width="32" height="31"/>
+        <image name="Notification Icon" width="37" height="41"/>
+    </resources>
+</document>
