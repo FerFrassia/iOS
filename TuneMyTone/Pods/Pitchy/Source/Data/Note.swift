@@ -75,3 +75,4 @@ public struct Note {
     return try Note(index: index + 1)
   }
 }
+

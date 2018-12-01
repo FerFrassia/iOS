@@ -17,11 +17,11 @@ class GameScene: SKScene {
     
     var tuneBall: SKSpriteNode!
     var tunerDelegate: GameSceneDelegate?
-    lazy var active: Bool = {
+    lazy var gameStarted: Bool = {
         return false
     }()
     
-    // MARK: - didMove
+    // MARK: - DidMove
     override func didMove(to view: SKView) {
         layoutScene()
         addSprites()
@@ -42,9 +42,28 @@ class GameScene: SKScene {
         addChild(tuneBall)
     }
     
-    // MARK: - update
+    func addTuneBlocks() {
+        let blockTexture = SKTexture(imageNamed: "TuneBlock")
+        for i in 0..<Scales.CMajor.count {
+            let note = Scales.CMajor[i]
+            guard let yPosition = note.position() else {return}
+            
+            let blockSprite = SKSpriteNode(texture: blockTexture)
+            blockSprite.anchorPoint = CGPoint(x: 0, y: 0.5)
+            blockSprite.size = CGSize(width: 20, height: 20)
+            blockSprite.position = CGPoint(x: frame.width + CGFloat(i)*blockTexture.size().width,
+                                           y: CGFloat(yPosition))
+            addChild(blockSprite)
+            
+            let distanceToMoveX = frame.width + CGFloat(i+1)*blockTexture.size().width
+            let moveLeft = SKAction.moveBy(x: -distanceToMoveX, y: 0, duration: Double(distanceToMoveX/100))
+            blockSprite.run(moveLeft)
+        }
+    }
+    
+    // MARK: - Update
     override func update(_ currentTime: TimeInterval) {
-        if active {
+        if gameStarted {
             moveTuneBall()
         }
     }
@@ -60,11 +79,12 @@ class GameScene: SKScene {
     
     // MARK: - Start
     func startGame() {
-        active = true
+        gameStarted = true
+        addTuneBlocks()
     }
     
     func stopGame() {
-        active = false
+        gameStarted = false
     }
     
 
