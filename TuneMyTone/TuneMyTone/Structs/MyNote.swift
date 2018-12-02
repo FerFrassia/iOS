@@ -20,7 +20,7 @@ public struct MyNote {
     }
     
     public func position() -> Double? {
-        let initialPosition = 400.0
+        let initialPosition = 0.0
         let distanceConstant = 5.0
     
         guard let index = noteValues().firstIndex(of: self.string) else {return nil}

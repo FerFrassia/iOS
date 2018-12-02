@@ -15,6 +15,7 @@ import Hue
 
 class GameViewController: UIViewController {
     
+    @IBOutlet weak var gameSKView: SKView!
     @IBOutlet weak var noteLabel: UILabel!
     @IBOutlet weak var offsetLabel: UILabel!
     @IBOutlet weak var actionButton: UIButton!
@@ -32,15 +33,14 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let view = self.view as! SKView? {
-            gameScene = GameScene(size: view.bounds.size)
-            gameScene.tunerDelegate = self
-            gameScene.scaleMode = .aspectFill
-            view.presentScene(gameScene)
-            view.ignoresSiblingOrder = true
-            view.showsFPS = true
-            view.showsNodeCount = true
-        }
+        gameScene = GameScene(fileNamed: "GameScene")
+        gameScene.size = gameSKView.frame.size
+        gameScene.scaleMode = .aspectFill
+        gameScene.tunerDelegate = self
+        
+        gameSKView.showsFPS = true
+        gameSKView.showsNodeCount = true
+        gameSKView.presentScene(gameScene)
     }
     
     @IBAction func actionButtonPressed(_ sender: Any) {

@@ -14,10 +14,15 @@
         <scene sceneID="tXr-a1-R10">
             <objects>
                 <viewController id="BV1-FR-VrT" customClass="GameViewController" customModule="TuneMyTone" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
+                    <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bSw-5t-w3b" customClass="SKView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <viewLayoutGuide key="safeArea" id="o40-4D-sdV"/>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pN0-nz-2dO">
                                 <rect key="frame" x="20" y="636" width="15.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -31,7 +36,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZkS-g7-g84">
-                                <rect key="frame" x="97" y="631.5" width="34" height="30"/>
+                                <rect key="frame" x="170.5" y="631.5" width="34" height="30"/>
                                 <state key="normal" title="Start"/>
                                 <connections>
                                     <action selector="actionButtonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="XW9-ab-g3u"/>
@@ -40,24 +45,30 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="bSw-5t-w3b" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" id="0Ap-aJ-Vma"/>
                             <constraint firstItem="1pX-1F-79M" firstAttribute="leading" secondItem="pN0-nz-2dO" secondAttribute="trailing" constant="20" id="0ox-3R-Z1L"/>
+                            <constraint firstItem="4qk-I5-YsI" firstAttribute="bottom" secondItem="bSw-5t-w3b" secondAttribute="bottom" id="7QK-Wx-Rjz"/>
                             <constraint firstItem="4qk-I5-YsI" firstAttribute="bottom" secondItem="pN0-nz-2dO" secondAttribute="bottom" constant="10" id="Axw-pM-8Md"/>
                             <constraint firstItem="1pX-1F-79M" firstAttribute="centerY" secondItem="ZkS-g7-g84" secondAttribute="centerY" id="KcQ-BV-ycH"/>
-                            <constraint firstItem="4qk-I5-YsI" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ZkS-g7-g84" secondAttribute="trailing" constant="20" id="Nhh-2a-ZSy"/>
                             <constraint firstItem="1pX-1F-79M" firstAttribute="centerY" secondItem="pN0-nz-2dO" secondAttribute="centerY" id="OmA-KK-T6i"/>
-                            <constraint firstItem="ZkS-g7-g84" firstAttribute="leading" secondItem="1pX-1F-79M" secondAttribute="trailing" constant="20" id="SxJ-gw-CNR"/>
+                            <constraint firstItem="bSw-5t-w3b" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" constant="-20" id="Q5V-l7-Jaa"/>
+                            <constraint firstItem="4qk-I5-YsI" firstAttribute="trailing" secondItem="bSw-5t-w3b" secondAttribute="trailing" id="TNj-64-0tD"/>
+                            <constraint firstItem="ZkS-g7-g84" firstAttribute="centerX" secondItem="bSw-5t-w3b" secondAttribute="centerX" id="Xgi-yh-tZh"/>
                             <constraint firstItem="pN0-nz-2dO" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" constant="20" id="gBg-E5-Mpu"/>
+                            <constraint firstItem="ZkS-g7-g84" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1pX-1F-79M" secondAttribute="trailing" constant="20" id="qrf-6N-h3Q"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4qk-I5-YsI"/>
                     </view>
                     <connections>
                         <outlet property="actionButton" destination="ZkS-g7-g84" id="Ri5-Ef-wgH"/>
+                        <outlet property="gameSKView" destination="bSw-5t-w3b" id="ZEq-zg-JKR"/>
                         <outlet property="noteLabel" destination="pN0-nz-2dO" id="9Vw-1h-sGS"/>
                         <outlet property="offsetLabel" destination="1pX-1F-79M" id="3uj-Yc-BDh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="141.59999999999999" y="133.5832083958021"/>
         </scene>
     </scenes>
 </document>
