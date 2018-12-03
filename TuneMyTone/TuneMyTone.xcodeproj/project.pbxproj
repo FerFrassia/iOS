@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		AE541E7B9761DC952F868A23 /* Pods_TuneMyTone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FB345FFDB947B4110358E56 /* Pods_TuneMyTone.framework */; };
-		C11DF22721B31355007AF37C /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C11DF22621B31355007AF37C /* GameScene.sks */; };
 		C11DF24E21B3439E007AF37C /* SUBWT___.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C11DF24D21B3439D007AF37C /* SUBWT___.ttf */; };
 		C123FF9421B1CDF700ECBAD9 /* MyNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = C123FF9321B1CDF700ECBAD9 /* MyNote.swift */; };
 		C123FF9621B1D1FA00ECBAD9 /* Scales.swift in Sources */ = {isa = PBXBuildFile; fileRef = C123FF9521B1D1FA00ECBAD9 /* Scales.swift */; };
@@ -19,13 +18,13 @@
 		C1B9D2A221ACFAB50034A420 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1B9D2A121ACFAB50034A420 /* Assets.xcassets */; };
 		C1B9D2A521ACFAB50034A420 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1B9D2A321ACFAB50034A420 /* LaunchScreen.storyboard */; };
 		C1CB7A2621B370E200F2103D /* ScoreNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CB7A2521B370E200F2103D /* ScoreNode.swift */; };
+		C1E42E0121B4844B00E75CBD /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C1E42E0021B4844B00E75CBD /* GameScene.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		066FB0D109D19CF9B6B99661 /* Pods-TuneMyTone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TuneMyTone.release.xcconfig"; path = "Pods/Target Support Files/Pods-TuneMyTone/Pods-TuneMyTone.release.xcconfig"; sourceTree = "<group>"; };
 		20D647087F46B9CA23686E76 /* Pods-TuneMyTone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TuneMyTone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TuneMyTone/Pods-TuneMyTone.debug.xcconfig"; sourceTree = "<group>"; };
 		5FB345FFDB947B4110358E56 /* Pods_TuneMyTone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TuneMyTone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C11DF22621B31355007AF37C /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		C11DF24D21B3439D007AF37C /* SUBWT___.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SUBWT___.ttf"; sourceTree = "<group>"; };
 		C123FF9321B1CDF700ECBAD9 /* MyNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNote.swift; sourceTree = "<group>"; };
 		C123FF9521B1D1FA00ECBAD9 /* Scales.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scales.swift; sourceTree = "<group>"; };
@@ -38,6 +37,7 @@
 		C1B9D2A421ACFAB50034A420 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C1B9D2A621ACFAB50034A420 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C1CB7A2521B370E200F2103D /* ScoreNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreNode.swift; sourceTree = "<group>"; };
+		C1E42E0021B4844B00E75CBD /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				C1B9D2A621ACFAB50034A420 /* Info.plist */,
-				C1CB7A2421B370BD00F2103D /* SKNodes Subclasses */,
+				C1CB7A2421B370BD00F2103D /* SKNodes */,
 				C11DF24C21B34391007AF37C /* Fonts */,
 				C123FF9221B1CDC400ECBAD9 /* Structs */,
 				C1964BD921ADD7D900ABCCC5 /* Storyboards */,
@@ -157,17 +157,17 @@
 			isa = PBXGroup;
 			children = (
 				C1B9D29A21ACFAB40034A420 /* GameScene.swift */,
-				C11DF22621B31355007AF37C /* GameScene.sks */,
+				C1E42E0021B4844B00E75CBD /* GameScene.sks */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
 		};
-		C1CB7A2421B370BD00F2103D /* SKNodes Subclasses */ = {
+		C1CB7A2421B370BD00F2103D /* SKNodes */ = {
 			isa = PBXGroup;
 			children = (
 				C1CB7A2521B370E200F2103D /* ScoreNode.swift */,
 			);
-			path = "SKNodes Subclasses";
+			path = SKNodes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,7 +233,7 @@
 				C1B9D2A021ACFAB40034A420 /* Main.storyboard in Resources */,
 				C1B9D2A221ACFAB50034A420 /* Assets.xcassets in Resources */,
 				C11DF24E21B3439E007AF37C /* SUBWT___.ttf in Resources */,
-				C11DF22721B31355007AF37C /* GameScene.sks in Resources */,
+				C1E42E0121B4844B00E75CBD /* GameScene.sks in Resources */,
 				C1B9D2A521ACFAB50034A420 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -455,10 +455,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = FerFrassia.TuneMyTone;
+				PRODUCT_BUNDLE_IDENTIFIER = com.FerFrassia.SingAlong;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -474,10 +474,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = FerFrassia.TuneMyTone;
+				PRODUCT_BUNDLE_IDENTIFIER = com.FerFrassia.SingAlong;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

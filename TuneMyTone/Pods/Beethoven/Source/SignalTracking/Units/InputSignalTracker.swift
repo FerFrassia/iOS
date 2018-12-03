@@ -98,16 +98,16 @@ final class InputSignalTracker: SignalTracker {
 
   private func setupAudio() {
     do {
-      let audioDevice = AVCaptureDevice.default(for: AVMediaType.audio)
-      let audioCaptureInput = try AVCaptureDeviceInput(device: audioDevice!)
+        guard let audioDevice = AVCaptureDevice.default(for: AVMediaType.audio) else {return}
+        let audioCaptureInput = try AVCaptureDeviceInput(device: audioDevice)
 
-      captureSession.addInput(audioCaptureInput)
+        captureSession.addInput(audioCaptureInput)
 
-      let audioOutput = AVCaptureAudioDataOutput()
-      captureSession.addOutput(audioOutput)
+        let audioOutput = AVCaptureAudioDataOutput()
+        captureSession.addOutput(audioOutput)
 
-      let connection = audioOutput.connections[0]
-      audioChannel = connection.audioChannels[0]
+        let connection = audioOutput.connections[0]
+        audioChannel = connection.audioChannels[0]
     } catch {}
   }
 }

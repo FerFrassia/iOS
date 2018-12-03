@@ -29,15 +29,26 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1pX-1F-79M">
-                                <rect key="frame" x="55.5" y="636.5" width="21.5" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 Hz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1pX-1F-79M">
+                                <rect key="frame" x="55.5" y="636.5" width="36" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZkS-g7-g84">
-                                <rect key="frame" x="170.5" y="631.5" width="34" height="30"/>
-                                <state key="normal" title="Start"/>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZkS-g7-g84">
+                                <rect key="frame" x="162.5" y="631.5" width="50" height="30"/>
+                                <color key="backgroundColor" red="0.0046019552769999998" green="0.59901230569999997" blue="0.0071424370139999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="YXx-EL-orl"/>
+                                </constraints>
+                                <state key="normal" title="Start">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="self.layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="actionButtonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="XW9-ab-g3u"/>
                                 </connections>
@@ -51,7 +62,7 @@
                             <constraint firstItem="4qk-I5-YsI" firstAttribute="bottom" secondItem="pN0-nz-2dO" secondAttribute="bottom" constant="10" id="Axw-pM-8Md"/>
                             <constraint firstItem="1pX-1F-79M" firstAttribute="centerY" secondItem="ZkS-g7-g84" secondAttribute="centerY" id="KcQ-BV-ycH"/>
                             <constraint firstItem="1pX-1F-79M" firstAttribute="centerY" secondItem="pN0-nz-2dO" secondAttribute="centerY" id="OmA-KK-T6i"/>
-                            <constraint firstItem="bSw-5t-w3b" firstAttribute="top" secondItem="4qk-I5-YsI" secondAttribute="top" constant="-20" id="Q5V-l7-Jaa"/>
+                            <constraint firstItem="bSw-5t-w3b" firstAttribute="top" secondItem="3se-qz-xqx" secondAttribute="top" id="Q5V-l7-Jaa"/>
                             <constraint firstItem="4qk-I5-YsI" firstAttribute="trailing" secondItem="bSw-5t-w3b" secondAttribute="trailing" id="TNj-64-0tD"/>
                             <constraint firstItem="ZkS-g7-g84" firstAttribute="centerX" secondItem="bSw-5t-w3b" secondAttribute="centerX" id="Xgi-yh-tZh"/>
                             <constraint firstItem="pN0-nz-2dO" firstAttribute="leading" secondItem="4qk-I5-YsI" secondAttribute="leading" constant="20" id="gBg-E5-Mpu"/>

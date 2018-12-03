@@ -47,11 +47,10 @@ class GameViewController: UIViewController {
         let text = pitchEngine.active
             ? NSLocalizedString("Start", comment: "").uppercased()
             : NSLocalizedString("Stop", comment: "").uppercased()
-        
         actionButton.setTitle(text, for: .normal)
         actionButton.backgroundColor = pitchEngine.active
-            ? UIColor(hex: "3DAFAE")
-            : UIColor(hex: "E13C6C")
+            ? UIColor(red: 1.0/255.0, green: 153.0/255.0, blue: 2.0/255.0, alpha: 1.0)
+            : .red
         
         noteLabel.text = "--"
         pitchEngine.active ? pitchEngine.stop() : pitchEngine.start()
@@ -75,10 +74,7 @@ extension GameViewController: PitchEngineDelegate {
         }
         
         let prefix = offsetPercentage > 0 ? "" : "-"
-        let color = offsetColor(offsetPercentage)
-        
         offsetLabel.text = "\(prefix)" + String(format:"%.2f", absOffsetPercentage)
-        offsetLabel.textColor = color
         offsetLabel.isHidden = false
         
         frequency = pitch.frequency
